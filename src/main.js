@@ -133,6 +133,9 @@ Vue.prototype.formatDate = (time, fmt) => {
   return fmt;
 };
 Vue.prototype.$userPic = userPic;
+Vue.prototype.divide = (num) => {
+  return Math.trunc(num * 100) / 100;
+};
 const app = new Vue({
   router,
   store,

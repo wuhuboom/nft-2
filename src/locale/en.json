@@ -1129,5 +1129,9 @@
   "WARNING":"WARNING",
   "WARNING.desc":"Promotion on social media platforms like Facebook, TikTok, Instagram, Twitter is not allowed. ",
   "backapi.betFrequently": "Trading frequency is too fast, please try again later",
-  "Already.a.account": "Already have an account?"
+  "Already.a.account": "Already have an account?",
+  "user.money.available":"Available Funds",
+	"user.money.purchased":"Purchased",
+  "user.Item.shop":"Item shop",
+  "user.Item.Asset":"Asset center"
 }
