@@ -1,18 +1,9 @@
 <template>
   <div class="register-page">
-    <div>
-      <div class="center-center register-title">
-        <p>
-          <img
-            class="d-block"
-            src="@/assets/img/red/register-title.webp"
-            alt=""
-          />
-        </p>
-      </div>
-      <van-form class="register-form column-form" ref="form" @submit="onSubmit">
+    <div class="center-center">
+      <van-form class="register-form ntf-form" ref="form" @submit="onSubmit">
         <van-field
-          class="username"
+          class="username m-b-32"
           v-model.trim="form.username"
           autocomplete="new-password"
           name="username"
@@ -27,7 +18,7 @@
         />
         <!-- showText -->
         <van-field
-          class="res-icon-size password"
+          class="res-icon-size password m-b-32"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -47,7 +38,7 @@
         <van-field
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
-          class="res-icon-size password"
+          class="res-icon-size password m-b-32"
           @click-right-icon="openEye"
           :type="showText ? 'text' : 'password'"
           :placeholder="$t('form.twoPassword.text')"
@@ -69,7 +60,7 @@
         <van-field
           v-model.trim="form.invitationCode"
           type="number"
-          class="res-icon-size login-ceode"
+          class="res-icon-size login-ceode m-b-32"
           autocomplete="new-password"
           :placeholder="$t('form.invitecode.text')"
           :rules="[
@@ -79,7 +70,7 @@
         <van-field
           v-model.trim="form.email"
           :placeholder="$t('form.email.text')"
-          class="email res-icon-size"
+          class="email res-icon-size m-b-32"
           autocomplete="new-password"
           name="email"
           :rules="[
@@ -94,7 +85,7 @@
         >
         </van-field>
         <van-field
-          class="login-ceode"
+          class="login-ceode m-b-32"
           :placeholder="$t('Submitted.email.code')"
           v-if="authConfig.mailCodeRequired === 1"
           v-model.trim="form.emailCode"
@@ -125,7 +116,7 @@
           :placeholder="$t('form.phoneNum.text')"
           type="digit"
           autocomplete="new-password"
-          class="left-icon-box res-icon-size login-phone"
+          class="left-icon-box res-icon-size login-phone m-b-32"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>
@@ -136,7 +127,7 @@
         </van-field>
         <van-field
           v-model.trim="form.code"
-          class="res-icon-size login-ceode"
+          class="res-icon-size login-ceode m-b-32"
           :maxlength="4"
           autocomplete="new-password"
           :placeholder="$t('form.vercode.text')"
@@ -344,152 +335,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.register-page {
-  font-size: 16px;
-  color: var(--color-text);
-  .code-btn {
-    height: 18px;
-    border-radius: 9px;
-    padding: 0 8px;
-    min-width: 54px;
-    background-color: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: #fff;
-  }
-  .radio-list-row {
-    padding: 8px 16px;
-  }
-  [role="radio"] {
-    margin-right: 24px;
-  }
-  .area-code {
-    padding-right: 8px;
-  }
-  .go-login {
-    padding: 24px 0;
-    & > li:nth-child(2) {
-      color: var(--primary);
-      margin-left: 4px;
-    }
-  }
-  .register-title {
-    padding: 64px 0 30px;
-    img {
-      height: 36px;
-    }
-  }
-  ::v-deep div.appp-top-bar {
-    .icon-button {
-      background-color: rgba(0, 0, 0, 0.16) !important;
-      color: #fff !important;
-      border-radius: 8px;
-      margin-left: 24px;
-      margin-top: 24px;
-    }
-  }
-  ::v-deep .register-form {
-    width: 283px;
-    margin: 0 auto;
-    .sumit-section {
-      padding: 38px 0;
-      display: flex;
-      justify-content: space-around;
-      button {
-        width: auto;
-        height: auto;
-        padding: 0;
-        background-color: transparent !important;
-        color: var(--primary);
-        border-color: #fff !important;
-      }
-    }
-    .van-cell {
-      // padding: 0;
-      padding-left: 0;
-      padding-right: 0;
-      background-color: transparent;
-    }
-    .van-field__body {
-      background-color: transparent;
-      border-color: transparent;
-      height: 34px;
-      background-position: left center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding-left: 39px;
-      padding-right: 0;
-      font-size: 12px;
-    }
-    input[type="text"],
-    input[type="password"],
-    input[type="tel"] {
-      &,
-      &::placeholder {
-        color: var(--primary);
-      }
-    }
-    .username {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-user.webp");
-      }
-    }
-    .password {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-password.webp");
-      }
-    }
-    .login-ceode {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-cod.webp");
-      }
-    }
-    .email {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-email.webp");
-      }
-    }
-    .login-phone {
-      position: relative;
-      color: var(--primary);
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-phone.webp");
-      }
-    }
-    .res-icon-size .van-icon {
-      font-size: 20px;
-      //color: var(--primary);
-    }
-    .left-icon-box {
-      position: relative;
-      @wid: 60px;
-      .van-field__left-icon {
-        position: absolute;
-        top: 16px;
-        left: 32px;
-        z-index: 2;
-        width: @wid;
-      }
-      .van-field__control {
-        padding-left: @wid;
-      }
-    }
-  }
-}
-.register-up {
-  .car {
-    height: 44px;
-  }
-
-  padding-left: 24px;
-  justify-content: flex-end;
-  color: #fff;
-  height: 265px;
-  background: url("@/assets/img/loginbg@2x.png") no-repeat;
-  background-size: cover;
-  font-size: 26px;
-  .text {
-    margin-bottom: 16px;
-    margin-top: 8px;
-  }
+.register-form {
+  width: 264px;
 }
 </style>

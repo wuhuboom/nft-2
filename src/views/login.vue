@@ -1,148 +1,108 @@
 <template>
-  <div class="register-page">
-    <div class="register-up d-flex">
-      <div class="center-center register-up-desc">
-        <p class="logo m-r-8">
-          <img class="d-block" src="@/assets/img/red/zeplogo@2x.png" alt="" />
+  <div class="login-view-page font14">
+    <div class="p-l-16 p-r-16">
+      <div class="lang align-center">
+        <p class="lang-pic m-r-8">
+          <img src="@/assets/img/ntf/ae.webp" alt="" />
         </p>
-        <p class="color-primary title-logo">
-          <img class="d-block" src="@/assets/img/red/login-logo.webp" alt="" />
-        </p>
-        <div class="lang-list d-flex" @click="show = !show">
-          <ul class="align-center justify-between flex-1">
-            <li class="uppercase align-center">
-              {{ lang == "ind" ? "in" : lang }}
-            </li>
-            <li><van-icon name="arrow-down" /></li>
-          </ul>
-          <ul class="down" v-if="show">
-            <li
-              class="align-center"
-              @click="select(item)"
-              :class="{ active: lang === item.value }"
-              v-for="(item, idx) in langOptions"
-              :key="idx"
-            >
-              <!-- <img :src="item.icon" alt="" /> -->
-              {{ item.label }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div>
-      <van-form class="register-form column-form" @submit="onSubmit">
-        <van-field
-          v-model.trim="form.username"
-          autocomplete="new-password"
-          :placeholder="$t('form.account.text')"
-          class="username"
-          :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
-        />
-        <!-- showText -->
-        <van-field
-          class="res-icon-size password"
-          v-model.trim="form.password"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="
-            $t('ruls.xxx.please', { name: $t('register.password.text') })
-          "
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont color-active ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            {
-              required: true,
-              message: $t('ruls.xxx.empty', {
-                name: $t('register.password.text'),
-              }),
-            },
-          ]"
-        />
-        <van-field
-          v-if="false"
-          v-model.trim="form.code"
-          class="res-icon-size login-ceode"
-          :maxlength="4"
-          autocomplete="new-password"
-          :placeholder="$t('form.vercode.text')"
-          :rules="[{ required: true, message: $t('ruls.vercode.empty') }]"
+        <el-select
+          :value="$store.state.lang"
+          @change="select"
+          :placeholder="$t('index.editor.psd.text')"
         >
-          <template #right-icon>
-            <img
-              @click="verifyCodeReq"
-              width="68"
-              class="d-block"
-              :src="src"
-              alt=""
-            />
-          </template>
-        </van-field>
-
-        <div class="sumit-section font14">
+          <el-option
+            v-for="item in langOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </div>
+      <ul class="flex-column logo-are center-center">
+        <li class="logo p--8 p-b-16">
+          <img src="@/assets/img/ntf/login.webp" alt="" />
+        </li>
+        <li>{{ $t(`Login.with.page`) }}</li>
+      </ul>
+      <div class="center-center m-b-40">
+        <van-form class="register-form ntf-form" @submit="onSubmit">
+          <van-field
+            v-model.trim="form.username"
+            autocomplete="new-password"
+            :placeholder="
+              $t('ruls.xxx.please', { name: $t('register.username.text') })
+            "
+            class="username m-b-32"
+            :rules="[
+              {
+                required: true,
+                message: this.$t('ruls.xxx.empty', {
+                  name: this.$t('register.username.text'),
+                }),
+              },
+            ]"
+          />
+          <!-- showText -->
+          <van-field
+            class="password m-b-32"
+            v-model.trim="form.password"
+            autocomplete="new-password"
+            :type="showText ? 'text' : 'password'"
+            :placeholder="
+              $t('ruls.xxx.please', { name: $t('register.password.text') })
+            "
+            @click-right-icon="openEye"
+            :right-icon="`color-fff icon iconfont color-active ${
+              showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+            }`"
+            :rules="[
+              {
+                required: true,
+                message: this.$t('ruls.xxx.empty', {
+                  name: this.$t('register.password.text'),
+                }),
+              },
+            ]"
+          />
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             block
             type="info"
             native-type="submit"
             >{{ $t("login.login.text") }}</van-button
           >
-          <van-button
-            class="page-res-btn"
-            block
-            type="info"
-            native-type="button"
-            @click="
-              $router.push({
-                name: 'Register',
-                query: {
-                  backUrl: $route.query.backUrl,
-                },
-              })
-            "
-          >
-            {{ $t("reg.btn.text") }}</van-button
-          >
-        </div>
-        <ul class="serve-btm center-center text-center">
-          <li
-            class="flex-column center-center"
-            @click="$router.push({ name: 'LoginForget' })"
-          >
-            <p>
-              <img
-                class="d-block"
-                src="@/assets/img/red/login-btm1.webp"
-                alt=""
-              />
-            </p>
-            {{ $t("index.login.forget.text") }}
-          </li>
-          <li class="flex-column center-center" @click="goServe">
-            <p>
-              <img
-                class="d-block"
-                src="@/assets/img/red/login-btm2.webp"
-                alt=""
-              />
-            </p>
-            {{ $t("index.login.service.text") }}
-          </li>
-          <li class="flex-column center-center" @click="download">
-            <p>
-              <img
-                class="d-block"
-                src="@/assets/img/red/login-btm3.webp"
-                alt=""
-              />
-            </p>
-            {{ $t("fuc.app.download") }}
-          </li>
-        </ul>
-      </van-form>
+        </van-form>
+      </div>
     </div>
+
+    <ul class="flex-column p-b-24 p-t-24 center-center text-center contact">
+      <li class="m-b-16">
+        <p @click="goServe">{{ $t(`Online.Service`) }}</p>
+      </li>
+      <li
+        class="m-b-16 color-active"
+        @click="$router.push({ name: 'LoginForget' })"
+      >
+        {{ $t("login.forgetpwd.text") }}
+      </li>
+      <li class="full100 center-center text-center flex-wrap">
+        <p class="tips m-r-8">{{ $t("login.noaccount.text") }}</p>
+        <p
+          class="login-link color-active flex-wrap"
+          @click="
+            $router.push({
+              name: 'Register',
+              query: {
+                backUrl: $route.query.backUrl,
+              },
+            })
+          "
+        >
+          {{ $t("login.register.text") }}
+        </p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -205,27 +165,9 @@ export default {
         duration: 0,
       });
       const [err, res] = await userApi.login(data);
-      this.$toast.clear();
-      if (err) {
-        if (Array.isArray(err.data) && err.data.length) {
-          const msgKey = `backapi.${err.data[0].msgKey}`;
-          const countDoc = err.data.find((item) =>
-            item.name.includes("failCount")
-          );
-          if (msgKey.includes("pwdErrorCount")) {
-            this.$toast(
-              this.$t(msgKey, {
-                count: countDoc ? countDoc.value : "",
-              })
-            );
-          } else {
-            this.$toast(this.$t(msgKey));
-          }
-        }
-        this.verifyCodeReq();
-        return;
-      }
 
+      if (err) return;
+      this.$toast.clear();
       this.$store.commit("setToken", res.data.token);
       this.$store.dispatch("getServeData");
       if (this.$route.query.backUrl) {
@@ -242,20 +184,21 @@ export default {
       this.showText = !this.showText;
     },
     select(v) {
-      this.show = false;
-      this.$store.commit("setLang", v.value);
+      this.$store.commit("setLang", v);
     },
     async verifyCodeReq() {
-      // this.form.code = "";
-      // const [err, res] = await userApi.verifyCodeReq();
-      // if (err) {
-      //   if (+err.code == 409) {
-      //     this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
-      //   }
-      //   return;
-      // }
-      // this.src = res.data.img;
-      // this.form.verifyKey = res.data.verifyKey;
+      this.form.code = "";
+      const [err, res] = await userApi.verifyCodeReq();
+      console.log("res", err);
+      if (err) {
+        if (+err.code == 409) {
+          this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
+        }
+
+        return;
+      }
+      this.src = res.data.img;
+      this.form.verifyKey = res.data.verifyKey;
     },
     goServe() {
       this.$store.dispatch("getServeData", 1);
@@ -268,194 +211,42 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.register-page {
-  font-size: 16px;
-  color: var(--color-text);
+.login-view-page {
   min-height: 100vh;
-  color: #fff;
-  background: url("@/assets/img/red/lognbg.png") top center no-repeat;
-  background-size: 100% auto;
-  .logo {
-    img {
-      width: 42px;
-      height: 43px;
-    }
-  }
-  .title-logo {
-    img {
-      height: 36px;
-    }
-  }
-  .res-van-button {
-    background-color: #041faf;
-    background-image: none;
-  }
-  .res-van-button.finish {
-    background-color: #041faf;
-  }
-  .sumit-section {
-    padding: 24px 0 30px;
-    display: flex;
-    justify-content: space-around;
-    button {
-      width: auto;
-      height: auto;
-      padding: 0;
-      background-color: transparent !important;
-      color: var(--primary);
-      border-color: #fff !important;
-    }
-  }
-  .serve-btm {
-    font-size: 14px;
-    color: var(--primary);
-    padding-bottom: 20px;
-    img {
-      height: 16px;
-    }
-    p {
-      padding-bottom: 8px;
-    }
-  }
-  .radio-list-row {
-    padding: 8px 16px;
-  }
-  [role="radio"] {
-    margin-right: 24px;
-  }
-  .skip-msg {
-    padding: 0 16px;
-  }
-  .area-code {
-    padding-right: 8px;
-    z-index: 3px;
-  }
-  .go-login {
-    padding: 24px 0;
-    & > li:nth-child(2) {
-      color: var(--primary);
-      margin-left: 4px;
-    }
-  }
-  ::v-deep .register-form {
-    width: 283px;
-    margin: 0 auto;
-    .van-cell {
-      // padding: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .van-field__body {
-      background-color: transparent;
-      border-color: transparent;
-      height: 34px;
-      background-position: left center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding-left: 39px;
-      padding-right: 0;
-      font-size: 12px;
-    }
-    input[type="text"],
-    input[type="password"] {
-      &,
-      &::placeholder {
-        color: var(--primary);
+  background-color: #131313;
+  padding-top: 60px;
+  .lang {
+    justify-content: flex-end;
+    ::v-deep {
+      .el-select {
+        width: 46px;
       }
     }
-    .username {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-user.webp");
-      }
-    }
-    .password {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-password.webp");
-      }
-    }
-    .login-ceode {
-      .van-field__body {
-        background-image: url("@/assets/img/red/login-cod.webp");
-      }
-    }
-    .van-cell {
-      background-color: transparent;
-    }
-    .van-field__label {
-      color: #fff;
-    }
-    .res-icon-size .van-icon {
-      font-size: 20px;
-      // color: var(--primary);
-    }
-    .left-icon-box {
-      position: relative;
-      .van-field__left-icon {
-        position: absolute;
-        top: 54px;
-        left: 32px;
-        z-index: 2;
-      }
-      .van-field__control {
-        padding-left: 48px;
+    .lang-pic {
+      img {
+        width: 32px;
+        height: 32px;
+        display: block;
       }
     }
   }
-}
-.register-up {
-  position: relative;
-  align-items: flex-end;
-  justify-content: center;
-  color: #fff;
-  height: 352px;
-
-  background-size: 100% 348px;
-  .register-up-desc {
-    //margin-bottom: 16px;
-    & > p {
-      margin-right: 10px;
-    }
-  }
-  .lang-list {
-    position: relative;
-    height: 16px;
-    border-radius: 3.5px;
-    padding: 0 8px;
-    border: 1px solid var(--main);
-    color: #fff;
-    font-size: 12px;
-    z-index: 3;
-    color: var(--main);
-    img {
-      height: 22px;
-      width: 22px;
-      object-fit: cover;
-      margin-right: 6px;
-    }
-    .van-icon-arrow-down {
-      margin-left: 4px;
-    }
-    .down {
-      text-align: left;
-      position: absolute;
-      padding: 0 8px;
-      top: 16px;
-      left: 0;
-      width: 100%;
-      background-color: var(--bg-body);
-
-      border: 1px solid var(--main);
-      & > li {
-        height: 24px;
-      }
-      .active {
-        // color: var(--primary);
+  .logo-are {
+    font-size: 20px;
+    padding-bottom: 48px;
+    .logo {
+      img {
+        width: 181px;
+        height: 181px;
+        display: block;
       }
     }
   }
-  .text {
-    margin-bottom: 16px;
-    margin-top: 8px;
+  .register-form {
+    width: 264px;
+  }
+  .contact {
+    background: url("@/assets/img/ntf/login-btm-bg.webp");
+    background-size: cover;
   }
 }
 </style>

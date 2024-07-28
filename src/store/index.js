@@ -36,28 +36,52 @@ export default new Vuex.Store({
         icon: enlang,
       },
       {
-        label: "DE",
-        text: "Germany",
-        icon: delang,
-        value: "de",
-      },
-      {
         label: "DZ",
         icon: dzlang,
         text: "Algeria",
         value: "dz",
       },
       {
-        label: "IN",
-        icon: inlang,
-        text: "India",
-        value: "ind",
+        label: "DE",
+        text: "Germany",
+        icon: delang,
+        value: "de",
+      },
+      {
+        label: "RU",
+        text: "Germany",
+        icon: delang,
+        value: "ru",
       },
       {
         label: "FR",
+        text: "Germany",
+        icon: delang,
+        value: "fr",
+      },
+      {
+        label: "PT",
+        text: "Germany",
+        icon: delang,
+        value: "pt",
+      },
+      {
+        label: "ES",
+        text: "Germany",
+        icon: delang,
+        value: "es",
+      },
+      {
+        label: "IN",
+        icon: inlang,
+        text: "India",
+        value: "in",
+      },
+      {
+        label: "NE",
         icon: frlang,
         text: "France",
-        value: "fr",
+        value: "np",
       },
       //TODO 注释掉埃及语言
       // {
