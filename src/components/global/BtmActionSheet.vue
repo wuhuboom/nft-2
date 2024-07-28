@@ -68,13 +68,15 @@ export default {
       background-color: var(--bg-body);
     }
     .van-action-sheet__description {
-      color: var(--primary);
+      font-size: 12px;
+      color: #fff;
       &::after {
-        border-color: var(--main);
+        border-color: #313038;
       }
     }
     .van-action-sheet__item {
       text-align: left;
+      border-bottom: 1px solid #313038;
     }
     .van-action-sheet__content {
       padding: 0 16px;

@@ -26,7 +26,7 @@
         <li>{{ $t(`index.index.login`) }}</li>
       </ul>
       <div class="center-center m-b-40">
-        <van-form class="register-form ntf-form" @submit="onSubmit">
+        <van-form class="limt-form-with ntf-form" @submit="onSubmit">
           <van-field
             v-model.trim="form.username"
             autocomplete="new-password"
@@ -225,7 +225,7 @@ export default {
       }
     }
   }
-  .register-form {
+  .limt-form-with {
     width: 264px;
   }
   .contact {

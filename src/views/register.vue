@@ -9,7 +9,7 @@
     <div class="center-center">
       <van-form class="ntf-form full100" ref="form" @submit="onSubmit">
         <div class="flex-column center-center">
-          <div class="limt-with">
+          <div class="limt-form-with">
             <van-field
               class="username m-b-32"
               v-model.trim="form.username"
@@ -162,7 +162,7 @@
         <div
           class="flex-column p-b-24 p-t-24 center-center text-center contact"
         >
-          <div class="limt-with">
+          <div class="limt-form-with">
             <van-button
               class="ntf-vant-btn"
               block
@@ -371,9 +371,7 @@ export default {
   border-radius: 11.5px;
   border: solid 1px #232323;
 }
-.limt-with {
-  width: 264px;
-}
+
 .contact {
   background: url("@/assets/img/ntf/login-btm-bg.webp");
   background-size: cover;
