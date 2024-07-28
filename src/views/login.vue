@@ -23,25 +23,16 @@
         <li class="logo p--8 p-b-16">
           <img src="@/assets/img/ntf/login.webp" alt="" />
         </li>
-        <li>{{ $t(`Login.with.page`) }}</li>
+        <li>{{ $t(`index.index.login`) }}</li>
       </ul>
       <div class="center-center m-b-40">
         <van-form class="register-form ntf-form" @submit="onSubmit">
           <van-field
             v-model.trim="form.username"
             autocomplete="new-password"
-            :placeholder="
-              $t('ruls.xxx.please', { name: $t('register.username.text') })
-            "
+            :placeholder="$t('form.account.text')"
             class="username m-b-32"
-            :rules="[
-              {
-                required: true,
-                message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('register.username.text'),
-                }),
-              },
-            ]"
+            :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
           />
           <!-- showText -->
           <van-field
@@ -49,20 +40,13 @@
             v-model.trim="form.password"
             autocomplete="new-password"
             :type="showText ? 'text' : 'password'"
-            :placeholder="
-              $t('ruls.xxx.please', { name: $t('register.password.text') })
-            "
+            :placeholder="$t('form.password.text')"
             @click-right-icon="openEye"
             :right-icon="`color-fff icon iconfont color-active ${
               showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
             }`"
             :rules="[
-              {
-                required: true,
-                message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('register.password.text'),
-                }),
-              },
+              { required: true, message: $t('backapi.passwordIsEmpty') },
             ]"
           />
           <van-button
@@ -70,7 +54,7 @@
             block
             type="info"
             native-type="submit"
-            >{{ $t("login.login.text") }}</van-button
+            >{{ $t("login.btn.text") }}</van-button
           >
         </van-form>
       </div>
@@ -78,16 +62,16 @@
 
     <ul class="flex-column p-b-24 p-t-24 center-center text-center contact">
       <li class="m-b-16">
-        <p @click="goServe">{{ $t(`Online.Service`) }}</p>
+        <p @click="goServe">{{ $t("index.login.service.text") }}</p>
       </li>
       <li
         class="m-b-16 color-active"
         @click="$router.push({ name: 'LoginForget' })"
       >
-        {{ $t("login.forgetpwd.text") }}
+        {{ $t("index.login.forget.text") }}
       </li>
       <li class="full100 center-center text-center flex-wrap">
-        <p class="tips m-r-8">{{ $t("login.noaccount.text") }}</p>
+        <p class="tips m-r-8">{{ $t("index.login.no.accout.text") }}</p>
         <p
           class="login-link color-active flex-wrap"
           @click="
@@ -99,7 +83,7 @@
             })
           "
         >
-          {{ $t("login.register.text") }}
+          {{ $t("reg.btn.text") }}
         </p>
       </li>
     </ul>

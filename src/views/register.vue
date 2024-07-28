@@ -1,164 +1,186 @@
 <template>
-  <div class="register-page">
+  <div class="register-page font14">
+    <p class="back-title m-l-16 m-t-24 center-center" @click="$router.back()">
+      <van-icon size="18" name="arrow-left" />
+    </p>
+    <div class="center-center titlev m-b-32">
+      {{ $t("reg.btn.text") }}
+    </div>
     <div class="center-center">
-      <van-form class="register-form ntf-form" ref="form" @submit="onSubmit">
-        <van-field
-          class="username m-b-32"
-          v-model.trim="form.username"
-          autocomplete="new-password"
-          name="username"
-          :placeholder="$t('form.account.text')"
-          :rules="[
-            { required: true, message: $t('ruls.accout.empty') },
-            {
-              pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d\W]+$/,
-              message: this.$t('Username.cannot.numbers.or.letters'),
-            },
-          ]"
-        />
-        <!-- showText -->
-        <van-field
-          class="res-icon-size password m-b-32"
-          v-model.trim="form.password"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.password.text')"
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont color-active ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            { required: true, message: $t('backapi.passwordIsEmpty') },
-            {
-              validator: validatePassword,
-              message: $t('backapi.passwordEasy'),
-            },
-          ]"
-        />
-        <van-field
-          v-model.trim="form.twoPassword"
-          autocomplete="new-password"
-          class="res-icon-size password m-b-32"
-          @click-right-icon="openEye"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.twoPassword.text')"
-          :right-icon="`color-fff icon iconfont color-active ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            { required: true, message: $t('backapi.passwordIsEmpty') },
-            {
-              validator: validatePassword,
-              message: $t('backapi.passwordEasy'),
-            },
-            {
-              validator: validateTwo,
-              message: this.$t('ruls.passtwo.unequal'),
-            },
-          ]"
-        />
-        <van-field
-          v-model.trim="form.invitationCode"
-          type="number"
-          class="res-icon-size login-ceode m-b-32"
-          autocomplete="new-password"
-          :placeholder="$t('form.invitecode.text')"
-          :rules="[
-            { required: true, message: $t('backapi.invitationCodeIsEmpty') },
-          ]"
-        />
-        <van-field
-          v-model.trim="form.email"
-          :placeholder="$t('form.email.text')"
-          class="email res-icon-size m-b-32"
-          autocomplete="new-password"
-          name="email"
-          :rules="[
-            { required: true, message: $t('ruls.email.empty') },
-            {
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: this.$t(
-                'backapi.self.login.reg.page.email.input.format.text'
-              ),
-            },
-          ]"
-        >
-        </van-field>
-        <van-field
-          class="login-ceode m-b-32"
-          :placeholder="$t('Submitted.email.code')"
-          v-if="authConfig.mailCodeRequired === 1"
-          v-model.trim="form.emailCode"
-          :rules="[
-            {
-              required: true,
-              message: $t('ruls.xxx.please', {
-                name: $t('Submitted.email.code'),
-              }),
-            },
-          ]"
-        >
-          <template #button>
-            <van-button
-              size="small"
-              @click="sendCode"
-              :disabled="countdown > 0"
-              class="code-btn center-center"
-              native-type="button"
-              color="#0025fc"
-              >{{ $t("deal.chat.921073-7")
-              }}{{ countdown ? `(${countdown})` : "" }}</van-button
-            >
-          </template>
-        </van-field>
-        <van-field
-          v-model.trim="form.phone"
-          :placeholder="$t('form.phoneNum.text')"
-          type="digit"
-          autocomplete="new-password"
-          class="left-icon-box res-icon-size login-phone m-b-32"
-          :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
-        >
-          <template #left-icon>
-            <p @click="leftFn" class="align-center area-code">
-              <span>+{{ form.areaCode }}</span> <van-icon name="arrow-down" />
-            </p>
-          </template>
-        </van-field>
-        <van-field
-          v-model.trim="form.code"
-          class="res-icon-size login-ceode m-b-32"
-          :maxlength="4"
-          autocomplete="new-password"
-          :placeholder="$t('form.vercode.text')"
-          :rules="[{ required: true, message: $t('ruls.vercode.empty') }]"
-        >
-          <template #right-icon>
-            <img
-              @click="verifyCodeReq"
-              width="68"
-              class="d-block"
-              :src="src"
-              alt=""
+      <van-form class="ntf-form full100" ref="form" @submit="onSubmit">
+        <div class="flex-column center-center">
+          <div class="limt-with">
+            <van-field
+              class="username m-b-32"
+              v-model.trim="form.username"
+              autocomplete="new-password"
+              name="username"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.account.text') })
+              "
+              :rules="[
+                { required: true, message: $t('ruls.accout.empty') },
+                {
+                  pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d\W]+$/,
+                  message: this.$t('Username.cannot.numbers.or.letters'),
+                },
+              ]"
             />
-          </template>
-        </van-field>
-        <div class="sumit-section">
-          <van-button
-            class="page-res-btn"
-            block
-            type="info"
-            native-type="submit"
-            >{{ $t("reg.btn.text") }}</van-button
-          >
-          <van-button
-            class="page-res-btn"
-            block
-            type="info"
-            native-type="button"
-            @click="$router.push({ name: 'Login' })"
-            >{{ $t("login.btn.text") }}</van-button
-          >
+            <van-field
+              class="res-icon-size password m-b-32"
+              v-model.trim="form.password"
+              autocomplete="new-password"
+              :type="showText ? 'text' : 'password'"
+              :placeholder="$t('form.password.text')"
+              @click-right-icon="openEye"
+              :right-icon="`color-fff icon iconfont color-active ${
+                showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+              }`"
+              :rules="[
+                { required: true, message: $t('backapi.passwordIsEmpty') },
+                {
+                  validator: validatePassword,
+                  message: $t('backapi.passwordEasy'),
+                },
+              ]"
+            />
+            <van-field
+              v-model.trim="form.twoPassword"
+              autocomplete="new-password"
+              class="res-icon-size password m-b-32"
+              @click-right-icon="openEye"
+              :type="showText ? 'text' : 'password'"
+              :placeholder="$t('form.twoPassword.text')"
+              :right-icon="`color-fff icon iconfont color-active ${
+                showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+              }`"
+              :rules="[
+                { required: true, message: $t('backapi.passwordIsEmpty') },
+                {
+                  validator: validatePassword,
+                  message: $t('backapi.passwordEasy'),
+                },
+                {
+                  validator: validateTwo,
+                  message: this.$t('ruls.passtwo.unequal'),
+                },
+              ]"
+            />
+            <van-field
+              v-model.trim="form.invitationCode"
+              type="number"
+              class="res-icon-size login-ceode m-b-32"
+              autocomplete="new-password"
+              :placeholder="$t('form.invitecode.text')"
+              :rules="[
+                {
+                  required: true,
+                  message: $t('backapi.invitationCodeIsEmpty'),
+                },
+              ]"
+            />
+            <van-field
+              v-model.trim="form.email"
+              :placeholder="$t('form.email.text')"
+              class="email res-icon-size m-b-32"
+              autocomplete="new-password"
+              name="email"
+              :rules="[
+                { required: true, message: $t('ruls.email.empty') },
+                {
+                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: this.$t(
+                    'backapi.self.login.reg.page.email.input.format.text'
+                  ),
+                },
+              ]"
+            >
+            </van-field>
+            <!-- v-if="authConfig.mailCodeRequired === 1" -->
+            <van-field
+              class="login-ceode m-b-32"
+              :placeholder="$t('Submitted.email.code')"
+              v-model.trim="form.emailCode"
+              :rules="[
+                {
+                  required: true,
+                  message: $t('ruls.xxx.please', {
+                    name: $t('Submitted.email.code'),
+                  }),
+                },
+              ]"
+            >
+              <template #button>
+                <van-button
+                  size="small"
+                  @click="sendCode"
+                  :disabled="countdown > 0"
+                  class="code-btn center-center"
+                  native-type="button"
+                  color="#0025fc"
+                  >{{ $t("deal.chat.921073-7")
+                  }}{{ countdown ? `(${countdown})` : "" }}</van-button
+                >
+              </template>
+            </van-field>
+            <van-field
+              v-model.trim="form.phone"
+              :placeholder="$t('form.phoneNum.text')"
+              type="digit"
+              autocomplete="new-password"
+              class="left-icon-box res-icon-size login-phone m-b-32"
+              :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
+            >
+              <template #left-icon>
+                <p @click="leftFn" class="align-center area-code">
+                  <span>+{{ form.areaCode }}</span>
+                  <van-icon name="arrow-down" />
+                </p>
+              </template>
+            </van-field>
+            <van-field
+              v-model.trim="form.code"
+              class="res-icon-size login-ceode"
+              :maxlength="4"
+              autocomplete="new-password"
+              :placeholder="$t('form.vercode.text')"
+              :rules="[{ required: true, message: $t('ruls.vercode.empty') }]"
+            >
+              <template #right-icon>
+                <img
+                  @click="verifyCodeReq"
+                  width="68"
+                  class="d-block"
+                  :src="src"
+                  alt=""
+                />
+              </template>
+            </van-field>
+          </div>
+        </div>
+
+        <div
+          class="flex-column p-b-24 p-t-24 center-center text-center contact"
+        >
+          <div class="limt-with">
+            <van-button
+              class="ntf-vant-btn"
+              block
+              type="info"
+              native-type="submit"
+              >{{ $t("reg.btn.text") }}</van-button
+            >
+          </div>
+
+          <div class="full100 center-center m-t-32 text-center flex-wrap">
+            <p class="tips m-r-8">{{ $t("Already.a.account") }}</p>
+            <p
+              class="login-link color-active flex-wrap"
+              @click="$router.push({ name: 'Login' })"
+            >
+              {{ $t("index.index.login") }}
+            </p>
+          </div>
         </div>
       </van-form>
     </div>
@@ -335,7 +357,25 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.register-form {
+.code-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--main) !important;
+}
+.title {
+  font-size: 20px;
+}
+.back-title {
+  width: 39px;
+  height: 39px;
+  border-radius: 11.5px;
+  border: solid 1px #232323;
+}
+.limt-with {
   width: 264px;
+}
+.contact {
+  background: url("@/assets/img/ntf/login-btm-bg.webp");
+  background-size: cover;
 }
 </style>
