@@ -54,23 +54,7 @@
       ref="ComfireDialog"
       @sure="loginOut"
     />
-    <van-action-sheet
-      class="btm-action-sheet color-fff"
-      v-model="show"
-      :description="$t(`index.index.lang`)"
-    >
-      <ul class="content-user-lang">
-        <li
-          @click="onSelect(item)"
-          class="align-center"
-          v-for="(item, idx) in langOptions"
-          :key="idx"
-        >
-          <img :src="item.icon" alt="" />
-          {{ item.text }}
-        </li>
-      </ul>
-    </van-action-sheet>
+    <BtmActionLang ref="BtmActionLang" />
   </div>
 </template>
 
@@ -148,9 +132,6 @@ export default {
   },
   components: {},
   computed: {
-    langOptions() {
-      return this.$store.state.langOpt;
-    },
     serveData() {
       return this.$store.state.serveData;
     },
@@ -252,15 +233,11 @@ export default {
           return;
         }
         if (link === "lang") {
-          this.show = true;
+          this.$refs.BtmActionLang.open();
           return;
         }
         this.$router.push({ name: item.link });
       }
-    },
-    onSelect(e) {
-      this.show = false;
-      this.$store.commit("setLang", e.value);
     },
     loginOut() {
       this.$store.commit("loginOut");
@@ -316,40 +293,6 @@ export default {
 @shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 .user-page {
   position: relative;
-  .btm-action-sheet {
-    background-color: var(--bg-body);
-    ::v-deep {
-      .van-action-sheet__item {
-        background-color: var(--bg-body);
-      }
-      .van-action-sheet__description {
-        color: var(--primary);
-        &::after {
-          border-color: var(--main);
-        }
-      }
-      .van-action-sheet__item {
-        text-align: left;
-      }
-      .van-action-sheet__content {
-        padding: 0 16px;
-      }
-      .van-action-sheet__content {
-        max-height: 258px;
-      }
-    }
-  }
-  .content-user-lang {
-    & > li {
-      height: 40px;
-      padding: 0 30px;
-      img {
-        width: 22px;
-        height: 22px;
-        margin-right: 8px;
-      }
-    }
-  }
   .top-msg {
     position: absolute;
     right: 16px;
