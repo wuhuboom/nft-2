@@ -10,7 +10,7 @@ module.exports = defineConfig({
           javascriptEnabled: true,
           globalVars: {
             "bg-color": "#fff",
-            navHeight: "74px",
+            navHeight: "46px",
           },
         },
       },

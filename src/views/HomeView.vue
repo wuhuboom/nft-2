@@ -42,12 +42,17 @@
         </li>
       </ul>
       <ul class="enter justify-between p-l-16 p-r-16">
-        <li class="">
-          <p class="m-b-8">{{ $t(`user.Item.shop`) }}</p>
+        <li class="flex-column center-center">
+          <div class="els desc">
+            <p class="m-b-8 els">{{ $t(`user.Item.shop`) }}</p>
+          </div>
+
           <p><img src="@/assets/img/ntf/home/shop1.png" alt="" /></p>
         </li>
-        <li>
-          <p class="m-b-8">{{ $t(`user.Item.Asset`) }}</p>
+        <li class="flex-column center-center">
+          <div class="els desc">
+            <p class="m-b-8 els">{{ $t(`user.Item.Asset`) }}</p>
+          </div>
           <p><img src="@/assets/img/ntf/home/shop2.png" alt="" /></p>
         </li>
       </ul>
@@ -71,7 +76,9 @@ export default {
       return this.$store.state.user;
     },
   },
-  created() {},
+  created() {
+    this.$store.commit("setPdTop", false);
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -154,6 +161,9 @@ export default {
     height: 48px;
   }
   .enter {
+    .desc {
+      max-width: 97px;
+    }
     img {
       height: 67px;
       width: 67px;
