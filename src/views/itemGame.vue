@@ -2,7 +2,17 @@
   <div class="game-tools-page">
     <LoadList :onload="informationVideo" :finished="finished">
       <div class="list-box">
-        <div class="list" v-for="(item, i) in video" :key="i">
+        <div
+          class="list"
+          @click="
+            $router.push({
+              name: 'ToolsDetai',
+              query: { id: item.id },
+            })
+          "
+          v-for="(item, i) in video"
+          :key="i"
+        >
           <div class="img-box">
             <img class="d-img" :src="item.image" alt="" />
           </div>

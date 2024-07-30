@@ -1147,5 +1147,14 @@
   "user.Game.thing":"Thing",
   "About.to.start":"About to start",
   "user.in.progress":"in progress",
-  "user.over":"over"
+  "user.over":"over",
+  "user.Wear":"Wear",
+  "user.Wear.thing":"icon template",
+  "Property.description":"Property description",
+  "home.game.tool.attr.kind":"type",
+	"home.game.tool.attr.type":"type",
+	"home.game.tool.attr.brand":"quality",
+	"home.game.tool.attr.out":"Exterior",
+  "Properties":"Properties",
+  "home.price":"Price"
 }

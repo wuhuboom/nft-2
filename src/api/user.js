@@ -664,4 +664,10 @@ export default {
       data,
     });
   },
+  InformationDetail(id) {
+    return request({
+      url: "/information/deal/" + id,
+      method: "post",
+    });
+  },
 };

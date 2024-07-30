@@ -57,7 +57,12 @@ export default {
   },
   methods: {
     chose(item) {
-      this.current = item.key;
+      //this.current = item.key;
+      this.$router.replace({
+        query: {
+          tab: item.key,
+        },
+      });
     },
     async informationVideo(obj = {}) {
       const params = {

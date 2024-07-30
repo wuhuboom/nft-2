@@ -450,6 +450,13 @@ const routes = [
       default: () => import("@/views/ItemShop.vue"),
     },
   },
+  {
+    path: "/pages/home/gameToolsDetaip",
+    name: "ToolsDetai",
+    components: {
+      default: () => import("@/views/gameToolsDetai.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
