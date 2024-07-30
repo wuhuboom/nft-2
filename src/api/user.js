@@ -636,4 +636,32 @@ export default {
       data,
     });
   },
+  informationDealSold(data) {
+    return request({
+      url: "/information/deal/sold",
+      method: "post",
+      data,
+    });
+  },
+  informationVideo(data) {
+    return request({
+      url: "/information/video",
+      method: "post",
+      data,
+    });
+  },
+  informationDeal(data) {
+    return request({
+      url: "/information/deal",
+      method: "post",
+      data,
+    });
+  },
+  informationGame(data) {
+    return request({
+      url: "/information/game",
+      method: "post",
+      data,
+    });
+  },
 };

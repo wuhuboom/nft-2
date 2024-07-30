@@ -20,9 +20,6 @@
             alt=""
           />
         </p>
-        <p class="text">
-          {{ item.text }}
-        </p>
       </li>
     </ul>
     <RootDialog />
@@ -42,29 +39,22 @@ export default {
     return {
       list: [
         {
-          icon: require("@/assets/img/red/btm.png"),
-          icon1: require("@/assets/img/red/app-btm1.webp"),
+          icon: require("@/assets/img/ntf/home/icon1.png"),
+          icon1: require("@/assets/img/ntf/home/icon1a.png"),
           text: i18n.t("tabar.home"),
-          name: "home",
-          active: false,
-        },
-        {
-          icon: require("@/assets/img/red/btm1.png"),
-          icon1: require("@/assets/img/red/app-btm3.webp"),
-          text: i18n.t("tabar.match"),
           name: "List",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/btm2.png"),
-          icon1: require("@/assets/img/red/app-btm2.webp"),
-          text: i18n.t("home.order.535219-0"),
-          name: "order",
+          icon: require("@/assets/img/ntf/home/icon2.png"),
+          icon1: require("@/assets/img/ntf/home/icon2a.png"),
+          text: i18n.t("tabar.match"),
+          name: "home",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/btm3.png"),
-          icon1: require("@/assets/img/red/app-btm4.png"),
+          icon: require("@/assets/img/ntf/home/icon3.png"),
+          icon1: require("@/assets/img/ntf/home/icon3a.png"),
           text: i18n.t("tabar.me"),
           active: false,
           name: "User",
@@ -98,7 +88,7 @@ export default {
 .app-btm-bar {
   &,
   .app-btm-list {
-    height: 55px;
+    height: 104px;
   }
   .btm-item {
     flex-direction: column;
@@ -112,21 +102,22 @@ export default {
     left: 0;
     right: 0;
     z-index: 998;
-    background-color: var(--bg-body);
+    background: url("@/assets/img/ntf/home/btm-bg.png") no-repeat center center;
+    background-size: 100% 100%;
     font-size: 12px;
     color: var(--primary);
+    & > li:nth-child(2) {
+      img {
+        height: 82px;
+        width: 82px;
+      }
+    }
     .text {
       margin-top: 6px;
     }
-    li {
-      // height: 38px;
-      text-align: center;
-      border-radius: 19px;
-      min-width: 86px;
-    }
     img {
       display: block;
-      height: 22px;
+      height: 24px;
       margin: 0 auto;
     }
     .active {

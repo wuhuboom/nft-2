@@ -136,6 +136,18 @@ Vue.prototype.$userPic = userPic;
 Vue.prototype.divide = (num) => {
   return Math.trunc(num * 100) / 100;
 };
+Vue.prototype.$ToSeconds = (timestamp) => {
+  // 将时间戳转换为数字
+  const ts = Number(timestamp);
+  // 判断时间戳是否为毫秒级（13位且在合理范围内）或秒级（10位且在合理范围内）
+  if (ts > 1e12) {
+    return timestamp / 1000;
+  } else if (ts > 1e9 && ts < 1e12) {
+    return timestamp; // 秒级时间戳
+  }
+
+  return timestamp;
+};
 const app = new Vue({
   router,
   store,

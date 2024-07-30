@@ -436,6 +436,20 @@ const routes = [
       default: () => import("@/views/deal/message.vue"),
     },
   },
+  {
+    path: "/pages/live",
+    name: "Live",
+    components: {
+      default: () => import("@/views/live.vue"),
+    },
+  },
+  {
+    path: "/item/shop",
+    name: "ItemShop",
+    components: {
+      default: () => import("@/views/ItemShop.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

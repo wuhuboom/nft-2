@@ -1133,5 +1133,19 @@
   "user.money.available":"Available Funds",
 	"user.money.purchased":"Purchased",
   "user.Item.shop":"Item shop",
-  "user.Item.Asset":"Asset center"
+  "user.Item.Asset":"Asset center",
+  "user.platform.trading":"24-hour trading platform",
+  "user.platform.trading.desc":"Free transaction fee service",
+  "user.platform.more":"more",
+  "Date.Time":"Date/Time",
+  "From.Arrive":"From/Arrive",
+  "Hot.Live.Stream":"Hot Live Stream",
+  "Game.Download":"Game Download",
+  "Game.Props":"Game Props",
+  "user.Contest":"Contest",
+  "user.Game":"Game Download",
+  "user.Game.thing":"Thing",
+  "About.to.start":"About to start",
+  "user.in.progress":"in progress",
+  "user.over":"over"
 }
