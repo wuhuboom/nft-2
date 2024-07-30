@@ -3,10 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`user.Item.shop`)"
-      :styleObj="{
-        backgroundColor: '#000',
-        color: 'red',
-      }"
     ></AppTopBar>
     <div class="focus">
       <img class="d-img" src="@/assets/img/ntf/item.webp" />
@@ -86,11 +82,6 @@ export default {
 </script>
 <style scoped lang="less">
 .item-shop-page {
-  ::v-deep {
-    .app-top-black-title {
-      color: #fff !important;
-    }
-  }
   .navs {
     & > li {
       width: 95px;

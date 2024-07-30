@@ -46,7 +46,7 @@ export default {
     .appp-top-bar-title {
       font-size: 14px;
       // font-weight: bold;
-      color: #191919;
+      color: #fff;
     }
     .icon-button {
       background-color: transparent;
