@@ -94,10 +94,29 @@
                 message: limitTxt,
               },
             ]"
-          />
-          <p class="m-t-8 m-b-20">
-            {{ $t(`total.return`) }}:<span class="font14">{{ earnings }}</span>
-          </p>
+          >
+            <template #button>
+              <van-button
+                size="small"
+                native-type="button"
+                class="p-l-16 p-r-16"
+                color="#f5673e"
+                @click="formData.money = balance"
+                >{{ $t("match.all.text") }}</van-button
+              >
+            </template>
+          </van-field>
+          <div class="m-t-8 m-b-20 align-center justify-between">
+            <p>
+              {{ $t(`total.return`) }}:<span class="font14">{{
+                earnings
+              }}</span>
+            </p>
+            <p>
+              {{ $t(`wallet.index.balance.text`) }}:
+              <span class="active">{{ balance }}</span>
+            </p>
+          </div>
           <ul class="font12 criteria" v-if="popTxt.length">
             <li class="font14 m-b-4">{{ $t("Participation.criteria") }}:</li>
             <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
@@ -260,6 +279,9 @@ export default {
     };
   },
   computed: {
+    balance() {
+      return this.divide(this.$store.state.user.balance);
+    },
     right() {
       return this.result.inDays && this.result.groups;
     },
@@ -322,7 +344,6 @@ export default {
         autoInvest: this.formData.autoInvest ? 1 : 0,
       });
       const [err] = await userApi.invest(para);
-      console.log(err);
       if (err) {
         if (err.code) {
           //err.code == 108
@@ -364,6 +385,8 @@ export default {
         this.$toast("backapi.planExpired");
         return;
       }
+      //更新用户
+      this.$store.dispatch("getInfo");
       this.item = v;
       this.show = true;
       if (this.addRate) {
@@ -378,9 +401,9 @@ export default {
   },
   watch: {
     //formData.autoInvest
-    "formData.autoInvest"(val) {
-      console.log(val);
-    },
+    // "formData.autoInvest"(val) {
+    //   console.log(val);
+    // },
   },
   created() {
     this.investPlans();
