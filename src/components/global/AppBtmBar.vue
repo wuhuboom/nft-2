@@ -42,7 +42,7 @@ export default {
           icon: require("@/assets/img/ntf/home/icon1.png"),
           icon1: require("@/assets/img/ntf/home/icon1a.png"),
           text: i18n.t("tabar.home"),
-          name: "List",
+          name: "investMarket",
           active: false,
         },
         {

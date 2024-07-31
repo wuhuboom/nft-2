@@ -670,4 +670,11 @@ export default {
       method: "post",
     });
   },
+  ///invest/plans
+  investPlans() {
+    return request({
+      url: "/invest/plans",
+      method: "post",
+    });
+  },
 };

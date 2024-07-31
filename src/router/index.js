@@ -457,6 +457,13 @@ const routes = [
       default: () => import("@/views/gameToolsDetai.vue"),
     },
   },
+  {
+    path: "/pages/invest/market",
+    name: "investMarket",
+    components: {
+      default: () => import("@/views/market.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
