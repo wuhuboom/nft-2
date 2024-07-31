@@ -100,14 +100,19 @@
           </p>
           <ul class="font12 criteria" v-if="popTxt.length">
             <li class="font14 m-b-4">{{ $t("Participation.criteria") }}:</li>
-            <li class="gray" v-for="(d, i) in popTxt" :key="i">
+            <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
               {{ i + 1 }}、{{ d.txt }}
             </li>
           </ul>
           <ul class="m-t-20 m-b-20 align-center justify-between">
             <li class="font14 align-center">
               {{ $t(`market.rate.many`) }}
-              <van-icon class="active m-l-8" size="16" name="question-o" />
+              <van-icon
+                class="green m-l-8"
+                @click="showDesc = true"
+                size="16"
+                name="question-o"
+              />
             </li>
             <li>
               <el-switch
@@ -140,6 +145,7 @@
             class="m-b-32"
             v-model="formData.payPwd"
             name="payPwd"
+            type="password"
             :placeholder="`${$t('ruls.xxx.please', {
               name: $t('backapi.self.safe.transfer.func.pass.text'),
             })}`"
@@ -157,36 +163,106 @@
             block
             type="info"
             native-type="submit"
-            >{{ $t("login.btn.text") }}</van-button
+            >{{ $t("modal.confirm.text") }}</van-button
           >
         </van-form>
       </div>
+    </van-popup>
+    <van-popup class="desc-art-pop" v-model="showDesc" position="center">
+      <ul class="font14 desc-art-list color-fff">
+        <li class="m-b-8 green">{{ $t(`Participation.putong`) }}:</li>
+        <li>{{ $t(`Participation.every.day`) }}</li>
+        <li class="m-t-8 m-b-8 green">{{ $t(`Participation.fuli`) }}:</li>
+        <li class="m-b-4">{{ $t(`market.rate.text1`) }}</li>
+        <li class="m-b-4">{{ $t(`market.rate.text2`) }}</li>
+        <li class="m-b-4">{{ $t(`market.rate.text3`) }}</li>
+      </ul>
+    </van-popup>
+    <van-popup
+      style="width: 88%"
+      class="right-art-pop linear-global-pop"
+      v-model="showRight"
+      position="center"
+    >
+      <ul class="font14 desc-art-list color-fff">
+        <li class="center-center flex-column" :class="{ red: !right }">
+          <p class="h-pic m-r-4">
+            <img class="d-img" :src="right ? ritIcon : errIcon" />
+          </p>
+          <p>
+            {{
+              right
+                ? $t(`Participation.every.day2`)
+                : $t(`Participation.every.day3`)
+            }}
+          </p>
+        </li>
+        <li
+          v-for="(d, i) in popTxt"
+          class="align-center tips-radio gray m-t-8"
+          :class="{ red: !result[d.key] }"
+          :key="i"
+        >
+          <p class="c-pic m-r-4">
+            <img class="d-img" :src="result[d.key] ? ritIcon : errIcon" />
+          </p>
+          <p>{{ i + 1 }}、{{ d.txt }}</p>
+        </li>
+        <li class="center-center m-t-24">
+          <van-button
+            class="ntf-vant-btn"
+            @click="showRight = false"
+            block
+            type="info"
+            native-type="button"
+            >{{ $t("modal.confirm.text") }}</van-button
+          >
+        </li>
+      </ul>
     </van-popup>
   </div>
 </template>
 
 <script>
 //import i18n from "@/locale";
+import errIcon from "@/assets/img/ntf/err.png";
+import ritIcon from "@/assets/img/ntf/right.png";
+const initFome = () => {
+  return {
+    planId: "",
+    money: "",
+    days: "",
+    payPwd: "",
+    autoInvest: 1,
+    invitationCode: "",
+  };
+};
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
   components: {},
   data() {
     return {
+      errIcon,
+      ritIcon,
       formData: {
-        planId: "",
-        money: "",
-        days: "",
-        payPwd: "",
-        autoInvest: 1,
-        invitationCode: "",
+        ...initFome(),
       },
       item: {},
       show: false,
       records: {},
+      showDesc: false,
+      showRight: false,
+      result: {
+        inDays: 0,
+        groups: 0,
+      },
     };
   },
   computed: {
+    right() {
+      return this.result.inDays && this.result.groups;
+    },
     earnings() {
       const val = this.formData.money || 0;
       if (val > 0) {
@@ -235,8 +311,28 @@ export default {
     validator(v) {
       return v >= this.item.min && v <= this.item.max;
     },
-    onSubmit() {
-      console.log("submit");
+    async onSubmit() {
+      this.$toast.loading({
+        duration: 0,
+        forbidClick: true,
+      });
+      const para = Object.assign(this.formData, {
+        days: this.item.days,
+        planId: this.item.parent.id,
+        autoInvest: this.formData.autoInvest ? 1 : 0,
+      });
+      const [err] = await userApi.invest(para);
+      console.log(err);
+      if (err) {
+        if (err.code) {
+          //err.code == 108
+          // this.result = err.data;
+          this.showRight = true;
+        }
+        return;
+      }
+      this.$toast.clear();
+      this.formData = initFome();
     },
     async investPlans() {
       const [err, res] = await userApi.investPlans(this.$route.query.id);
@@ -254,7 +350,7 @@ export default {
         return item;
       });
       this.records = this.records.filter((v) => v.rateConfig.length);
-      this.test();
+      // this.test();
     },
     test() {
       this.item = {
@@ -268,16 +364,22 @@ export default {
         this.$toast("backapi.planExpired");
         return;
       }
-      if (this.addRate) {
-        this.formData.autoInvest = 1;
-      } else {
-        this.formData.autoInvest = 0;
-      }
       this.item = v;
       this.show = true;
+      if (this.addRate) {
+        this.formData.autoInvest = true;
+      } else {
+        this.formData.autoInvest = false;
+      }
     },
     close() {
       this.show = false;
+    },
+  },
+  watch: {
+    //formData.autoInvest
+    "formData.autoInvest"(val) {
+      console.log(val);
     },
   },
   created() {
@@ -293,6 +395,9 @@ export default {
 </script>
 <style scoped lang="less">
 .invest-plans-page {
+  .green {
+    color: #defb84;
+  }
   .gray {
     color: #cacbce;
   }
@@ -332,6 +437,29 @@ export default {
     .el-switch__label--right {
       color: #cacbce;
     }
+    .desc-art-pop {
+      width: 318px;
+      padding: 14px 10px;
+      border-radius: 14px;
+      background-color: #1c1c1e;
+    }
+  }
+  .desc-art-list {
+    color: #e3e7eb;
+  }
+  .red {
+    color: #ef3501;
+  }
+  .h-pic {
+    height: 42px;
+  }
+  .c-pic {
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0;
+  }
+  .tips-radio {
+    align-items: flex-start;
   }
 }
 </style>

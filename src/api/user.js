@@ -670,11 +670,18 @@ export default {
       method: "post",
     });
   },
-  ///invest/plans
   investPlans() {
     return request({
       url: "/invest/plans",
       method: "post",
+    });
+  },
+  ///player/invest
+  invest(data) {
+    return request({
+      url: "/invest",
+      method: "post",
+      data,
     });
   },
 };

@@ -1170,5 +1170,13 @@
 	"market.rate.text1": "Explanation: Suppose the principal is X, daily interest rate is Y%, and investment period is Z days.",
 	"market.rate.text2": "Interest is added to the principal daily and interest continues to be calculated.",
 	"market.rate.text3": "You can use the following formula to calculate the final amount: Final Amount = X * (1 + Y/100)^Z",
-  "backapi.planExpired": "Investment progress full"
+  "backapi.planExpired": "Investment progress full",
+  "Participation.fuli": "Compound interest",
+  "Participation.putong": "Ordinary",
+  "Participation.every.day": "Daily earnings will be returned to account balance.",
+  "Participation.every.day2": "Conditions met.",
+  "Participation.every.day3": "Conditions not met.",
+  "Participation.every.day4": "Conditions not met, unable to participate.",
+  "Participation.every.day5": "Acknowledged.",
+  "backapi.totalOverflow": "Exceeded total investment amount"
 }
