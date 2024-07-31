@@ -37,6 +37,7 @@ import {
   uploader,
   Checkbox,
   Sticky,
+  Popup,
 } from "vant";
 export default {
   install(Vue) {
@@ -77,5 +78,6 @@ export default {
     Vue.use(uploader);
     Vue.use(Checkbox);
     Vue.use(Sticky);
+    Vue.use(Popup);
   },
 };

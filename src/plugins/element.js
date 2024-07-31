@@ -29,6 +29,7 @@ import {
   dropdownItem,
   radio,
   checkbox,
+  Switch,
   progress,
 } from "element-ui";
 import lang from "element-ui/lib/locale/lang/en";
@@ -68,5 +69,6 @@ export default {
     Vue.use(radio);
     Vue.use(checkbox);
     Vue.use(progress);
+    Vue.use(Switch);
   },
 };

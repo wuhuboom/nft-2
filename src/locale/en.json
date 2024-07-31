@@ -1158,7 +1158,17 @@
 	"home.game.tool.attr.out":"Exterior",
   "Properties":"Properties",
   "home.price":"Price",
-  "investment":"investment",
-  "stable.appreciation":"stable appreciation",
-  "rate.of.return":"rate of return"
+  "investment":"Investment",
+  "stable.appreciation":"Stable appreciation",
+  "rate.of.return":"Rate of return",
+  "purchase.amount":"Purchase amount",
+  "Participation.greater.than": "Team size greater than{num}",
+  "Participation.investment.than": "Cumulative investment days greater than{num}",
+  "total.return":"Total return",
+  "Participation.criteria": "Participation criteria",
+  "market.rate.many": "Compound Interest",
+	"market.rate.text1": "Explanation: Suppose the principal is X, daily interest rate is Y%, and investment period is Z days.",
+	"market.rate.text2": "Interest is added to the principal daily and interest continues to be calculated.",
+	"market.rate.text3": "You can use the following formula to calculate the final amount: Final Amount = X * (1 + Y/100)^Z",
+  "backapi.planExpired": "Investment progress full"
 }
