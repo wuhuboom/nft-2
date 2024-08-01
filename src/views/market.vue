@@ -114,7 +114,7 @@
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('rebate.center.list.nav.smount.text'),
+                  type: this.$t('rebate.center.list.nav.smount.text'),
                 }),
               },
               {
@@ -178,13 +178,13 @@
             autocomplete="new-password"
             name="invitationCode"
             :placeholder="`${$t('ruls.xxx.please', {
-              name: $t('form.invitecode.text'),
+              type: $t('form.invitecode.text'),
             })}`"
             :rules="[
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('form.invitecode.text'),
+                  type: this.$t('form.invitecode.text'),
                 }),
               },
             ]"
@@ -196,7 +196,7 @@
             type="password"
             autocomplete="new-password"
             :placeholder="`${$t('ruls.xxx.please', {
-              name: $t('backapi.self.safe.transfer.func.pass.text'),
+              type: $t('backapi.self.safe.transfer.func.pass.text'),
             })}`"
             :rules="[
               {
