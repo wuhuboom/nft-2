@@ -133,7 +133,8 @@ Vue.prototype.formatDate = (time, fmt) => {
   return fmt;
 };
 Vue.prototype.$userPic = userPic;
-Vue.prototype.divide = (v) => {
+Vue.prototype.divide = (v, fix = true) => {
+  if (!fix) return Math.trunc(v * 100) / 100;
   return Math.trunc((v / num) * 100) / 100;
 };
 Vue.prototype.$ToSeconds = (timestamp) => {

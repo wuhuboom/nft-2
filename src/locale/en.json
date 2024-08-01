@@ -1179,5 +1179,12 @@
   "Participation.every.day4": "Conditions not met, unable to participate.",
   "Participation.every.day5": "Acknowledged.",
   "backapi.totalOverflow": "Exceeded total investment amount",
-  "Yu'ebao": "Savings Account"
+  "Yu'ebao": "Savings Account",
+  "yugu.menony": "Estimated Interest",
+  "Rules": "Rules",
+  "buy.time": "Subscription Time",
+	"give.money.time": "Interest Calculation Time",
+	"return.time": "Redemption Cycle",
+	"return.money.time": "Minutes",
+	"order.money": "Order Amount"
 }

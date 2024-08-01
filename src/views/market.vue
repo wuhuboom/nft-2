@@ -117,7 +117,7 @@
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
-                  type: this.$t('rebate.center.list.nav.smount.text'),
+                  name: this.$t('rebate.center.list.nav.smount.text'),
                 }),
               },
               {
@@ -181,13 +181,13 @@
             autocomplete="new-password"
             name="invitationCode"
             :placeholder="`${$t('ruls.xxx.please', {
-              type: $t('form.invitecode.text'),
+              name: $t('form.invitecode.text'),
             })}`"
             :rules="[
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
-                  type: this.$t('form.invitecode.text'),
+                  name: this.$t('form.invitecode.text'),
                 }),
               },
             ]"
@@ -199,7 +199,7 @@
             type="password"
             autocomplete="new-password"
             :placeholder="`${$t('ruls.xxx.please', {
-              type: $t('backapi.self.safe.transfer.func.pass.text'),
+              name: $t('backapi.self.safe.transfer.func.pass.text'),
             })}`"
             :rules="[
               {
@@ -375,7 +375,6 @@ export default {
       if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
-      console.log(JSON.parse(res.data.rateConfig || "[]"));
       this.planeYeb = {
         ...res.data,
         header: yuIcon,
@@ -384,14 +383,6 @@ export default {
       if (!this.planeYeb.imgUrl) {
         this.planeYeb.imgUrl = yuIcon;
       }
-      // this.detail = res.data
-      // 			const config = JSON.parse(res.data.rateConfig || '')
-      // 			this.detail.rateConfig = config
-      // 			let imgUrl ='../../static/images/user/10019.png'
-      // 			if(!this.detail.imgUrl){
-      // 				this.detail.imgUrl = imgUrl
-      // 			}
-      // 			 this.dayItem = this.detail.rateConfig[this.dayIndex]
     },
     async onSubmit() {
       this.$toast.loading({

@@ -44,7 +44,7 @@ export default {
       width: 100%;
     }
     .appp-top-bar-title {
-      font-size: 14px;
+      font-size: 16px;
       // font-weight: bold;
       color: #fff;
     }

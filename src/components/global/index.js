@@ -38,6 +38,8 @@ import {
   Checkbox,
   Sticky,
   Popup,
+  Step,
+  Steps,
 } from "vant";
 export default {
   install(Vue) {
@@ -79,5 +81,7 @@ export default {
     Vue.use(Checkbox);
     Vue.use(Sticky);
     Vue.use(Popup);
+    Vue.use(Step);
+    Vue.use(Steps);
   },
 };
