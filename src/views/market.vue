@@ -5,6 +5,34 @@
       :topBarTitle="$t(`investment`)"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
+    <div class="plans" v-if="planeYeb.id">
+      <div class="plans-item m-b-16">
+        <div class="align-center">
+          <p class="invest-pic no-shrink m-r-8">
+            <img class="d-img" :src="planeYeb.header" alt="" />
+          </p>
+          <ul class="align-center flex-1 space-between">
+            <li>
+              <p class="font16 m-b-8">{{ planeYeb.name }}</p>
+            </li>
+            <li class="rate-row" v-if="planeYeb.rateConfig.length">
+              <p class="font16 rate color-active m-b-8">
+                {{ planeYeb.rateConfig[0].rate }}%
+              </p>
+              <p class="gray">{{ $t(`rate.of.return`) }}</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <van-progress
+            track-color="#808080"
+            color="#f5673e"
+            class="m-t-16 m-b-8"
+            :percentage="+planeYeb.curr"
+          />
+        </div>
+      </div>
+    </div>
     <div class="plans" v-for="(item, idx) in records" :key="idx">
       <div
         class="plans-item m-b-16"
@@ -341,13 +369,26 @@ export default {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      if (!this.config.beyShow !== 1) return;
+      if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
+      console.log(JSON.parse(res.data.rateConfig || "[]"));
       this.planeYeb = {
         ...res.data,
         header: yuIcon,
+        rateConfig: JSON.parse(res.data.rateConfig || "[]"),
       };
+      if (!this.planeYeb.imgUrl) {
+        this.planeYeb.imgUrl = yuIcon;
+      }
+      // this.detail = res.data
+      // 			const config = JSON.parse(res.data.rateConfig || '')
+      // 			this.detail.rateConfig = config
+      // 			let imgUrl ='../../static/images/user/10019.png'
+      // 			if(!this.detail.imgUrl){
+      // 				this.detail.imgUrl = imgUrl
+      // 			}
+      // 			 this.dayItem = this.detail.rateConfig[this.dayIndex]
     },
     async onSubmit() {
       this.$toast.loading({
