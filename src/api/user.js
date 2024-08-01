@@ -684,4 +684,12 @@ export default {
       data,
     });
   },
+  // /invest/plan/yeb
+  investPlanYeb(data) {
+    return request({
+      url: "/invest/plan/yeb",
+      method: "post",
+      data,
+    });
+  },
 };

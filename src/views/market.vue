@@ -147,6 +147,7 @@
             class="m-b-16"
             v-if="parseInt(item.parent && item.parent.inviteRequire) === 1"
             v-model="formData.invitationCode"
+            autocomplete="new-password"
             name="invitationCode"
             :placeholder="`${$t('ruls.xxx.please', {
               name: $t('form.invitecode.text'),
@@ -165,6 +166,7 @@
             v-model="formData.payPwd"
             name="payPwd"
             type="password"
+            autocomplete="new-password"
             :placeholder="`${$t('ruls.xxx.please', {
               name: $t('backapi.self.safe.transfer.func.pass.text'),
             })}`"
@@ -244,6 +246,7 @@
 
 <script>
 //import i18n from "@/locale";
+import yuIcon from "@/assets/img/ntf/yue.png";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
 const initFome = () => {
@@ -276,9 +279,13 @@ export default {
         inDays: 0,
         groups: 0,
       },
+      planeYeb: {},
     };
   },
   computed: {
+    config() {
+      return this.$store.state.config;
+    },
     balance() {
       return this.divide(this.$store.state.user.balance);
     },
@@ -333,6 +340,15 @@ export default {
     validator(v) {
       return v >= this.item.min && v <= this.item.max;
     },
+    async investPlanYeb() {
+      if (!this.config.beyShow !== 1) return;
+      const [err, res] = await userApi.investPlanYeb();
+      if (err) return;
+      this.planeYeb = {
+        ...res.data,
+        header: yuIcon,
+      };
+    },
     async onSubmit() {
       this.$toast.loading({
         duration: 0,
@@ -345,9 +361,8 @@ export default {
       });
       const [err] = await userApi.invest(para);
       if (err) {
-        if (err.code) {
-          //err.code == 108
-          // this.result = err.data;
+        if (err.code == 108) {
+          this.result = err.data;
           this.showRight = true;
         }
         return;
@@ -407,6 +422,7 @@ export default {
   },
   created() {
     this.investPlans();
+    this.investPlanYeb();
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
