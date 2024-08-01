@@ -13,7 +13,7 @@
           </p>
           <ul class="align-center flex-1 space-between">
             <li>
-              <p class="font16 m-b-8">{{ planeYeb.name }}</p>
+              <p class="font16">{{ planeYeb.name }}</p>
             </li>
             <li class="rate-row" v-if="planeYeb.rateConfig.length">
               <p class="font16 rate color-active m-b-8">
