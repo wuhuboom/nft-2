@@ -6,7 +6,10 @@
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <div class="plans" v-if="planeYeb.id">
-      <div class="plans-item m-b-16">
+      <div
+        class="plans-item m-b-16"
+        @click="$router.push({ name: 'InvestDetail' })"
+      >
         <div class="align-center">
           <p class="invest-pic no-shrink m-r-8">
             <img class="d-img" :src="planeYeb.header" alt="" />

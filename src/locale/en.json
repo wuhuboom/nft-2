@@ -1178,5 +1178,6 @@
   "Participation.every.day3": "Conditions not met.",
   "Participation.every.day4": "Conditions not met, unable to participate.",
   "Participation.every.day5": "Acknowledged.",
-  "backapi.totalOverflow": "Exceeded total investment amount"
+  "backapi.totalOverflow": "Exceeded total investment amount",
+  "Yu'ebao": "Savings Account"
 }
