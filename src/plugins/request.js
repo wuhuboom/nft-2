@@ -51,6 +51,7 @@ instance.interceptors.response.use(
         name: "Login",
         backUrl: app.$router.currentRoute.fullPath,
       });
+      app.$toast.clear();
       return Promise.reject({ code });
     }
     if (code !== 200) {
@@ -70,7 +71,12 @@ instance.interceptors.response.use(
           if (data && data.length > 0) {
             title = data[0].msg || app.$t("backapi." + data[0].msgKey);
           }
-          app.$toast(title || msg);
+          title = title || msg;
+          if (title) {
+            app.$toast(title);
+          } else {
+            app.$toast.clear();
+          }
         }
       }
       return Promise.reject(result);
@@ -80,6 +86,7 @@ instance.interceptors.response.use(
   async (err) => {
     // app.$toast(txtFail);
     //app.$message.error("网络错误，请稍后重试");
+    app.$toast.clear();
     return Promise.reject(err);
   }
 );
