@@ -4,17 +4,26 @@
     <router-view :key="$router.currentRoute.fullPath" />
     <router-view name="AppBtmBar"></router-view>
     <MaintainDialog />
+    <RootDialog ref="RootDialog" />
   </div>
 </template>
 <script>
 import MaintainDialog from "@/views/components/MaintainDialog.vue";
+import RootDialog from "@/views/components/RootDialog.vue";
 export default {
   name: "App",
   components: {
     MaintainDialog,
+    RootDialog,
   },
   data() {
     return {};
+  },
+  watch: {
+    $route() {
+      this.$refs.RootDialog.ajaxVaid();
+      //this.$store.commit("setMainShow", { show: false });
+    },
   },
   computed: {
     topBar() {

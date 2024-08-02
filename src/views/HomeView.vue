@@ -186,13 +186,14 @@
       </div>
     </div>
     <BtmActionLang ref="BtmActionLang" />
+    <VersionDilalog />
   </div>
 </template>
 
 <script>
 import dayjs from "dayjs";
 import userApi from "@/api/user";
-
+import VersionDilalog from "@/views/components/VersionDilalog.vue";
 export default {
   name: "HomeView",
   data() {
@@ -200,6 +201,9 @@ export default {
       sold: [],
       video: [],
     };
+  },
+  components: {
+    VersionDilalog,
   },
   computed: {
     user() {

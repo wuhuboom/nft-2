@@ -1,7 +1,7 @@
 <template>
   <div class="root-dialog">
     <van-dialog
-      class="app-root-upload-dialog color-primary"
+      class="linear-global-pop"
       :showConfirmButton="false"
       v-model="show"
       @confirm="confirm"
@@ -10,11 +10,12 @@
         <li class="center-center">
           <!-- <img src="@/assets/img/setPay.webp" alt="" /> -->
         </li>
-        <li class="py-16">{{ $t(`user.payment.password`) }}</li>
+        <li class="py-16 text-center">{{ $t(`user.payment.password`) }}</li>
       </ul>
-      <van-form class="defind-form" @submit="onSubmit">
+      <van-form class="ntf-form" @submit="onSubmit">
         <van-field
           v-model.trim="form.payPwd"
+          class="m-b-16"
           :right-icon="`color-fff icon iconfont color-active ${
             showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
           }`"
@@ -52,7 +53,7 @@
         <div class="pt-16 center-center">
           <van-button
             :loading="loading"
-            class="page-res-btn"
+            class="ntf-vant-btn"
             round
             block
             type="info"
@@ -113,19 +114,20 @@ export default {
     confirm() {
       this.$emit("confirm");
     },
+    async ajaxVaid() {
+      if (!this.user.id || this.paySet) return;
+      const [err, res] = await userApi.getPwdPay();
+      if (err) {
+        return;
+      }
+      if (res.data.paySet === 2) {
+        this.show = true;
+      } else {
+        this.$store.commit("changepaySet", 1);
+      }
+    },
   },
-  async created() {
-    if (!this.user.id || this.paySet) return;
-    const [err, res] = await userApi.getPwdPay();
-    if (err) {
-      return;
-    }
-    if (res.data.paySet === 2) {
-      this.show = true;
-    } else {
-      this.$store.commit("changepaySet", 1);
-    }
-  },
+  async created() {},
 };
 </script>
 <style scoped lang="less">
