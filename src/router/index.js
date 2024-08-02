@@ -478,6 +478,13 @@ const routes = [
       default: () => import("@/views/investList.vue"),
     },
   },
+  {
+    path: "/pages/user/orderDetail",
+    name: "InvestOrderDetail",
+    components: {
+      default: () => import("@/views/orderDetail.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

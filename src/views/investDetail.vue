@@ -114,13 +114,13 @@
           type="password"
           autocomplete="new-password"
           :placeholder="`${$t('ruls.xxx.please', {
-            name: $t('backapi.self.safe.transfer.func.pass.text'),
+            name: $t('Payment.password'),
           })}`"
           :rules="[
             {
               required: true,
               message: this.$t('ruls.xxx.empty', {
-                name: this.$t('backapi.self.safe.transfer.func.pass.text'),
+                name: this.$t('Payment.password'),
               }),
             },
           ]"

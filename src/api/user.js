@@ -690,10 +690,17 @@ export default {
       data,
     });
   },
-  ///invest/my
   investMy(data) {
     return request({
       url: "/invest/my",
+      method: "post",
+      data,
+    });
+  },
+  ///invest/my/detail
+  investMyDetail(data) {
+    return request({
+      url: "/invest/my/detail",
       method: "post",
       data,
     });

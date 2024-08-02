@@ -12,6 +12,12 @@
           class="list justify-between align-center m-b-16"
           v-for="(item, index) in video"
           :key="index"
+          @click="
+            $router.push({
+              name: 'InvestOrderDetail',
+              query: { id: item.id },
+            })
+          "
         >
           <li>
             <p class="font14">{{ user.currencySymbol }}</p>
