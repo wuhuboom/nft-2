@@ -676,7 +676,6 @@ export default {
       method: "post",
     });
   },
-  ///player/invest
   invest(data) {
     return request({
       url: "/invest",
@@ -684,10 +683,17 @@ export default {
       data,
     });
   },
-  // /invest/plan/yeb
   investPlanYeb(data) {
     return request({
       url: "/invest/plan/yeb",
+      method: "post",
+      data,
+    });
+  },
+  ///invest/my
+  investMy(data) {
+    return request({
+      url: "/invest/my",
       method: "post",
       data,
     });

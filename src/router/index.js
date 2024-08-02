@@ -471,6 +471,13 @@ const routes = [
       default: () => import("@/views/investDetail.vue"),
     },
   },
+  {
+    path: "/pages/user/investList",
+    name: "InvestList",
+    components: {
+      default: () => import("@/views/investList.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

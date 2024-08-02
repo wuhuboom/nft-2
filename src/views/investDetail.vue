@@ -6,7 +6,11 @@
       :styleObj="{ backgroundColor: 'tra' }"
     >
       <template #right>
-        <van-icon size="22" name="balance-list-o" />
+        <van-icon
+          size="22"
+          name="balance-list-o"
+          @click="$router.push({ name: 'InvestList' })"
+        />
       </template>
     </AppTopBar>
     <div class="plans" v-if="planeYeb.id">
