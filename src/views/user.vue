@@ -32,6 +32,13 @@
       </li>
     </ul>
     <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
+    <ul class="trade-list d-flex">
+      <li>{{ $t("deal.createOrderMer.354499-5") }}</li>
+      <li class="d-flex">
+        <p>{{ $t("info.trade.col4.text") }}</p>
+        <p>{{ $t("Total.earnings") }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -46,6 +53,7 @@ export default {
   data() {
     return {
       invest: {},
+      plans: [],
     };
   },
   computed: {
@@ -83,9 +91,9 @@ export default {
   },
   methods: {
     async investMyStatisItems() {
-      const [err] = await userApi.investMyStatisItems();
+      const [err, res] = await userApi.investMyStatisItems();
       if (err) return;
-      // this.invest = res.data;
+      this.plans = res.data;
     },
     async investMyStatis() {
       const [err, res] = await userApi.investMyStatis();
@@ -135,6 +143,14 @@ export default {
     img {
       height: 57px;
     }
+  }
+}
+.trade-list {
+  & > li:nth-child(1) {
+    width: 30%;
+  }
+  & > li:nth-child(2) {
+    width: 70%;
   }
 }
 </style>
