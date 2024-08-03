@@ -4,7 +4,7 @@
       <li class="logo center-center">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
       </li>
-      <li class="flex-1 text-center txt">logo.com</li>
+      <li class="flex-1 text-center txt">{{ title }}</li>
       <li class="align-center lef-icon">
         <p class="m-r-16" @click="openLang">
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
@@ -20,9 +20,12 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "HomeTopBar",
   props: {
-    msg: String,
+    title: {
+      type: String,
+      default: "logo.com",
+    },
   },
   methods: {
     openLang() {
