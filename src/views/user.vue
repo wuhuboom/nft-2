@@ -20,6 +20,18 @@
         </li>
       </ul>
     </div>
+    <ul class="navs justify-between m-t-16">
+      <li
+        v-for="(item, idx) in navs"
+        :key="idx"
+        @click="item.path && $router.push(item.path)"
+        class="center-center flex-column text-center"
+      >
+        <img class="d-img" :src="item.img" alt="" />
+        <p class="m-t-12">{{ item.text }}</p>
+      </li>
+    </ul>
+    <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
   </div>
 </template>
 
@@ -37,8 +49,36 @@ export default {
     };
   },
   computed: {
+    config() {
+      return this.$store.state.config;
+    },
     user() {
       return this.$store.state.user;
+    },
+    navs() {
+      const arr = [
+        {
+          text: this.$t("fuc.rebate.center"),
+          img: require("@/assets/img/ntf/user2.png"),
+          path: "/pages/function/rebate_center",
+        },
+        {
+          text: this.$t("Team.benefits"),
+          img: require("@/assets/img/ntf/user3.png"),
+        },
+        {
+          text: this.$t("user.trade.title4.text"),
+          img: require("@/assets/img/ntf/user4.png"),
+        },
+      ];
+      if (this.config.beyShow == 1) {
+        arr.push({
+          img: require("@/assets/img/ntf/user1.png"),
+          text: this.$t(`Yu'ebao`),
+          path: "/pages/user/investDetail",
+        });
+      }
+      return arr;
     },
   },
   methods: {
@@ -82,6 +122,19 @@ export default {
     height: 22px;
     border-radius: 11px;
     background-image: linear-gradient(to bottom, #1f2430, #21232e);
+  }
+}
+.navs {
+  & > li {
+    background: no-repeat center center;
+    background-size: 100% 100%;
+    &,
+    img {
+      width: 57px;
+    }
+    img {
+      height: 57px;
+    }
   }
 }
 </style>
