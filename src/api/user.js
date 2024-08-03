@@ -705,4 +705,12 @@ export default {
       data,
     });
   },
+  ///invest/my/stop/yeb
+  investMyStopYeb(data) {
+    return request({
+      url: "/invest/my/stop/yeb",
+      method: "post",
+      data,
+    });
+  },
 };

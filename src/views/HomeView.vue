@@ -1,21 +1,6 @@
 <template>
   <div class="font12">
-    <van-sticky :offset-top="0">
-      <ul class="nav justify-between align-center">
-        <li class="logo center-center">
-          <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
-        </li>
-        <li class="flex-1 text-center txt">logo.com</li>
-        <li class="align-center lef-icon">
-          <p class="m-r-16" @click="openLang">
-            <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
-          </p>
-          <p class="m-r-16">
-            <img class="d-img" src="@/assets/img/ntf/home/nav2.png" alt="" />
-          </p>
-        </li>
-      </ul>
-    </van-sticky>
+    <HomeTopBar />
     <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
       <li class="live">
         <img src="@/assets/img/ntf/home/ligth.png" alt="" />
@@ -185,7 +170,7 @@
         </div>
       </div>
     </div>
-    <BtmActionLang ref="BtmActionLang" />
+
     <VersionDilalog />
   </div>
 </template>
@@ -194,6 +179,7 @@
 import dayjs from "dayjs";
 import userApi from "@/api/user";
 import VersionDilalog from "@/views/components/VersionDilalog.vue";
+import HomeTopBar from "@/components/home/HomeTopBar.vue";
 export default {
   name: "HomeView",
   data() {
@@ -204,6 +190,7 @@ export default {
   },
   components: {
     VersionDilalog,
+    HomeTopBar,
   },
   computed: {
     user() {
@@ -211,9 +198,6 @@ export default {
     },
   },
   methods: {
-    openLang() {
-      this.$refs.BtmActionLang.open();
-    },
     viewVideo(v) {
       //location.href =v.videoUrl
       window.open(v.videoUrl);
@@ -247,45 +231,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.nav {
-  height: 46px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: var(--bg-body);
-  .logo {
-    width: 77px;
-    position: relative;
-    img {
-      width: 34px;
-      height: 34px;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      height: 18px;
-      transform: translateY(-50%);
-      right: 0;
-      border: 1px solid transparent;
-      border-image: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          #888 52%,
-          rgba(128, 128, 128, 0)
-        )
-        1;
-    }
-  }
-  .lef-icon {
-    img {
-      height: 32px;
-      width: 32px;
-    }
-  }
-  .txt {
-    font-size: 16px;
-    font-weight: bold;
-  }
-}
 .from-to {
   width: 34px;
 }

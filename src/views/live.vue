@@ -10,7 +10,12 @@
     ></AppTopBar>
     <LoadList :onload="informationVideo" :finished="finished">
       <div class="list-box">
-        <div class="list" v-for="(item, i) in video" :key="i">
+        <div
+          class="list"
+          @click="viewVideo(item)"
+          v-for="(item, i) in video"
+          :key="i"
+        >
           <div class="img-box">
             <img :src="item.imageUrl" alt="" />
           </div>
@@ -38,6 +43,10 @@ export default {
     };
   },
   methods: {
+    viewVideo(v) {
+      //location.href =v.videoUrl
+      window.open(v.videoUrl);
+    },
     async informationVideo(obj = {}) {
       const params = {
         ...this.query,
@@ -46,11 +55,12 @@ export default {
       const [err, res] = await userApi.informationVideo(params);
       if (err) return;
       this.finished = res.data.results.length < this.query.pageSize;
-      this.query.pageNo++;
+
       this.video =
         params.pageNo == 1
           ? res.data.results
           : this.video.concat(res.data.results);
+      this.query.pageNo++;
     },
   },
 };
