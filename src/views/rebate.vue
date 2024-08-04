@@ -1,56 +1,51 @@
-<!-- eslint-disable no-unused-vars -->
 <template>
-  <div class="agency-page font14 color-primary p-t-24">
+  <div class="agency-page font14 color-primary p-l-12 p-r-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
       :topBarTitle="$t('fuc.rebate.center')"
-    >
-    </AppTopBar>
+      :styleObj="{ backgroundColor: 'transparent' }"
+    ></AppTopBar>
     <!-- v-if="!dataList.length" -->
     <div class="center-center py-16" v-if="totalNum === null">
       <van-Loading class="color-primary" />
     </div>
     <div v-else>
-      <div class="agency px-16 m-b-24">
-        <ul class="agency-lst d-flex flex-wrap p-x-16">
-          <li class="m-b-16 p-b-8 border-active">
-            <p>{{ $t("backapi.self.rebate.top.content.total.text") }}</p>
-            <p class="">
-              {{ numToFixed(totalNum, $globalUnit.val) / $globalNum.val }}
-            </p>
-          </li>
-          <li class="m-b-16 p-b-8 border-active">
-            <p>{{ $t("backapi.self.rebate.top.content.lastweek.text") }}</p>
-            <p class="">
-              {{ numToFixed(lastWeekNum, $globalUnit.val) / $globalNum.val }}
-            </p>
-          </li>
-          <li>
-            <p>{{ $t("backapi.self.rebate.top.content.today.text") }}</p>
-            <p class="">
-              {{ numToFixed(todayNum, $globalUnit.val) / $globalNum.val }}
-            </p>
-          </li>
-          <li>
-            <p>{{ $t("backapi.self.rebate.top.content.week.text") }}</p>
-            <p class="">
-              {{ numToFixed(weekNum, $globalUnit.val) / $globalNum.val }}
-            </p>
-          </li>
-        </ul>
-      </div>
+      <ul class="flex-column center-center header">
+        <li><img src="@/assets/img/ntf/monney.webp" alt="" /></li>
+        <li class="m-b-8 font14">
+          {{ $t("backapi.self.rebate.top.content.total.text") }}
+        </li>
+        <li class="total-num">{{ divide(totalNum) }}</li>
+      </ul>
+      <ul class="justify-between tolal-list p-b-4">
+        <li class="gray">
+          {{ $t("backapi.self.rebate.top.content.lastweek.text") }}
+        </li>
+        <li class="p-r-8">{{ divide(lastWeekNum) }}</li>
+      </ul>
+      <ul class="justify-between tolal-list p-b-4">
+        <li class="gray">
+          {{ $t("backapi.self.rebate.top.content.today.text") }}
+        </li>
+        <li class="p-r-8">{{ divide(todayNum) }}</li>
+      </ul>
+      <ul class="justify-between tolal-list p-b-4">
+        <li class="gray">
+          {{ $t("backapi.self.rebate.top.content.week.text") }}
+        </li>
+        <li class="p-r-8">{{ divide(weekNum) }}</li>
+      </ul>
       <van-list
-        class="p-t-8"
+        class="m-t-24"
         v-model="loading"
         :finished="curItem.hasNext === false"
         finished-text=""
         loading-text="loading"
         @load="onLoad"
       >
-        <div class="px-16 p-16 font16">
+        <div class="font16">
           <van-grid
-            class="color-primary m-b-32"
+            class="color-primary m-b-16"
             :border="false"
             :column-num="3"
           >
@@ -63,7 +58,7 @@
           </div>
           <van-grid
             v-show="!nothing"
-            class="color-primary m-b-32 font16"
+            class="color-primary m-b-16 font13"
             v-for="(item, idx) in curItem.results"
             :key="idx"
             :border="false"
@@ -76,7 +71,7 @@
               {{ getType(item.type) }}
             </van-grid-item>
             <van-grid-item class="color-fff">
-              {{ numToFixed(item.money, $globalUnit.val) / $globalNum.val }}
+              {{ divide(item.money) }}
             </van-grid-item>
           </van-grid>
         </div>
@@ -174,9 +169,33 @@ export default {
     this.getStatissticsData();
   },
   components: { NoData },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
+.header {
+  img {
+    width: 95px;
+    height: 95px;
+  }
+  .total-num {
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+.gray {
+  color: #8e8e93;
+}
+.tolal-list {
+  height: 30px;
+  align-items: flex-end;
+  border-bottom: 1px solid #7c7c7c;
+}
 .agency-page {
   ::v-deep {
     .van-grid-item__content {
