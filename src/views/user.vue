@@ -125,6 +125,7 @@ export default {
         {
           text: this.$t("user.trade.title4.text"),
           img: require("@/assets/img/ntf/user4.png"),
+          path: "/pages/user/invoice",
         },
       ];
       if (this.config.beyShow == 1) {

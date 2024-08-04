@@ -499,6 +499,13 @@ const routes = [
       default: () => import("@/views/balanceIncome.vue"),
     },
   },
+  {
+    path: "/pages/user/invoice",
+    name: "Invoice",
+    components: {
+      default: () => import("@/views/invoice.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

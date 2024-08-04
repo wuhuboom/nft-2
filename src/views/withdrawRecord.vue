@@ -1,26 +1,24 @@
 u
 <template>
-  <div class="wallet-page font12 p-l-16 p-r-16 color-primary font12">
+  <div class="wallet-page font12 color-primary font12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
-    >
-    </AppTopBar>
-    <HistoryNav :type="1" />
-    <div class="tab-list m-t-24">
-      <ul class="tab p-b-8 p-t-8">
-        <li
-          class="m-r-16"
-          v-for="(item, idx) in tabSimpleList"
-          @click="changFilter(item.id)"
-          :class="{ 'color-active': filterTab === item.id }"
-          :key="idx"
-        >
-          {{ item.text }}
-        </li>
-      </ul>
-    </div>
-    <ul class="drop-list justify-between align-center m-b-12">
+      :styleObj="{ backgroundColor: 'tra' }"
+    ></AppTopBar>
+
+    <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-12">
+      <li>
+        <el-select v-model="filterTab" @change="changFilter">
+          <el-option
+            v-for="item in tabSimpleList"
+            :key="item.id"
+            :label="item.text"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </li>
       <li>
         <el-select v-model="status" @change="changeStatus">
           <el-option
@@ -32,14 +30,12 @@ u
           </el-option>
         </el-select>
       </li>
-
-      <li class="page-res-btn center-center" @click="searchLoad">
-        {{ $t("backapi.self.bank.search.text") }}
-      </li>
     </ul>
     <van-list
       v-model="loading"
-      :finished="curItem.hasNext === false"
+      :finished="
+        curItem.totalPage !== null && curItem.pageNo > curItem.totalPage
+      "
       finished-text=""
       loading-text="loading"
       @load="onLoad"
@@ -65,7 +61,7 @@ u
             {{ getType(+item.type) }}
           </van-grid-item>
           <van-grid-item class="color-fff">
-            {{ numToFixed(item.money, $globalUnit.val) / $globalNum.val }}
+            {{ divide(item.money) }}
           </van-grid-item>
           <van-grid-item class="color-active">
             {{ getState(+item.status) }}
@@ -80,7 +76,6 @@ u
 </template>
 
 <script>
-import HistoryNav from "@/views/components/HistoryNav.vue";
 import userApi from "@/api/user";
 import i18n from "@/locale";
 const init = () => {
@@ -243,15 +238,12 @@ export default {
       curItem: {
         hasNext: true,
         pageNo: 1,
-        pageSize: 10,
+        pageSize: 20,
         results: [],
         totalCount: null,
         totalPage: null,
       },
     };
-  },
-  components: {
-    HistoryNav,
   },
   computed: {
     choseDoc() {
@@ -379,10 +371,8 @@ export default {
       }
       const [err, res] = await userApi.withdrawLogReq(obj);
       this.loading = false;
+
       if (err) {
-        if (err.code == 409) {
-          this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
-        }
         this.curItem.hasNext = false;
         return;
       }
@@ -397,6 +387,12 @@ export default {
       };
       this.$toast.clear();
     },
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
@@ -448,7 +444,7 @@ export default {
     }
   }
   .drop-list {
-    height: 32px;
+    height: 48px;
     border-bottom: 1px solid #484b4c;
     border-top: 1px solid #484b4c;
     .search {
@@ -460,13 +456,6 @@ export default {
     }
   }
   ::v-deep {
-    .appp-top-bar {
-      background-color: var(--bg-body) !important;
-    }
-    .appp-top-bar-title,
-    .icon-button {
-      color: var(--primary) !important;
-    }
     .van-grid-item__content {
       background-color: transparent;
       padding: 0;
