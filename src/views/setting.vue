@@ -11,10 +11,10 @@
       </li>
       <li class="user-name m-t-16">{{ user.username }}</li>
       <li class="gray font14 m-b-12">{{ phone }}</li>
-      <li class="m-t-12 m-b-8">
+      <li class="m-t-12 m-b-8" @click="openOut">
         <img class="out-icon d-img" src="@/assets/img/logout.webp" alt="" />
       </li>
-      <li class="gray">{{ $t(`user.menu.title7.text`) }}</li>
+      <li class="gray" @click="openOut">{{ $t(`user.menu.title7.text`) }}</li>
     </ul>
     <ul class="m-t-16 font14">
       <li
@@ -30,6 +30,30 @@
         <van-icon size="16" name="arrow" />
       </li>
     </ul>
+    <van-popup
+      class="linear-global-pop"
+      style="width: 75%"
+      v-model="show"
+      round
+      position="center"
+    >
+      <ul>
+        <li class="font16 text-center m-t-24 m-b-24">{{ $t(`now.exit`) }}</li>
+        <li class="align-center justify-around">
+          <van-button
+            @click="show = false"
+            class="ntf-vant-btn ntf-btn-cancel m-r-24"
+            block
+            type="info"
+          >
+            {{ $t("modal.cancel.text") }}
+          </van-button>
+          <van-button class="ntf-vant-btn" block type="info" @click="loginOut">
+            {{ $t("modal.confirm.text") }}
+          </van-button>
+        </li>
+      </ul>
+    </van-popup>
   </div>
 </template>
 
@@ -39,6 +63,7 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
+      show: false,
       navs: [
         {
           title: i18n.t("user.menu.title1.text"),
@@ -68,6 +93,14 @@ export default {
     },
   },
   methods: {
+    loginOut() {
+      this.show = false;
+      this.$store.commit("loginOut");
+      this.$router.replace({ name: "Login" });
+    },
+    openOut() {
+      this.show = true;
+    },
     async download() {
       this.$toast.loading({
         duration: 0,
@@ -85,6 +118,10 @@ export default {
         }
         if (link === "down") {
           this.download();
+          return;
+        }
+        if (link === "out") {
+          this.show = true;
           return;
         }
         this.$router.push({ name: item.link });
