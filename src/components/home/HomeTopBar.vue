@@ -40,7 +40,7 @@ export default {
 .nav {
   height: 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: var(--bg-body);
+  background-color: transparent;
   .logo {
     width: 77px;
     position: relative;
