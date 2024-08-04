@@ -513,6 +513,13 @@ const routes = [
       default: () => import("@/views/pagesinvest.vue"),
     },
   },
+  {
+    path: "/pages/invest/recordDetail",
+    name: "RecordDetail",
+    components: {
+      default: () => import("@/views/recordDetail.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
