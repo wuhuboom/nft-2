@@ -520,6 +520,13 @@ const routes = [
       default: () => import("@/views/recordDetail.vue"),
     },
   },
+  {
+    path: "/pages/user/setting",
+    name: "UserSetting",
+    components: {
+      default: () => import("@/views/setting.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

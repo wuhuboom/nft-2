@@ -8,7 +8,7 @@
           <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
           <li class="green">+{{ divide(invest.today) }}</li>
         </ul>
-        <ul class="user-set">
+        <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
           <li>
             <img
               class="d-img userpic"
