@@ -69,7 +69,14 @@
       </div>
 
       <NoData v-else />
-      <div class="m-b-16 m-t-24 justify-between align-center">
+      <div
+        class="m-b-16 m-t-24 justify-between align-center"
+        @click="
+          $router.push({
+            name: 'BalanceRecord',
+          })
+        "
+      >
         <p class="font14 bold">{{ $t("property.record.title") }}</p>
         <van-icon size="16" name="arrow" />
       </div>
@@ -156,6 +163,12 @@ export default {
     this.investMyStatis();
     this.balanceChangeRequest();
     this.$store.dispatch("getInfo");
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

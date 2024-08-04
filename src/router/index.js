@@ -485,6 +485,13 @@ const routes = [
       default: () => import("@/views/orderDetail.vue"),
     },
   },
+  {
+    path: "/pages/user/balanceRecord",
+    name: "BalanceRecord",
+    components: {
+      default: () => import("@/views/balanceRecord.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
