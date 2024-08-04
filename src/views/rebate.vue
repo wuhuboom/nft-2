@@ -1,5 +1,5 @@
 <template>
-  <div class="agency-page font14 color-primary p-l-12 p-r-12">
+  <div class="agency-page font14 p-l-12 p-r-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('fuc.rebate.center')"
@@ -7,7 +7,7 @@
     ></AppTopBar>
     <!-- v-if="!dataList.length" -->
     <div class="center-center py-16" v-if="totalNum === null">
-      <van-Loading class="color-primary" />
+      <van-Loading class="" />
     </div>
     <div v-else>
       <ul class="flex-column center-center header">
@@ -44,11 +44,7 @@
         @load="onLoad"
       >
         <div class="font16">
-          <van-grid
-            class="color-primary m-b-16"
-            :border="false"
-            :column-num="3"
-          >
+          <van-grid class="m-b-16" :border="false" :column-num="3">
             <van-grid-item v-for="value in head" :key="value">
               {{ value }}
             </van-grid-item>
@@ -58,7 +54,7 @@
           </div>
           <van-grid
             v-show="!nothing"
-            class="color-primary m-b-16 font13"
+            class="m-b-16 font13"
             v-for="(item, idx) in curItem.results"
             :key="idx"
             :border="false"

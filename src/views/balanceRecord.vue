@@ -5,17 +5,8 @@
       :topBarTitle="$t('property.record.title')"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <ul class="justify-between nvas m-t-12">
-      <li
-        class="center-center flex-1"
-        :class="{ 'bg-active': item.key == cur }"
-        v-for="(item, idx) in navs"
-        @click="chosen(item)"
-        :key="idx"
-      >
-        {{ item.name }}
-      </li>
-    </ul>
+    <ChoseNav @chosen="chosen" :cur="cur" :navs="navs" />
+
     <LoadList :onload="balanceChangeReq" :finished="finished">
       <ChangeRecord v-if="video.length" :list="video" />
       <NoData v-else />
@@ -27,10 +18,12 @@
 import i18n from "@/locale";
 import userApi from "@/api/user";
 import ChangeRecord from "@/components/home/ChangeRecord.vue";
+import ChoseNav from "@/components/global/ChoseNav.vue";
 export default {
   name: "balanceRecordView",
   components: {
     ChangeRecord,
+    ChoseNav,
   },
   data() {
     return {

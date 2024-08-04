@@ -200,7 +200,7 @@
   "myfriends.list.col1.text": "e-mail",
   "myfriends.list.col2.text": "Escrow funds",
   "myfriends.list.col3.text": "relation",
-  "myfriends.list.col4.text": "time",
+  "myfriends.list.col4.text": "Time",
   "myfriends.list.col5.text": "Ranking",
   "myfriends.invest.title1.text": "Cumulative investment income",
   "myfriends.invest.title2.text": "Total custody income",
@@ -1492,5 +1492,6 @@
   "stable.appreciation": "Stable appreciation",
   "rate.of.return": "Rate of return",
   "Rules": "Rules",
-  "Total.earnings": "Total earnings"
+  "Total.earnings": "Total earnings",
+  "Friend.count": "Friend count"
 }

@@ -716,10 +716,26 @@ export default {
       url: "/invest/my/statis/items",
     });
   },
-  // /invest/my/statis
   investMyStatis() {
     return request({
       url: "/invest/my/statis",
+    });
+  },
+  investMyStatisFriendsThree() {
+    return request({
+      url: "/invest/my/statis/friends/three",
+    });
+  },
+  investMyStatisFriends() {
+    return request({
+      url: "/invest/my/statis/friends",
+    });
+  },
+  ///invest/friends/statis
+  investFriendsStatis() {
+    return request({
+      url: "/invest/friends/statis",
+      method: "post",
     });
   },
 };

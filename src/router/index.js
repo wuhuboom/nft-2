@@ -492,6 +492,13 @@ const routes = [
       default: () => import("@/views/balanceRecord.vue"),
     },
   },
+  {
+    path: "/pages/user/income",
+    name: "balanceIncome",
+    components: {
+      default: () => import("@/views/balanceIncome.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

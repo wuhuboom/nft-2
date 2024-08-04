@@ -119,6 +119,7 @@ export default {
         },
         {
           text: this.$t("Team.benefits"),
+          path: "/pages/user/income",
           img: require("@/assets/img/ntf/user3.png"),
         },
         {
