@@ -1,59 +1,91 @@
 <template>
-  <div class="page-user font12 p-l-16 p-r-16">
+  <div>
     <HomeTopBar :title="user.username" />
-    <div class="align-center justify-between m-t-8">
-      <ul>
-        <li class="gray">{{ $t(`property.header.title`) }}</li>
-        <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
-        <li class="green">+{{ divide(invest.today) }}</li>
+    <div class="page-user font12 p-l-16 p-r-16">
+      <div class="align-center justify-between m-t-8">
+        <ul>
+          <li class="gray">{{ $t(`property.header.title`) }}</li>
+          <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
+          <li class="green">+{{ divide(invest.today) }}</li>
+        </ul>
+        <ul class="user-set">
+          <li>
+            <img
+              class="d-img userpic"
+              src="@/assets/img/ntf/userpic.webp"
+              alt=""
+            />
+          </li>
+          <li class="edt center-center">
+            <van-icon name="edit" class="font14" />
+          </li>
+        </ul>
+      </div>
+      <ul class="navs justify-between m-t-16">
+        <li
+          v-for="(item, idx) in navs"
+          :key="idx"
+          @click="item.path && $router.push(item.path)"
+          class="center-center flex-column text-center"
+        >
+          <img class="d-img" :src="item.img" alt="" />
+          <p class="m-t-12">{{ item.text }}</p>
+        </li>
       </ul>
-      <ul class="user-set">
-        <li>
+      <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
+      <ul class="trade-list d-flex full100 m-b-16 gray">
+        <li class="name">
+          <p class="els">{{ $t("deal.createOrderMer.354499-5") }}</p>
+        </li>
+        <li class="flex-1">
+          <p class="els">{{ $t("info.trade.col4.text") }}</p>
+        </li>
+        <li class="no-shrink earnings">
+          <p class="els">{{ $t("Total.earnings") }}</p>
+        </li>
+      </ul>
+      <ul
+        class="trade-list d-flex full100 m-b-16"
+        v-for="(item, idx) in plans"
+        :key="idx"
+      >
+        <li class="name els align-center">
           <img
-            class="d-img userpic"
-            src="@/assets/img/ntf/userpic.webp"
+            v-if="item.planIcon"
+            class="d-img no-shrink"
+            :src="item.planIcon"
             alt=""
           />
+          <p class="els">{{ item.plan }}</p>
         </li>
-        <li class="edt center-center">
-          <van-icon name="edit" class="font14" />
+        <li class="flex-1">
+          <p class="els">{{ divide(item.money) }}</p>
+        </li>
+        <li class="no-shrink earnings">
+          <p class="els">{{ divide(item.moneyIncome) }}</p>
         </li>
       </ul>
+      <p class="font14 bold m-t-24 m-b-16">{{ $t("property.record.title") }}</p>
+      <ChangeRecord :list="changs" />
     </div>
-    <ul class="navs justify-between m-t-16">
-      <li
-        v-for="(item, idx) in navs"
-        :key="idx"
-        @click="item.path && $router.push(item.path)"
-        class="center-center flex-column text-center"
-      >
-        <img class="d-img" :src="item.img" alt="" />
-        <p class="m-t-12">{{ item.text }}</p>
-      </li>
-    </ul>
-    <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
-    <ul class="trade-list d-flex">
-      <li>{{ $t("deal.createOrderMer.354499-5") }}</li>
-      <li class="d-flex">
-        <p>{{ $t("info.trade.col4.text") }}</p>
-        <p>{{ $t("Total.earnings") }}</p>
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
 import userApi from "@/api/user";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
+import ChangeRecord from "@/components/home/ChangeRecord.vue";
 export default {
   name: "pageUser",
   components: {
     HomeTopBar,
+    ChangeRecord,
   },
   data() {
     return {
       invest: {},
       plans: [],
+      changs: [],
     };
   },
   computed: {
@@ -80,7 +112,7 @@ export default {
         },
       ];
       if (this.config.beyShow == 1) {
-        arr.push({
+        arr.unshift({
           img: require("@/assets/img/ntf/user1.png"),
           text: this.$t(`Yu'ebao`),
           path: "/pages/user/investDetail",
@@ -90,6 +122,15 @@ export default {
     },
   },
   methods: {
+    async balanceChangeRequest() {
+      const [err, res] = await userApi.balanceChangeReq({
+        time: 3,
+        pageNo: 1,
+        pageSize: 10,
+      });
+      if (err) return;
+      this.changs = res.data.results;
+    },
     async investMyStatisItems() {
       const [err, res] = await userApi.investMyStatisItems();
       if (err) return;
@@ -105,7 +146,8 @@ export default {
     this.$store.commit("setPdTop", false);
     this.investMyStatisItems();
     this.investMyStatis();
-    this.$store.getInfo("getMyInvestList");
+    this.balanceChangeRequest();
+    this.$store.dispatch("getInfo");
   },
 };
 </script>
@@ -146,11 +188,23 @@ export default {
   }
 }
 .trade-list {
-  & > li:nth-child(1) {
-    width: 30%;
+  .name {
+    width: 135px;
+    img {
+      height: 24px;
+      width: 24px;
+      margin-right: 8px;
+    }
   }
-  & > li:nth-child(2) {
-    width: 70%;
+  .earnings {
+    width: 88px;
+    margin-left: 39px;
+  }
+  & > li:nth-child(2),
+  & > li:nth-child(3) {
+    text-align: right;
+  }
+  .trade {
   }
 }
 </style>
