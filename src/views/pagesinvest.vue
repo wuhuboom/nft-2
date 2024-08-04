@@ -2,7 +2,7 @@
   <div class="invoice-page font12 p-l-12 p-r-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`user.trade.title4.text`)"
+      :topBarTitle="$t('invest.record.page.text')"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <ul class="m-t-16">
