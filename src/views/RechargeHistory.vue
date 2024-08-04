@@ -1,12 +1,12 @@
 u
 <template>
-  <div class="wallet-page font12 p-l-16 p-r-16 color-primary font12">
+  <div class="wallet-page font12 color-primary font12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
-    >
-    </AppTopBar>
-    <HistoryNav />
+      :styleObj="{ backgroundColor: 'tra' }"
+    ></AppTopBar>
+    <!-- <HistoryNav />
     <div class="tab-list m-t-24">
       <ul class="tab p-b-8 p-t-8">
         <li
@@ -19,8 +19,19 @@ u
           {{ item.text }}
         </li>
       </ul>
-    </div>
-    <ul class="drop-list justify-between align-center m-b-12">
+    </div> -->
+    <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-12">
+      <li>
+        <el-select v-model="filterTab" @change="changFilter">
+          <el-option
+            v-for="item in tabSimpleList"
+            :key="item.id"
+            :label="item.text"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </li>
       <li>
         <el-select v-model="status" @change="changeStatus">
           <el-option
@@ -43,13 +54,12 @@ u
           </el-option>
         </el-select>
       </li>
-      <li class="page-res-btn center-center" @click="searchLoad">
-        {{ $t("backapi.self.bank.search.text") }}
-      </li>
     </ul>
     <van-list
       v-model="loading"
-      :finished="curItem.hasNext === false"
+      :finished="
+        curItem.totalPage !== null && curItem.pageNo > curItem.totalPage
+      "
       finished-text=""
       loading-text="loading"
       @load="onLoad"
@@ -87,7 +97,6 @@ u
 </template>
 
 <script>
-import HistoryNav from "@/views/components/HistoryNav.vue";
 import userApi from "@/api/user";
 import i18n from "@/locale";
 const init = () => {
@@ -202,9 +211,6 @@ export default {
         totalPage: null,
       },
     };
-  },
-  components: {
-    HistoryNav,
   },
   computed: {
     choseDoc() {
@@ -353,6 +359,12 @@ export default {
       this.$toast.clear();
     },
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
@@ -415,13 +427,6 @@ export default {
     }
   }
   ::v-deep {
-    .appp-top-bar {
-      background-color: var(--bg-body) !important;
-    }
-    .appp-top-bar-title,
-    .icon-button {
-      color: var(--primary) !important;
-    }
     .van-grid-item__content {
       background-color: transparent;
       padding: 0;
