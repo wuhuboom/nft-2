@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-b-32">
     <HomeTopBar :title="user.username" />
     <div class="page-user font12 p-l-16 p-r-16">
       <div class="align-center justify-between m-t-8">
@@ -44,29 +44,37 @@
           <p class="els">{{ $t("Total.earnings") }}</p>
         </li>
       </ul>
-      <ul
-        class="trade-list d-flex full100 m-b-16"
-        v-for="(item, idx) in plans"
-        :key="idx"
-      >
-        <li class="name els align-center">
-          <img
-            v-if="item.planIcon"
-            class="d-img no-shrink"
-            :src="item.planIcon"
-            alt=""
-          />
-          <p class="els">{{ item.plan }}</p>
-        </li>
-        <li class="flex-1">
-          <p class="els">{{ divide(item.money) }}</p>
-        </li>
-        <li class="no-shrink earnings">
-          <p class="els">{{ divide(item.moneyIncome) }}</p>
-        </li>
-      </ul>
-      <p class="font14 bold m-t-24 m-b-16">{{ $t("property.record.title") }}</p>
-      <ChangeRecord :list="changs" />
+      <div v-if="plans.length">
+        <ul
+          class="trade-list d-flex full100 m-b-16"
+          v-for="(item, idx) in plans"
+          :key="idx"
+        >
+          <li class="name els align-center">
+            <img
+              v-if="item.planIcon"
+              class="d-img no-shrink"
+              :src="item.planIcon"
+              alt=""
+            />
+            <p class="els">{{ item.plan }}</p>
+          </li>
+          <li class="flex-1">
+            <p class="els">{{ divide(item.money) }}</p>
+          </li>
+          <li class="no-shrink earnings">
+            <p class="els">{{ divide(item.moneyIncome) }}</p>
+          </li>
+        </ul>
+      </div>
+
+      <NoData v-else />
+      <div class="m-b-16 m-t-24 justify-between align-center">
+        <p class="font14 bold">{{ $t("property.record.title") }}</p>
+        <van-icon size="16" name="arrow" />
+      </div>
+      <ChangeRecord v-if="changs.length" :list="changs" />
+      <NoData v-else />
     </div>
   </div>
 </template>
@@ -124,7 +132,7 @@ export default {
   methods: {
     async balanceChangeRequest() {
       const [err, res] = await userApi.balanceChangeReq({
-        time: 3,
+        time: 1,
         pageNo: 1,
         pageSize: 10,
       });

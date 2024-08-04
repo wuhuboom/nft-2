@@ -1,20 +1,28 @@
 <template>
-  <div class="no-data center-center font14">No More</div>
+  <div class="no-data center-center flex-column" :class="className">
+    <img class="d-img" src="@/assets/img/ntf/nodata.webp" alt="" />
+    <div class="center-center font14 m-t-4">No Data</div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "NoData",
+  props: {
+    className: {
+      type: String,
+      default: "m-t-16",
+    },
+  },
 };
 </script>
 <style scoped lang="less">
 .no-data {
-  padding-top: 80px;
   color: var(--primary);
   img {
-    width: 102px;
-    height: 112px;
-    object-fit: cover;
+    width: 79px;
+    height: 79px;
+    object-fit: contain;
   }
 }
 </style>
