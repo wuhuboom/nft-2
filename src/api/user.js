@@ -731,10 +731,20 @@ export default {
       url: "/invest/my/statis/friends",
     });
   },
-  ///invest/friends/statis
   investFriendsStatis() {
     return request({
       url: "/invest/friends/statis",
+      method: "post",
+    });
+  },
+  investMyStatisReq() {
+    return request({
+      url: "/invest/my/statis",
+    });
+  },
+  investMyStatisPost() {
+    return request({
+      url: "/invest/my/statis",
       method: "post",
     });
   },
