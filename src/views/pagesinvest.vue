@@ -6,7 +6,12 @@
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <LoadList :onload="informationVideo" :finished="finished">
-      <div class="plans" v-for="(item, idx) in video" :key="idx">
+      <div
+        class="plans"
+        v-for="(item, idx) in video"
+        :key="idx"
+        @click="goDetail(item)"
+      >
         <div class="plans-item m-b-16">
           <div class="align-center plans-head p-b-8 m-b-8">
             <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
@@ -108,6 +113,11 @@ export default {
     };
   },
   methods: {
+    goDetail(item) {
+      this.$router.push({
+        path: "/pages/invest/recordDetail?id=" + item.id,
+      });
+    },
     date(t) {
       return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
