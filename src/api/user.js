@@ -748,4 +748,17 @@ export default {
       method: "post",
     });
   },
+  investMyReq() {
+    return request({
+      url: "/invest/my",
+    });
+  },
+  ///invest/my
+  investMyPost(data) {
+    return request({
+      url: "/invest/my",
+      method: "post",
+      data,
+    });
+  },
 };
