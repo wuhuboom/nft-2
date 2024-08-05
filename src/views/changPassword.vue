@@ -1,5 +1,5 @@
 <template>
-  <div class="change-password-view font12 color-primary">
+  <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar
       :topBarTitle="$t('security.pass.text')"
       :styleObj="{ backgroundColor: 'transparent' }"
@@ -13,10 +13,10 @@
       }"
       :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
     />
-    <div class="m-l-24 m-r-24">
-      <van-form class="defind-form" @submit="onSubmit">
+    <div>
+      <van-form class="ntf-form m-t-16" @submit="onSubmit">
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.loginPass"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -28,7 +28,7 @@
           :rules="[{ required: true, message: $t('backapi.passwordIsEmpty') }]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -45,7 +45,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -67,7 +67,7 @@
         />
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
@@ -130,8 +130,11 @@ export default {
       this.$router.replace({ name: "Login" });
     },
   },
-  created() {
-    // this.$toast.success("");
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

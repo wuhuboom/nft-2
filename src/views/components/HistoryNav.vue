@@ -1,13 +1,15 @@
 <template>
-  <ul class="order-nav color-fff">
+  <ul class="justify-between nvas" :class="className">
     <li
-      :class="{ active: type === 0 }"
+      class="center-center flex-1"
+      :class="{ 'bg-active': type === 0 }"
       @click="$router.replace({ name: skip1.name })"
     >
       <p>{{ skip1.text }}</p>
     </li>
     <li
-      :class="{ active: type === 1 }"
+      class="center-center flex-1"
+      :class="{ 'bg-active': type === 1 }"
       @click="$router.replace({ name: skip2.name })"
     >
       <p>{{ skip2.text }}</p>
@@ -23,6 +25,10 @@ export default {
     return {};
   },
   props: {
+    className: {
+      type: String,
+      default: "m-t-12",
+    },
     type: {
       type: Number,
       default: 0,
@@ -66,40 +72,16 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.order-nav {
-  display: flex;
-  justify-content: space-between;
-  height: 77px;
-  padding: 8px 0;
-  background: url("@/assets/img/red/rechargeHistory.webp") no-repeat center
-    center;
-  background-size: 100% 100%;
-  li {
-    cursor: pointer;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-direction: column;
-    position: relative;
-    & > p:nth-child(2) {
-      margin-top: 2px;
-    }
-    img {
-      display: block;
-      object-fit: cover;
-      height: 24px;
-      width: 24px;
-    }
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    &.active {
-      color: var(--active);
-    }
+.nvas {
+  border-radius: 8.9px;
+  background-color: #333335;
+  & > li {
+    height: 32px;
+    border-radius: 8.9px;
+  }
+  & > li.bg-active {
+    background-color: var(--main);
+    color: #fff;
   }
 }
 </style>

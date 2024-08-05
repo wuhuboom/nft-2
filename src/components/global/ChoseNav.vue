@@ -1,5 +1,5 @@
 <template>
-  <ul class="justify-between nvas m-t-12">
+  <ul class="justify-between nvas" :class="className">
     <li
       class="center-center flex-1"
       :class="{ 'bg-active': item.key == cur }"

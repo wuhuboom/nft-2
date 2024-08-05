@@ -1,5 +1,5 @@
 <template>
-  <div class="change-password-view font12 color-primary pb-16">
+  <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar
       :topBarTitle="$t('security.pass.text')"
       :styleObj="{ backgroundColor: 'transparent' }"
@@ -13,8 +13,8 @@
       }"
       :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
     />
-    <div class="m-l-24 m-r-24">
-      <van-form class="defind-form" @submit="onSubmit">
+    <div>
+      <van-form class="ntf-form m-t-16" @submit="onSubmit">
         <el-select
           v-model="form.verificationVal"
           :placeholder="$t('index.editor.psd.text')"
@@ -29,14 +29,14 @@
           </el-option>
         </el-select>
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-if="form.verificationVal == 1"
           disabled
           :value="user.email"
           :placeholder="$t('form.email.text')"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-if="form.verificationVal == 2"
           :value="user.phone"
           disabled
@@ -68,7 +68,7 @@
           </template>
         </van-field>
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -85,7 +85,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -107,7 +107,7 @@
         />
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
