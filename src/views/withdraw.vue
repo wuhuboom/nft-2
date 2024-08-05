@@ -49,10 +49,6 @@
           <van-icon name="plus" size="14" class="m-r-8" />
           {{ getWithdrawBindName }}
         </div>
-        <!-- <div class="justify-between m-b-16 align-center m-b-4">
-          <div></div>
-          <div @click="getWithdrawRoutingJump">{{ getWithdrawBindName }}</div>
-        </div> -->
         <p class="m-b-8">{{ $t("deal.buyDetail.387081-3") }}</p>
         <div ref="align">
           <div>
@@ -101,10 +97,6 @@
               >
             </p>
           </div>
-
-          <!-- <div @click="setAll">
-            {{ $t(`order.search.all.text`) }}
-          </div> -->
         </div>
         <van-form ref="form" class="ntf-form">
           <div class="el-ntf-select m-b-16 m-t-16">
