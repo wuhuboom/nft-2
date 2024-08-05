@@ -1,15 +1,14 @@
 <template>
-  <div class="change-password-view color-primary font12 pb-16">
+  <div class="change-password-view font12 p-r-12 p-l-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('security.pass.text')"
     >
     </AppTopBar>
-    <div class="p-x-24">
-      <van-form ref="form" class="defind-form" @submit="onSubmit">
-        <p>{{ $t("index.editor.psd.text") }}</p>
-        <van-field>
+    <div>
+      <van-form ref="form" class="ntf-form m-t-12" @submit="onSubmit">
+        <p class="m-b-16 font14">{{ $t("index.editor.psd.text") }}</p>
+        <van-field class="m-b-16 field-inlude-code">
           <template #input>
             <el-select
               v-model="form.verificationVal"
@@ -31,9 +30,9 @@
         <van-field
           v-model.trim="form.email"
           name="email"
+          class="m-b-16"
           :placeholder="$t('form.email.text')"
           v-if="form.verificationVal == 1"
-          class="res-icon-size"
           autocomplete="new-password"
           :rules="[
             { required: true, message: $t('ruls.accout.empty') },
@@ -51,7 +50,7 @@
           :placeholder="$t('password.setting.phone.old.phone.text')"
           autocomplete="new-password"
           type="digit"
-          class="left-icon-box res-icon-size"
+          class="m-b-16"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>
@@ -61,6 +60,7 @@
           </template>
         </van-field>
         <van-field
+          class="m-b-16"
           v-model.trim="form.account"
           autocomplete="new-password"
           name="account"
@@ -68,6 +68,7 @@
           :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
         />
         <van-field
+          class="m-b-16 field-inlude-code"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -85,14 +86,14 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -109,7 +110,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -129,9 +130,9 @@
             },
           ]"
         />
-        <div class="sumit-section center-center pt-16 px-16">
+        <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
@@ -285,6 +286,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
