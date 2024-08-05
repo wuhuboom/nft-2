@@ -44,7 +44,7 @@
               <!-- <span class="color-fff">{{ chooseRecType.currencySymbol }}</span> -->
             </template>
           </van-field>
-          <p class="limit m-t-8">
+          <p class="limit m-t-8 active">
             {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
           </p>
           <div class="justify-between m-t-8">
