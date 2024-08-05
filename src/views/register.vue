@@ -98,7 +98,7 @@
             </van-field>
             <!-- v-if="authConfig.mailCodeRequired === 1" -->
             <van-field
-              class="login-ceode m-b-32"
+              class="field-inlude-code m-b-32"
               :placeholder="$t('Submitted.email.code')"
               v-model.trim="form.emailCode"
               :rules="[
@@ -115,9 +115,8 @@
                   size="small"
                   @click="sendCode"
                   :disabled="countdown > 0"
-                  class="code-btn center-center"
+                  class="send-code-btn"
                   native-type="button"
-                  color="#0025fc"
                   >{{ $t("deal.chat.921073-7")
                   }}{{ countdown ? `(${countdown})` : "" }}</van-button
                 >

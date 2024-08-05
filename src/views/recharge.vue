@@ -1,5 +1,5 @@
 <template>
-  <div class="message-page font12 color-primary">
+  <div class="message-page font12 p-l-16 p-r-16">
     <AppTopBar
       :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('deal.recharge.354498-0')"
@@ -8,11 +8,12 @@
     <div class="center-center py-16" v-if="!rechargeList.length">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="">
-      <ul class="type-list p-l-12 p-r-12 m-b-8">
+    <div v-else class="m-t-12 gray">
+      <p class="font13 m-b-12">{{ $t(`rechange.way`) }}</p>
+      <ul class="type-list m-b-8">
         <li
           v-for="(item, index) in rechargeList"
-          class="p-x-4"
+          class="m-r-16"
           @click="chose(item)"
           :class="{ 'color-active': item.id === chooseRecType.id }"
           :key="index"
@@ -25,7 +26,8 @@
           </div>
         </li>
       </ul>
-      <div class="enter-form p-l-24 p-r-24 m-b-16">
+      <p class="font13 m-b-12 m-t-16">{{ $t(`recharge.amount.text`) }}</p>
+      <div class="ntf-form m-b-16">
         <van-form ref="form" @submit="onSubmit">
           <!-- :placeholder="inputPlace" -->
           <van-field
@@ -218,6 +220,9 @@ export default {
 </script>
 <style scoped lang="less">
 .message-page {
+  .gray {
+    color: #cacbce;
+  }
   .type-text {
     text-align: center;
   }
