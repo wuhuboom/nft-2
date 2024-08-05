@@ -1,8 +1,7 @@
 <template>
   <div class="safe-billing font12 color-primary pb-16">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('backapi.self.safe.bill.data.text')"
     >
     </AppTopBar>
@@ -26,7 +25,10 @@
       </ul>
       <van-list
         v-model="loading"
-        :finished="curItem.data.hasNext === false"
+        :finished="
+          curItem.data.totalPage !== null &&
+          curItem.data.pageNo > curItem.data.totalPage
+        "
         loading-text="loading"
         @load="onLoad"
       >
@@ -205,6 +207,12 @@ export default {
         }
       });
     },
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

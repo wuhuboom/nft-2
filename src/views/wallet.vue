@@ -1,37 +1,34 @@
 <template>
   <div class="wallet-page font12 p-l-24 p-r-24">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('fuc.safe.text')"
     >
+      <template #right>
+        <van-icon
+          class="color-fff"
+          @click="$router.push({ name: 'Explanation' })"
+          size="24"
+          name="question-o"
+        />
+      </template>
     </AppTopBar>
     <ul class="text-center color-primary m-b-24">
       <li class="m-b-8">
-        <p class="money-str m-b-4">
+        <p class="safe-icon m-t-20 m-b-8 center-center">
+          <img class="d-img" src="@/assets/img/ntf/safeh1.png" alt="" />
+        </p>
+        <p class="m-b-4 font16">{{ $t("wallet.Account.Balance") }}</p>
+        <p class="money-str m-b-4 color-fff">
           {{ numToFixed(moneyStr, $globalUnit.val) }}
         </p>
-        <p class="m-b-4">{{ $t("wallet.Account.Balance") }}</p>
-        <p>
-          <i @click="refresh" class="iconfont font14 icon-shuaxin active"></i>
+
+        <p class="m-t-4">
+          <i @click="refresh" class="iconfont font16 icon-shuaxin active"></i>
         </p>
       </li>
-      <!-- <li class="m-b-8">
-        <p class="m-b-4">
-          {{ $t(`backapi.self.safe.today.cumulative .text`) }}
-        </p>
-        <p class="color-fff">
-          {{ numToFixed(todayIncomeStr, $globalUnit.val) }}
-        </p>
-      </li>
-      <li>
-        <p class="m-b-4">{{ $t(`backapi.self.safe.all.cumulative.text`) }}</p>
-        <p class="color-fff">
-          {{ numToFixed(totalIncomeStr, $globalUnit.val) }}
-        </p>
-      </li> -->
     </ul>
-    <p class="black-line m-t-16 m-b-24"></p>
+
     <div>
       <ul
         class="align-center menu font16"
@@ -87,26 +84,12 @@ export default {
           active: false,
         },
         {
-          icon: require("@/assets/img/red/safe4.png"),
-          text: `${i18n.t("wallet.index.explanation.text")}`,
-          name: "Explanation",
-          active: false,
-        },
-        {
           icon: require("@/assets/img/red/safe5.png"),
           text: `${i18n.t("wallet.index.billing.details.text")}`,
           name: "SafeBilling",
           active: false,
         },
       ];
-      // if (this.playerConfig.showH5 === 1) {
-      //   arr.push({
-      //     icon: require("@/assets/img/wallet4.webp"),
-      //     text: "C2C",
-      //     name: "UserProfile",
-      //     active: false,
-      //   });
-      // }
       return arr;
     },
     moneyStr() {
@@ -152,10 +135,23 @@ export default {
     this.safeInfo();
     this.getConfig();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .wallet-page {
+  color: #9493ac;
+  .safe-icon {
+    img {
+      width: 39px;
+      height: 39px;
+    }
+  }
   .money-str {
     font-size: 26px;
     font-weight: 900;
