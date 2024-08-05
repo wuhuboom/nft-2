@@ -1,8 +1,7 @@
 <template>
   <div class="bank-account-list color-primary font12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('security.bank.card.text')"
     >
     </AppTopBar>
@@ -159,10 +158,18 @@ export default {
     async getEwalletData() {
       const [err, res] = await userApi.walletInfo();
       if (err) return;
+      // res.data = [
+      //   {
+      //     address: "12132",
+      //     type: "ERC20",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       if (res.data && !res.data.length) {
         // this.$router.push({ name: "AddressWallet" });
         return;
       }
+
       this.wallwtList = res.data;
     },
     async getBankList() {
@@ -170,6 +177,13 @@ export default {
       if (err) {
         return;
       }
+      // res.data = [
+      //   {
+      //     cardNumber: "12132",
+      //     cardName: "中国银行",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       if (res.data) {
         if (Array.isArray(res.data)) {
           this.bankList = res.data;
@@ -183,6 +197,13 @@ export default {
       if (err) {
         return;
       }
+      // res.data = [
+      //   {
+      //     addr: "12132",
+      //     protocol: "ERC20",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       this.usdtList = res.data;
     },
   },
@@ -197,6 +218,12 @@ export default {
       return;
     }
     this.listWay = res.data;
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
