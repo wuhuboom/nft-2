@@ -27,7 +27,7 @@
         </li>
       </ul>
       <p class="font13 m-b-12 m-t-16">{{ $t(`recharge.amount.text`) }}</p>
-      <div class="ntf-form m-b-16">
+      <div class="ntf-form m-b-12">
         <van-form ref="form" @submit="onSubmit">
           <!-- :placeholder="inputPlace" -->
           <van-field
@@ -41,15 +41,32 @@
             type="number"
           >
             <template #button>
-              <span class="color-fff">{{ chooseRecType.currencySymbol }}</span>
+              <!-- <span class="color-fff">{{ chooseRecType.currencySymbol }}</span> -->
             </template>
           </van-field>
-          <p class="limit">
+          <p class="limit m-t-8">
             {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
           </p>
+          <div class="justify-between m-t-8">
+            <p>
+              <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
+              ><span class="color-fff">
+                <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
+              }} -->
+                {{ chooseRecType.rate }}</span
+              >
+            </p>
+            <p class="flex-1 amount-text">
+              <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
+              ><span class="color-fff"
+                >{{ ngnToUsdtMoney }}
+                <!-- {{ chooseRecType.currencySymbol }} -->
+              </span>
+            </p>
+          </div>
         </van-form>
       </div>
-      <ul class="pre-amount p-l-24 p-r-24 m-b-16">
+      <ul class="pre-amount">
         <li
           class="m-b-8"
           v-for="(item, idx) in quickAmountList"
@@ -61,39 +78,18 @@
           </div>
         </li>
       </ul>
-      <div class="mx-16">
-        <div class="count text-center p-t-16">
-          <div class="justify-between">
-            <p class="flex-1 flex-column center-center">
-              <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}</span
-              ><span>
-                <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
-              }} -->
-                {{ chooseRecType.rate }}</span
-              >
-            </p>
-            <p class="flex-1 flex-column center-center">
-              <span class="m-b-4">{{ $t("recharge.real.amount.text") }}</span
-              ><span
-                >{{ ngnToUsdtMoney }}
-                <!-- {{ chooseRecType.currencySymbol }} -->
-              </span>
-            </p>
-          </div>
-          <div class="center-center m-t-8">
-            <van-button
-              block
-              class="p-l-4 p-r-4 font12 page-res-btn"
-              type="info"
-              :loading="loading"
-              @click="$refs.form.submit()"
-            >
-              {{ $t("recharge.button.now.text") }}</van-button
-            >
-          </div>
-        </div>
+      <div class="center-center m-t-20">
+        <van-button
+          block
+          class="ntf-vant-btn"
+          type="info"
+          :loading="loading"
+          @click="$refs.form.submit()"
+        >
+          {{ $t("recharge.button.now.text") }}</van-button
+        >
       </div>
-      <ul class="p-x-24">
+      <ul class="m-t-20">
         <li>{{ $t(`recharge.tip.title.text`) }}</li>
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content1.text`) }}
@@ -220,6 +216,9 @@ export default {
 </script>
 <style scoped lang="less">
 .message-page {
+  .amount-text {
+    text-align: right;
+  }
   .gray {
     color: #cacbce;
   }
@@ -296,15 +295,17 @@ export default {
     display: flex;
     flex-wrap: wrap;
     & > li {
-      width: 25%;
-      height: 24px;
-      line-height: 21px;
-      text-align: center;
+      width: 33.333%;
+
       padding: 4px;
     }
     .num {
-      border: solid 1px #9d9d9d;
-      border-radius: 8px;
+      text-align: center;
+      line-height: 31px;
+      height: 31px;
+      border-radius: 6px;
+      border: solid 1px #393939;
+      background-color: #292929;
     }
     .active {
       background-color: var(--main);
