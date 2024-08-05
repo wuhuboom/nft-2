@@ -1,13 +1,12 @@
 <template>
   <div class="wallet-page font12 p-r-12 p-l-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
       :topBarTitle="$t('user.Report.Management')"
       :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <div>
       <ul
-        class="align-center menu font16 m-b-12 p-l-12 p-r-12"
+        class="align-center menu font16 m-t-12 m-b-12 p-l-12 p-r-12"
         :key="idx"
         v-for="(item, idx) in list"
         @click="goTo(item.name)"

@@ -1,9 +1,8 @@
 <template>
   <div class="change-password-view font12 color-primary">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
       :topBarTitle="$t('security.pass.text')"
+      :styleObj="{ backgroundColor: 'transparent' }"
     >
     </AppTopBar>
     <HistoryNav
