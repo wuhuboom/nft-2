@@ -18,6 +18,7 @@
     <div v-else class="m-b-24">
       <van-form class="ntf-form" @submit="onSubmit">
         <van-field
+          class="m-b-16"
           v-model.trim="form.name"
           :placeholder="$t('backapi.self.whitdraw.type.ewallet.form.name.text')"
           :rules="[
@@ -27,11 +28,12 @@
             },
           ]"
         />
-        <van-field
-          v-if="usdtTypeOptions.length"
-          :placeholder="$t('backapi.self.safe.bill.data.type.text')"
-        >
-          <template #input>
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            class="full100"
+            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+            v-model="typeValue"
+          >
             <el-select
               v-model="form.typeValue"
               class="full100"
@@ -45,8 +47,8 @@
               >
               </el-option>
             </el-select>
-          </template>
-        </van-field>
+          </el-select>
+        </div>
 
         <van-field
           v-model.trim="form.usdtAddress"
@@ -54,26 +56,26 @@
           :placeholder="text"
           :rules="ewalletRule"
         />
-        <van-field :placeholder="$t('index.editor.psd.text')">
-          <template #input>
-            <el-select
-              v-model="form.verificationVal"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="form.verificationVal"
+            class="full100"
+            :disabled="countdown > 0"
+            :placeholder="$t('index.editor.psd.text')"
+          >
+            <el-option
+              v-for="item in verificationOpt"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in verificationOpt"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </template>
-        </van-field>
+            </el-option>
+          </el-select>
+        </div>
 
         <van-field
           :placeholder="$t('form.vercode.text')"
+          class="mb-16 field-inlude-code"
           v-model.trim="form.veriftValue"
           :rules="[
             {
@@ -89,7 +91,7 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
@@ -98,6 +100,7 @@
 
         <van-field
           v-model.trim="form.payPwd"
+          class="m-b-16"
           type="password"
           autocomplete="new-password"
           :placeholder="
@@ -116,7 +119,7 @@
         />
         <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             block
             type="info"
             :loading="formLoaing"
