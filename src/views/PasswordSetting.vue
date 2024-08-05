@@ -104,7 +104,7 @@
             },
           ]"
         />
-        <div class="sumit-section center-center pt-16 px-16">
+        <div class="sumit-section center-center">
           <van-button
             class="ntf-vant-btn"
             :loading="loading"

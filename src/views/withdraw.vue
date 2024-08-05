@@ -1,8 +1,7 @@
 <template>
   <div class="message-page font12 p-l-16 p-r-16">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('home.index.withdraw.text')"
     >
     </AppTopBar>
@@ -26,9 +25,9 @@
           </div>
         </li>
       </ul>
-      <div class="p-x-24 p-r-24">
+      <div class="m-t-20">
         <p>{{ getWithdrawChooseName }}</p>
-        <div class="justify-between align-center list-doc m-b-4">
+        <div class="justify-between align-center m-b-4">
           <div>
             <el-select
               v-if="typeOptions.length"
@@ -46,48 +45,84 @@
           </div>
           <div @click="getWithdrawRoutingJump">{{ getWithdrawBindName }}</div>
         </div>
-        <p>{{ $t("deal.buyDetail.387081-3") }}</p>
-        <div ref="align" class="justify-between align-center list-doc">
-          <div class="flex-1">
-            <div class="black-form">
+        <p class="m-b-8">{{ $t("deal.buyDetail.387081-3") }}</p>
+        <div ref="align">
+          <div>
+            <div class="ntf-form">
               <van-field
                 ref="amount"
+                class="field-inlude-code"
                 :placeholder="`${$t('deal.buyDetail.387081-5')} ${
                   chooseRecType.withdrawMin
                 }-${chooseRecType.withdrawMax}`"
                 v-model.trim="amount"
                 type="number"
               >
+                <template #button>
+                  <van-button
+                    size="small"
+                    @click="setAll"
+                    class="send-code-btn"
+                    >{{ $t(`order.search.all.text`) }}</van-button
+                  >
+                </template>
               </van-field>
             </div>
           </div>
-          <div @click="setAll">
-            {{ $t(`order.search.all.text`) }}
+          <div class="justify-between m-t-8">
+            <p class="font12 justify-between">
+              <span>{{ $t("recharge.usdt.rate.text") }}:</span
+              ><span>{{ chooseRecType.rate }}</span>
+            </p>
+            <p class="font12 justify-between">
+              <span>{{ $t("wallet.index.balance.text") }}:</span
+              ><span>{{ balanceMoneyNum }}</span>
+            </p>
           </div>
+          <div class="justify-between m-t-8">
+            <p class="font12 justify-between">
+              <span>{{ $t("Withdrawal.risk.fee") }}:</span
+              ><span
+                >{{ withdrawNumRate }} {{ chooseRecType.currencySymbol }}</span
+              >
+            </p>
+            <p class="font12 justify-between">
+              <span>{{ $t("recharge.real.amount.text") }}:</span
+              ><span
+                >{{ actualAmountTran }} {{ chooseRecType.currencySymbol }}</span
+              >
+            </p>
+          </div>
+
+          <!-- <div @click="setAll">
+            {{ $t(`order.search.all.text`) }}
+          </div> -->
         </div>
-        <van-form ref="form" class="black-form withdraw-form">
-          <el-select
-            style="width: 100%"
-            v-if="msg"
-            class="bg-select"
-            :placeholder="$t('index.editor.psd.text')"
-            v-model="form.verificationVal"
-            :disabled="countdown > 0"
-          >
-            <el-option
-              v-for="item in verificationOpt"
-              :key="item.value"
-              :label="item.text"
-              :value="item.value"
+        <van-form ref="form" class="ntf-form">
+          <div class="el-ntf-select m-b-16 m-t-16">
+            <el-select
+              style="width: 100%"
+              v-if="msg"
+              :placeholder="$t('index.editor.psd.text')"
+              v-model="form.verificationVal"
+              :disabled="countdown > 0"
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in verificationOpt"
+                :key="item.value"
+                :label="item.text"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
 
           <van-field
             :placeholder="$t('form.vercode.text')"
             v-model.trim="form.vercode"
             v-if="msg"
             name="vercode"
+            class="mb-16 field-inlude-code"
             :rules="[
               {
                 required: true,
@@ -102,8 +137,7 @@
                 size="small"
                 @click="sendCode"
                 :disabled="countdown > 0"
-                class="page-res-btn center-center"
-                color="#0025fc"
+                class="send-code-btn"
                 >{{ $t("deal.chat.921073-7")
                 }}{{ countdown ? `(${countdown})` : "" }}</van-button
               >
@@ -111,6 +145,7 @@
           </van-field>
           <van-field
             type="password"
+            class="m-b-16"
             :placeholder="
               $t(`user.security.center.bankcard.bankadd.input.pay.pass.text`)
             "
@@ -129,47 +164,16 @@
             ]"
           />
         </van-form>
-        <div class="count-col p-t-16">
-          <div class="justify-between count-col-up align-center">
-            <div>
-              <p class="font12 flex-column center-center">
-                <span>{{ $t("recharge.usdt.rate.text") }}</span
-                ><span class="color-active">{{ chooseRecType.rate }}</span>
-              </p>
-              <p class="font12 flex-column center-center">
-                <span>{{ $t("wallet.index.balance.text") }}</span
-                ><span class="color-active">{{ balanceMoneyNum }}</span>
-              </p>
-            </div>
-
-            <div>
-              <p class="font12 flex-column center-center">
-                <span>{{ $t("Withdrawal.risk.fee") }}</span
-                ><span class="color-active"
-                  >{{ withdrawNumRate }}
-                  {{ chooseRecType.currencySymbol }}</span
-                >
-              </p>
-              <p class="font12 flex-column center-center">
-                <span>{{ $t("recharge.real.amount.text") }}</span
-                ><span class="color-active"
-                  >{{ actualAmountTran }}
-                  {{ chooseRecType.currencySymbol }}</span
-                >
-              </p>
-            </div>
-          </div>
-          <div class="sumit-section center-center">
-            <van-button
-              class="page-res-btn"
-              block
-              type="info"
-              :loading="loading"
-              @click="sumitData"
-            >
-              {{ $t("confirm.btn.text") }}</van-button
-            >
-          </div>
+        <div class="p-t-16">
+          <van-button
+            class="ntf-vant-btn"
+            block
+            type="info"
+            :loading="loading"
+            @click="sumitData"
+          >
+            {{ $t("confirm.btn.text") }}</van-button
+          >
         </div>
         <ul class="m-t-16">
           <li>{{ $t(`recharge.tip.title.text`) }}</li>
@@ -642,6 +646,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

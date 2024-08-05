@@ -1,8 +1,7 @@
 <template>
-  <div class="address-add font12 color-primary">
+  <div class="address-add font12 p-l-12 p-r-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="
         id ? $t('Edt.Bank.Card') : $t('bankcard.bankadd.title.text')
       "
@@ -12,32 +11,27 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-l-24 m-r-24 m-b-24">
-      <van-form class="defind-form defind-form-row" @submit="onSubmit">
-        <van-field
-          :label="
-            $t('user.security.center.bankcard.bankadd.input.address.text')
-          "
-        >
-          <template #input>
-            <el-select
-              v-model="form.typeValue"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
+    <div v-else class="m-b-24">
+      <van-form class="ntf-form" @submit="onSubmit">
+        <div class="el-ntf-select m-b-16 m-t-16">
+          <el-select
+            v-model="form.typeValue"
+            class="full100"
+            :placeholder="$t('index.editor.psd.text')"
+          >
+            <el-option
+              v-for="item in usdtTypeOptions"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in usdtTypeOptions"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </template>
-        </van-field>
+            </el-option>
+          </el-select>
+        </div>
 
         <van-field
           v-model.trim="form.provinceStr"
+          class="m-b-16"
           :label="
             $t('user.security.center.bankcard.bankadd.input.province.text') +
             '(' +
@@ -57,6 +51,7 @@
         />
         <van-field
           v-model.trim="form.cityStr"
+          class="m-b-16"
           :label="
             $t('user.security.center.bankcard.bankadd.input.city.text') +
             '(' +
@@ -76,6 +71,7 @@
         />
         <van-field
           v-model.trim="form.branchStr"
+          class="m-b-16"
           :label="$t('user.security.center.bankcard.bankadd.input.branch.text')"
           :rules="[
             {
@@ -90,6 +86,7 @@
         />
         <van-field
           v-model.trim="form.accountNameStr"
+          class="m-b-16"
           :label="
             $t('user.security.center.bankcard.bankadd.input.account.name.text')
           "
@@ -106,6 +103,7 @@
         />
         <van-field
           v-model.trim="form.cardIDStr"
+          class="m-b-16"
           v-if="withDrawAreaStatus"
           :label="$t('backapi.self.add.bank.cardID.text')"
           :rules="[
@@ -119,6 +117,7 @@
         />
         <van-field
           v-model.trim="form.cardPhoneStr"
+          class="m-b-16"
           v-if="withDrawAreaStatus"
           :label="$t('backapi.self.add.bank.phone.text')"
           :rules="[
@@ -132,6 +131,7 @@
         />
         <van-field
           v-model.trim="form.cardNumStr"
+          class="m-b-16"
           :label="
             $t('user.security.center.bankcard.bankadd.input.card.number.text')
           "
@@ -148,6 +148,7 @@
         />
         <van-field
           v-model.trim="form.cardConfirmNumStr"
+          class="m-b-16"
           :label="
             $t('user.security.center.bankcard.bankadd.input.confirm.text')
           "
@@ -164,6 +165,7 @@
         />
         <van-field
           v-model.trim="form.backCode"
+          class="m-b-16"
           label="IFSC"
           v-if="indian"
           :rules="[
