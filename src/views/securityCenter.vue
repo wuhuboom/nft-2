@@ -3,8 +3,8 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('user.Report.Management')"
-    >
-    </AppTopBar>
+      :styleObj="{ backgroundColor: 'transparent' }"
+    ></AppTopBar>
     <div>
       <ul
         class="align-center menu font16"
@@ -15,7 +15,6 @@
         <li class="icon m-r-16"><img :src="item.icon" alt="" /></li>
         <li class="flex-1 align-center justify-between">
           {{ item.text }}
-          <p class="dec"><img src="@/assets/img/red/usernav6.png" alt="" /></p>
         </li>
       </ul>
     </div>
@@ -38,13 +37,13 @@ export default {
     list() {
       const arr = [
         {
-          icon: require("@/assets/img/red/security1.png"),
+          icon: require("@/assets/img/ntf/set1.png"),
           text: i18n.t("security.pass.text"),
           name: "ChangPassword",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/security2.png"),
+          icon: require("@/assets/img/ntf/set2.png"),
           text: `${i18n.t("security.fun.pass.text")}`,
           name: "ChangFundPassword",
           active: false,
@@ -56,7 +55,7 @@ export default {
         //   active: false,
         // },
         {
-          icon: require("@/assets/img/red/security5.png"),
+          icon: require("@/assets/img/ntf/set3.png"),
           text: `${i18n.t("security.bank.card.text")}`,
           name: "BankAccountList",
           active: false,
@@ -68,13 +67,13 @@ export default {
         //   active: false,
         // },
         {
-          icon: require("@/assets/img/red/group-135@2x.png"),
+          icon: require("@/assets/img/ntf/set4.png"),
           text: `${i18n.t("security.phone.text")}`,
           name: "UpdataPhone",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/group-134@2x.png"),
+          icon: require("@/assets/img/ntf/set5.png"),
           text: `${i18n.t("security.mail.text")}`,
           name: "UpdataEmail",
           active: false,
@@ -125,6 +124,12 @@ export default {
     this.safeInfo();
     this.getConfig();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
@@ -147,7 +152,6 @@ export default {
     height: 65px;
     color: #fff;
     & > li:nth-child(2) {
-      border-bottom: 1px solid #484b4c;
       height: 100%;
       display: flex;
       align-items: center;
@@ -163,15 +167,6 @@ export default {
         width: 10px;
         display: block;
       }
-    }
-  }
-  ::v-deep {
-    .appp-top-bar {
-      background-color: var(--bg-body) !important;
-    }
-    .appp-top-bar-title,
-    .icon-button {
-      color: var(--primary) !important;
     }
   }
 }

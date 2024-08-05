@@ -3,7 +3,7 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`Settings`)"
-      :styleObj="{ backgroundColor: 'tra' }"
+      :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <ul class="flex-column center-center">
       <li class="m-t-20">
@@ -68,7 +68,7 @@ export default {
         {
           title: i18n.t("user.menu.title1.text"),
           icon: require("@/assets/img/ntf/sc1.png"),
-          link: "/pages/function/rechargeHistory",
+          link: "/pages/securityCenter/index",
         },
         {
           title: i18n.t("user.help.center.contact.us.text"),
@@ -124,7 +124,7 @@ export default {
           this.show = true;
           return;
         }
-        this.$router.push({ name: item.link });
+        this.$router.push({ path: item.link });
       }
     },
     phoneNumber(p) {
