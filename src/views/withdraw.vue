@@ -26,25 +26,33 @@
         </li>
       </ul>
       <div class="m-t-20">
-        <p>{{ getWithdrawChooseName }}</p>
-        <div class="justify-between align-center m-b-4">
-          <div>
-            <el-select
-              v-if="typeOptions.length"
-              :placeholder="getWithdrawChooseName"
-              v-model="typeValue"
+        <p class="m-b-8">{{ getWithdrawChooseName }}</p>
+        <div class="el-ntf-select">
+          <el-select
+            class="full100"
+            :placeholder="getWithdrawChooseName"
+            v-model="typeValue"
+          >
+            <el-option
+              v-for="item in typeOptions"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in typeOptions"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </div>
-          <div @click="getWithdrawRoutingJump">{{ getWithdrawBindName }}</div>
+            </el-option>
+          </el-select>
         </div>
+        <div
+          class="add-new-card center-center m-t-8 m-b-16"
+          @click="getWithdrawRoutingJump"
+        >
+          <van-icon name="plus" size="14" class="m-r-8" />
+          {{ getWithdrawBindName }}
+        </div>
+        <!-- <div class="justify-between m-b-16 align-center m-b-4">
+          <div></div>
+          <div @click="getWithdrawRoutingJump">{{ getWithdrawBindName }}</div>
+        </div> -->
         <p class="m-b-8">{{ $t("deal.buyDetail.387081-3") }}</p>
         <div ref="align">
           <div>
@@ -657,6 +665,11 @@ export default {
 </script>
 <style scoped lang="less">
 .message-page {
+  .add-new-card {
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px #f5f6f8;
+  }
   .type-text {
     font-size: 18px;
     font-weight: bold;
