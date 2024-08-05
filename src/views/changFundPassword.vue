@@ -1,8 +1,7 @@
 <template>
-  <div class="change-password-view color-primary font12 pb-16">
+  <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('security.fun.pass.text')"
     >
     </AppTopBar>
@@ -17,10 +16,10 @@
         text: $t(`index.login.forget.text`),
       }"
     />
-    <div class="m-l-24 m-r-24">
-      <van-form class="defind-form" @submit="onSubmit">
+    <div>
+      <van-form class="ntf-form m-t-16" @submit="onSubmit">
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.loginPass"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -37,7 +36,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -54,7 +53,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -74,9 +73,9 @@
             },
           ]"
         />
-        <div class="sumit-section center-center pt-16 px-16">
+        <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
