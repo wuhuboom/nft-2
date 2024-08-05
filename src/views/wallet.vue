@@ -52,6 +52,7 @@
     </ul>
     <div class="p-l-16 p-r-16">
       <BillsList :list="results" />
+      <NoData v-if="!results.length" />
     </div>
   </div>
 </template>
