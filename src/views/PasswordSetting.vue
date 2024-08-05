@@ -14,7 +14,7 @@
       :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
     />
     <div>
-      <van-form class="ntf-form m-t-16" @submit="onSubmit">
+      <van-form class="ntf-form" @submit="onSubmit">
         <el-select
           v-model="form.verificationVal"
           :placeholder="$t('index.editor.psd.text')"
@@ -227,6 +227,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

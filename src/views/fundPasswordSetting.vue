@@ -1,9 +1,8 @@
 <template>
-  <div class="change-password-view color-primary font12 pb-16">
+  <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
       :topBarTitle="$t('security.fun.pass.text')"
+      :styleObj="{ backgroundColor: 'transparent' }"
     >
     </AppTopBar>
     <HistoryNav
@@ -17,8 +16,8 @@
         text: $t(`index.login.forget.text`),
       }"
     />
-    <div class="m-l-24 m-r-24">
-      <van-form class="defind-form" @submit="onSubmit">
+    <div>
+      <van-form class="ntf-form" @submit="onSubmit">
         <el-select
           v-model="form.verificationVal"
           :placeholder="$t('index.editor.psd.text')"
@@ -33,21 +32,21 @@
           </el-option>
         </el-select>
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-if="form.verificationVal == 1"
           disabled
           :value="user.email"
           :placeholder="$t('form.email.text')"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-if="form.verificationVal == 2"
           :value="user.phone"
           disabled
           :placeholder="$t('password.setting.phone.old.phone.text')"
         />
         <van-field
-          class="mb-16"
+          class="mb-16 field-inlude-code"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -64,15 +63,14 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
-              color="#0025fc"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.password"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -89,7 +87,7 @@
           ]"
         />
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -111,7 +109,7 @@
         />
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
@@ -231,6 +229,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
