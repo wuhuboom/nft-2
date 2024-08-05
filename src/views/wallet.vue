@@ -1,5 +1,5 @@
 <template>
-  <div class="wallet-page font12 p-l-24 p-r-24">
+  <div class="wallet-page font12">
     <AppTopBar
       :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('fuc.safe.text')"
@@ -43,19 +43,34 @@
         </li>
       </ul>
     </div>
+    <ul
+      @click="$router.push({ name: 'SafeBilling' })"
+      class="align-center color-fff safe-bill justify-between p-l-16 p-r-16 p-b-12 p-t-12"
+    >
+      <li class="font14 bold">{{ $t("backapi.self.safe.bill.data.text") }}</li>
+      <li><van-icon name="arrow" size="18" /></li>
+    </ul>
+    <div class="p-l-16 p-r-16">
+      <BillsList :list="results" />
+    </div>
   </div>
 </template>
 
 <script>
+import BillsList from "@/components/home/BillsList";
 import userApi from "@/api/user";
 import i18n from "@/locale";
 export default {
   name: "WithdrawView",
+  components: {
+    BillsList,
+  },
   data() {
     return {
       loading: false,
       data: {},
       playerConfig: {},
+      results: [],
     };
   },
   computed: {
@@ -83,12 +98,6 @@ export default {
           name: "TransferSelf",
           active: false,
         },
-        {
-          icon: require("@/assets/img/red/safe5.png"),
-          text: `${i18n.t("wallet.index.billing.details.text")}`,
-          name: "SafeBilling",
-          active: false,
-        },
       ];
       return arr;
     },
@@ -106,6 +115,15 @@ export default {
     },
   },
   methods: {
+    async getBill() {
+      const [err, res] = await userApi.safeChangeLog({
+        pageNo: 1,
+        pageSize: 16,
+      });
+      if (err) return;
+
+      this.results = res.data.results;
+    },
     goTo(name) {
       this.$router.push({ name });
     },
@@ -134,6 +152,7 @@ export default {
   created() {
     this.safeInfo();
     this.getConfig();
+    this.getBill();
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
@@ -151,6 +170,9 @@ export default {
       width: 39px;
       height: 39px;
     }
+  }
+  .safe-bill {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .money-str {
     font-size: 26px;

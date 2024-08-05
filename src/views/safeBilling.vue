@@ -10,8 +10,8 @@
       <van-Loading color="#1989fa" />
     </div>
     <div v-else class="">
-      <ul class="drop-list justify-between align-center m-b-12 m-l-16 m-r-16">
-        <li>
+      <ul class="drop-list justify-between align-center m-b-12">
+        <li class="m-l-16">
           <el-select v-model="tabCurrent" @change="changTab">
             <el-option
               v-for="item in tabsList"
@@ -32,33 +32,10 @@
         loading-text="loading"
         @load="onLoad"
       >
-        <div class="p-l-16 p-r-16">
-          <van-grid class="color-primary m-b-8" :border="false" :column-num="3">
-            <van-grid-item v-for="value in head" :key="value">
-              {{ value }}
-            </van-grid-item>
-          </van-grid>
-          <van-grid
-            class="color-primary m-b-8"
-            v-for="(item, idx) in curItem.data.results"
-            :key="idx"
-            :border="false"
-            :column-num="3"
-          >
-            <van-grid-item class="color-fff">
-              {{ item.createdAt | timestampStr }}
-            </van-grid-item>
-            <van-grid-item class="color-fff">
-              {{ dataTxt(item) }}
-            </van-grid-item>
-            <van-grid-item class="color-fff">
-              {{
-                numToFixed(item.changeMoney, $globalUnit.val) / $globalNum.val
-              }}
-            </van-grid-item>
-          </van-grid>
-        </div>
       </van-list>
+      <div class="p-l-16 p-r-16">
+        <BillsList :list="curItem.data.results" />
+      </div>
 
       <NoData v-if="nothing" />
     </div>
@@ -66,6 +43,7 @@
 </template>
 
 <script>
+import BillsList from "@/components/home/BillsList";
 const initData = () => {
   return {
     data: {
@@ -134,6 +112,9 @@ export default {
       ],
       tabCurrent: 0,
     };
+  },
+  components: {
+    BillsList,
   },
   computed: {
     curItem() {
