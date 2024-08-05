@@ -1,8 +1,7 @@
 <template>
-  <div class="address-add font12 color-primary">
+  <div class="address-add font12 p-l-16 p-r-16">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="id ? $t('Edit.USDT.Address') : $t('Add.USDT.Address')"
     >
     </AppTopBar>
@@ -10,33 +9,36 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-l-24 m-r-24">
-      <van-form class="defind-form defind-form-row" @submit="onSubmit">
+    <div v-else class="m-t-20">
+      <van-form class="ntf-form" @submit="onSubmit">
         <van-field
           v-model.trim="form.currency"
-          :label="$t(`withdraw.add.with.currency.text`)"
+          class="m-b-16"
+          :placeholder="$t(`withdraw.add.with.currency.text`)"
           :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
         />
-        <van-field :label="$t('backapi.self.safe.bill.data.type.text')">
-          <template #input>
-            <el-select
-              v-model="form.typeValue"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="form.typeValue"
+            class="full100"
+            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+          >
+            <el-option
+              v-for="item in usdtTypeOptions"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in usdtTypeOptions"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </template>
-        </van-field>
+            </el-option>
+          </el-select>
+        </div>
+
         <van-field
           v-model.trim="form.usdtAddress"
-          :label="$t('user.security.center.bankcard.useradd.usdt.address.text')"
+          class="m-b-16"
+          :placeholder="
+            $t('user.security.center.bankcard.useradd.usdt.address.text')
+          "
           :rules="[
             {
               required: true,
@@ -48,27 +50,27 @@
             },
           ]"
         />
-        <van-field :label="$t('index.editor.psd.text')">
-          <template #input>
-            <el-select
-              v-model="form.verificationVal"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
-              :disabled="countdown > 0"
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="form.verificationVal"
+            class="full100"
+            :placeholder="$t('index.editor.psd.text')"
+            :disabled="countdown > 0"
+          >
+            <el-option
+              v-for="item in verificationOpt"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in verificationOpt"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </template>
-        </van-field>
+            </el-option>
+          </el-select>
+        </div>
+
         <van-field
-          :label="$t('form.vercode.text')"
+          :placeholder="$t('form.vercode.text')"
           v-model.trim="form.veriftValue"
+          class="m-b-16 field-inlude-code"
           :rules="[
             {
               required: true,
@@ -83,8 +85,7 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
-              color="#0025fc"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
@@ -94,8 +95,9 @@
         <van-field
           v-model.trim="form.payPwd"
           type="password"
+          class="mb-16"
           autocomplete="new-password"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.pay.pass.text')
           "
           :rules="[
@@ -111,7 +113,7 @@
         />
         <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             block
             type="info"
             :loading="formLoaing"
@@ -284,6 +286,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
