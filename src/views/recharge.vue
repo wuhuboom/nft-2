@@ -1,8 +1,7 @@
 <template>
   <div class="message-page font12 color-primary">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('deal.recharge.354498-0')"
     >
     </AppTopBar>
@@ -208,6 +207,12 @@ export default {
   },
   created() {
     this.recharge();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

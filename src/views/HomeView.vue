@@ -52,7 +52,7 @@
           class="els"
           @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
         >
-          {{ $t(`deal_deposit`) }}
+          {{ $t("deal.recharge.354498-0") }}
         </li>
         <li class="els" @click="$router.push({ path: '/wallet/withdraw' })">
           {{ $t(`dropdown.billing.income.withdraw.text`) }}
