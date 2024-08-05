@@ -1,5 +1,5 @@
 <template>
-  <div class="wallet-page font12 p-l-24 p-r-24">
+  <div class="wallet-page font12 p-r-12 p-l-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('user.Report.Management')"
@@ -7,12 +7,14 @@
     ></AppTopBar>
     <div>
       <ul
-        class="align-center menu font16"
+        class="align-center menu font16 m-b-12 p-l-12 p-r-12"
         :key="idx"
         v-for="(item, idx) in list"
         @click="goTo(item.name)"
       >
-        <li class="icon m-r-16"><img :src="item.icon" alt="" /></li>
+        <li class="icon m-r-16">
+          <img class="d-img" :src="item.icon" alt="" />
+        </li>
         <li class="flex-1 align-center justify-between">
           {{ item.text }}
         </li>
@@ -149,24 +151,13 @@ export default {
     );
   }
   .menu {
-    height: 65px;
-    color: #fff;
-    & > li:nth-child(2) {
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-    .icon {
-      img {
-        width: 45px;
-        display: block;
-      }
-    }
-    .dec {
-      img {
-        width: 10px;
-        display: block;
-      }
+    height: 52px;
+    color: #cacbce;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    img {
+      width: 24px;
+      height: 24px;
     }
   }
 }
