@@ -18,10 +18,10 @@
           :key="index"
         >
           <div class="cont">
-            <p class="pic center-center">
-              <img v-if="item.img" :src="item.img" alt="" />
+            <p v-if="item.img" class="pic center-center">
+              <img :src="item.img" alt="" />
             </p>
-            <p class="center-center">{{ item.name }}</p>
+            <p v-else class="center-center">{{ item.name }}</p>
           </div>
         </li>
       </ul>
@@ -225,19 +225,20 @@ export default {
     display: flex;
     flex-wrap: wrap;
     & > li {
-      width: 33.33%;
       .cont {
-        height: 84px;
+        width: 74px;
+        height: 55px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         border-radius: 15px;
-        border: solid 1px #9d9d9d;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid transparent;
       }
       .pic {
-        height: 42px;
-        width: 94px;
+        width: 65px;
+        height: 28px;
         img {
           width: 100%;
           height: 100%;
