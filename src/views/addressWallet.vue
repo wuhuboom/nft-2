@@ -15,7 +15,7 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-b-24">
+    <div v-else class="m-t-20">
       <van-form class="ntf-form" @submit="onSubmit">
         <van-field
           class="m-b-16"
@@ -331,6 +331,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
