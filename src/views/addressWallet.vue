@@ -1,8 +1,7 @@
 <template>
-  <div class="address-add font12 color-primary">
+  <div class="address-add font12 p-l-16 p-r-16">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="
         $t(
           id
@@ -16,11 +15,11 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-l-24 m-r-24 m-b-24">
-      <van-form class="defind-form defind-form-row" @submit="onSubmit">
+    <div v-else class="m-b-24">
+      <van-form class="ntf-form" @submit="onSubmit">
         <van-field
           v-model.trim="form.name"
-          :label="$t('backapi.self.whitdraw.type.ewallet.form.name.text')"
+          :placeholder="$t('backapi.self.whitdraw.type.ewallet.form.name.text')"
           :rules="[
             {
               required: true,
@@ -30,7 +29,7 @@
         />
         <van-field
           v-if="usdtTypeOptions.length"
-          :label="$t('backapi.self.safe.bill.data.type.text')"
+          :placeholder="$t('backapi.self.safe.bill.data.type.text')"
         >
           <template #input>
             <el-select
@@ -52,10 +51,10 @@
         <van-field
           v-model.trim="form.usdtAddress"
           class="mb-16"
-          :label="text"
+          :placeholder="text"
           :rules="ewalletRule"
         />
-        <van-field :label="$t('index.editor.psd.text')">
+        <van-field :placeholder="$t('index.editor.psd.text')">
           <template #input>
             <el-select
               v-model="form.verificationVal"
@@ -74,7 +73,7 @@
         </van-field>
 
         <van-field
-          :label="$t('form.vercode.text')"
+          :placeholder="$t('form.vercode.text')"
           v-model.trim="form.veriftValue"
           :rules="[
             {
@@ -101,7 +100,7 @@
           v-model.trim="form.payPwd"
           type="password"
           autocomplete="new-password"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.pay.pass.text')
           "
           :rules="[
