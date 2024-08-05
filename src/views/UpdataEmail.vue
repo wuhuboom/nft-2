@@ -1,21 +1,20 @@
 <template>
-  <div class="change-password-view font12 color-primary pb-16">
+  <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t('security.mail.text')"
     >
     </AppTopBar>
-    <div class="m-l-24 m-r-24">
-      <van-form class="defind-form" @submit="onSubmit">
+    <div>
+      <van-form class="ntf-form m-t-16" @submit="onSubmit">
         <van-field
-          class="res-icon-size"
+          class="m-b-16"
           disabled
           :value="user.email"
           :placeholder="$t('updata.email.success.text')"
         />
         <van-field
-          class="mb-16"
+          class="mb-16 field-inlude-code"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -32,7 +31,7 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
@@ -41,7 +40,7 @@
         <van-field
           v-model.trim="form.email"
           :placeholder="$t('form.email.text')"
-          class="left-icon-box res-icon-size"
+          class="left-icon-box m-b-16"
           autocomplete="new-password"
           :rules="[
             { required: true, message: $t('ruls.email.empty') },
@@ -58,9 +57,9 @@
           </template> -->
         </van-field>
 
-        <div class="sumit-section center-center pt-16 px-16">
+        <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             :loading="loading"
             block
             type="info"
