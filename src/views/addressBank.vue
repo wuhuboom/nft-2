@@ -32,7 +32,7 @@
         <van-field
           v-model.trim="form.provinceStr"
           class="m-b-16"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.province.text') +
             '(' +
             $t('selectable.text') +
@@ -52,7 +52,7 @@
         <van-field
           v-model.trim="form.cityStr"
           class="m-b-16"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.city.text') +
             '(' +
             $t('selectable.text') +
@@ -72,7 +72,9 @@
         <van-field
           v-model.trim="form.branchStr"
           class="m-b-16"
-          :label="$t('user.security.center.bankcard.bankadd.input.branch.text')"
+          :placeholder="
+            $t('user.security.center.bankcard.bankadd.input.branch.text')
+          "
           :rules="[
             {
               required: true,
@@ -87,7 +89,7 @@
         <van-field
           v-model.trim="form.accountNameStr"
           class="m-b-16"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.account.name.text')
           "
           :rules="[
@@ -105,7 +107,7 @@
           v-model.trim="form.cardIDStr"
           class="m-b-16"
           v-if="withDrawAreaStatus"
-          :label="$t('backapi.self.add.bank.cardID.text')"
+          :placeholder="$t('backapi.self.add.bank.cardID.text')"
           :rules="[
             {
               required: true,
@@ -117,9 +119,8 @@
         />
         <van-field
           v-model.trim="form.cardPhoneStr"
-          class="m-b-16"
           v-if="withDrawAreaStatus"
-          :label="$t('backapi.self.add.bank.phone.text')"
+          :placeholder="$t('backapi.self.add.bank.phone.text')"
           :rules="[
             {
               required: true,
@@ -131,8 +132,7 @@
         />
         <van-field
           v-model.trim="form.cardNumStr"
-          class="m-b-16"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.card.number.text')
           "
           :rules="[
@@ -148,8 +148,7 @@
         />
         <van-field
           v-model.trim="form.cardConfirmNumStr"
-          class="m-b-16"
-          :label="
+          :placeholder="
             $t('user.security.center.bankcard.bankadd.input.confirm.text')
           "
           :rules="[
@@ -165,7 +164,6 @@
         />
         <van-field
           v-model.trim="form.backCode"
-          class="m-b-16"
           label="IFSC"
           v-if="indian"
           :rules="[
@@ -485,6 +483,12 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
