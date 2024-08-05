@@ -1,5 +1,5 @@
 <template>
-  <div class="message-page font12 color-primary">
+  <div class="message-page font12 p-l-16 p-r-16">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       class="app-top-bar-black"
@@ -9,9 +9,10 @@
     <div class="center-center py-16" v-if="!withdrawList.length">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="">
-      <ul class="type-list p-l-12 p-r-12 m-b-8">
+    <div v-else class="m-t-12">
+      <ul class="type-list m-b-8">
         <li
+          class="m-r-16"
           v-for="(item, index) in withdrawList"
           @click="chose(item)"
           :class="{ 'color-active': item.type === chooseRecType.type }"
@@ -667,18 +668,25 @@ export default {
   .type-list {
     display: flex;
     flex-wrap: wrap;
+    & > li:nth-child(4n) {
+      margin-right: 0 !important;
+    }
     & > li {
-      width: 33.33%;
       .cont {
-        height: 84px;
+        width: 73px;
+        height: 55px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid transparent;
       }
+
       .pic {
-        height: 42px;
-        width: 94px;
+        width: 65px;
+        height: 28px;
         img {
           width: 100%;
           height: 100%;
@@ -687,11 +695,12 @@ export default {
       }
     }
     & > li:nth-child(3n + 2) {
-      border-right: 1px solid var(--primary);
-      border-left: 1px solid var(--primary);
+      // border-right: 1px solid var(--primary);
+      // border-left: 1px solid var(--primary);
     }
-    & > li.active {
+    & > li.color-active {
       .cont {
+        border-color: var(--main) !important;
       }
     }
   }

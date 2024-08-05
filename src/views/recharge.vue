@@ -228,9 +228,12 @@ export default {
   .type-list {
     display: flex;
     flex-wrap: wrap;
+    & > li:nth-child(4n) {
+      margin-right: 0 !important;
+    }
     & > li {
       .cont {
-        width: 74px;
+        width: 73px;
         height: 55px;
         display: flex;
         flex-direction: column;
@@ -240,6 +243,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.1);
         border: 1px solid transparent;
       }
+
       .pic {
         width: 65px;
         height: 28px;

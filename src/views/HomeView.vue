@@ -54,7 +54,10 @@
         >
           {{ $t("deal.recharge.354498-0") }}
         </li>
-        <li class="els" @click="$router.push({ path: '/wallet/withdraw' })">
+        <li
+          class="els"
+          @click="$router.push({ path: '/pages/wallet/withdraw' })"
+        >
           {{ $t(`dropdown.billing.income.withdraw.text`) }}
         </li>
         <li class="els" @click="$router.push({ path: '/pages/wallet/index' })">
