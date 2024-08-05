@@ -43,7 +43,7 @@
           :placeholder="$t('password.setting.phone.old.phone.text')"
         />
         <van-field
-          class="mb-16"
+          class="mb-16 field-inlude-code"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -60,8 +60,7 @@
               size="small"
               @click="sendCode"
               :disabled="countdown > 0"
-              class="page-res-btn"
-              color="#0025fc"
+              class="send-code-btn"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
