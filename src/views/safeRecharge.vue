@@ -1,12 +1,11 @@
 <template>
-  <div class="safe-recharge-view font12 color-primary">
+  <div class="safe-recharge-view font12 p-l-16 p-r-16">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
-      :topBarTitle="$t('home.index.recharge.text')"
+      :styleObj="{ backgroundColor: 'transparent' }"
+      :topBarTitle="`${$t(`fuc.safe.text`)} ${$t('home.index.recharge.text')}`"
     >
     </AppTopBar>
-    <ul class="text-center color-primary m-b-24">
+    <!-- <ul class="text-center color-primary m-b-24">
       <li class="m-b-8">
         <p class="money-str m-b-4">
           {{ numToFixed(moneyStr, $globalUnit.val) }}
@@ -32,10 +31,27 @@
           <p class="center-center">{{ item.name }}</p>
         </div>
       </li>
+    </ul> -->
+    <p class="font13 m-b-12 m-t-12">{{ $t(`rechange.way`) }}</p>
+    <ul class="type-list m-b-8">
+      <li
+        v-for="(item, index) in rechargeList"
+        class="m-r-16"
+        @click="chose(item)"
+        :class="{ 'color-active': item.id === chooseRecType.id }"
+        :key="index"
+      >
+        <div class="cont">
+          <p v-if="item.img" class="pic center-center">
+            <img :src="item.img" alt="" />
+          </p>
+          <p v-else class="center-center">{{ item.name }}</p>
+        </div>
+      </li>
     </ul>
-
-    <div class="m-x-24 form-box p-x-16">
-      <van-form ref="form" class="defind-form pt-16" @submit="onSubmit">
+    <div class="">
+      <p class="font13 m-b-12 m-t-16">{{ $t(`recharge.amount.text`) }}</p>
+      <van-form ref="form" class="ntf-form" @submit="onSubmit">
         <van-field
           :rules="[
             {
@@ -47,9 +63,26 @@
           v-model="amount"
         />
       </van-form>
-      <p class="limit">
+      <p class="limit m-t-8 active">
         {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
       </p>
+      <div class="justify-between m-t-8">
+        <p>
+          <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
+          ><span class="color-fff">
+            <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
+              }} -->
+            {{ chooseRecType.rate }}</span
+          >
+        </p>
+        <p class="flex-1 amount-text">
+          <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
+          ><span class="color-fff"
+            >{{ ngnToUsdtMoney }}
+            <!-- {{ chooseRecType.currencySymbol }} -->
+          </span>
+        </p>
+      </div>
       <ul class="pre-amount m-t-8">
         <li
           class="m-b-8"
@@ -62,20 +95,10 @@
           </div>
         </li>
       </ul>
-      <ul class="text-center">
-        <li class="p-t-24 p-b-24">
-          <p>{{ $t("recharge.usdt.rate.text") }}</p>
-          <p>{{ chooseRecType.rate }}</p>
-        </li>
-        <li>
-          <p>{{ $t("recharge.real.amount.text") }}</p>
-          <p>{{ ngnToUsdtMoney }}</p>
-        </li>
-      </ul>
 
-      <div class="sumit-section center-center p-t-24 p-b-24">
+      <div class="center-center m-t-20">
         <van-button
-          class="page-res-btn"
+          class="ntf-vant-btn"
           block
           type="info"
           :loading="loading"
@@ -223,10 +246,19 @@ export default {
     this.getList();
     this.safeInfo();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .safe-recharge-view {
+  .amount-text {
+    text-align: right;
+  }
   .limit {
     // text-align: right;
   }
@@ -234,15 +266,17 @@ export default {
     display: flex;
     flex-wrap: wrap;
     & > li {
-      width: 25%;
-      height: 24px;
-      line-height: 21px;
-      text-align: center;
+      width: 33.333%;
+
       padding: 4px;
     }
     .num {
-      border: solid 1px #9d9d9d;
-      border-radius: 8px;
+      text-align: center;
+      line-height: 31px;
+      height: 31px;
+      border-radius: 6px;
+      border: solid 1px #393939;
+      background-color: #292929;
     }
     .active {
       background-color: var(--main);
@@ -266,21 +300,25 @@ export default {
   .type-list {
     display: flex;
     flex-wrap: wrap;
+    & > li:nth-child(4n) {
+      margin-right: 0 !important;
+    }
     & > li {
-      width: 33.33%;
-      padding: 4px;
       .cont {
-        height: 84px;
+        width: 73px;
+        height: 55px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         border-radius: 15px;
-        border: solid 1px #9d9d9d;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid transparent;
       }
+
       .pic {
-        height: 42px;
-        width: 94px;
+        width: 65px;
+        height: 28px;
         img {
           width: 100%;
           height: 100%;
