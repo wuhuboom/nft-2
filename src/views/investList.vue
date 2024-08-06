@@ -34,6 +34,7 @@
           </li>
         </ul>
       </div>
+      <NoData v-if="finished && !video.length" />
     </LoadList>
   </div>
 </template>
