@@ -1,7 +1,7 @@
 <template>
   <div class="main-tain-dialog">
     <van-dialog
-      class="tain-upload-dialog"
+      class="tain-upload-dialog linear-global-pop"
       :showConfirmButton="false"
       v-model="showDialog"
       :close-on-click-overlay="false"
@@ -73,8 +73,6 @@ export default {
 .main-tain-dialog {
   .tain-upload-dialog {
     padding: 20px 30px 30px;
-    background: url("@/assets/img/red/note.webp") no-repeat center bottom
-      transparent;
     background-size: 100% 100%;
     .van-hairline--top::after {
       display: none;

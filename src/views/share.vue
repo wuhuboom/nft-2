@@ -38,7 +38,7 @@
       </div>
     </div>
     <van-dialog
-      class="promotion-upload-dialog"
+      class="promotion-upload-dialog linear-global-pop"
       :showConfirmButton="false"
       v-model="showDialog"
       :close-on-click-overlay="true"
@@ -57,7 +57,7 @@
       </ul>
       <div class="center-center p-b-24 p-t-24">
         <van-button
-          class="page-res-btn"
+          class="ntf-vant-btn"
           block
           type="info"
           @click="showDialog = false"
@@ -167,7 +167,6 @@ export default {
     font-size: 16px;
   }
   .promotion-upload-dialog {
-    background: url("@/assets/img/sharebg.png") no-repeat center center;
     background-size: 100% 100%;
     color: #474747;
     padding: 10px 20px 20px;
