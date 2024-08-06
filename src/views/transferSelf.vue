@@ -1,8 +1,7 @@
 <template>
   <div class="address-add font12">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="`${$t('wallet.index.transfer.text')}( ${$t(
         'wallet.index.for.self.text'
       )})`"
@@ -12,28 +11,23 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading color="#1989fa" />
     </div>
-    <div v-else class="p-l-24 p-r-24">
-      <ul class="text-center color-primary m-b-24">
-        <li class="m-b-24">
-          {{ $t(`backapi.self.safe.huaz.transfer.center.desc.text`) }}
-        </li>
-        <li class="m-b-8">
-          <p class="money-str m-b-4">
-            {{ mygold }}
-          </p>
-          <p class="m-b-4">{{ $t("wallet.Account.Balance") }}</p>
-          <p>
-            <i
-              @click="refresh"
-              class="iconfont font14 icon-shuaxin color-active"
-            ></i>
+    <div v-else>
+      <p class="center-center p-l-16 p-r-16 m-t-16">
+        {{ $t(`backapi.self.safe.huaz.transfer.center.desc.text`) }}
+      </p>
+      <AccountBalance />
+
+      <ul class="m-l-32 m-r-32">
+        <li class="center-center icon-desc">
+          <p class="center-center">
+            <van-icon class="color-fff" name="down" size="20" />
           </p>
         </li>
       </ul>
-      <van-form class="defind-form" @submit="onSubmit">
+      <van-form class="ntf-form p-r-16 p-l-16 m-t-32" @submit="onSubmit">
         <van-field
           v-model.trim="form.amount"
-          class="m-b-24"
+          class="m-b-24 field-inlude-code"
           :placeholder="$t('backapi.self.safe.transfer.money.text')"
           type="number"
           :rules="[
@@ -46,10 +40,9 @@
           <template #button>
             <van-button
               size="small"
-              class="page-res-btn"
               native-type="button"
               @click="sendAll"
-              color="#0025fc"
+              class="send-code-btn"
               >{{ $t("match.order.detail.all.text") }}</van-button
             >
           </template>
@@ -69,7 +62,7 @@
         />
         <div class="sumit-section center-center">
           <van-button
-            class="page-res-btn"
+            class="ntf-vant-btn"
             block
             type="info"
             :loading="formLoaing"
@@ -84,6 +77,7 @@
 
 <script>
 import userApi from "@/api/user";
+import AccountBalance from "@/components/home/AccountBalance";
 const initData = () => {
   return { amount: "", password: "" };
 };
@@ -98,6 +92,9 @@ export default {
       loading: false,
       playerInfo: {},
     };
+  },
+  components: {
+    AccountBalance,
   },
   computed: {
     mygold() {
@@ -154,13 +151,36 @@ export default {
   created() {
     this.detailSafeInfo();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .address-add {
-  .van-cell {
-    padding: 0;
-    background-color: transparent;
+  .icon-desc {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-50%);
+    }
+    p {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background-color: #5b5a5a;
+      position: relative;
+      z-index: 3;
+    }
   }
   .money-str {
     font-size: 20px;

@@ -182,10 +182,7 @@ export default {
     font-size: 26px;
     font-weight: 900;
   }
-  .van-cell {
-    padding: 0;
-    background-color: transparent;
-  }
+
   .balance {
     span {
       color: #0022ff;

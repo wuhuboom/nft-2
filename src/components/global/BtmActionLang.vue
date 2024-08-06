@@ -47,10 +47,10 @@ export default {
 </script>
 <style scoped lang="less">
 .btm-action-sheet {
-  background-color: var(--bg-body);
+  background-color: #161518;
   ::v-deep {
     .van-action-sheet__item {
-      background-color: var(--bg-body);
+      background-color: #161518;
     }
     .van-action-sheet__description {
       font-size: 16px;

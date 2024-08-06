@@ -1,5 +1,5 @@
 // 提供三个函数，设置token  获取token  清除token
-const KEY = "bhb-manager-web-token";
+const KEY = "ntf-2-web-token";
 const setToken = (token, key = KEY) => {
   localStorage.setItem(key, token);
 };
