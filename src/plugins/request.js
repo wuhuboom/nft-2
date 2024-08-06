@@ -59,11 +59,11 @@ instance.interceptors.response.use(
       if (!specialCode.includes(code)) {
         if (code === 188) {
           //188 系统维护中
-          // app.$store.commit("setMainShow", {
-          //   show: true,
-          //   msg,
-          // });
-          app.$toast(app.$t("UserProfile.Notification"));
+          app.$store.commit("setMainShow", {
+            show: true,
+            msg,
+          });
+          //app.$toast(app.$t("UserProfile.Notification"));
         } else if (code === 409) {
           app.$toast(app.$t("backapi.self.alert.fast.access.tip.text"));
         } else {
