@@ -8,24 +8,22 @@
     <div>
       <van-form ref="form" class="ntf-form m-t-12" @submit="onSubmit">
         <p class="m-b-16 font14">{{ $t("index.editor.psd.text") }}</p>
-        <van-field class="m-b-16 field-inlude-code">
-          <template #input>
-            <el-select
-              v-model="form.verificationVal"
-              :disabled="countdown > 0"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="form.verificationVal"
+            :disabled="countdown > 0"
+            class="full100"
+            :placeholder="$t('index.editor.psd.text')"
+          >
+            <el-option
+              v-for="item in verificationOpt"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in verificationOpt"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </template>
-        </van-field>
+            </el-option>
+          </el-select>
+        </div>
 
         <van-field
           v-model.trim="form.email"
