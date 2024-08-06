@@ -10,7 +10,12 @@
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
         </p>
         <p class="m-r-16">
-          <img class="d-img" src="@/assets/img/ntf/home/nav2.png" alt="" />
+          <img
+            class="d-img"
+            @click="$router.push({ name: 'Message' })"
+            src="@/assets/img/ntf/home/nav2.png"
+            alt=""
+          />
         </p>
       </li>
     </ul>
