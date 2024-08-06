@@ -2,27 +2,24 @@
 <template>
   <div class="invite-friends font14 color-primary">
     <AppTopBar
-      :titleClass="['app-top-black-title']"
-      class="app-top-bar-black"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="$t(`me.my.qr.code.text`)"
     >
     </AppTopBar>
     <div class="px-16 pb-16">
       <div class="cont">
-        <p class="center-center long-text">{{ $t(`ercode.Long.QR`) }}</p>
+        <p class="center-center gray long-text">{{ $t(`ercode.Long.QR`) }}</p>
         <div class="center-center">
           <QrcodeVue :value="link" :size="146" />
         </div>
-        <p class="referral">{{ $t(`ercode.referral.code`) }}</p>
         <div
-          class="your-code center-center copy-button"
+          class="hrefs center-center m-b-12 m-t-32 copy-button"
           @click="copy(invitationCode)"
         >
-          <span>{{ invitationCode }}</span
-          ><i class="iconfont icon-copy color-active"></i>
+          {{ $t(`ercode.referral.code`) }}:
+          {{ invitationCode }}
         </div>
-        <p class="referral-link">{{ $t(`ercode.referral.link`) }}</p>
-        <div class="hrefs center-center copy-button" @click="copy(link)">
+        <div class="hrefs center-center copy-button m-b-20" @click="copy(link)">
           <span class="href-link flex-1 app-ellipsis">{{ link }}</span
           ><i class="iconfont icon-copy color-active"></i>
         </div>
@@ -99,11 +96,20 @@ export default {
       });
     },
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .invite-friends {
   text-align: center;
+  .gray {
+    color: #8a929a;
+  }
   .cont {
     padding: 24px 12px 45px;
   }
@@ -130,10 +136,11 @@ export default {
   }
   .hrefs {
     width: 318px;
-    height: 55px;
+    height: 48px;
     border-radius: 16px;
     padding: 0 16px;
-    border: solid 1px var(--main);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
     color: var(--color-fff);
   }
   .href-link {
