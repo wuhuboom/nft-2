@@ -1,8 +1,7 @@
 <template>
   <div class="address-add font12 olor-primary">
     <AppTopBar
-      class="app-top-bar-black"
-      :titleClass="['app-top-black-title']"
+      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="`${$t('wallet.index.transfer.text')}( ${$t(
         'wallet.index.for.subordinate.text'
       )})`"
@@ -11,15 +10,12 @@
     <div class="center-center py-16" v-if="false">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="p-l-24 p-r-24">
-      <ul class="text-center color-primary m-b-24">
-        <li class="m-b-8">
-          <p class="money-str m-b-4">
-            {{ mygold }}
-          </p>
-          <p class="m-b-4">{{ $t("wallet.Account.Balance") }}</p>
-          <p>
-            <i @click="refresh" class="iconfont font14 icon-shuaxin active"></i>
+    <div v-else>
+      <AccountBalance />
+      <ul class="m-l-32 m-r-32">
+        <li class="center-center icon-desc">
+          <p class="center-center">
+            <van-icon class="color-fff" name="down" size="20" />
           </p>
         </li>
       </ul>
@@ -83,6 +79,7 @@
 
 <script>
 import userApi from "@/api/user";
+import AccountBalance from "@/components/home/AccountBalance";
 const initData = () => {
   return { account: "", amount: "", password: "" };
 };
@@ -97,6 +94,9 @@ export default {
       loading: false,
       playerInfo: {},
     };
+  },
+  components: {
+    AccountBalance,
   },
   computed: {
     mygold() {
@@ -146,10 +146,37 @@ export default {
   created() {
     this.detailSafeInfo();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .address-add {
+  .icon-desc {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-50%);
+    }
+    p {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background-color: #5b5a5a;
+      position: relative;
+      z-index: 3;
+    }
+  }
   .money-str {
     font-size: 26px;
     font-weight: 900;

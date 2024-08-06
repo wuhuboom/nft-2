@@ -13,21 +13,7 @@
         />
       </template>
     </AppTopBar>
-    <ul class="text-center color-primary m-b-24">
-      <li class="m-b-8">
-        <p class="safe-icon m-t-20 m-b-8 center-center">
-          <img class="d-img" src="@/assets/img/ntf/safeh1.png" alt="" />
-        </p>
-        <p class="m-b-4 font16">{{ $t("wallet.Account.Balance") }}</p>
-        <p class="money-str m-b-4 color-fff">
-          {{ numToFixed(moneyStr, $globalUnit.val) }}
-        </p>
-
-        <p class="m-t-4">
-          <i @click="refresh" class="iconfont font16 icon-shuaxin active"></i>
-        </p>
-      </li>
-    </ul>
+    <AccountBalance />
 
     <div class="justify-around menu text-center m-b-32">
       <ul :key="idx" v-for="(item, idx) in list" @click="goTo(item.name)">
@@ -56,10 +42,12 @@
 import BillsList from "@/components/home/BillsList";
 import userApi from "@/api/user";
 import i18n from "@/locale";
+import AccountBalance from "@/components/home/AccountBalance";
 export default {
   name: "WithdrawView",
   components: {
     BillsList,
+    AccountBalance,
   },
   data() {
     return {
@@ -159,19 +147,10 @@ export default {
 <style scoped lang="less">
 .wallet-page {
   color: #9493ac;
-  .safe-icon {
-    img {
-      width: 39px;
-      height: 39px;
-    }
-  }
   .safe-bill {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .money-str {
-    font-size: 26px;
-    font-weight: 900;
-  }
+
   .black-line {
     height: 5px;
     background-image: linear-gradient(
