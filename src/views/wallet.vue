@@ -29,17 +29,12 @@
       </li>
     </ul>
 
-    <div>
-      <ul
-        class="align-center menu font16"
-        :key="idx"
-        v-for="(item, idx) in list"
-        @click="goTo(item.name)"
-      >
-        <li class="icon m-r-16"><img :src="item.icon" alt="" /></li>
-        <li class="flex-1 align-center justify-between">
-          {{ item.text }}
-          <p class="dec"><img src="@/assets/img/red/usernav6.png" alt="" /></p>
+    <div class="justify-around menu text-center m-b-32">
+      <ul :key="idx" v-for="(item, idx) in list" @click="goTo(item.name)">
+        <li class="icon"><img class="d-img" :src="item.icon" alt="" /></li>
+        <li class="m-t-8">
+          <p>{{ item.text }}</p>
+          <p>{{ item.text1 }}</p>
         </li>
       </ul>
     </div>
@@ -78,24 +73,22 @@ export default {
     list() {
       const arr = [
         {
-          icon: require("@/assets/img/red/safe1.png"),
+          icon: require("@/assets/img/ntf/safeh3.png"),
           text: i18n.t("home.index.recharge.text"),
           name: "SafeRecharge",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/safe2.png"),
-          text: `${i18n.t("wallet.index.transfer.text")}(${i18n.t(
-            "wallet.index.for.subordinate.text"
-          )})`,
+          icon: require("@/assets/img/ntf/safeh2.png"),
+          text: i18n.t("wallet.index.transfer.text"),
+          text1: i18n.t("wallet.index.for.subordinate.text"),
           name: "TransferSub",
           active: false,
         },
         {
-          icon: require("@/assets/img/red/safe3.png"),
-          text: `${i18n.t("wallet.index.transfer.text")}(${i18n.t(
-            "wallet.index.for.self.text"
-          )})`,
+          icon: require("@/assets/img/ntf/safeh4.png"),
+          text: i18n.t("wallet.index.transfer.text"),
+          text1: i18n.t("wallet.index.for.self.text"),
           name: "TransferSelf",
           active: false,
         },
@@ -190,23 +183,12 @@ export default {
     );
   }
   .menu {
-    height: 65px;
     color: #fff;
-    & > li:nth-child(2) {
-      border-bottom: 1px solid #484b4c;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
     .icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto;
       img {
-        width: 45px;
-        display: block;
-      }
-    }
-    .dec {
-      img {
-        width: 10px;
         display: block;
       }
     }
