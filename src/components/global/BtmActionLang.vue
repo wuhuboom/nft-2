@@ -4,7 +4,7 @@
     v-model="show"
     :description="$t(`index.index.lang`)"
   >
-    <ul class="content-user-lang">
+    <ul class="content-user-lang font16">
       <li
         @click="onSelect(item)"
         class="align-center m-l-16 m-r-16"

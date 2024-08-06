@@ -15,7 +15,7 @@
           <p class="m-t-4 els">{{ divide(user.frozenBet) }}</p>
         </div>
       </li>
-      <li class="serve">
+      <li class="serve" @click="$store.dispatch('getServeData', 1)">
         <img class="d-img" src="@/assets/img/ntf/home/serve.png" alt="" />
       </li>
     </ul>
