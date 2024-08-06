@@ -1,5 +1,5 @@
 <template>
-  <van-sticky :offset-top="0">
+  <van-sticky style="z-index: 999" :offset-top="0">
     <ul class="nav justify-between align-center">
       <li class="logo center-center">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />

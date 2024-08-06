@@ -60,7 +60,11 @@
         >
           {{ $t(`dropdown.billing.income.withdraw.text`) }}
         </li>
-        <li class="els" @click="$router.push({ path: '/pages/wallet/index' })">
+        <li
+          v-if="safeConfig.showH5 === 1"
+          class="els"
+          @click="$router.push({ path: '/pages/wallet/index' })"
+        >
           {{ $t("fuc.safe.text") }}
         </li>
       </ul>
@@ -196,6 +200,9 @@ export default {
     HomeTopBar,
   },
   computed: {
+    safeConfig() {
+      return this.$store.state.safeConfig;
+    },
     user() {
       return this.$store.state.user;
     },
@@ -230,6 +237,7 @@ export default {
     this.$store.commit("setPdTop", false);
     this.informationDealSold();
     this.informationVideo();
+    this.$store.dispatch("setSafeConfig");
   },
 };
 </script>
