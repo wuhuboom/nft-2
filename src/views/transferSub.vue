@@ -19,60 +19,61 @@
           </p>
         </li>
       </ul>
-      <van-form class="defind-form" @submit="onSubmit">
-        <van-field
-          class="m-b-24"
-          v-model.trim="form.account"
-          :placeholder="$t('form.account.text')"
-          :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
-        />
-        <van-field
-          v-model.trim="form.amount"
-          class="m-b-24"
-          :placeholder="$t('backapi.self.safe.transfer.money.text')"
-          type="number"
-          :rules="[
-            {
-              required: true,
-              message: $t('ruls.amount.length'),
-            },
-          ]"
-        >
-          <template #button>
-            <van-button
-              size="small"
-              class="page-res-btn"
-              native-type="button"
-              @click="sendAll"
-              color="#0025fc"
-              >{{ $t("match.order.detail.all.text") }}</van-button
-            >
-          </template>
-        </van-field>
-        <van-field
-          class="m-b-24"
-          v-model.trim="form.password"
-          type="password"
-          autocomplete="new-password"
-          :placeholder="$t('ruls.pwd2.empty')"
-          :rules="[
-            {
-              required: true,
-              message: $t('ruls.pwd2.empty'),
-            },
-          ]"
-        />
-        <div class="sumit-section center-center">
-          <van-button
-            class="page-res-btn"
-            block
-            type="info"
-            :loading="formLoaing"
-            native-type="submit"
-            >{{ $t("confirm.btn.text") }}</van-button
+      <div class="ntf-form m-t-32">
+        <van-form class="p-l-16 p-r-16" @submit="onSubmit">
+          <van-field
+            class="m-b-24"
+            v-model.trim="form.account"
+            :placeholder="$t('form.account.text')"
+            :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
+          />
+          <van-field
+            v-model.trim="form.amount"
+            class="m-b-24 field-inlude-code"
+            :placeholder="$t('backapi.self.safe.transfer.money.text')"
+            type="number"
+            :rules="[
+              {
+                required: true,
+                message: $t('ruls.amount.length'),
+              },
+            ]"
           >
-        </div>
-      </van-form>
+            <template #button>
+              <van-button
+                size="small"
+                class="send-code-btn"
+                native-type="button"
+                @click="sendAll"
+                >{{ $t("match.order.detail.all.text") }}</van-button
+              >
+            </template>
+          </van-field>
+          <van-field
+            class="m-b-24"
+            v-model.trim="form.password"
+            type="password"
+            autocomplete="new-password"
+            :placeholder="$t('ruls.pwd2.empty')"
+            :rules="[
+              {
+                required: true,
+                message: $t('ruls.pwd2.empty'),
+              },
+            ]"
+          />
+          <div class="sumit-section center-center">
+            <van-button
+              class="ntf-vant-btn"
+              block
+              type="info"
+              :loading="formLoaing"
+              native-type="submit"
+              >{{ $t("confirm.btn.text") }}</van-button
+            >
+          </div>
+        </van-form>
+      </div>
     </div>
   </div>
 </template>
