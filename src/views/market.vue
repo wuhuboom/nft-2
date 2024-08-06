@@ -112,6 +112,7 @@
             v-model="formData.money"
             type="digit"
             name="money"
+            class="field-inlude-code"
             :placeholder="limitTxt"
             :rules="[
               {
@@ -130,8 +131,7 @@
               <van-button
                 size="small"
                 native-type="button"
-                class="p-l-16 p-r-16"
-                color="#f5673e"
+                class="send-code-btn"
                 @click="formData.money = balance"
                 >{{ $t("match.all.text") }}</van-button
               >
