@@ -5,54 +5,16 @@
       :topBarTitle="`${$t(`fuc.safe.text`)} ${$t('home.index.recharge.text')}`"
     >
     </AppTopBar>
-    <!-- <ul class="text-center color-primary m-b-24">
-      <li class="m-b-8">
-        <p class="money-str m-b-4">
-          {{ numToFixed(moneyStr, $globalUnit.val) }}
-        </p>
-        <p class="m-b-4">{{ $t("wallet.Account.Balance") }}</p>
-        <p>
-          <i @click="refresh" class="iconfont font14 icon-shuaxin active"></i>
-        </p>
-      </li>
-    </ul>
-    <p class="center-center">{{ $t(`safe.Recharge.types`) }}</p>
-    <ul class="type-list p-l-12 p-r-12 m-b-8 m-t-16">
-      <li
-        v-for="(item, index) in rechargeList"
-        @click="chose(item)"
-        :class="{ 'color-active': item.type === chooseRecType.type }"
-        :key="index"
-      >
-        <div class="cont">
-          <p class="pic center-center">
-            <img :src="item.img" alt="" v-if="item.img" />
-          </p>
-          <p class="center-center">{{ item.name }}</p>
-        </div>
-      </li>
-    </ul> -->
-    <p class="font13 m-b-12 m-t-12">{{ $t(`rechange.way`) }}</p>
-    <ul class="type-list m-b-8">
-      <li
-        v-for="(item, index) in rechargeList"
-        class="m-r-16"
-        @click="chose(item)"
-        :class="{ 'color-active': item.id === chooseRecType.id }"
-        :key="index"
-      >
-        <div class="cont">
-          <p v-if="item.img" class="pic center-center">
-            <img :src="item.img" alt="" />
-          </p>
-          <p v-else class="center-center">{{ item.name }}</p>
-        </div>
-      </li>
-    </ul>
-    <div class="">
-      <p class="font13 m-b-12 m-t-16">{{ $t(`recharge.amount.text`) }}</p>
-      <van-form ref="form" class="ntf-form" @submit="onSubmit">
+    <div class="font14">
+      <p class="m-b-16 m-t-16 gray center-center">
+        {{ $t(`recharge.amount.text`) }}
+      </p>
+      <van-form ref="form" @submit="onSubmit">
         <van-field
+          class="amount-form"
+          :placeholder="`${$t('deal.buyDetail.387081-5')}:${
+            chooseRecType.minMax
+          }`"
           :rules="[
             {
               validator,
@@ -63,11 +25,8 @@
           v-model="amount"
         />
       </van-form>
-      <p class="limit m-t-8 active">
-        {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
-      </p>
-      <div class="justify-between m-t-8">
-        <p>
+      <div class="flex-column center-center gray m-b-32">
+        <p class="m-t-12">
           <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
           ><span class="color-fff">
             <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
@@ -75,7 +34,7 @@
             {{ chooseRecType.rate }}</span
           >
         </p>
-        <p class="flex-1 amount-text">
+        <p class="flex-1 amount-text m-t-12">
           <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
           ><span class="color-fff"
             >{{ ngnToUsdtMoney }}
@@ -83,6 +42,31 @@
           </span>
         </p>
       </div>
+    </div>
+    <p class="font13 m-b-12 m-t-12">{{ $t(`rechange.way`) }}</p>
+    <ul class="type-list m-b-8">
+      <li
+        class="m-b-8 align-center justify-between p-l-8 p-r-8"
+        v-for="(item, index) in rechargeList"
+        @click="chose(item)"
+        :class="{ 'color-active': item.id === chooseRecType.id }"
+        :key="index"
+      >
+        <div class="align-center">
+          <p v-if="item.img" class="pic m-r-8">
+            <img class="d-img" :src="item.img" alt="" />
+          </p>
+          <p>{{ item.name }}</p>
+        </div>
+        <van-checkbox
+          v-if="item.id === chooseRecType.id"
+          disabled
+          checked-color="#ee0a24"
+        ></van-checkbox>
+        <van-checkbox v-else checked-color="#ee0a24"></van-checkbox>
+      </li>
+    </ul>
+    <div class="">
       <ul class="pre-amount m-t-8">
         <li
           class="m-b-8"
@@ -256,6 +240,9 @@ export default {
 </script>
 <style scoped lang="less">
 .safe-recharge-view {
+  .gray {
+    color: #8a929a;
+  }
   .amount-text {
     text-align: right;
   }
@@ -298,41 +285,13 @@ export default {
     padding: 30px 0 16px;
   }
   .type-list {
-    display: flex;
-    flex-wrap: wrap;
-    & > li:nth-child(4n) {
-      margin-right: 0 !important;
-    }
     & > li {
-      .cont {
-        width: 73px;
-        height: 55px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border: 1px solid transparent;
-      }
-
+      background-color: rgba(255, 255, 255, 0.1);
+      height: 42px;
+      border-radius: 8px;
       .pic {
-        width: 65px;
-        height: 28px;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-      }
-    }
-    & > li:nth-child(3n + 2) {
-      // border-right: 1px solid var(--primary);
-      // border-left: 1px solid var(--primary);
-    }
-    & > li.color-active {
-      .cont {
-        border-color: var(--main) !important;
+        width: 22px;
+        height: 22px;
       }
     }
   }
@@ -357,14 +316,18 @@ export default {
     }
   }
   ::v-deep {
-    .safe-fome {
-      .van-cell {
-        border: 1px solid var(--primary);
-        border-radius: 8px;
-        font-size: 21px;
+    .van-checkbox__icon--disabled .van-icon {
+      color: #fff;
+      background-color: var(--main);
+      border-color: var(--main);
+    }
+    .amount-form {
+      background-color: transparent;
+      .van-field__body {
+        border-bottom: 1px solid var(--main);
       }
       .van-field__control {
-        text-align: center;
+        color: #fff;
       }
     }
   }
