@@ -6,7 +6,7 @@
       :topBarTitle="$t(`me.my.qr.code.text`)"
     >
     </AppTopBar>
-    <div class="px-16 pb-16">
+    <div>
       <div class="cont">
         <p class="center-center gray long-text">{{ $t(`ercode.Long.QR`) }}</p>
         <div class="center-center">
@@ -23,6 +23,18 @@
           <span class="href-link flex-1 app-ellipsis">{{ link }}</span
           ><i class="iconfont icon-copy color-active"></i>
         </div>
+        <ul class="justify-between">
+          <li>
+            <p class="btn" @click="copy(invitationCode)">
+              {{ $t("invite.code.copy.text") }}
+            </p>
+          </li>
+          <li>
+            <p class="btn" @click="copy(link)">
+              {{ $t("invite.link.copy.text") }}
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
     <van-dialog
@@ -110,6 +122,15 @@ export default {
   .gray {
     color: #8a929a;
   }
+  .btn {
+    padding: 0 4px;
+    background-color: var(--main);
+    width: 159.5px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    border-radius: 12px;
+  }
   .cont {
     padding: 24px 12px 45px;
   }
@@ -135,7 +156,6 @@ export default {
     padding: 15px 0 13px;
   }
   .hrefs {
-    width: 318px;
     height: 48px;
     border-radius: 16px;
     padding: 0 16px;
