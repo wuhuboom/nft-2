@@ -32,6 +32,16 @@
           <p class="m-t-12">{{ item.text }}</p>
         </li>
       </ul>
+      <ul
+        @click="$router.push({ name: 'Share' })"
+        class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
+      >
+        <li class="font14">{{ $t(`me.my.qr.code.text`) }}</li>
+        <li class="align-center">
+          Click to view the invitation code
+          <van-icon class="m-l-4" name="arrow" />
+        </li>
+      </ul>
       <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
       <ul class="trade-list d-flex full100 m-b-16 gray">
         <li class="name">
@@ -180,6 +190,14 @@ export default {
 }
 .green {
   color: #00d91f;
+}
+.my-qr {
+  background: url("@/assets/img/ntf/myqr.webp") no-repeat center center;
+  background-size: 100% 100%;
+  height: 70px;
+  & > li:nth-child(1) {
+    color: #faa822;
+  }
 }
 .user-set {
   position: relative;
