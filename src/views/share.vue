@@ -25,12 +25,12 @@
         </div>
         <ul class="justify-between">
           <li>
-            <p class="btn" @click="copy(invitationCode)">
+            <p class="btn copy-button" @click="copy(invitationCode)">
               {{ $t("invite.code.copy.text") }}
             </p>
           </li>
           <li>
-            <p class="btn" @click="copy(link)">
+            <p class="btn copy-button" @click="copy(link)">
               {{ $t("invite.link.copy.text") }}
             </p>
           </li>
