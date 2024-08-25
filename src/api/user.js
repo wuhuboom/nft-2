@@ -439,7 +439,7 @@ export default {
   // 获取手机验证码-未登录状态
   notLoginchangePwd(data) {
     return request({
-      url: "/v2/phone_code/change_pwd",
+      url: "/v2/phone_code/username",
       method: "post",
       data,
     });
