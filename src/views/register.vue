@@ -100,7 +100,7 @@
             <van-field
               class="field-inlude-code m-b-32"
               :placeholder="$t('Submitted.email.code')"
-              v-model.trim="form.emailCode"
+              v-model.trim="form.code"
               :rules="[
                 {
                   required: true,
@@ -137,7 +137,7 @@
                 </p>
               </template>
             </van-field>
-            <van-field
+            <!-- <van-field
               v-model.trim="form.code"
               class="res-icon-size login-ceode"
               :maxlength="4"
@@ -154,7 +154,7 @@
                   alt=""
                 />
               </template>
-            </van-field>
+            </van-field> -->
           </div>
         </div>
 
@@ -257,7 +257,7 @@ export default {
       if (emailErr) return;
       this.$toast(this.$t("form.verift.going.text"));
       // 模拟发送验证码的操作
-      userApi.mailCodeRegReq({
+      userApi.authCodeReq({
         email: this.form.email + this.emailFix,
         username: this.form.username,
       });
