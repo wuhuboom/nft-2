@@ -33,6 +33,7 @@
         </li>
       </ul>
       <ul
+        v-if="config.beyShow === 1"
         @click="$router.push({ name: 'Share' })"
         class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
       >
@@ -144,6 +145,12 @@ export default {
           text: this.$t(`Yu'ebao`),
           path: "/pages/user/investDetail",
         });
+      } else {
+        arr.push({
+          img: require("@/assets/img/ntf/user5.webp"),
+          text: this.$t(`me.my.qr.code.text`),
+          path: "/pages/me/share",
+        });
       }
       return arr;
     },
@@ -216,6 +223,7 @@ export default {
   }
 }
 .navs {
+  align-items: baseline;
   & > li {
     background: no-repeat center center;
     background-size: 100% 100%;
