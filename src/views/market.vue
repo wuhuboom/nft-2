@@ -26,7 +26,7 @@
             </li>
           </ul>
         </div>
-        <div>
+        <div v-show="false">
           <van-progress
             track-color="#808080"
             color="#f5673e"
@@ -68,7 +68,7 @@
             </li>
           </ul>
         </div>
-        <div>
+        <div v-show="false">
           <van-progress
             track-color="#808080"
             color="#f5673e"

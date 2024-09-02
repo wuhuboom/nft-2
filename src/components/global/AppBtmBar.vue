@@ -102,7 +102,8 @@ export default {
     left: 0;
     right: 0;
     z-index: 998;
-    background: url("@/assets/img/ntf/home/btm-bg.png") no-repeat center center;
+    background: url("@/assets/img/ntf/home/btm-bg1.png") no-repeat center center;
+
     background-size: 100% 100%;
     font-size: 12px;
     color: var(--primary);
