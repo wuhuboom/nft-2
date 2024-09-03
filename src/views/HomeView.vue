@@ -141,8 +141,13 @@
     <div class="game-download">
       <div class="title">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
-        <div class="list flex-wrap" v-for="(d, i) in down" :key="i">
-          <img :src="d.path" alt="" class="img" />
+        <div
+          class="list flex-wrap"
+          @click="open(d)"
+          v-for="(d, i) in down"
+          :key="i"
+        >
+          <img :src="d.path" alt="" class="img d-img" />
           <div class="info-box align-center flex-grow1 text-ellipsis">
             <div class="">
               <div class="name text-ellipsis">{{ d.name }}</div>
@@ -227,6 +232,9 @@ export default {
     },
   },
   methods: {
+    open(d) {
+      window.open(d.url);
+    },
     viewVideo(v) {
       //location.href =v.videoUrl
       window.open(v.videoUrl);

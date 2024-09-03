@@ -29,7 +29,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "logo.com",
+      default: "FOTI.VIP",
     },
   },
   methods: {
