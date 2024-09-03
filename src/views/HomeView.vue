@@ -476,6 +476,7 @@ export default {
     .img {
       width: 66px;
       height: 66px;
+      border-radius: 8px;
     }
     .info-box {
       margin-left: 16px;
