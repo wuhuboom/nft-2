@@ -768,4 +768,11 @@ export default {
       data,
     });
   },
+  authCodeReq(data) {
+    return request({
+      url: "/auth/code",
+      method: "post",
+      data,
+    });
+  },
 };

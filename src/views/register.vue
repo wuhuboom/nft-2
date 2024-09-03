@@ -331,17 +331,16 @@ export default {
       this.showText = !this.showText;
     },
     async verifyCodeReq() {
-      this.form.code = "";
-      const [err, res] = await userApi.verifyCodeReq();
-      if (err) {
-        if (+err.code == 409) {
-          this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
-        }
-
-        return;
-      }
-      this.src = res.data.img;
-      this.form.verifyKey = res.data.verifyKey;
+      // this.form.code = "";
+      // const [err, res] = await userApi.verifyCodeReq();
+      // if (err) {
+      //   if (+err.code == 409) {
+      //     this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
+      //   }
+      //   return;
+      // }
+      // this.src = res.data.img;
+      // this.form.verifyKey = res.data.verifyKey;
     },
   },
   created() {

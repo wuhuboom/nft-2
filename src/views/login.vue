@@ -171,18 +171,17 @@ export default {
       this.$store.commit("setLang", v);
     },
     async verifyCodeReq() {
-      this.form.code = "";
-      const [err, res] = await userApi.verifyCodeReq();
-      console.log("res", err);
-      if (err) {
-        if (+err.code == 409) {
-          this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
-        }
-
-        return;
-      }
-      this.src = res.data.img;
-      this.form.verifyKey = res.data.verifyKey;
+      // this.form.code = "";
+      // const [err, res] = await userApi.verifyCodeReq();
+      // console.log("res", err);
+      // if (err) {
+      //   if (+err.code == 409) {
+      //     this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
+      //   }
+      //   return;
+      // }
+      // this.src = res.data.img;
+      // this.form.verifyKey = res.data.verifyKey;
     },
     goServe() {
       this.$store.dispatch("getServeData", 1);
