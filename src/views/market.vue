@@ -1,5 +1,5 @@
 <template>
-  <div class="invest-plans-page font12 p-l-16 p-r-16">
+  <div class="invest-plans-page font12 p-l-16 p-r-16 p-t-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`investment`)"
@@ -19,10 +19,10 @@
               <p class="font16">{{ planeYeb.name }}</p>
             </li>
             <li class="rate-row" v-if="planeYeb.rateConfig.length">
+              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
               <p class="font16 rate color-active m-b-8">
                 {{ planeYeb.rateConfig[0].rate }}%
               </p>
-              <p class="gray">{{ $t(`rate.of.return`) }}</p>
             </li>
           </ul>
         </div>
@@ -63,8 +63,8 @@
               </p>
             </li>
             <li class="rate-row">
-              <p class="font16 rate color-active m-b-8">{{ doc.rate }}%</p>
-              <p class="gray">{{ $t(`rate.of.return`) }}</p>
+              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
+              <p class="font16 rate color-active">{{ doc.rate }}%</p>
             </li>
           </ul>
         </div>
@@ -477,8 +477,8 @@ export default {
   }
   .plans-item {
     border-radius: 14px;
-    border: solid 1px #292929;
-    background-color: rgba(255, 255, 255, 0.1);
+    //border: solid 1px #292929;
+    background-color: rgba(150, 209, 252, 0.1);
     padding: 24px 8px;
     min-width: 42px;
   }
