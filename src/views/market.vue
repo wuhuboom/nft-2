@@ -11,7 +11,7 @@
         @click="$router.push({ name: 'InvestDetail' })"
       >
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-8">
+          <p class="invest-pic no-shrink m-r-12">
             <img class="d-img" :src="planeYeb.header" alt="" />
           </p>
           <ul class="align-center flex-1 space-between">
@@ -49,7 +49,7 @@
         "
       >
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-8">
+          <p class="invest-pic no-shrink m-r-12">
             <img class="d-img" :src="doc.header" alt="" />
           </p>
           <ul class="align-center flex-1 space-between">
@@ -87,7 +87,7 @@
       ></AppTopBar>
       <div class="buy-detail gray-bg-img p-l-16 p-r-16">
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-8">
+          <p class="invest-pic no-shrink m-r-12">
             <img class="d-img" :src="item.header" alt="" />
           </p>
           <ul class="align-center flex-1 space-between">
@@ -495,9 +495,9 @@ export default {
     display: inline-block;
   }
   .invest-pic {
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
+    height: 46px;
+    width: 46px;
+    border-radius: 46px;
     overflow: hidden;
   }
   .buy-detail {

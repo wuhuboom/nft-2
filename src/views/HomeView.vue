@@ -141,36 +141,31 @@
     <div class="game-download">
       <div class="title">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
-        <div class="list flex-wrap" v-for="i in 1" :key="i">
-          <img
-            src="https://hjduas.xyz/cafephim444585/index.jpg"
-            alt=""
-            class="img"
-          />
-          <div class="info-box flex-grow1 text-ellipsis">
-            <div class="name text-ellipsis">League of Legends</div>
-            <div class="des text-ellipsis">
-              3D Multiplayer Online Battle Arena Game
-            </div>
-            <div class="c-box flex-wrap">
-              <div class="star-box center-center">
-                <van-icon
-                  class="icon"
-                  name="star"
-                  color="#f4d144"
-                  size="12px"
-                />
-                4.8
-              </div>
-              <div class="line">|</div>
-              <div class="download-box center-center">
-                <van-icon
-                  class="icon download-icon"
-                  name="back-top"
-                  color="#fff"
-                  size="14px"
-                />
-                Download
+        <div class="list flex-wrap" v-for="(d, i) in down" :key="i">
+          <img :src="d.path" alt="" class="img" />
+          <div class="info-box align-center flex-grow1 text-ellipsis">
+            <div class="">
+              <div class="name text-ellipsis">{{ d.name }}</div>
+              <div class="c-box flex-wrap">
+                <div class="star-box center-center">
+                  <van-icon
+                    class="icon"
+                    name="star"
+                    color="#f4d144"
+                    size="12px"
+                  />
+                  4.8
+                </div>
+                <div class="line">|</div>
+                <div class="download-box center-center">
+                  <van-icon
+                    class="icon download-icon"
+                    name="back-top"
+                    color="#fff"
+                    size="14px"
+                  />
+                  Download
+                </div>
               </div>
             </div>
           </div>
@@ -187,12 +182,36 @@ import dayjs from "dayjs";
 import userApi from "@/api/user";
 import VersionDilalog from "@/views/components/VersionDilalog.vue";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
+
 export default {
   name: "HomeView",
   data() {
     return {
       sold: [],
       video: [],
+      imgs: [],
+      down: [
+        {
+          name: "CS2",
+          path: require("@/assets/img/HomeView/10028.png"),
+          url: "https://genshin.hoyoverse.com/en",
+        },
+        {
+          name: "World of Warcraft",
+          path: require("@/assets/img/HomeView/10029.png"),
+          url: "https://worldofwarcraft.blizzard.com/en-us/",
+        },
+        {
+          name: "Grand Theft Auto V",
+          path: require("@/assets/img/HomeView/10030.png"),
+          url: "https://store.steampowered.com/agecheck/app/271590/",
+        },
+        {
+          name: "LEAGUE OF LEGENDS",
+          path: require("@/assets/img/HomeView/10031.png"),
+          url: "https://www.dota2.com/home?l=english",
+        },
+      ],
     };
   },
   components: {

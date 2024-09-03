@@ -5,7 +5,11 @@
       :topBarTitle="$t(`user.Item.shop`)"
     ></AppTopBar>
     <div class="focus">
-      <img class="d-img" src="@/assets/img/ntf/item.webp" />
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <van-swipe-item v-for="(p, i) in imgs" :key="i"
+          ><img class="d-img" :src="p.imageUrl"
+        /></van-swipe-item>
+      </van-swipe>
     </div>
     <ul class="justify-around align-center navs m-t-16 m-b-16">
       <li
@@ -13,6 +17,7 @@
         :class="{ cur: current === item.key }"
         v-for="(item, i) in navs"
         :key="i"
+        class="ellipsis"
       >
         {{ item.name }}
       </li>
@@ -38,6 +43,9 @@ export default {
   },
   data() {
     return {
+      imgs: sessionStorage.getItem("homeSwiper")
+        ? JSON.parse(sessionStorage.getItem("homeSwiper"))
+        : [],
       current: +this.$route.query.tab || 0,
       navs: [
         {
@@ -56,6 +64,16 @@ export default {
     };
   },
   methods: {
+    async getImg() {
+      if (this.imgs.length) return;
+      //homeswiper
+      const [err, res] = await userApi.homeswiper({
+        lang: this.$store.state.lang,
+      });
+      if (err) return;
+      sessionStorage.setItem("homeSwiper", JSON.stringify(res.data));
+      this.imgs = res.data;
+    },
     chose(item) {
       //this.current = item.key;
       this.$router.replace({
@@ -82,6 +100,9 @@ export default {
           : this.video.concat(res.data.results);
       this.query.pageNo++;
     },
+  },
+  created() {
+    this.getImg();
   },
 };
 </script>

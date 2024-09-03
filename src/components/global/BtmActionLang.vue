@@ -4,7 +4,7 @@
     v-model="show"
     :description="$t(`index.index.lang`)"
   >
-    <ul class="content-user-lang font16">
+    <ul class="content-user-lang font16 p-b-32">
       <li
         @click="onSelect(item)"
         class="align-center m-l-16 m-r-16"
@@ -12,7 +12,12 @@
         :key="idx"
       >
         <!-- <img :src="item.icon" alt="" /> -->
-        {{ item.label }}
+        <p class="align-center">
+          <img class="d-img m-r-12" :src="item.icon" alt="" /> {{ item.label }}
+        </p>
+        <p v-if="$store.state.lang == item.value">
+          <img class="d-img rit" src="@/assets/img/right-c.webp" alt="" />
+        </p>
       </li>
     </ul>
   </van-action-sheet>
@@ -63,13 +68,17 @@ export default {
 }
 .content-user-lang {
   & > li {
-    height: 40px;
+    height: 52px;
     padding: 0 30px;
     border-bottom: 1px solid #313038;
+    justify-content: space-between;
     img {
-      width: 22px;
+      width: 28px;
+      height: 28px;
+    }
+    .rit {
       height: 22px;
-      margin-right: 8px;
+      width: 22px;
     }
   }
 }

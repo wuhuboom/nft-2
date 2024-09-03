@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Vue from "vue";
 import Vuex from "vuex";
 import userApi from "@/api/user";
@@ -33,65 +34,57 @@ export default new Vuex.Store({
         label: "EN",
         text: "English",
         value: "en",
-        icon: enlang,
-      },
-      {
-        label: "DZ",
-        icon: dzlang,
-        text: "Algeria",
-        value: "dz",
-      },
-      {
-        label: "DE",
-        text: "Germany",
-        icon: delang,
-        value: "de",
-      },
-      {
-        label: "RU",
-        text: "Germany",
-        icon: delang,
-        value: "ru",
-      },
-      {
-        label: "FR",
-        text: "Germany",
-        icon: delang,
-        value: "fr",
-      },
-      {
-        label: "PT",
-        text: "Germany",
-        icon: delang,
-        value: "pt",
-      },
-      {
-        label: "ES",
-        text: "Germany",
-        icon: delang,
-        value: "es",
+        icon: require("@/assets/img/lang/en.png"),
       },
       {
         label: "IN",
-        icon: inlang,
+        icon: require("@/assets/img/lang/in.png"),
         text: "India",
         value: "in",
       },
       {
+        label: "RU",
+        text: "Germany",
+        icon: require("@/assets/img/lang/ru.png"),
+        value: "ru",
+      },
+      {
         label: "NE",
-        icon: frlang,
+        icon: require("@/assets/img/lang/ne.png"),
         text: "France",
         value: "np",
       },
-      //TODO 注释掉埃及语言
+      {
+        label: "FR",
+        text: "Germany",
+        icon: require("@/assets/img/lang/fr.png"),
+        value: "fr",
+      },
+
       // {
-      // 	label: 'EG',
-      // 	value: 'eg',
+      //   label: "DZ",
+      //   icon: dzlang,
+      //   text: "Algeria",
+      //   value: "dz",
       // },
       // {
-      //     label: 'CN',
-      //     value: 'zh',
-      // }
+      //   label: "DE",
+      //   text: "Germany",
+      //   icon: delang,
+      //   value: "de",
+      // },
+      // {
+      //   label: "PT",
+      //   text: "Germany",
+      //   icon: delang,
+      //   value: "pt",
+      // },
+      // {
+      //   label: "ES",
+      //   text: "Germany",
+      //   icon: delang,
+      //   value: "es",
+      // },
     ],
     serveData: {},
     fbMsg: {
