@@ -7,7 +7,7 @@ u
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
 
-    <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-12">
+    <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-16">
       <li>
         <el-select v-model="filterTab" @change="changFilter">
           <el-option
@@ -48,7 +48,7 @@ u
           </van-grid-item>
         </van-grid>
         <van-grid
-          class="color-primary m-b-8"
+          class="color-primary m-b-8 m-t-8"
           v-for="(item, idx) in curItem.results"
           :key="idx"
           :border="false"
@@ -66,7 +66,10 @@ u
           <van-grid-item class="color-active">
             {{ getState(+item.status) }}
           </van-grid-item>
-          <div class="color-active" v-if="item.status === 3">
+          <div
+            class="color-active p-l-16 p-r-16 m-t-4"
+            v-if="item.status === 3"
+          >
             {{ $t("withdraw.record.status.fail.text") }}：{{ item.remark }}
           </div>
         </van-grid>
@@ -380,6 +383,25 @@ export default {
         res.data.pageNo == 1
           ? res.data.results
           : this.curItem.results.concat(res.data.results);
+      //如果 list 是空数据 加点假数据
+      // if (list.length === 0) {
+      //   list = [
+      //     {
+      //       createdAt: "2021-07-01 12:00:00",
+      //       money: 100,
+      //       status: 3,
+      //       type: 1,
+      //       remark: "失败原因",
+      //     },
+      //     {
+      //       createdAt: "2021-07-01 12:00:00",
+      //       money: 100,
+      //       status: 3,
+      //       type: 1,
+      //       remark: "失败原因",
+      //     },
+      //   ];
+      // }
       this.curItem = {
         ...res.data,
         results: list,

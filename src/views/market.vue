@@ -154,7 +154,7 @@
               {{ i + 1 }}、{{ d.txt }}
             </li>
           </ul>
-          <ul class="m-t-20 m-b-20 align-center justify-between">
+          <ul class="m-t-20 m-b-20 align-center justify-between" v-if="addRate">
             <li class="font14 align-center">
               {{ $t(`market.rate.many`) }}
               <van-icon
@@ -404,6 +404,7 @@ export default {
       }
       this.$toast.clear();
       this.formData = initFome();
+      //Toast.success('成功文案');
     },
     async investPlans() {
       const [err, res] = await userApi.investPlans(this.$route.query.id);

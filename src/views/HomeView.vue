@@ -20,12 +20,28 @@
       </li>
     </ul>
     <div class="shop m-l-16 m-r-16 m-b-24">
-      <ul class="text-center user-info">
-        <li class="username blod">{{ user.username }}</li>
-        <li class="vipLevel m-t-4" v-if="user.vipLevel">
-          LV.{{ user.vipLevel }}
-        </li>
-      </ul>
+      <div>
+        <ul class="text-center center-center user-info">
+          <li class="username blod">
+            {{ $store.state.shoeName ? user.username : "*****" }}
+          </li>
+          <li class="vipLevel m-t-4" v-if="user.vipLevel">
+            LV.{{ user.vipLevel }}
+          </li>
+          <li>
+            <i
+              @click="$store.commit('setShowName', !$store.state.shoeName)"
+              class="font-16 m-l-8 iconfont color-active"
+              :class="[
+                $store.state.shoeName
+                  ? 'icon-yanjing_xianshi_o'
+                  : 'icon-yanjing_yincang_o',
+              ]"
+            ></i>
+          </li>
+        </ul>
+      </div>
+
       <ul class="enter justify-between p-l-16 p-r-16">
         <li
           class="flex-column center-center"

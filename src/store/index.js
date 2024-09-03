@@ -14,6 +14,7 @@ Vue.use(Vuex);
 const lang = location.href.includes("zmkm") ? "zh" : "";
 export default new Vuex.Store({
   state: {
+    shoeName: false,
     showMain: {
       show: false,
       msg: "",
@@ -100,6 +101,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setShowName(state, data) {
+      state.shoeName = data;
+    },
     setMainShow(state, data) {
       Object.assign(state.showMain, data);
     },
