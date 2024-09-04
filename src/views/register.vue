@@ -312,12 +312,14 @@ export default {
         this.verifyCodeReq();
         return;
       }
-      this.$toast(
+      this.$toast.success(
         `${this.$t("index.editor.psd.modal.success.text2")},${this.$t(
           "index.editor.psd.modal.success.text3"
         )}`
       );
-      this.$router.push({ name: "Login" });
+      setTimeout(() => {
+        this.$router.push({ name: "Login" });
+      }, 3000);
       // this.$store.commit("setUser", res.data);
     },
     change() {},
