@@ -35,7 +35,7 @@
         <li class="justify-between my-first align-center p-b-16">
           <p class="align-center">
             <span><img class="d-img person" :src="icons[idx]" alt="" /></span>
-            <span>Grade: lv.{{ idx }}</span>
+            <span>Grade: lv.{{ idx + 1 }}</span>
           </p>
           <p class="align-center">
             <van-icon size="20" name="manager-o" />
