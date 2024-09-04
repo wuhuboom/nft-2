@@ -127,7 +127,7 @@
               :placeholder="$t('form.phoneNum.text')"
               type="digit"
               autocomplete="new-password"
-              class="left-icon-box res-icon-size login-phone m-b-32"
+              class="left-icon-box res-icon-size login-phone m-b-32 align-center"
               :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
             >
               <template #left-icon>

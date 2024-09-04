@@ -48,7 +48,7 @@
           :placeholder="$t('password.setting.phone.old.phone.text')"
           autocomplete="new-password"
           type="digit"
-          class="m-b-16"
+          class="m-b-16 align-center"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>
