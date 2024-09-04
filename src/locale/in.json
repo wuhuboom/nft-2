@@ -1495,5 +1495,6 @@
   "Total.earnings": "कुल कमाई",
   "Friend.count": "मित्र गणना",
   "Settings": "सेटिंग्स",
-   "vaid.gmail": "कृपया एक मान्य Gmail पता दर्ज करें"
+   "vaid.gmail": "कृपया एक मान्य Gmail पता दर्ज करें",
+   "vaid.phone": "कृपया {num} अंकों का फ़ोन नंबर दर्ज करें"
 }

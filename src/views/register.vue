@@ -126,7 +126,15 @@
               type="digit"
               autocomplete="new-password"
               class="left-icon-box res-icon-size login-phone m-b-32 align-center"
-              :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
+              :rules="[
+                { required: true, message: $t('ruls.phone.empty') },
+                {
+                  validator: validatePhone,
+                  message: this.$t('vaid.phone', {
+                    num: form.phone.startsWith('0') ? 11 : 10,
+                  }),
+                },
+              ]"
             >
               <template #left-icon>
                 <p @click="leftFn" class="align-center area-code">
@@ -277,8 +285,16 @@ export default {
       if (err) return;
       this.authConfig = res.data;
     },
-    validatePassword(password) {
-      return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(password);
+    validatePassword(v) {
+      if (this.form.areaCode != 91) return true;
+      if (v.startsWith("0")) {
+        return v.length === 11;
+      } else {
+        return v.length === 10;
+      }
+    },
+    validatePhone(value) {
+      return /^1[3456789]\d{9}$/.test(value);
     },
     validateTwo(value) {
       return value === this.form.password;

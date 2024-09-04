@@ -1495,5 +1495,6 @@
   "Total.earnings": "Gains totaux",
   "Friend.count": "Nombre d'amis",
   "Settings": "Paramètres",
-  "vaid.gmail": "Veuillez entrer une adresse Gmail valide"
+  "vaid.gmail": "Veuillez entrer une adresse Gmail valide",
+  "vaid.phone": "Veuillez entrer un numéro de téléphone à {num} chiffres"
 }
