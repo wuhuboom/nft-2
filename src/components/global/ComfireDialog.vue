@@ -21,6 +21,7 @@
         <van-button
           @click="cancle"
           size="small"
+          v-if="cancelBtn"
           class="ntf-vant-btn ntf-btn-cancel m-r-24"
           block
           type="info"
