@@ -4,7 +4,7 @@
     :showConfirmButton="false"
     :showCancelButton="false"
     :closeOnClickOverlay="true"
-    class="cancel-dialog-parent font12"
+    class="linear-global-pop font12"
     :class="{ 'no-foot-btn': !footBtn }"
   >
     <ul class="flex-column cancle-dialog">
@@ -17,14 +17,34 @@
           {{ item }}
         </p>
       </li>
-      <li v-if="footBtn" class="cancle-btns center-center p-l-24 p-r-24">
-        <p v-if="cancelBtn" class="page-res-btn" @click="cancle">
+      <li v-if="footBtn" class="align-center m-t-16 justify-around">
+        <van-button
+          @click="cancle"
+          size="small"
+          class="ntf-vant-btn ntf-btn-cancel m-r-24"
+          block
+          type="info"
+        >
+          {{ $t("modal.cancel.text") }}
+        </van-button>
+        <van-button
+          class="ntf-vant-btn"
+          size="small"
+          block
+          type="info"
+          @click="sure"
+        >
+          {{ $t("modal.confirm.text") }}
+        </van-button>
+      </li>
+      <!-- <li v-if="footBtn" class="cancle-btns center-center p-l-24 p-r-24">
+        <p v-if="cancelBtn" class="ntf-vant-btn" @click="cancle">
           {{ $t("modal.cancel.text") }}
         </p>
-        <p class="page-res-btn" @click="sure">
+        <p class="ntf-vant-btn" @click="sure">
           {{ $t("modal.confirm.text") }}
         </p>
-      </li>
+      </li> -->
     </ul>
   </van-dialog>
 </template>
