@@ -35,7 +35,7 @@
           :rules="[
             { required: true, message: $t('ruls.accout.empty') },
             {
-              pattern: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               message: this.$t('ruls.email.length'),
             },
           ]"

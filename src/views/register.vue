@@ -88,10 +88,8 @@
               :rules="[
                 { required: true, message: $t('ruls.email.empty') },
                 {
-                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: this.$t(
-                    'backapi.self.login.reg.page.email.input.format.text'
-                  ),
+                  pattern: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+                  message: this.$t('vaid.gmail'),
                 },
               ]"
             >
