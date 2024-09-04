@@ -86,6 +86,20 @@
       </ul>
     </div>
     <div
+      class="m-l-16 m-r-16 m-t-32 m-b-12 search"
+      @click="$router.push({ name: 'Message' })"
+      v-if="notice.content"
+    >
+      <div class="field-input-box align-center">
+        <p class="m-r-8">
+          <img class="d-block" src="@/assets/img/red/voice.webp" alt="" />
+        </p>
+        <div class="flex-1 content">
+          <div class="u-notice-content">{{ notice.content }}</div>
+        </div>
+      </div>
+    </div>
+    <div
       class="game-hot"
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
     >
@@ -203,11 +217,13 @@ import dayjs from "dayjs";
 import userApi from "@/api/user";
 import VersionDilalog from "@/views/components/VersionDilalog.vue";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
-
 export default {
   name: "HomeView",
   data() {
     return {
+      notice: {
+        content: "",
+      },
       sold: [],
       video: [],
       imgs: [],
@@ -275,8 +291,14 @@ export default {
       if (err) return;
       this.sold = res.data.results;
     },
+    async getNotice() {
+      const [err, res] = await userApi.notice();
+      if (err) return;
+      this.notice = res.data[0] || {};
+    },
   },
   created() {
+    this.getNotice();
     this.$store.commit("setPdTop", false);
     this.informationDealSold();
     this.informationVideo();
@@ -518,6 +540,53 @@ export default {
     .icon {
       margin-right: 5px;
     }
+  }
+}
+
+.u-notice-content {
+  animation: u-loop-animation 14s linear infinite both;
+  text-align: right;
+  // 这一句很重要，为了能让滚动左右连接起来
+  flex-wrap: nowrap;
+  color: #afafaf;
+  //不换行
+  white-space: nowrap;
+}
+@keyframes u-loop-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.search {
+  .field-input-box {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 12px;
+    height: 30px;
+    font-size: 12px;
+    border-radius: 9.5px;
+    border: solid 1px #2c2c2c;
+    height: 30px;
+    background-image: linear-gradient(to bottom, #000, #373334);
+    img {
+      height: 16px;
+    }
+    .content {
+      overflow: hidden;
+    }
+  }
+  @searchColor: #737b8c;
+  .van-icon-search {
+    font-size: 24px;
+    color: var(--active);
+  }
+  ::-webkit-input-placeholder,
+  ::placeholder {
+    color: @searchColor;
   }
 }
 </style>

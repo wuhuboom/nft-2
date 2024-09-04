@@ -4,11 +4,8 @@ import Vuex from "vuex";
 import userApi from "@/api/user";
 import auth from "@/plugins/auth";
 import util from "@/plugins/util";
-import enlang from "@/assets/img/en-lang.webp";
 import delang from "@/assets/img/de-lang.webp";
 import dzlang from "@/assets/img/dz-lang.webp";
-import inlang from "@/assets/img/in-lang.webp";
-import frlang from "@/assets/img/fr-lang.webp";
 import app from "@/main";
 Vue.use(Vuex);
 const lang = location.href.includes("zmkm") ? "zh" : "";
@@ -62,30 +59,30 @@ export default new Vuex.Store({
         value: "fr",
       },
 
-      // {
-      //   label: "DZ",
-      //   icon: dzlang,
-      //   text: "Algeria",
-      //   value: "dz",
-      // },
-      // {
-      //   label: "DE",
-      //   text: "Germany",
-      //   icon: delang,
-      //   value: "de",
-      // },
-      // {
-      //   label: "PT",
-      //   text: "Germany",
-      //   icon: delang,
-      //   value: "pt",
-      // },
-      // {
-      //   label: "ES",
-      //   text: "Germany",
-      //   icon: delang,
-      //   value: "es",
-      // },
+      {
+        label: "DZ",
+        icon: dzlang,
+        text: "Algeria",
+        value: "dz",
+      },
+      {
+        label: "DE",
+        text: "Germany",
+        icon: delang,
+        value: "de",
+      },
+      {
+        label: "PT",
+        text: "Germany",
+        icon: require("@/assets/img/pt.png"),
+        value: "pt",
+      },
+      {
+        label: "ES",
+        text: "Germany",
+        icon: require("@/assets/img/es.png"),
+        value: "es",
+      },
     ],
     serveData: {},
     fbMsg: {

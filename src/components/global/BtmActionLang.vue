@@ -75,6 +75,7 @@ export default {
     img {
       width: 28px;
       height: 28px;
+      border-radius: 50%;
     }
     .rit {
       height: 22px;

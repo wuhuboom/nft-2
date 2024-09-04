@@ -1494,5 +1494,8 @@
 	"Rules": "Reglas",
 	"Total.earnings": "Ganancias Totales",
 	"Friend.count": "Contador de Amigos",
-	"Settings":"Ajustes"
+	"Settings":"Ajustes",
+	"vaid.gmail": "Por favor, ingrese una dirección de Gmail válida",
+"vaid.phone": "Por favor, ingrese un número de teléfono de {num} dígitos"
+
 }
