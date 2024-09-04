@@ -7,7 +7,7 @@
     ></AppTopBar>
     <ChoseNav @chosen="chosen" :cur="cur" :navs="navs" />
     <div v-if="cur === 1">
-      <div class="m-t-16 font12 bg-fff-o-1 p-x-16">
+      <div class="m-t-16 font12 bg-fff-o-1 p-x-16 m-b-16">
         <div class="friends">
           <ul class="m-b-20">
             <li class="font14 blod color-fff">{{ divide(income.friends) }}</li>
@@ -27,21 +27,30 @@
           </ul>
         </div>
       </div>
-      <div>
-        <ul class="m-b-16 d-flex gray frends-list m-t-24 m-b-16">
-          <li v-for="value in head" :key="value">{{ value }}</li>
-        </ul>
-        <ul
-          class="m-b-4 d-flex frends-list frends-content"
-          v-for="(item, idx) in ranks"
-          :key="idx"
-        >
-          <li class="p-l-16">{{ item.friendsCount }}</li>
-          <li>{{ divide(item.total) }}</li>
-          <li class="p-r-8">{{ divide(item.today) }}</li>
-        </ul>
-      </div>
-      <div>
+      <ul
+        v-for="(item, idx) in ranks"
+        :key="idx"
+        class="grade m-b-12 p-l-8 p-r-8 p-t-16 p-b-16"
+      >
+        <li class="justify-between my-first align-center p-b-16">
+          <p class="align-center">
+            <span><img class="d-img person" :src="icons[idx]" alt="" /></span>
+            <span>Grade: lv.{{ idx }}</span>
+          </p>
+          <p class="align-center">
+            <van-icon size="20" name="manager-o" />
+            <span class="color-fff m-l-4">{{ item.friendsCount }}</span>
+          </p>
+        </li>
+        <li class="m-t-16">
+          {{ $t("income.team.level.count") }}：{{ divide(item.total) }}
+        </li>
+        <li class="justify-between align-center m-t-16">
+          <p>{{ $t("income.team.level.cur") }}：{{ divide(item.today) }}</p>
+          <p>{{ $t("rechargeNum.Enough") }}：{{ item.todayInvest }}</p>
+        </li>
+      </ul>
+      <!-- <div>
         <ul class="m-b-16 d-flex gray frends-list m-t-24 m-b-16">
           <li>{{ $t(`myfriends.list.col4.text`) }}</li>
           <li>
@@ -56,7 +65,7 @@
           <li class="p-l-16">{{ date(item.time) }}</li>
           <li>{{ divide(item.total) }}</li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <div v-else class="m-t-40">
       <ul class="my-incom center-center flex-column">
@@ -107,6 +116,11 @@ export default {
   data() {
     return {
       income: {},
+      icons: [
+        require("@/assets/img/HomeView/126927-3@2x.png"),
+        require("@/assets/img/HomeView/126927-2@2x.png"),
+        require("@/assets/img/HomeView/126927-3@2x.png"),
+      ],
       navs: [
         {
           name: i18n.t("income.tab.team"),
@@ -207,6 +221,17 @@ export default {
 </script>
 <style scoped lang="less">
 .balanceRecord-page {
+  .grade {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    .my-first {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+  .person {
+    height: 45px;
+    width: 45px;
+  }
   .gray {
     color: rgba(235, 235, 245, 0.6);
   }
