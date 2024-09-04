@@ -281,6 +281,8 @@ export default {
     this.informationDealSold();
     this.informationVideo();
     this.$store.dispatch("setSafeConfig");
+    //更新用户信息
+    this.$store.dispatch("getInfo");
   },
 };
 </script>
