@@ -9,21 +9,17 @@
     <div v-if="cur === 1">
       <div class="m-t-16 font12 bg-fff-o-1 p-x-16 m-b-16">
         <div class="friends">
-          <ul class="m-b-20">
-            <li class="font14 blod color-fff">{{ divide(income.friends) }}</li>
-            <li class="m-t-8">{{ $t("income.team.count") }}</li>
-          </ul>
-          <ul class="m-b-20">
-            <li class="font14 blod color-fff">
-              {{ divide(income.friendsToday) }}
-            </li>
-            <li class="m-t-8">{{ $t("income.team.cur") }}</li>
-          </ul>
           <ul>
             <li class="font14 blod color-fff">
-              {{ divide(income.friendsCount) }}
+              {{ income.friendsCount }}
             </li>
             <li class="m-t-8">{{ $t("income.team.people") }}</li>
+          </ul>
+          <ul class="m-t-16">
+            <li class="font14 blod color-fff">
+              {{ divide(income.friendsBalance) }}
+            </li>
+            <li class="m-t-8">{{ $t("agency.center.teambalance.text") }}</li>
           </ul>
         </div>
       </div>
@@ -42,30 +38,14 @@
             <span class="color-fff m-l-4">{{ item.friendsCount }}</span>
           </p>
         </li>
-        <li class="m-t-16">
-          {{ $t("income.team.level.count") }}：{{ divide(item.total) }}
-        </li>
+        <!-- <li class="m-t-16">
+          {{ $t("today.reg.num") }}：{{ item.todayReg || 0 }}
+        </li> -->
         <li class="justify-between align-center m-t-16">
-          <p>{{ $t("income.team.level.cur") }}：{{ divide(item.today) }}</p>
+          <p>{{ $t("today.reg.num") }}：{{ item.todayReg || 0 }}</p>
           <p>{{ $t("rechargeNum.Enough") }}：{{ item.todayInvest }}</p>
         </li>
       </ul>
-      <!-- <div>
-        <ul class="m-b-16 d-flex gray frends-list m-t-24 m-b-16">
-          <li>{{ $t(`myfriends.list.col4.text`) }}</li>
-          <li>
-            {{ $t("income.team.level.cur") }}
-          </li>
-        </ul>
-        <ul
-          class="m-b-4 d-flex frends-list frends-content"
-          v-for="(item, idx) in data"
-          :key="idx"
-        >
-          <li class="p-l-16">{{ date(item.time) }}</li>
-          <li>{{ divide(item.total) }}</li>
-        </ul>
-      </div> -->
     </div>
     <div v-else class="m-t-40">
       <ul class="my-incom center-center flex-column">
@@ -164,14 +144,14 @@ export default {
       });
     },
     async investMyStatisFriendsThree() {
-      const [err, res] = await userApi.investMyStatisFriendsThree();
+      const [err, res] = await userApi.investMyStatisFriendsThree2();
       if (err) {
         return;
       }
       this.ranks = res.data;
     },
     async investMyStatisFriends() {
-      const [err, res] = await userApi.investMyStatisFriends();
+      const [err, res] = await userApi.investMyStatisFriends2();
       if (err) {
         return;
       }

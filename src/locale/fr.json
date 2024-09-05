@@ -1497,5 +1497,6 @@
   "Settings": "Paramètres",
   "vaid.gmail": "Veuillez entrer une adresse Gmail valide",
   "vaid.phone": "Veuillez entrer un numéro de téléphone à {num} chiffres",
-  "rechargeNum.Enough": "Nombre d'investisseurs aujourd'hui"
+  "rechargeNum.Enough": "Nombre d'investisseurs aujourd'hui",
+  "today.reg.num": "Nombre d'inscriptions aujourd'hui"
 }

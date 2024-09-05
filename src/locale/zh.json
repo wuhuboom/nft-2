@@ -1496,5 +1496,6 @@
   "Friend.count": "好友数量",
   "Settings": "设置",
   "vaid.gmail": "请输入有效的谷歌邮件地址",
-  "rechargeNum.Enough":"今日投资人数"
+  "rechargeNum.Enough":"今日投资人数",
+  "today.reg.num":"今日注册人数"
 }

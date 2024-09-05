@@ -721,6 +721,11 @@ export default {
       url: "/invest/my/statis",
     });
   },
+  investMyStatisFriendsThree2() {
+    return request({
+      url: "/invest/my/statis/friends/three2",
+    });
+  },
   investMyStatisFriendsThree() {
     return request({
       url: "/invest/my/statis/friends/three",
@@ -729,6 +734,11 @@ export default {
   investMyStatisFriends() {
     return request({
       url: "/invest/my/statis/friends",
+    });
+  },
+  investMyStatisFriends2() {
+    return request({
+      url: "/invest/my/statis/friends2",
     });
   },
   investFriendsStatis() {
