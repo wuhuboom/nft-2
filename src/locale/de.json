@@ -1496,6 +1496,7 @@
   "Friend.count": "Freundesanzahl",
   "Settings": "Einstellungen",
   "vaid.gmail": "Bitte geben Sie eine gültige Gmail-Adresse ein",
-"vaid.phone": "Bitte geben Sie eine {num}-stellige Telefonnummer ein"
+"vaid.phone": "Bitte geben Sie eine {num}-stellige Telefonnummer ein",
+"rechargeNum.Enough": "Anzahl der Investoren heute"
 
 }

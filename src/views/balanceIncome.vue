@@ -119,7 +119,7 @@ export default {
       icons: [
         require("@/assets/img/HomeView/126927-3@2x.png"),
         require("@/assets/img/HomeView/126927-2@2x.png"),
-        require("@/assets/img/HomeView/126927-3@2x.png"),
+        require("@/assets/img/HomeView/126927@2x.png"),
       ],
       navs: [
         {

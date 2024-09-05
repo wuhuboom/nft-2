@@ -1496,5 +1496,6 @@
 	"Friend.count": "Friend count",
 	"Settings":"Settings",
 	"vaid.gmail": "Please enter a valid Gmail address",
-	 "vaid.phone": "Please enter a {num}-digit phone number"
+	 "vaid.phone": "Please enter a {num}-digit phone number",
+	 "rechargeNum.Enough": "Number of investors today"
 }
