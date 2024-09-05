@@ -4,7 +4,7 @@
       <li class="logo center-center" @click="$router.push({ name: 'home' })">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
       </li>
-      <li class="flex-1 text-center txt">{{ title }}</li>
+      <li class="flex-1 text-center txt">{{ title }} ---</li>
       <li class="align-center lef-icon">
         <p class="m-r-16" @click="openLang">
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
