@@ -1,6 +1,6 @@
 <template>
-  <van-sticky style="z-index: 999" :offset-top="0">
-    <ul class="nav justify-between align-center">
+  <div class="home-top-bar">
+    <ul class="nav justify-between align-center max-width750">
       <li class="logo center-center" @click="$router.push({ name: 'home' })">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
       </li>
@@ -20,7 +20,7 @@
       </li>
     </ul>
     <BtmActionLang ref="BtmActionLang" />
-  </van-sticky>
+  </div>
 </template>
 
 <script>
@@ -42,8 +42,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+.home-top-bar {
+  &,
+  .nav {
+    height: 46px;
+  }
+}
 .nav {
-  height: 46px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background-color: transparent;
   .logo {

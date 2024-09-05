@@ -563,6 +563,7 @@ export default {
 }
 .search {
   .field-input-box {
+    overflow: hidden;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 12px;
