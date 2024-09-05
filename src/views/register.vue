@@ -285,16 +285,16 @@ export default {
       if (err) return;
       this.authConfig = res.data;
     },
-    validatePassword(v) {
+    validatePassword(password) {
+      return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(password);
+    },
+    validatePhone(v) {
       if (this.form.areaCode != 91) return true;
       if (v.startsWith("0")) {
         return v.length === 11;
       } else {
         return v.length === 10;
       }
-    },
-    validatePhone(value) {
-      return /^1[3456789]\d{9}$/.test(value);
     },
     validateTwo(value) {
       return value === this.form.password;
