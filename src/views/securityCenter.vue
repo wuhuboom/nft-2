@@ -1,7 +1,7 @@
 <template>
   <div class="wallet-page font12 p-r-12 p-l-12">
     <AppTopBar
-      :topBarTitle="$t('user.Report.Management')"
+      :topBarTitle="$t(`user.menu.title1.text`)"
       :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <div>
