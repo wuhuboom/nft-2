@@ -190,7 +190,7 @@ export default {
       return value === this.form.password;
     },
     validatePassword(password) {
-      return /^.{6,16}$/.test(password);
+      return /^\d{6,16}$/.test(password);
     },
     openEye() {
       this.showText = !this.showText;
