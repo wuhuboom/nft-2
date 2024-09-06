@@ -4,13 +4,7 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`user.Item.shop`)"
     ></AppTopBar>
-    <div class="focus">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="(p, i) in imgs" :key="i"
-          ><img class="d-img" :src="p.imageUrl"
-        /></van-swipe-item>
-      </van-swipe>
-    </div>
+    <Banner />
     <ul class="justify-around align-center navs m-t-16 m-b-16">
       <li
         @click="chose(item)"
@@ -34,18 +28,17 @@ import itemTrade from "@/views/itemTrade";
 import itemContest from "@/views/itemContest.vue";
 import i18n from "@/locale";
 import userApi from "@/api/user";
+import Banner from "@/components/global/Banner.vue";
 export default {
   name: "ItemShop",
   components: {
     itemGame,
     itemTrade,
     itemContest,
+    Banner,
   },
   data() {
     return {
-      imgs: sessionStorage.getItem("homeSwiper")
-        ? JSON.parse(sessionStorage.getItem("homeSwiper"))
-        : [],
       current: +this.$route.query.tab || 0,
       navs: [
         {
@@ -64,16 +57,6 @@ export default {
     };
   },
   methods: {
-    async getImg() {
-      if (this.imgs.length) return;
-      //homeswiper
-      const [err, res] = await userApi.homeswiper({
-        lang: this.$store.state.lang,
-      });
-      if (err) return;
-      sessionStorage.setItem("homeSwiper", JSON.stringify(res.data));
-      this.imgs = res.data;
-    },
     chose(item) {
       //this.current = item.key;
       this.$router.replace({

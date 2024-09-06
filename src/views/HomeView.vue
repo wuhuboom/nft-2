@@ -19,50 +19,8 @@
         <img class="d-img" src="@/assets/img/ntf/home/serve.png" alt="" />
       </li>
     </ul>
-    <div class="shop m-l-16 m-r-16 m-b-24">
-      <div>
-        <ul class="text-center center-center user-info">
-          <li class="username blod">
-            {{ $store.state.shoeName ? user.username : "*****" }}
-          </li>
-          <li class="vipLevel m-t-4" v-if="user.vipLevel">
-            LV.{{ user.vipLevel }}
-          </li>
-          <li>
-            <i
-              @click="$store.commit('setShowName', !$store.state.shoeName)"
-              class="font-16 m-l-8 iconfont color-active"
-              :class="[
-                $store.state.shoeName
-                  ? 'icon-yanjing_xianshi_o'
-                  : 'icon-yanjing_yincang_o',
-              ]"
-            ></i>
-          </li>
-        </ul>
-      </div>
-
-      <ul class="enter justify-between p-l-16 p-r-16">
-        <li
-          class="flex-column center-center"
-          @click="$router.push({ name: `ItemShop`, query: { tab: 0 } })"
-        >
-          <div class="els desc">
-            <p class="m-b-8 els">{{ $t(`user.Item.shop`) }}</p>
-          </div>
-
-          <p><img src="@/assets/img/ntf/home/shop1.png" alt="" /></p>
-        </li>
-        <li
-          class="flex-column center-center"
-          @click="$router.push({ path: '/pages/function/rebate_center' })"
-        >
-          <div class="els desc">
-            <p class="m-b-8 els">{{ $t(`fuc.rebate.center`) }}</p>
-          </div>
-          <p><img src="@/assets/img/ntf/home/shop2.png" alt="" /></p>
-        </li>
-      </ul>
+    <Banner class="m-b-16" />
+    <div class="shop m-l-16 m-r-16 m-b-16">
       <ul class="nav-enter-list justify-between els">
         <li
           class="els"
@@ -86,7 +44,7 @@
       </ul>
     </div>
     <div
-      class="m-l-16 m-r-16 m-t-32 m-b-12 search"
+      class="m-l-16 m-r-16 m-b-12 search"
       @click="$router.push({ name: 'Message' })"
       v-if="notice.content"
     >
@@ -103,6 +61,9 @@
       class="game-hot"
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
     >
+      <p class="tips-title els font16 color-active">
+        {{ $t(`user.Item.shop`) }}
+      </p>
       <div class="center-center hot-title p-t-8 text-center">
         <p>
           <img src="@/assets/img/ntf/home/rit.png" alt="" />
@@ -117,7 +78,7 @@
       </div>
       <p class="center-center more color-active">
         {{ $t(`user.platform.more`) }}
-        <van-icon class="m-l-4" name="arrow" />
+        <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
       </p>
       <div class="content-box">
         <div class="left-top top text-ellipsis">{{ $t(`Date.Time`) }}</div>
@@ -217,6 +178,7 @@ import dayjs from "dayjs";
 import userApi from "@/api/user";
 import VersionDilalog from "@/views/components/VersionDilalog.vue";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
+import Banner from "@/components/global/Banner.vue";
 export default {
   name: "HomeView",
   data() {
@@ -254,6 +216,7 @@ export default {
   components: {
     VersionDilalog,
     HomeTopBar,
+    Banner,
   },
   computed: {
     safeConfig() {
@@ -342,13 +305,6 @@ export default {
   height: 31px;
 }
 .shop {
-  background: url("@/assets/img/ntf/home/shop.png") no-repeat;
-  background-size: 100% 100%;
-  height: 236px;
-  position: relative;
-  .vipLevel {
-    color: #858585;
-  }
   .user-info {
     height: 48px;
   }
@@ -362,10 +318,6 @@ export default {
     }
   }
   .nav-enter-list {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -16px;
     & > li {
       width: 97px;
       height: 45px;
@@ -388,6 +340,7 @@ export default {
   background: url("@/assets/img/ntf/home/gamehot.png") no-repeat;
   background-size: 100% 100%;
   position: relative;
+  overflow: hidden;
   .hot-title {
     img {
       height: 24px;
@@ -401,7 +354,17 @@ export default {
     position: absolute;
     line-height: 1;
     right: 16px;
+    top: 18px;
+    .rit-desc {
+      margin-top: 2px;
+    }
+  }
+  .tips-title {
+    position: absolute;
+    line-height: 1;
+    left: 16px;
     top: 16px;
+    max-width: 86px;
   }
   .content-box {
     width: 343px;
