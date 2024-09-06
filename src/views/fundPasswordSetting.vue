@@ -205,7 +205,7 @@ export default {
       }
 
       reqParam.code = this.form.vercode;
-      reqParam.newPwd = this.form.password;
+      reqParam.newpwd = this.form.password;
       reqParam.confirmed = this.form.twoPassword;
       reqParam.verificationVal = this.form.verificationVal;
       this.loading = true;
