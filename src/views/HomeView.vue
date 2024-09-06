@@ -57,13 +57,20 @@
         </div>
       </div>
     </div>
+    <ul
+      @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
+      class="item-title justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
+    >
+      <li class="color-active font16">{{ $t(`user.Item.shop`) }}</li>
+      <li class="center-center more color-active">
+        {{ $t(`user.platform.more`) }}
+        <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
+      </li>
+    </ul>
     <div
       class="game-hot"
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
     >
-      <p class="tips-title els font16 color-active">
-        {{ $t(`user.Item.shop`) }}
-      </p>
       <div class="center-center hot-title p-t-8 text-center">
         <p>
           <img src="@/assets/img/ntf/home/rit.png" alt="" />
@@ -76,10 +83,7 @@
           <img src="@/assets/img/ntf/home/left.png" alt="" />
         </p>
       </div>
-      <p class="center-center more color-active">
-        {{ $t(`user.platform.more`) }}
-        <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
-      </p>
+
       <div class="content-box">
         <div class="left-top top text-ellipsis">{{ $t(`Date.Time`) }}</div>
         <div class="right-top top text-ellipsis">{{ $t(`From.Arrive`) }}</div>
@@ -334,6 +338,13 @@ export default {
     }
   }
 }
+.item-title {
+  .more {
+    .rit-desc {
+      margin-top: 2px;
+    }
+  }
+}
 .game-hot {
   width: 375px;
   height: 256px;
@@ -350,22 +361,7 @@ export default {
   .trading {
     width: 158px;
   }
-  .more {
-    position: absolute;
-    line-height: 1;
-    right: 16px;
-    top: 18px;
-    .rit-desc {
-      margin-top: 2px;
-    }
-  }
-  .tips-title {
-    position: absolute;
-    line-height: 1;
-    left: 16px;
-    top: 16px;
-    max-width: 86px;
-  }
+
   .content-box {
     width: 343px;
     margin: 0 auto;
