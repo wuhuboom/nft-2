@@ -4,7 +4,19 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`user.Item.shop`)"
     ></AppTopBar>
-    <Banner />
+    <Banner
+      :imgsList="[
+        {
+          imageUrl: require('@/assets/img/ntf/10005.jpeg'),
+        },
+        {
+          imageUrl: require('@/assets/img/ntf/10006.jpeg'),
+        },
+        {
+          imageUrl: require('@/assets/img/ntf/10007.jpeg'),
+        },
+      ]"
+    />
     <ul class="justify-around align-center navs m-t-16 m-b-16">
       <li
         @click="chose(item)"

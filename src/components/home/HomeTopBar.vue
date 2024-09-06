@@ -4,7 +4,32 @@
       <li class="logo center-center" @click="$router.push({ name: 'home' })">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
       </li>
-      <li class="flex-1 text-center txt">{{ title }}</li>
+      <li class="flex-1 text-center txt">
+        <div>
+          <ul class="text-center center-center user-info">
+            <li
+              class="username blod"
+              :class="{ 'm-t-4': !$store.state.shoeName }"
+            >
+              {{ $store.state.shoeName ? user.username : "*****" }}
+            </li>
+            <li class="vipLevel m-t-4" v-if="user.vipLevel">
+              LV.{{ user.vipLevel }}
+            </li>
+            <li>
+              <i
+                @click="$store.commit('setShowName', !$store.state.shoeName)"
+                class="font-16 m-l-8 iconfont color-active"
+                :class="[
+                  $store.state.shoeName
+                    ? 'icon-yanjing_xianshi_o'
+                    : 'icon-yanjing_yincang_o',
+                ]"
+              ></i>
+            </li>
+          </ul>
+        </div>
+      </li>
       <li class="align-center lef-icon">
         <p class="m-r-16" @click="openLang">
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
@@ -19,6 +44,7 @@
         </p>
       </li>
     </ul>
+
     <BtmActionLang ref="BtmActionLang" />
   </van-sticky>
 </template>
@@ -30,6 +56,11 @@ export default {
     title: {
       type: String,
       default: "FOTI.VIP",
+    },
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
     },
   },
   methods: {
@@ -46,6 +77,12 @@ export default {
   height: 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background-color: transparent;
+  .user-info {
+    line-height: 1;
+    .username {
+      line-height: 1;
+    }
+  }
   .logo {
     width: 77px;
     position: relative;

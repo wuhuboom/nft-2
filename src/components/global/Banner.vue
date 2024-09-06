@@ -1,7 +1,7 @@
 <template>
   <div class="focus">
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item v-for="(p, i) in imgs" :key="i"
+      <van-swipe-item v-for="(p, i) in imgsList || imgs" :key="i"
         ><img class="d-img" :src="p.imageUrl"
       /></van-swipe-item>
     </van-swipe>
@@ -18,6 +18,12 @@ export default {
         ? JSON.parse(sessionStorage.getItem("homeSwiper"))
         : [],
     };
+  },
+  props: {
+    imgsList: {
+      type: Array,
+      default: null,
+    },
   },
   methods: {
     async getImg() {

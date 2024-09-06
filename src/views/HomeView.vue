@@ -133,6 +133,7 @@
         </div>
       </div>
     </div>
+
     <div class="game-download">
       <div class="title">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
