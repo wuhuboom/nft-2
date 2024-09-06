@@ -22,7 +22,7 @@
             <p v-if="item.img" class="pic center-center">
               <img :src="item.img" alt="" />
             </p>
-            <p v-else class="center-center">{{ item.name }}</p>
+            <p class="center-center">{{ item.name }}</p>
           </div>
         </li>
       </ul>
