@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     validatePassword(password) {
-      return /^.{6,16}$/.test(password);
+      return /^\d{6,16}$/.test(password);
     },
     validateTwo(value) {
       return value === this.form.payPwd;

@@ -785,4 +785,27 @@ export default {
       data,
     });
   },
+  ///mail/email_change_pwd
+  emailChangePwd(data) {
+    return request({
+      url: "/mail/email_change_pwd",
+      method: "post",
+      data,
+    });
+  },
+  //mail/change_pwd_online
+  emailChangePwdOnline(data) {
+    return request({
+      url: "/mail/change_pwd_online",
+      method: "post",
+      data,
+    });
+  },
+  editPwdPay(data) {
+    return request({
+      url: "/editPwdPay",
+      method: "post",
+      data,
+    });
+  },
 };

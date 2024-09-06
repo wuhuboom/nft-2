@@ -5,14 +5,14 @@
       :styleObj="{ backgroundColor: 'transparent' }"
     >
     </AppTopBar>
-    <HistoryNav
+    <!-- <HistoryNav
       :type="1"
       :skip1="{
         name: 'ChangPassword',
         text: $t(`password.setting.pass.button.text`),
       }"
       :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
-    />
+    /> -->
     <div>
       <van-form class="ntf-form" @submit="onSubmit">
         <el-select
@@ -122,12 +122,8 @@
 <script>
 const initCountdown = 60;
 import userApi from "@/api/user";
-import HistoryNav from "@/views/components/HistoryNav.vue";
 export default {
   name: "ChangPassword",
-  components: {
-    HistoryNav,
-  },
   data() {
     return {
       countdown: 0,
@@ -207,8 +203,9 @@ export default {
       reqParam.code = this.form.vercode;
       reqParam.newPwd = this.form.password;
       reqParam.twicePwd = this.form.twoPassword;
+      reqParam.verificationVal = this.form.verificationVal;
       this.loading = true;
-      const [err] = await userApi.changePwdOnlineReq(reqParam);
+      const [err] = await userApi.emailChangePwdOnline(reqParam);
       this.loading = false;
       if (err) {
         const currMsgKey = err.data && err.data[0] && err.data[0].msgKey;

@@ -265,7 +265,7 @@ export default {
         code: this.form.vercode,
       };
       this.loading = true;
-      const [err] = await userApi.phoneChangePwdReq(reqData);
+      const [err] = await userApi.emailChangePwd(reqData);
       this.loading = false;
       if (err) {
         const currMsgKey = err.data && err.data[0] && err.data[0].msgKey;

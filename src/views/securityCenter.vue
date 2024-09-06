@@ -40,13 +40,13 @@ export default {
         {
           icon: require("@/assets/img/ntf/set1.png"),
           text: i18n.t("security.pass.text"),
-          name: "ChangPassword",
+          name: "ForgetPassword",
           active: false,
         },
         {
           icon: require("@/assets/img/ntf/set2.png"),
           text: `${i18n.t("security.fun.pass.text")}`,
-          name: "ChangFundPassword",
+          name: "FundPasswordSetting",
           active: false,
         },
         // {
