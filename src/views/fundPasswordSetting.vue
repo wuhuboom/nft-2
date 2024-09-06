@@ -206,7 +206,7 @@ export default {
 
       reqParam.code = this.form.vercode;
       reqParam.newPwd = this.form.password;
-      reqParam.twicePwd = this.form.twoPassword;
+      reqParam.confirmed = this.form.twoPassword;
       reqParam.verificationVal = this.form.verificationVal;
       this.loading = true;
       const [err] = await userApi.editPwdPay(reqParam);
