@@ -61,7 +61,7 @@
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
       class="item-title justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
     >
-      <li class="color-active font16">{{ $t(`user.Item.shop`) }}</li>
+      <li class="color-fff font16">{{ $t(`user.Item.shop`) }}</li>
       <li class="center-center more color-active">
         {{ $t(`user.platform.more`) }}
         <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
