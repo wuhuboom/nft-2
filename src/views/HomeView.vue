@@ -3,7 +3,7 @@
     <HomeTopBar />
     <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
       <li class="live">
-        <img src="@/assets/img/ntf/home/ligth.png" alt="" />
+        <img src="@/assets/img/ntf/home/homeligth.png" alt="" />
       </li>
       <li class="m-r-8 m-l-8 center-center flex-1 money-list">
         <div class="p-x-4">
