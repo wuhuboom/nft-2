@@ -11,7 +11,7 @@ Vue.use(Vuex);
 const lang = location.href.includes("zmkm") ? "zh" : "";
 export default new Vuex.Store({
   state: {
-    shoeName: false,
+    shoeName: true,
     showMain: {
       show: false,
       msg: "",
