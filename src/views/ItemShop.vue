@@ -7,13 +7,13 @@
     <Banner
       :imgsList="[
         {
-          imageUrl: require('@/assets/img/ntf/10005.jpeg'),
+          imageUrl: require('@/assets/img/ntf/1.png'),
         },
         {
-          imageUrl: require('@/assets/img/ntf/10006.jpeg'),
+          imageUrl: require('@/assets/img/ntf/2.png'),
         },
         {
-          imageUrl: require('@/assets/img/ntf/10007.jpeg'),
+          imageUrl: require('@/assets/img/ntf/3.png'),
         },
       ]"
     />
@@ -103,6 +103,9 @@ export default {
 </script>
 <style scoped lang="less">
 .item-shop-page {
+  ::v-deep .my-swipe {
+    height: 168px;
+  }
   .navs {
     & > li {
       width: 95px;
