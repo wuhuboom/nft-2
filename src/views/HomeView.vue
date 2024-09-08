@@ -19,7 +19,7 @@
       </div>
     </div>
     <ul
-      @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
+      @click="$router.push({ name: `gamesGroup` })"
       class="item-title p-b-8 justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
     >
       <li class="color-fff font16">{{ $t(`Game.Props`) }}</li>
