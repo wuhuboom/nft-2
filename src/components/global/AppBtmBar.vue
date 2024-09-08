@@ -4,7 +4,7 @@
       <ul class="app-btm-list max-width750">
         <li
           :class="{
-            // active: $router.currentRoute.name == item.name || item.active,
+            active: $router.currentRoute.name == item.name || item.active,
           }"
           class="btm-item center-center"
           v-for="(item, idx) in list"
@@ -21,7 +21,9 @@
               alt=""
             />
           </p>
-          <p class="text">{{ item.text }}</p>
+          <p class="text">
+            {{ item.text }}
+          </p>
         </li>
       </ul>
     </div>
@@ -133,7 +135,6 @@ export default {
     background-color: #171d28;
     background-size: 100% 100%;
     font-size: 12px;
-    color: var(--primary);
     .text {
       margin-top: 6px;
     }

@@ -274,6 +274,12 @@ export default {
     //更新用户信息
     this.$store.dispatch("getInfo");
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style lang="less" scoped>
