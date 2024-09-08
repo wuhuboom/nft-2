@@ -111,7 +111,7 @@ export default {
   },
   created() {
     this.safeInfo();
-    this.getConfig();
+    // this.getConfig();
   },
 };
 </script>
