@@ -276,7 +276,7 @@
 	"fundsRecords.discount.text": "Discount",
 	"fundsRecords.commission.text": "Commission",
 	"fundsRecords.Balance.text": "Balance",
-	"fundsRecords.orderNo.text": "OrderNo",
+	"fundsRecords.orderNo.text": "OrderNo.",
 	"fundsRecords.type.text": "Type",
 	"fundsRecords.initMoney.text": "Init money",
 	"user.money.available": "Available Funds",
