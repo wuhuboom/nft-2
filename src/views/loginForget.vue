@@ -293,12 +293,4 @@ export default {
   },
 };
 </script>
-<style scoped lang="less">
-.change-password-view {
-  ::v-deep {
-    .iconfont {
-      color: var(--primary);
-    }
-  }
-}
-</style>
+<style scoped lang="less"></style>
