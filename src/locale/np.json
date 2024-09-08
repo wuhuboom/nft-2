@@ -83,7 +83,7 @@
 	"dropdown.billing.income.withdraw.text": "निकास",
 	"dropdown.billing.income.online.recharge.text": "अनलाइन निक्षेप",
 	"dropdown.billing.income.offline.recharge.text": "अफलाइन निक्षेप",
-	"dropdown.billing.income.manually.add.money.text": "सिस्टम थप्नुहोस्",
+	"dropdown.billing.income.manually.add.money.text": "राशि थप्नुहोस्",
 	"dropdown.billing.income.withdraw.return.text": "निकास फर्किएको",
 	"dropdown.billing.income.bet.cancel.text": "बचत खाता",
 	"dropdown.billing.income.bet.rebate.text": "व्यापारिक लाभ",
@@ -108,7 +108,7 @@
 	"dropdown.billing.income.more.sufficient.text": "पर्याप्तभन्दा बढी पुरस्कार",
 	"dropdown.billing.income.active.profit.text": "कार्यक्षमता",
 	"dropdown.billing.income.sufficient.reward.text": "समय पर्याप्त पुरस्कार",
-	"dropdown.billing.income.fixed.day.text": "निश्चित दिन",
+"dropdown.billing.income.fixed.day.text": "बोनस",
 	"dropdown.billing.offline.activity.text": "स्थानान्तरण",
 	"dropdown.billing.report.score.text": "टोल गुणस्थान",
 	"dropdown.billing.income.bets.return.text": "लेन-देन फिर्ता",
@@ -499,7 +499,7 @@
 	"backapi.self.already.paid.text": "शुल्क पुग्यो",
 	"backapi.self.notice.alert.tip.text": "सूचना",
 	"backapi.self.notice.alert.okbtn.text": "पुष्टि",
-	"backapi.report.account.change.query.type.team.motivation.text": "टोलको प्रेरणा",
+"backapi.report.account.change.query.type.team.motivation.text": "टीम स्थानान्तरण",
 	"backapi.report.account.change.query.type.turntable.lottery.text": "रूलेट लटरी",
 	"backapi.report.account.change.query.type.turntable.jackpot.text": "स्पिन व्हिल जित",
 	"backapi.self.safe.text": "सुरक्षित",
@@ -1498,5 +1498,6 @@
 	 "vaid.gmail": "कृपया सहि Google इमेल ठेगाना प्रवेश गर्नुहोस्",
 	 "vaid.phone": "कृपया {num} अंकको फोन नम्बर प्रविष्ट गर्नुहोस्",
 	 "rechargeNum.Enough": "आजको निवेशकहरूको संख्या",
-	 "today.reg.num": "आजको दर्ता संख्या"
+	 "today.reg.num": "आजको दर्ता संख्या",
+	 "my.all.income":"कुल आम्दानी"
 }

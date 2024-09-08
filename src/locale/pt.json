@@ -83,7 +83,7 @@
   "dropdown.billing.income.withdraw.text": "Retirada",
   "dropdown.billing.income.online.recharge.text": "Recarga online",
   "dropdown.billing.income.offline.recharge.text": "Recarga offline",
-  "dropdown.billing.income.manually.add.money.text": "Adição do sistema",
+"dropdown.billing.income.manually.add.money.text": "Adicionar valor",
   "dropdown.billing.income.withdraw.return.text": "Devolução de saque",
   "dropdown.billing.income.bet.cancel.text": "Conta poupança",
   "dropdown.billing.income.bet.rebate.text": "Lucro da negociação",
@@ -108,7 +108,7 @@
   "dropdown.billing.income.more.sufficient.text": "Recompensa Mais que Suficiente",
   "dropdown.billing.income.active.profit.text": "Atividade",
   "dropdown.billing.income.sufficient.reward.text": "Recompensa Suficiente no Tempo",
-  "dropdown.billing.income.fixed.day.text": "dia fixo",
+"dropdown.billing.income.fixed.day.text": "Bônus",
   "dropdown.billing.offline.activity.text": "Transferência",
   "dropdown.billing.report.score.text": "Pontuação da Equipe",
   "dropdown.billing.income.bets.return.text": "Reembolso de Transação",
@@ -499,7 +499,7 @@
   "backapi.self.already.paid.text": "Taxas pagas",
   "backapi.self.notice.alert.tip.text": "Lembrete",
   "backapi.self.notice.alert.okbtn.text": "confirmar",
-  "backapi.report.account.change.query.type.team.motivation.text": "Motivação da equipe",
+ "backapi.report.account.change.query.type.team.motivation.text": "Transferência de equipe",
   "backapi.report.account.change.query.type.turntable.lottery.text": "Lotaria da roleta",
   "backapi.report.account.change.query.type.turntable.jackpot.text": "Roleta premiada",
   "backapi.self.safe.text": "seguro",
@@ -1498,6 +1498,7 @@
  "vaid.gmail": "Por favor, insira o endereço de e-mail do Google correto",
 "vaid.phone": "Por favor, insira um número de telefone com {num} dígitos",
 "rechargeNum.Enough": "Número de investidores hoje",
-"today.reg.num": "Número de registos hoje"
+"today.reg.num": "Número de registos hoje",
+"my.all.income":"Rendimento Total"
 
 }

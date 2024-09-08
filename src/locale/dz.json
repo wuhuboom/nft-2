@@ -83,7 +83,7 @@
   "dropdown.billing.income.withdraw.text": "سحب",
   "dropdown.billing.income.online.recharge.text": "شحن عبر الإنترنت",
   "dropdown.billing.income.offline.recharge.text": "شحن دون الاتصال بالإنترنت",
-  "dropdown.billing.income.manually.add.money.text": "النظام إضافة",
+"dropdown.billing.income.manually.add.money.text": "إضافة مبلغ",
   "dropdown.billing.income.withdraw.return.text": "إرجاع السحب",
   "dropdown.billing.income.bet.cancel.text": "حساب التوفير",
   "dropdown.billing.income.bet.rebate.text": "ربح التداول",
@@ -108,7 +108,7 @@
   "dropdown.billing.income.more.sufficient.text": "مكافأة أكثر من كافية",
   "dropdown.billing.income.active.profit.text": "نشاط",
   "dropdown.billing.income.sufficient.reward.text": "مكافأة كافية في الوقت",
-  "dropdown.billing.income.fixed.day.text": "يوم ثابت",
+"dropdown.billing.income.fixed.day.text": "مكافأة",
   "dropdown.billing.offline.activity.text": "نقل",
   "dropdown.billing.report.score.text": "علامة الفريق",
   "dropdown.billing.income.bets.return.text": "استرداد المعاملات",
@@ -499,7 +499,7 @@
   "backapi.self.already.paid.text": "الرسوم المدفوعة",
   "backapi.self.notice.alert.tip.text": "تنبيه",
   "backapi.self.notice.alert.okbtn.text": "تأكيد",
-  "backapi.report.account.change.query.type.team.motivation.text": "تحفيز الفريق",
+  "backapi.report.account.change.query.type.team.motivation.text": "نقل الفريق",
   "backapi.report.account.change.query.type.turntable.lottery.text": "سحب البولينغ",
   "backapi.report.account.change.query.type.turntable.jackpot.text": "ربح عجلة الدوران",
   "backapi.self.safe.text": "آمن",
@@ -1498,6 +1498,7 @@
 "vaid.gmail": "الرجاء إدخال عنوان البريد الإلكتروني الصحيح لـ Google",
 "vaid.phone": "يرجى إدخال رقم هاتف مكون من {num} أرقام",
 "rechargeNum.Enough": "عدد المستثمرين اليوم",
-"today.reg.num": "عدد التسجيلات اليوم"
+"today.reg.num": "عدد التسجيلات اليوم",
+"my.all.income":"الدخل الإجمالي"
 
 }

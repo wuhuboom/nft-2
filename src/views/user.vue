@@ -4,7 +4,7 @@
     <div class="page-user font12 p-l-16 p-r-16">
       <div class="align-center justify-between m-t-8">
         <ul>
-          <li class="gray">{{ $t(`property.header.title`) }}</li>
+          <li class="gray">{{ $t(`my.all.income`) }}</li>
           <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
           <li class="green">+{{ divide(invest.today) }}</li>
         </ul>

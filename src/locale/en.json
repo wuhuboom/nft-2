@@ -83,7 +83,7 @@
 	"dropdown.billing.income.withdraw.text": "Withdraw",
 	"dropdown.billing.income.online.recharge.text": "Online Recharge",
 	"dropdown.billing.income.offline.recharge.text": "Offline Recharge",
-	"dropdown.billing.income.manually.add.money.text": "System Add",
+	"dropdown.billing.income.manually.add.money.text": "Add amount",
 	"dropdown.billing.income.withdraw.return.text": "Withdrawal return",
 	"dropdown.billing.income.bet.cancel.text": "Savings Account",
 	"dropdown.billing.income.bet.rebate.text": "trading profit",
@@ -108,7 +108,7 @@
 	"dropdown.billing.income.more.sufficient.text": "More than sufficient reward",
 	"dropdown.billing.income.active.profit.text": "activity",
 	"dropdown.billing.income.sufficient.reward.text": "Time sufficient reward",
-	"dropdown.billing.income.fixed.day.text": "fixed day",
+	"dropdown.billing.income.fixed.day.text": "Bonus",
 	"dropdown.billing.offline.activity.text": "Transfer",
 	"dropdown.billing.report.score.text": "Team Score",
 	"dropdown.billing.income.bets.return.text": "Transaction Refund",
@@ -499,7 +499,7 @@
 	"backapi.self.already.paid.text": "Fees paid",
 	"backapi.self.notice.alert.tip.text": "Reminder",
 	"backapi.self.notice.alert.okbtn.text": "confirm",
-	"backapi.report.account.change.query.type.team.motivation.text": "Team motivation",
+"backapi.report.account.change.query.type.team.motivation.text": "Team transfer",
 	"backapi.report.account.change.query.type.turntable.lottery.text": "Roulette lottery",
 	"backapi.report.account.change.query.type.turntable.jackpot.text": "Spin wheel winning",
 	"backapi.self.safe.text": "safe",
@@ -1498,5 +1498,6 @@
 	"vaid.gmail": "Please enter the correct Google email address",
 	 "vaid.phone": "Please enter a {num}-digit phone number",
 	 "rechargeNum.Enough": "Number of investors today",
-	 "today.reg.num": "Number of registrations today"
+	 "today.reg.num": "Number of registrations today",
+	 "my.all.income":"Total Income"
 }

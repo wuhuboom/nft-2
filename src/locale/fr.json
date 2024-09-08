@@ -83,7 +83,7 @@
   "dropdown.billing.income.withdraw.text": "Retrait",
   "dropdown.billing.income.online.recharge.text": "Recharge en ligne",
   "dropdown.billing.income.offline.recharge.text": "Recharge hors ligne",
-  "dropdown.billing.income.manually.add.money.text": "Ajout système",
+ "dropdown.billing.income.manually.add.money.text": "Ajouter un montant",
   "dropdown.billing.income.withdraw.return.text": "Retour de retrait",
   "dropdown.billing.income.bet.cancel.text": "Compte d'épargne",
   "dropdown.billing.income.bet.rebate.text": "Profit commercial",
@@ -108,7 +108,7 @@
   "dropdown.billing.income.more.sufficient.text": "Récompense plus que suffisante",
   "dropdown.billing.income.active.profit.text": "activité",
   "dropdown.billing.income.sufficient.reward.text": "Récompense suffisante dans le temps",
-  "dropdown.billing.income.fixed.day.text": "jour fixe",
+"dropdown.billing.income.fixed.day.text": "Prime",
   "dropdown.billing.offline.activity.text": "Transfert",
   "dropdown.billing.report.score.text": "Score d'équipe",
   "dropdown.billing.income.bets.return.text": "Remboursement de transaction",
@@ -499,7 +499,7 @@
   "backapi.self.already.paid.text": "Frais payés",
   "backapi.self.notice.alert.tip.text": "Rappel",
   "backapi.self.notice.alert.okbtn.text": "Confirmer",
-  "backapi.report.account.change.query.type.team.motivation.text": "Motivation d'équipe",
+"backapi.report.account.change.query.type.team.motivation.text": "Transfert d'équipe",
   "backapi.report.account.change.query.type.turntable.lottery.text": "Loterie de la roulette",
   "backapi.report.account.change.query.type.turntable.jackpot.text": "Gains de la roue de la fortune",
   "backapi.self.safe.text": "Sûr",
@@ -1498,5 +1498,6 @@
   "vaid.gmail": "Veuillez saisir l'adresse e-mail Google correcte",
   "vaid.phone": "Veuillez entrer un numéro de téléphone à {num} chiffres",
   "rechargeNum.Enough": "Nombre d'investisseurs aujourd'hui",
-  "today.reg.num": "Nombre d'inscriptions aujourd'hui"
+  "today.reg.num": "Nombre d'inscriptions aujourd'hui",
+  "my.all.income":"Revenu total"
 }

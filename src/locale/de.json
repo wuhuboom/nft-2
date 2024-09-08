@@ -83,7 +83,7 @@
   "dropdown.billing.income.withdraw.text": "Abhebung",
   "dropdown.billing.income.online.recharge.text": "Online-Aufladung",
   "dropdown.billing.income.offline.recharge.text": "Offline-Aufladung",
-  "dropdown.billing.income.manually.add.money.text": "System hinzufügen",
+"dropdown.billing.income.manually.add.money.text": "Betrag hinzufügen",
   "dropdown.billing.income.withdraw.return.text": "Rückzug zurück",
   "dropdown.billing.income.bet.cancel.text": "Sparkonto",
   "dropdown.billing.income.bet.rebate.text": "Handelsgewinn",
@@ -108,7 +108,7 @@
   "dropdown.billing.income.more.sufficient.text": "Mehr als ausreichende Belohnung",
   "dropdown.billing.income.active.profit.text": "Aktivität",
   "dropdown.billing.income.sufficient.reward.text": "Zeit ausreichende Belohnung",
-  "dropdown.billing.income.fixed.day.text": "Fester Tag",
+"dropdown.billing.income.fixed.day.text": "Bonus",
   "dropdown.billing.offline.activity.text": "Übertragung",
   "dropdown.billing.report.score.text": "Team Punktzahl",
   "dropdown.billing.income.bets.return.text": "Transaktionserstattung",
@@ -499,7 +499,7 @@
   "backapi.self.already.paid.text": "Gebühren bezahlt",
   "backapi.self.notice.alert.tip.text": "Erinnerung",
   "backapi.self.notice.alert.okbtn.text": "bestätigen",
-  "backapi.report.account.change.query.type.team.motivation.text": "Team-Motivation",
+"backapi.report.account.change.query.type.team.motivation.text": "Teamübertragung",
   "backapi.report.account.change.query.type.turntable.lottery.text": "Roulette-Lotterie",
   "backapi.report.account.change.query.type.turntable.jackpot.text": "Glücksrad-Gewinn",
   "backapi.self.safe.text": "Sicherheit",
@@ -1498,6 +1498,7 @@
   "vaid.gmail": "Bitte geben Sie die korrekte Google-E-Mail-Adresse ein",
 "vaid.phone": "Bitte geben Sie eine {num}-stellige Telefonnummer ein",
 "rechargeNum.Enough": "Anzahl der Investoren heute",
-"today.reg.num": "Anzahl der Registrierungen heute"
+"today.reg.num": "Anzahl der Registrierungen heute",
+"my.all.income":"Gesamteinkommen"
 
 }

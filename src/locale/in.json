@@ -83,7 +83,7 @@
   "dropdown.billing.income.withdraw.text": "निकासी",
   "dropdown.billing.income.online.recharge.text": "ऑनलाइन रिचार्ज",
   "dropdown.billing.income.offline.recharge.text": "ऑफलाइन रिचार्ज",
-  "dropdown.billing.income.manually.add.money.text": "सिस्टम जोड़ें",
+"dropdown.billing.income.manually.add.money.text": "राशि जोड़े",
   "dropdown.billing.income.withdraw.return.text": "निकासी रिटर्न",
   "dropdown.billing.income.bet.cancel.text": "बचत खाता",
   "dropdown.billing.income.bet.rebate.text": "व्यापार लाभ",
@@ -108,7 +108,7 @@
   "dropdown.billing.income.more.sufficient.text": "पर्याप्त से अधिक पुरस्कार",
   "dropdown.billing.income.active.profit.text": "क्रियात्मकता",
   "dropdown.billing.income.sufficient.reward.text": "समय से पर्याप्त पुरस्कार",
-  "dropdown.billing.income.fixed.day.text": "स्थिर दिन",
+"dropdown.billing.income.fixed.day.text": "बोनस",
   "dropdown.billing.offline.activity.text": "स्थानांतरण",
   "dropdown.billing.report.score.text": "टीम स्कोर",
   "dropdown.billing.income.bets.return.text": "लेन-देन वापसी",
@@ -499,7 +499,7 @@
   "backapi.self.already.paid.text": "शुल्क भुगतान किया गया है",
   "backapi.self.notice.alert.tip.text": "सूचना",
   "backapi.self.notice.alert.okbtn.text": "पुष्टि करें",
-  "backapi.report.account.change.query.type.team.motivation.text": "टीम प्रेरणा",
+  "backapi.report.account.change.query.type.team.motivation.text": "टीम ट्रांसफर",
   "backapi.report.account.change.query.type.turntable.lottery.text": "रूलेट लॉटरी",
   "backapi.report.account.change.query.type.turntable.jackpot.text": "स्पिन व्हील जीतना",
   "backapi.self.safe.text": "सुरक्षित",
@@ -1498,6 +1498,7 @@
    "vaid.gmail": "कृपया सही गूगल ईमेल पता दर्ज करें",
    "vaid.phone": "कृपया {num} अंकों का फ़ोन नंबर दर्ज करें",
    "rechargeNum.Enough": "आज के निवेशकों की संख्या",
-   "today.reg.num": "आज की पंजीकरणों की संख्या"
+   "today.reg.num": "आज की पंजीकरणों की संख्या",
+   "my.all.income":"कुल आय"
    
 }

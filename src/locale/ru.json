@@ -83,7 +83,7 @@
 	"dropdown.billing.income.withdraw.text": "Вывод",
 	"dropdown.billing.income.online.recharge.text": "Онлайн-пополнение",
 	"dropdown.billing.income.offline.recharge.text": "Офлайн-пополнение",
-	"dropdown.billing.income.manually.add.money.text": "Системное пополнение",
+"dropdown.billing.income.manually.add.money.text": "Добавить сумму",
 	"dropdown.billing.income.withdraw.return.text": "Возврат вывода",
 	"dropdown.billing.income.bet.cancel.text": "Сберегательный счет",
 	"dropdown.billing.income.bet.rebate.text": "Торговая прибыль",
@@ -108,7 +108,7 @@
 	"dropdown.billing.income.more.sufficient.text": "Награда за излишество",
 	"dropdown.billing.income.active.profit.text": "Активность",
 	"dropdown.billing.income.sufficient.reward.text": "Награда за достаточное время",
-	"dropdown.billing.income.fixed.day.text": "Фиксированный день",
+"dropdown.billing.income.fixed.day.text": "Бонус",
 	"dropdown.billing.offline.activity.text": "Перевод",
 	"dropdown.billing.report.score.text": "Очки команды",
 	"dropdown.billing.income.bets.return.text": "Возврат транзакции",
@@ -499,7 +499,7 @@
 	"backapi.self.already.paid.text": "Оплаченные сборы",
 	"backapi.self.notice.alert.tip.text": "Напоминание",
 	"backapi.self.notice.alert.okbtn.text": "Подтвердить",
-	"backapi.report.account.change.query.type.team.motivation.text": "Мотивация команды",
+"backapi.report.account.change.query.type.team.motivation.text": "Перевод команды",
 	"backapi.report.account.change.query.type.turntable.lottery.text": "Лотерея с рулеткой",
 	"backapi.report.account.change.query.type.turntable.jackpot.text": "Выигрыш на колесе удачи",
 	"backapi.self.safe.text": "Безопасность",
@@ -1498,5 +1498,6 @@
 	"vaid.gmail": "Пожалуйста, введите правильный адрес электронной почты Google",
 	"vaid.phone": "Пожалуйста, введите {num}-значный номер телефона",
 	"rechargeNum.Enough": "Количество инвесторов сегодня",
-	"today.reg.num": "Число регистраций сегодня"
+	"today.reg.num": "Число регистраций сегодня",
+	"my.all.income":"Общий доход"
 }

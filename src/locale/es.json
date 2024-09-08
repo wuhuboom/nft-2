@@ -83,7 +83,7 @@
 	"dropdown.billing.income.withdraw.text": "Retirar",
 	"dropdown.billing.income.online.recharge.text": "Recarga en línea",
 	"dropdown.billing.income.offline.recharge.text": "Recarga fuera de línea",
-	"dropdown.billing.income.manually.add.money.text": "Adición del Sistema",
+ "dropdown.billing.income.manually.add.money.text": "Agregar monto",
 	"dropdown.billing.income.withdraw.return.text": "Devolución de Retiro",
 	"dropdown.billing.income.bet.cancel.text": "Cuenta de Ahorros",
 	"dropdown.billing.income.bet.rebate.text": "Beneficio de comercio",
@@ -108,7 +108,7 @@
 	"dropdown.billing.income.more.sufficient.text": "Recompensa por Más que Suficiente",
 	"dropdown.billing.income.active.profit.text": "actividad",
 	"dropdown.billing.income.sufficient.reward.text": "Recompensa Suficiente en Tiempo",
-	"dropdown.billing.income.fixed.day.text": "día fijo",
+	"dropdown.billing.income.fixed.day.text": "Bonificación",
 	"dropdown.billing.offline.activity.text": "Transferir",
 	"dropdown.billing.report.score.text": "Puntuación del Equipo",
 	"dropdown.billing.income.bets.return.text": "Reembolso de Transacción",
@@ -499,7 +499,7 @@
 	"backapi.self.already.paid.text": "Tarifas pagadas",
 	"backapi.self.notice.alert.tip.text": "Recordatorio",
 	"backapi.self.notice.alert.okbtn.text": "confirmar",
-	"backapi.report.account.change.query.type.team.motivation.text": "Motivación del equipo",
+	"backapi.report.account.change.query.type.team.motivation.text": "Transferencia de equipo",
 	"backapi.report.account.change.query.type.turntable.lottery.text": "Lotería de ruleta",
 	"backapi.report.account.change.query.type.turntable.jackpot.text": "Ganancia de rueda giratoria",
 	"backapi.self.safe.text": "seguro",
@@ -1498,6 +1498,7 @@
 	"vaid.gmail": "Por favor, introduzca la dirección de correo electrónico de Google correcta",
 "vaid.phone": "Por favor, ingrese un número de teléfono de {num} dígitos",
 "rechargeNum.Enough": "Número de inversores hoy",
-"today.reg.num": "Número de registros hoy"
+"today.reg.num": "Número de registros hoy",
+"my.all.income":"Ingresos Totales"
 
 }
