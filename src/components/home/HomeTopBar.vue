@@ -1,44 +1,22 @@
 <template>
   <van-sticky style="z-index: 999" :offset-top="0">
-    <ul class="nav justify-between align-center">
-      <li class="logo center-center" @click="$router.push({ name: 'home' })">
-        <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
-      </li>
-      <li class="flex-1 text-center txt">
-        <div>
-          <ul class="text-center center-center user-info">
-            <li
-              class="username blod"
-              :class="{ 'm-t-4': !$store.state.shoeName }"
-            >
-              {{ $store.state.shoeName ? user.username : "*****" }}
-            </li>
-            <li class="vipLevel m-t-4" v-if="user.vipLevel">
-              LV.{{ user.vipLevel }}
-            </li>
-            <li>
-              <i
-                @click="$store.commit('setShowName', !$store.state.shoeName)"
-                class="font-16 m-l-8 iconfont color-active"
-                :class="[
-                  $store.state.shoeName
-                    ? 'icon-yanjing_xianshi_o'
-                    : 'icon-yanjing_yincang_o',
-                ]"
-              ></i>
-            </li>
-          </ul>
-        </div>
+    <ul class="nav justify-between align-center p-r-32">
+      <li
+        class="logo p-l-16 center-center"
+        @click="$router.push({ name: 'home' })"
+      >
+        <img class="d-img" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
       </li>
       <li class="align-center lef-icon">
-        <p class="m-r-16" @click="openLang">
-          <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
+        <p @click="openLang">
+          <img class="d-img" src="@/assets/img/ntf3/129447@2x.webp" alt="" />
         </p>
-        <p class="m-r-16">
+        <p class="balance p-l-8 p-r-8">{{ divide(user.balance) }}</p>
+        <p class="">
           <img
             class="d-img"
             @click="$router.push({ name: 'Message' })"
-            src="@/assets/img/ntf/home/nav2.png"
+            src="@/assets/img/ntf3/129496@2x.webp"
             alt=""
           />
         </p>
@@ -75,8 +53,8 @@ export default {
 <style scoped lang="less">
 .nav {
   height: 46px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background-color: transparent;
+  background-image: linear-gradient(to right, #1f383e 0%, #131b26 100%);
   .user-info {
     line-height: 1;
     .username {
@@ -84,33 +62,32 @@ export default {
     }
   }
   .logo {
-    width: 77px;
     position: relative;
     img {
-      width: 34px;
-      height: 34px;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      height: 18px;
-      transform: translateY(-50%);
-      right: 0;
-      border: 1px solid transparent;
-      border-image: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          #888 52%,
-          rgba(128, 128, 128, 0)
-        )
-        1;
+      width: 75px;
+      height: 35px;
     }
   }
+  .balance {
+  }
   .lef-icon {
+    height: 27px;
+    border-radius: 13px;
+    background-image: linear-gradient(
+      to bottom,
+      #026452,
+      rgba(1, 69, 63, 0.46) 49%,
+      #02735e
+    );
+    & > p:nth-child(1) {
+      margin-left: -11px;
+    }
+    & > p:nth-child(3) {
+      margin-right: -11px;
+    }
     img {
-      height: 32px;
-      width: 32px;
+      height: 26px;
+      width: 26px;
     }
   }
   .txt {
