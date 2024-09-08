@@ -53,7 +53,6 @@ export default {
 <style scoped lang="less">
 .nav {
   height: 46px;
-  background-color: transparent;
   background-image: linear-gradient(to right, #1f383e 0%, #131b26 100%);
   .user-info {
     line-height: 1;

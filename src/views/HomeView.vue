@@ -1,47 +1,8 @@
 <template>
   <div class="font12">
     <HomeTopBar />
-    <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
-      <li class="live">
-        <img src="@/assets/img/ntf/home/homeligth.png" alt="" />
-      </li>
-      <li class="m-r-8 m-l-8 center-center flex-1 money-list">
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.available`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.balance) }}</p>
-        </div>
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.purchased`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.frozenBet) }}</p>
-        </div>
-      </li>
-      <li class="serve" @click="$store.dispatch('getServeData', 1)">
-        <img class="d-img" src="@/assets/img/ntf/home/serve.png" alt="" />
-      </li>
-    </ul>
-    <Banner class="m-b-16" />
-    <div class="shop m-l-16 m-r-16 m-b-16">
-      <ul class="nav-enter-list justify-between els">
-        <li
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
-        >
-          {{ $t("deal.recharge.354498-0") }}
-        </li>
-        <li
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/withdraw' })"
-        >
-          {{ $t(`dropdown.billing.income.withdraw.text`) }}
-        </li>
-        <li
-          v-if="safeConfig.showH5 === 1"
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/index' })"
-        >
-          {{ $t("fuc.safe.text") }}
-        </li>
-      </ul>
+    <div class="p-x-16">
+      <Banner />
     </div>
     <div
       class="m-l-16 m-r-16 m-b-12 search"
@@ -50,7 +11,7 @@
     >
       <div class="field-input-box align-center">
         <p class="m-r-8">
-          <img class="d-block" src="@/assets/img/red/voice.webp" alt="" />
+          <van-icon name="volume-o" size="16" />
         </p>
         <div class="flex-1 content">
           <div class="u-notice-content">{{ notice.content }}</div>
@@ -535,9 +496,8 @@ export default {
     height: 30px;
     font-size: 12px;
     border-radius: 9.5px;
-    border: solid 1px #2c2c2c;
     height: 30px;
-    background-image: linear-gradient(to bottom, #000, #373334);
+    background-image: linear-gradient(to right, #1f383e 0%, #131b26 100%);
     img {
       height: 16px;
     }
