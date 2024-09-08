@@ -402,9 +402,10 @@ export default {
         }
         return;
       }
-      this.$toast.clear();
       this.formData = initFome();
-      //Toast.success('成功文案');
+      this.$toast.success(
+        this.$t("backapi.self.safe.bill.detail.status.success.text")
+      );
     },
     async investPlans() {
       const [err, res] = await userApi.investPlans(this.$route.query.id);
