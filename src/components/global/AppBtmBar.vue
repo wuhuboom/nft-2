@@ -21,6 +21,7 @@
               alt=""
             />
           </p>
+          <p class="text">{{ item.text }}</p>
         </li>
       </ul>
     </div>
@@ -42,22 +43,29 @@ export default {
     return {
       list: [
         {
-          icon: require("@/assets/img/ntf/home/icon1.png"),
-          icon1: require("@/assets/img/ntf/home/icon1a.png"),
+          icon: require("@/assets/img/ntf3/130069@2x.png"),
+          icon1: require("@/assets/img/ntf3/130070@2x.png"),
           text: i18n.t("tabar.home"),
-          name: "investMarket",
-          active: false,
-        },
-        {
-          icon: require("@/assets/img/ntf/home/icon2.png"),
-          icon1: require("@/assets/img/ntf/home/icon2a.png"),
-          text: i18n.t("tabar.match"),
           name: "home",
           active: false,
         },
         {
-          icon: require("@/assets/img/ntf/home/icon3.png"),
-          icon1: require("@/assets/img/ntf/home/icon3a.png"),
+          icon: require("@/assets/img/ntf3/130068@2x.png"),
+          icon1: require("@/assets/img/ntf3/130071@2x.png"),
+          text: i18n.t("investment"),
+          name: "investMarket",
+          active: false,
+        },
+        {
+          icon: require("@/assets/img/ntf3/130067@2x.png"),
+          icon1: require("@/assets/img/ntf3/130072@2x.png"),
+          text: i18n.t("user.Contest"),
+          name: "ItemShop",
+          active: false,
+        },
+        {
+          icon: require("@/assets/img/ntf3/130098@2x.png"),
+          icon1: require("@/assets/img/ntf3/130097@2x.png"),
           text: i18n.t("tabar.me"),
           active: false,
           name: "User",
@@ -91,16 +99,18 @@ export default {
 .app-btm-bar {
   &,
   .app-btm-list {
-    height: 104px;
+    height: 80px;
+    border-radius: 40px;
   }
   .btm-item {
     flex-direction: column;
   }
   .app-btm-fix {
     position: fixed;
+    width: 343px;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 998;
     &::after {
       -webkit-filter: blur(24.8px);
@@ -120,17 +130,10 @@ export default {
     align-items: center;
     position: relative;
     z-index: 999;
-    background: url("@/assets/img/ntf/home/btm-bg1.png") no-repeat center center;
+    background-color: #171d28;
     background-size: 100% 100%;
     font-size: 12px;
     color: var(--primary);
-
-    & > li:nth-child(2) {
-      img {
-        height: 82px;
-        width: 82px;
-      }
-    }
     .text {
       margin-top: 6px;
     }

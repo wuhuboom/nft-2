@@ -28,9 +28,9 @@
         {{ item.name }}
       </li>
     </ul>
-    <itemGame v-if="current == 0" />
-    <itemTrade v-if="current == 1" />
-    <itemContest v-if="current == 2" />
+    <itemContest v-if="current == 0" />
+    <itemGame v-if="current == 1" />
+    <itemTrade v-if="current == 2" />
   </div>
 </template>
 
@@ -54,15 +54,15 @@ export default {
       current: +this.$route.query.tab || 0,
       navs: [
         {
-          name: i18n.t(`Game.Props`),
+          name: i18n.t(`user.Contest`),
           key: 0,
         },
         {
-          name: i18n.t(`tabar.bet`),
+          name: i18n.t(`Game.Props`),
           key: 1,
         },
         {
-          name: i18n.t(`user.Contest`),
+          name: i18n.t(`tabar.bet`),
           key: 2,
         },
       ],
