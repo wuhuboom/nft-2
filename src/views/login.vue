@@ -2,20 +2,27 @@
   <div class="login-view-page font14">
     <div class="p-l-16 p-r-16">
       <div class="lang align-center">
-        <p class="lang-pic m-r-8">
-          <img src="@/assets/img/ntf/ae.webp" alt="" />
-        </p>
+        <!-- <p class="lang-pic m-r-8">
+          <img :src="langIcon" alt="" />
+        </p> -->
         <el-select
           :value="$store.state.lang"
           @change="select"
           :placeholder="$t('index.editor.psd.text')"
         >
+          <template #prefix>
+            <img class="selectd-icon d-img m-r-8" :src="langIcon" alt="" />
+          </template>
           <el-option
             v-for="item in langOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value"
           >
+            <div class="custom-option align-center m-t-8">
+              <img class="d-img m-r-8" :src="item.icon" alt="" />
+              <span class="custom-label">{{ item.label }}</span>
+            </div>
           </el-option>
         </el-select>
       </div>
@@ -119,6 +126,9 @@ export default {
     serveData() {
       return this.$store.state.serveData;
     },
+    langIcon() {
+      return this.curLang.icon;
+    },
     lang() {
       return this.$store.state.lang;
     },
@@ -194,6 +204,22 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.custom-option {
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 14px;
+  }
+}
+.selectd-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 14px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .login-view-page {
   min-height: 100vh;
   background-color: #131313;
@@ -202,17 +228,38 @@ export default {
     justify-content: flex-end;
     ::v-deep {
       .el-select {
-        width: 46px;
+        width: 78px;
+      }
+      .el-input {
+        .el-input__suffix {
+          display: none;
+        }
+        display: flex;
+        align-items: center;
+        height: 36px;
+        position: relative;
+        border-radius: 20px;
+        border: solid 1px rgba(55, 251, 124, 0.17);
+        background-image: linear-gradient(to bottom, #242a3b, #273b40);
+      }
+      .el-input__inner {
+        padding-left: 32px;
+        padding-right: 20px;
+        text-align: right;
+      }
+      .el-select-dropdown__item {
+        padding: 0 4px;
       }
     }
     .lang-pic {
       img {
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
         display: block;
       }
     }
   }
+
   .logo-are {
     font-size: 20px;
     padding-bottom: 48px;
