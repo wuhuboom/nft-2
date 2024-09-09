@@ -6,6 +6,7 @@
     :closeOnClickOverlay="true"
     class="linear-global-pop font12"
     :class="{ 'no-foot-btn': !footBtn }"
+    @close="close"
   >
     <ul class="flex-column cancle-dialog">
       <li class="sure-game flex-column center-center p-l-16 p-r-16 m-t-16">
@@ -84,6 +85,9 @@ export default {
     cancle() {
       this.show = false;
       this.$emit("cancle");
+    },
+    close() {
+      this.$emit("close");
     },
   },
 };

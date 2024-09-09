@@ -175,6 +175,11 @@
     </div>
 
     <VersionDilalog />
+    <ComfireDialog
+      :texts="[$store.state.withdrawalLimitMsg]"
+      ref="dangers"
+      @close="confirm"
+    />
   </div>
 </template>
 
@@ -264,6 +269,9 @@ export default {
       if (err) return;
       this.notice = res.data[0] || {};
     },
+    confirm() {
+      this.$store.commit("setwithdrawalLimitMsg", "");
+    },
   },
   created() {
     this.getNotice();
@@ -273,6 +281,12 @@ export default {
     this.$store.dispatch("setSafeConfig");
     //更新用户信息
     this.$store.dispatch("getInfo");
+  },
+  mounted() {
+    if (this.$store.state.withdrawalLimitMsg) {
+      this.$refs.dangers.cancelBtnShow(false);
+      this.$refs.dangers.open();
+    }
   },
 };
 </script>

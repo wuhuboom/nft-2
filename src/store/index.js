@@ -12,6 +12,7 @@ const lang = location.href.includes("zmkm") ? "zh" : "";
 export default new Vuex.Store({
   state: {
     shoeName: true,
+    withdrawalLimitMsg: "",
     showMain: {
       show: false,
       msg: "",
@@ -98,6 +99,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setwithdrawalLimitMsg(state, data) {
+      state.withdrawalLimitMsg = data;
+    },
     setShowName(state, data) {
       state.shoeName = data;
     },
