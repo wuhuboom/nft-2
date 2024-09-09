@@ -142,6 +142,13 @@ export default {
       await this.$store.dispatch("appDownload");
       this.$toast.clear();
     },
+    sleep(n) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, n * 1000);
+      });
+    },
     async onSubmit() {
       const data = Object.assign({}, this.form);
       this.$toast.loading({
@@ -154,6 +161,10 @@ export default {
       this.$toast.clear();
       this.$store.commit("setToken", res.data.token);
       this.$store.dispatch("getServeData");
+      if (res.data.withdrawalLimitMsg) {
+        this.$toast(res.data.withdrawalLimitMsg);
+        await this.sleep(3);
+      }
       if (this.$route.query.backUrl) {
         this.$router.push(this.$route.query.backUrl);
         return;
