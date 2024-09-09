@@ -5,6 +5,8 @@
       :topBarTitle="$t(`investment`)"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
+    <div class="circle" id="circle"></div>
+
     <div class="plans" v-if="planeYeb.id">
       <div
         class="plans-item m-b-16"
@@ -296,6 +298,7 @@ export default {
   components: {},
   data() {
     return {
+      invest: {},
       errIcon,
       ritIcon,
       formData: {
@@ -471,6 +474,15 @@ export default {
 </script>
 <style scoped lang="less">
 .invest-plans-page {
+  .circle {
+    width: 260px;
+    height: 260px;
+    margin: 16px auto 16px;
+    background: url("@/assets/img/ntf3/126932@2x.webp") no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+  }
+
   .green {
     color: #defb84;
   }

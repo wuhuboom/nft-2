@@ -1,15 +1,10 @@
 <template>
-  <div class="register-page font14">
-    <p class="back-title m-l-16 m-t-24 center-center" @click="$router.back()">
-      <van-icon size="18" name="arrow-left" />
-    </p>
-    <div class="center-center titlev m-b-32">
-      {{ $t("reg.btn.text") }}
-    </div>
+  <div class="register-page font14 p-l-16 p-r-16 p-t-20">
+    <AppTopBar :topBarTitle="$t('reg.btn.text')" />
     <div class="center-center">
       <van-form class="ntf-form full100" ref="form" @submit="onSubmit">
         <div class="flex-column center-center">
-          <div class="limt-form-with">
+          <div class="full100">
             <van-field
               class="username m-b-32"
               v-model.trim="form.username"
@@ -33,7 +28,7 @@
               :type="showText ? 'text' : 'password'"
               :placeholder="$t('form.password.text')"
               @click-right-icon="openEye"
-              :right-icon="`color-fff icon iconfont color-active ${
+              :right-icon="`color-fff icon iconfont  ${
                 showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
               }`"
               :rules="[
@@ -51,7 +46,7 @@
               @click-right-icon="openEye"
               :type="showText ? 'text' : 'password'"
               :placeholder="$t('form.twoPassword.text')"
-              :right-icon="`color-fff icon iconfont color-active ${
+              :right-icon="`color-fff icon iconfont  ${
                 showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
               }`"
               :rules="[
@@ -125,7 +120,7 @@
               :placeholder="$t('form.phoneNum.text')"
               type="digit"
               autocomplete="new-password"
-              class="left-icon-box res-icon-size login-phone m-b-32 align-center"
+              class="left-icon-box res-icon-size login-phone align-center"
               :rules="[
                 { required: true, message: $t('ruls.phone.empty') },
                 {
@@ -165,9 +160,9 @@
         </div>
 
         <div
-          class="flex-column p-b-24 p-t-24 center-center text-center contact"
+          class="flex-column p-b-24 p-t-32 center-center text-center contact"
         >
-          <div class="limt-form-with">
+          <div class="full100">
             <van-button
               class="ntf-vant-btn"
               block
@@ -360,7 +355,7 @@ export default {
     },
   },
   created() {
-    this.$store.commit("setPdTop", false);
+    this.$store.commit("setPdTop", true);
     this.verifyCodeReq();
     this.form.areaCode = this.area_code[0];
 
@@ -371,6 +366,10 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.register-page {
+  background-color: #050b07;
+  min-height: 100vh;
+}
 .code-btn {
   background-color: transparent !important;
   border-color: transparent !important;
@@ -384,10 +383,5 @@ export default {
   height: 39px;
   border-radius: 11.5px;
   border: solid 1px #232323;
-}
-
-.contact {
-  background: url("@/assets/img/ntf/login-btm-bg.webp");
-  background-size: cover;
 }
 </style>

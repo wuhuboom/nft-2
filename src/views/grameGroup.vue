@@ -2,52 +2,20 @@
   <div class="item-shop-page font12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`user.Item.shop`)"
+      :topBarTitle="$t(`Game.Props`)"
     ></AppTopBar>
-    <Banner
-      :imgsList="[
-        {
-          imageUrl: require('@/assets/img/ntf/1.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/2.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/3.png'),
-        },
-      ]"
-    />
-    <ul class="justify-around align-center navs m-t-16 m-b-16">
-      <li
-        @click="chose(item)"
-        :class="{ cur: current === item.key }"
-        v-for="(item, i) in navs"
-        :key="i"
-        class="ellipsis"
-      >
-        {{ item.name }}
-      </li>
-    </ul>
-    <itemContest v-if="current == 0" />
-    <itemGame v-if="current == 1" />
-    <itemTrade v-if="current == 2" />
+    <itemGame />
   </div>
 </template>
 
 <script>
 import itemGame from "@/views/itemGame";
-import itemTrade from "@/views/itemTrade";
-import itemContest from "@/views/itemContest.vue";
 import i18n from "@/locale";
 import userApi from "@/api/user";
-import Banner from "@/components/global/Banner.vue";
 export default {
   name: "ItemShop",
   components: {
     itemGame,
-    itemTrade,
-    itemContest,
-    Banner,
   },
   data() {
     return {
@@ -96,8 +64,11 @@ export default {
       this.query.pageNo++;
     },
   },
-  created() {
-    this.getImg();
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

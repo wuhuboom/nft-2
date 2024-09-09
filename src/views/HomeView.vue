@@ -1,47 +1,8 @@
 <template>
   <div class="font12">
     <HomeTopBar />
-    <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
-      <li class="live">
-        <img src="@/assets/img/ntf/home/homeligth.png" alt="" />
-      </li>
-      <li class="m-r-8 m-l-8 center-center flex-1 money-list">
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.available`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.balance) }}</p>
-        </div>
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.purchased`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.frozenBet) }}</p>
-        </div>
-      </li>
-      <li class="serve" @click="$store.dispatch('getServeData', 1)">
-        <img class="d-img" src="@/assets/img/ntf/home/serve.png" alt="" />
-      </li>
-    </ul>
-    <Banner class="m-b-16" />
-    <div class="shop m-l-16 m-r-16 m-b-16">
-      <ul class="nav-enter-list justify-between els">
-        <li
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
-        >
-          {{ $t("deal.recharge.354498-0") }}
-        </li>
-        <li
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/withdraw' })"
-        >
-          {{ $t(`dropdown.billing.income.withdraw.text`) }}
-        </li>
-        <li
-          v-if="safeConfig.showH5 === 1"
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/index' })"
-        >
-          {{ $t("fuc.safe.text") }}
-        </li>
-      </ul>
+    <div class="p-x-16">
+      <Banner />
     </div>
     <div
       class="m-l-16 m-r-16 m-b-12 search"
@@ -50,7 +11,7 @@
     >
       <div class="field-input-box align-center">
         <p class="m-r-8">
-          <img class="d-block" src="@/assets/img/red/voice.webp" alt="" />
+          <van-icon name="volume-o" size="16" />
         </p>
         <div class="flex-1 content">
           <div class="u-notice-content">{{ notice.content }}</div>
@@ -58,64 +19,45 @@
       </div>
     </div>
     <ul
-      @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
-      class="item-title justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
+      @click="$router.push({ name: `gamesGroup` })"
+      class="item-title p-b-8 justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
     >
-      <li class="color-fff font16">{{ $t(`user.Item.shop`) }}</li>
-      <li class="center-center more color-active">
+      <li class="color-fff font16">{{ $t(`Game.Props`) }}</li>
+      <li class="center-center more">
         {{ $t(`user.platform.more`) }}
         <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
       </li>
     </ul>
-    <div
-      class="game-hot"
-      @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
-    >
-      <div class="center-center hot-title p-t-8 text-center">
-        <p>
-          <img src="@/assets/img/ntf/home/rit.png" alt="" />
+    <ul class="sold-game p-l-16 d-flex">
+      <li
+        class="m-r-16"
+        @click="
+          $router.push({
+            name: 'ToolsDetai',
+            query: { id: item.id },
+          })
+        "
+        v-for="(item, i) in sold"
+        :key="i"
+      >
+        <p class="p-x-12">
+          <img class="d-img" :src="item.image" alt="" />
         </p>
-        <ul class="trading m-l-8 m-r-8">
-          <li class="els">{{ $t(`user.platform.trading`) }}</li>
-          <li class="els">{{ $t(`user.platform.trading.desc`) }}</li>
-        </ul>
-        <p>
-          <img src="@/assets/img/ntf/home/left.png" alt="" />
-        </p>
-      </div>
-
-      <div class="content-box">
-        <div class="left-top top text-ellipsis">{{ $t(`Date.Time`) }}</div>
-        <div class="right-top top text-ellipsis">{{ $t(`From.Arrive`) }}</div>
-        <div class="list flex-wrap" v-for="(item, i) in sold" :key="i">
-          <div class="b b-1 center-center">
-            {{ date(item) }}
-          </div>
-          <div class="b b-2 text-ellipsis center-center">
-            <van-image fit="contain" :src="item.image" />
-          </div>
-          <div class="b b-3 text-ellipsis center-center">
-            <p class="text-ellipsis">
-              {{ item.title }}
-            </p>
-          </div>
-          <div class="b b-4 text-ellipsis center-center">+{{ item.money }}</div>
-          <div class="b b-5 text-ellipsis center-center">
-            <p class="text-ellipsis from-to">{{ item.from }}</p>
-            /
-            <p class="text-ellipsis from-to">{{ item.to }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hot-live-stream">
-      <div class="title-box flex-wrap">
-        <div class="left flex-grow1">{{ $t(`Hot.Live.Stream`) }}</div>
-        <div class="right" @click="$router.push('/pages/live')">
+        <p class="els m-b-8 m-t-8">{{ item.title }}</p>
+        <p>{{ item.money }}</p>
+      </li>
+    </ul>
+    <div class="hot-live-stream m-t-24">
+      <ul
+        @click="$router.push('/pages/live')"
+        class="item-title p-b-8 justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
+      >
+        <li class="color-fff font16">{{ $t(`Hot.Live.Stream`) }}</li>
+        <li class="center-center more">
           {{ $t(`user.platform.more`) }}
-          <van-icon class="m-l-4" name="arrow" />
-        </div>
-      </div>
+          <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
+        </li>
+      </ul>
       <div class="list-box">
         <div
           class="list"
@@ -124,7 +66,7 @@
           :key="i"
         >
           <div class="img-box">
-            <img :src="item.imageUrl" alt="" />
+            <img class="d-img" :src="item.imageUrl" alt="" />
             <div></div>
           </div>
           <div class="name app-multi-ellipsis--l2">
@@ -133,9 +75,13 @@
         </div>
       </div>
     </div>
-
+    <ul
+      @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
+      class="item-title p-b-8 justify-between align-center m-t-24 m-l-16 m-r-16 m-b-12"
+    >
+      <li class="color-fff font16">{{ $t(`Game.Download`) }}</li>
+    </ul>
     <div class="game-download">
-      <div class="title">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
         <div
           class="list flex-wrap"
@@ -144,7 +90,9 @@
           :key="i"
         >
           <img :src="d.path" alt="" class="img d-img" />
-          <div class="info-box align-center flex-grow1 text-ellipsis">
+          <div
+            class="info-box justify-between align-center flex-grow1 text-ellipsis"
+          >
             <div class="">
               <div class="name text-ellipsis">{{ d.name }}</div>
               <div class="c-box flex-wrap">
@@ -157,18 +105,9 @@
                   />
                   4.8
                 </div>
-                <div class="line">|</div>
-                <div class="download-box center-center">
-                  <van-icon
-                    class="icon download-icon"
-                    name="back-top"
-                    color="#fff"
-                    size="14px"
-                  />
-                  Download
-                </div>
               </div>
             </div>
+            <div class="download-box center-center">Download</div>
           </div>
         </div>
       </div>
@@ -274,6 +213,12 @@ export default {
     //更新用户信息
     this.$store.dispatch("getInfo");
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -340,6 +285,8 @@ export default {
   }
 }
 .item-title {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #caffde;
   .more {
     .rit-desc {
       margin-top: 2px;
@@ -418,7 +365,6 @@ export default {
   }
 }
 .hot-live-stream {
-  margin-top: 28px;
   .title-box {
     padding: 0 16px;
     .left {
@@ -436,15 +382,11 @@ export default {
     overflow: auto;
     padding: 0 16px;
     .img-box {
-      width: 240px;
-      height: 128px;
+      width: 166px;
+      height: 108px;
       overflow: hidden;
       border-radius: 8px;
       background-color: #fff;
-      img {
-        width: 240px;
-        height: 128px;
-      }
     }
     .list {
       margin-right: 16px;
@@ -462,8 +404,19 @@ export default {
 }
 .game-download {
   padding: 0 16px;
-  margin-top: 25px;
   color: #e3e7ec;
+  .download-box {
+    width: 90px;
+    height: 33px;
+    padding: 8px 33px;
+    border-radius: 9px;
+    background-image: linear-gradient(
+      89deg,
+      #026452 0%,
+      rgba(1, 69, 63, 0.46) 49%,
+      #02735e 100%
+    );
+  }
   .title {
     font-size: 16px;
     font-weight: 600;
@@ -472,7 +425,6 @@ export default {
   .list {
     padding-bottom: 21px;
     padding-top: 17px;
-    border-top: 1px solid #020808;
     .img {
       width: 66px;
       height: 66px;
@@ -529,9 +481,8 @@ export default {
     height: 30px;
     font-size: 12px;
     border-radius: 9.5px;
-    border: solid 1px #2c2c2c;
     height: 30px;
-    background-image: linear-gradient(to bottom, #000, #373334);
+    background-image: linear-gradient(to right, #1f383e 0%, #131b26 100%);
     img {
       height: 16px;
     }
@@ -547,6 +498,21 @@ export default {
   ::-webkit-input-placeholder,
   ::placeholder {
     color: @searchColor;
+  }
+}
+.sold-game {
+  overflow-x: auto;
+  & > li {
+    flex-shrink: 0;
+    width: 125px;
+    & > p:nth-child(1) {
+      height: 101px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    & > p:nth-child(2) {
+      color: #e3e7ec;
+    }
   }
 }
 </style>
