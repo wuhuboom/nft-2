@@ -18,7 +18,7 @@
         </li>
       </ul>
     </div>
-
+    <p class="font16 bold m-t-20 m-b-20">{{ $t(`planText1`) }}</p>
     <div class="plans" v-if="planeYeb.id">
       <div
         class="plans-item m-b-16"
