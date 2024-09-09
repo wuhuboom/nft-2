@@ -228,7 +228,6 @@ export default {
 
       this.usdtTypeOptions = res.data.map((item) => {
         return {
-          ...item,
           text: item,
           value: item,
         };
