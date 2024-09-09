@@ -5,7 +5,13 @@
       :topBarTitle="$t(`investment`)"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <div class="circle" id="circle"></div>
+    <div class="circle" id="circle">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
 
     <div class="plans" v-if="planeYeb.id">
       <div
@@ -323,6 +329,9 @@ export default {
     balance() {
       return this.divide(this.$store.state.user.balance);
     },
+    user() {
+      return this.$store.state.user;
+    },
     right() {
       return this.result.inDays && this.result.groups;
     },
@@ -371,6 +380,11 @@ export default {
     },
   },
   methods: {
+    async investMyStatis() {
+      const [err, res] = await userApi.investMyStatis();
+      if (err) return;
+      this.invest = res.data;
+    },
     validator(v) {
       return v >= this.item.min && v <= this.item.max;
     },
@@ -454,15 +468,12 @@ export default {
       this.show = false;
     },
   },
-  watch: {
-    //formData.autoInvest
-    // "formData.autoInvest"(val) {
-    //   console.log(val);
-    // },
-  },
   created() {
+    this.investMyStatis();
     this.investPlans();
-    this.investPlanYeb();
+    // this.investPlanYeb();
+    //更新用户信息
+    this.$store.dispatch("getInfo");
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
