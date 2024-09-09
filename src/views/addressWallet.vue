@@ -29,24 +29,24 @@
           ]"
         />
         <div class="el-ntf-select m-b-16">
-          <el-select
+          <!-- <el-select
             class="full100"
             :placeholder="$t('backapi.self.safe.bill.data.type.text')"
             v-model="typeValue"
           >
-            <el-select
-              v-model="form.typeValue"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
+          </el-select> -->
+          <el-select
+            v-model="form.typeValue"
+            class="full100"
+            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+          >
+            <el-option
+              v-for="item in usdtTypeOptions"
+              :key="item.value"
+              :label="item.text"
+              :value="item.value"
             >
-              <el-option
-                v-for="item in usdtTypeOptions"
-                :key="item.value"
-                :label="item.text"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
+            </el-option>
           </el-select>
         </div>
 
@@ -164,10 +164,12 @@ export default {
           value: 2,
         },
       ],
-      text: "M-pesa ID",
     };
   },
   computed: {
+    text() {
+      return this.form.typeValue == "UPI" ? "UPI ID" : "M-pesa ID";
+    },
     editImportantLogout() {
       return this.$store.state.config.editImportantLogout || "";
     },
@@ -223,6 +225,7 @@ export default {
     async getWalletType() {
       const [err, res] = await userApi.walletTypeReq();
       if (err) return;
+
       this.usdtTypeOptions = res.data.map((item) => {
         return {
           ...item,
@@ -230,6 +233,8 @@ export default {
           value: item,
         };
       });
+
+      console.log(this.usdtTypeOptions, this.usdtTypeOptions[0].value);
       this.form.typeValue = this.usdtTypeOptions[0].value;
     },
     sendCode() {

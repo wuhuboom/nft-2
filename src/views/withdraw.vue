@@ -486,6 +486,10 @@ export default {
       }
       this.openSucceessDialog();
       this.amount = "";
+      Object.assign(this.form, {
+        vercode: "",
+        password: "",
+      });
       this.$store.dispatch("getInfo");
       this.withdrawalPre(false);
     },
