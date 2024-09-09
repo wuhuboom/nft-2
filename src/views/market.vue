@@ -5,11 +5,17 @@
       :topBarTitle="$t(`investment`)"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <div class="circle" id="circle">
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+    <div class="circle center-center" id="circle">
+      <ul class="purchased">
+        <li>{{ $t(`user.money.purchased`) }}</li>
+        <li class="color-fff m-t-8 m-b-8">{{ divide(user.frozenBet) }}</li>
+        <li class="active">+{{ divide(invest.today) }}</li>
+        <li
+          class="p-l-8 p-r-8 m-t-16 center-center"
+          @click="$router.push({ name: 'Investrecord' })"
+        >
+          {{ $t("invest.record.page.text") }}
+        </li>
       </ul>
     </div>
 
@@ -57,24 +63,23 @@
         "
       >
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-12">
-            <img class="d-img" :src="doc.header" alt="" />
-          </p>
-          <ul class="align-center flex-1 space-between">
+          <ul class="align-center flex-1 space-between m-b-16">
             <li>
               <p class="font16 m-b-8">{{ doc.name }}</p>
-              <p class="days">
-                {{ doc.days }}
-                {{
-                  doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`)
-                }}
-              </p>
+              <p class="days p-l-4 p-r-4">{{ $t("user.in.progress") }}</p>
             </li>
-            <li class="rate-row">
-              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-              <p class="font16 rate color-active">{{ doc.rate }}%</p>
+            <li class="invest-pic no-shrink">
+              <img class="d-img" :src="doc.header" alt="" />
             </li>
           </ul>
+        </div>
+        <div class="rate-row p-l-12 p-r-12 justify-between align-center">
+          <p>
+            {{ doc.days }}
+            {{ doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`) }}
+          </p>
+          <p class="gray">{{ $t(`rate.of.return`) }}</p>
+          <p class="font16 rate color-fff">{{ doc.rate }}%</p>
         </div>
         <div v-show="false">
           <van-progress
@@ -380,6 +385,11 @@ export default {
     },
   },
   methods: {
+    async investSummary() {
+      const [err, res] = await userApi.investSummary();
+      if (err) return;
+      this.summary = res.data;
+    },
     async investMyStatis() {
       const [err, res] = await userApi.investMyStatis();
       if (err) return;
@@ -484,6 +494,26 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.purchased {
+  text-align: center;
+  & > li:nth-child(1) {
+    color: #cacbce;
+  }
+  & > li:nth-child(2) {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  & > li:nth-child(3) {
+    font-weight: bold;
+  }
+  & > li:nth-child(4) {
+    min-width: 105px;
+    height: 38px;
+    border-radius: 19px;
+    border: solid 2px #6ae0c3;
+    background-color: #274d4b;
+  }
+}
 .invest-plans-page {
   .circle {
     width: 260px;
@@ -503,20 +533,29 @@ export default {
   .plans-item {
     border-radius: 14px;
     //border: solid 1px #292929;
-    background-color: rgba(150, 209, 252, 0.1);
-    padding: 24px 8px;
+    background-color: #161a25;
+    padding: 24px 12px;
     min-width: 42px;
   }
   .rate-row {
-    text-align: right;
+    height: 58px;
+    border-radius: 9px;
+    font-weight: bold;
+    background-image: linear-gradient(89deg, #242a3b 1%, #273b40 100%);
+    & > p:nth-child(1) {
+      text-shadow: 0 3px 6px rgba(55, 251, 124, 0.49);
+      color: #caffde;
+    }
+    & > p:nth-child(2) {
+      color: #a1adc9;
+    }
   }
   .days {
     height: 18px;
+    text-align: center;
     line-height: 18px;
-    padding: 0 10px;
     border-radius: 3px;
-    background-color: #bcff2f;
-    color: #000;
+    background-color: #004021;
     display: inline-block;
   }
   .invest-pic {
