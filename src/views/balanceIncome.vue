@@ -158,7 +158,7 @@ export default {
       this.income = res.data;
     },
     async investMyStatisReq() {
-      const [err, res] = await userApi.investMyStatisReq();
+      const [err, res] = await userApi.investMyStatis();
       if (err) {
         return;
       }

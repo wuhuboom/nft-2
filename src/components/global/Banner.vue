@@ -14,9 +14,7 @@ export default {
   name: "BannerCom",
   data() {
     return {
-      imgs: sessionStorage.getItem("homeSwiper")
-        ? JSON.parse(sessionStorage.getItem("homeSwiper"))
-        : [],
+      imgs: [],
     };
   },
   props: {
@@ -33,7 +31,6 @@ export default {
         lang: this.$store.state.lang,
       });
       if (err) return;
-      sessionStorage.setItem("homeSwiper", JSON.stringify(res.data));
       this.imgs = res.data;
     },
   },
