@@ -718,7 +718,7 @@ export default {
   },
   investMyStatis() {
     return request({
-      url: "/invest/my/statis",
+      url: "/invest/my/statis2",
     });
   },
   investMyStatisFriendsThree2() {
