@@ -99,26 +99,41 @@
         :styleObj="{ backgroundColor: 'tra' }"
       ></AppTopBar>
       <div class="buy-detail gray-bg-img p-l-16 p-r-16">
-        <div class="align-center">
-          <p class="invest-pic no-shrink m-r-12">
-            <img class="d-img" :src="item.header" alt="" />
-          </p>
-          <ul class="align-center flex-1 space-between">
-            <li>
-              <p class="font16 m-b-8">{{ item.name }}</p>
-              <p class="days">
-                {{ item.days }}
+        <div class="buy-head">
+          <div class="align-center">
+            <ul class="align-center flex-1 space-between m-b-20">
+              <li>
+                <p class="font34 blod m-b-8">{{ item.name }}</p>
+                <p class="in-progress active p-l-8 p-r-8">
+                  {{ $t("user.in.progress") }}
+                </p>
+              </li>
+              <li class="invest-pic no-shrink">
+                <img class="d-img" :src="item.header" alt="" />
+              </li>
+            </ul>
+          </div>
+          <div class="buy-desc blod p-l-12 p-r-12 align-center">
+            <ul class="one-invite">
+              <li class="font28">{{ item.days }}</li>
+              <li>
                 {{
                   item.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`)
                 }}
-              </p>
-            </li>
-            <li class="rate-row">
-              <p class="font16 rate color-active m-b-8">{{ item.rate }}%</p>
-              <p class="gray">{{ $t(`rate.of.return`) }}</p>
-            </li>
-          </ul>
+              </li>
+            </ul>
+            <ul>
+              <li class="font28">{{ item.rate }}%</li>
+              <li>{{ $t(`rate.of.return`) }}</li>
+            </ul>
+          </div>
         </div>
+        <ul class="font14 m-t-20 criteria" v-if="popTxt.length">
+          <li class="font16 m-b-4">{{ $t("Participation.criteria") }}</li>
+          <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
+            {{ i + 1 }}、{{ d.txt }}
+          </li>
+        </ul>
         <p class="m-t-20 m-b-12 font14">{{ $t(`purchase.amount`) }}</p>
         <van-form class="ntf-form" @submit="onSubmit">
           <van-field
@@ -161,12 +176,7 @@
               <span class="active">{{ balance }}</span>
             </p>
           </div>
-          <ul class="font12 criteria" v-if="popTxt.length">
-            <li class="font14 m-b-4">{{ $t("Participation.criteria") }}:</li>
-            <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
-              {{ i + 1 }}、{{ d.txt }}
-            </li>
-          </ul>
+
           <ul class="m-t-20 m-b-20 align-center justify-between" v-if="addRate">
             <li class="font14 align-center">
               {{ $t(`market.rate.many`) }}
@@ -567,6 +577,52 @@ export default {
   .buy-detail {
     min-height: 100%;
     padding-top: @navHeight+24px;
+  }
+  .buy-head {
+    padding: 24px 16px 16px;
+    border-radius: 9px;
+    background-image: linear-gradient(87deg, #242a3b 2%, #273b40 99%);
+    position: relative;
+    .in-progress {
+      height: 24px;
+      line-height: 1;
+      text-align: center;
+      border-radius: 12px;
+      border: solid 1px var(--main);
+      display: inline-flex;
+      align-items: center;
+    }
+    .invest-pic {
+      height: 80px;
+      width: 80px;
+    }
+    .font34 {
+      font-size: 34px;
+    }
+    &::after {
+      height: 2px;
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        #fff 52%,
+        rgba(128, 128, 128, 0)
+      );
+    }
+  }
+  .buy-desc {
+    text-align: center;
+    .one-invite {
+      margin-right: 50px;
+    }
+    .font28 {
+      font-size: 28px;
+      text-shadow: 0 3px 6px rgba(255, 255, 255, 0.49);
+    }
   }
   ::v-deep {
     .el-switch__label--left {
