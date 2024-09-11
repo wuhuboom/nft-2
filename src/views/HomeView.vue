@@ -422,7 +422,6 @@ export default {
         color: #f5673e;
       }
       .b-2 {
-        background: url("@/assets/img/HomeView/dao-icon.png") no-repeat;
         width: 35px;
         height: 35px;
         background-size: 35px 35px;
