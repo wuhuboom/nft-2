@@ -243,6 +243,7 @@
           >
         </van-form>
       </div>
+      <img class="my-serve" src="@/assets/img/ntf3/129511@2x.webp" alt="" />
     </van-popup>
     <van-popup class="desc-art-pop" v-model="showDesc" position="center">
       <ul class="font14 desc-art-list color-fff">
@@ -676,5 +677,13 @@ export default {
   .intro-desc {
     padding: 0 8px;
   }
+}
+.my-serve {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 120px;
+  right: 12px;
 }
 </style>
