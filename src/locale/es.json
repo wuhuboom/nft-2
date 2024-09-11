@@ -1499,6 +1499,24 @@
 "vaid.phone": "Por favor, ingrese un número de teléfono de {num} dígitos",
 "rechargeNum.Enough": "Número de inversores hoy",
 "today.reg.num": "Número de registros hoy",
-"my.all.income":"Ingresos Totales"
+"my.all.income":"Ingresos Totales",
+"typeValue1": "Recarga",
+	"typeValue2": "Retiro",
+	"typeValue3": "Inversión",
+	"typeValue4": "Beneficio de inversión",
+	"typeValue5": "Reembolso de beneficios subordinados",
+	"typeValue6": "Depósito manual",
+	"typeValue8": "Retiro manual",
+	"typeValue9": "Inversión completada",
 
+	"typeValue12": "Retiro rechazado",
+	"typeValue21": "Reembolso de recarga subordinada",
+	"typeValue24": "Recompensa de primera recarga",
+	"typeValue25": "Actividad",
+	"typeValue26": "Recompensa de segunda recarga",
+	"typeValue27": "Día fijo",
+	"typeValue28": "Invitación a la recompensa de primera recarga",
+	"typeValue33": "Reversión",
+	"typeValue34": "Intercambio rápido",
+	"typeValue36": "Compensación de recarga"
 }

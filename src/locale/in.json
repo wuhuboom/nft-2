@@ -1499,6 +1499,24 @@
    "vaid.phone": "कृपया {num} अंकों का फ़ोन नंबर दर्ज करें",
    "rechargeNum.Enough": "आज के निवेशकों की संख्या",
    "today.reg.num": "आज की पंजीकरणों की संख्या",
-   "my.all.income":"कुल आय"
-   
+   "my.all.income":"कुल आय",
+   "typeValue1": "रिचार्ज",
+   "typeValue2": "निकासी",
+   "typeValue3": "निवेश",
+   "typeValue4": "निवेश लाभ",
+   "typeValue5": "उप-लाभ रिबेट",
+   "typeValue6": "मैनुअल जमा",
+   "typeValue8": "मैनुअल निकासी",
+   "typeValue9": "निवेश पूरा हुआ",
+ 
+   "typeValue12": "निकासी अस्वीकृत",
+   "typeValue21": "उप-रिचार्ज रिबेट",
+   "typeValue24": "पहले रिचार्ज पुरस्कार",
+   "typeValue25": "गतिविधि",
+   "typeValue26": "दूसरे रिचार्ज पुरस्कार",
+   "typeValue27": "निर्धारित दिन",
+   "typeValue28": "पहले रिचार्ज पुरस्कार आमंत्रित करें",
+   "typeValue33": "उलटी",
+   "typeValue34": "फ्लैश एक्सचेंज",
+   "typeValue36": "रिचार्ज कंपेंसेशन"
 }

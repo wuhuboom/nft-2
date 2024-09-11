@@ -1499,6 +1499,26 @@
 "vaid.phone": "Bitte geben Sie eine {num}-stellige Telefonnummer ein",
 "rechargeNum.Enough": "Anzahl der Investoren heute",
 "today.reg.num": "Anzahl der Registrierungen heute",
-"my.all.income":"Gesamteinkommen"
+"my.all.income":"Gesamteinkommen",
+"typeValue1": "Aufladen",
+"typeValue2": "Abhebung",
+"typeValue3": "Investition",
+"typeValue4": "Investitionsrendite",
+"typeValue5": "Untergeordnete Gewinnbeteiligung",
+"typeValue6": "Manuelle Einzahlung",
+"typeValue8": "Manuelle Abhebung",
+"typeValue9": "Investition abgeschlossen",
+
+"typeValue12": "Abhebung abgelehnt",
+"typeValue21": "Untergeordnete Auflade-Rückerstattung",
+"typeValue24": "Erste Aufladebelohnung",
+"typeValue25": "Aktivität",
+"typeValue26": "Zweite Aufladebelohnung",
+"typeValue27": "Fester Tag",
+"typeValue28": "Einladung zur ersten Aufladebelohnung",
+"typeValue33": "Stornierung",
+"typeValue34": "Blitz-Austausch",
+"typeValue36": "Aufladekompensation"
+
 
 }

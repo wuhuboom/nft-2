@@ -1499,5 +1499,24 @@
   "vaid.phone": "Veuillez entrer un numéro de téléphone à {num} chiffres",
   "rechargeNum.Enough": "Nombre d'investisseurs aujourd'hui",
   "today.reg.num": "Nombre d'inscriptions aujourd'hui",
-  "my.all.income":"Revenu total"
+  "my.all.income":"Revenu total",
+  "typeValue1": "Recharge",
+  "typeValue2": "Retrait",
+  "typeValue3": "Investissement",
+  "typeValue4": "Profit d'investissement",
+  "typeValue5": "Remboursement des bénéfices subalternes",
+  "typeValue6": "Dépôt manuel",
+  "typeValue8": "Retrait manuel",
+  "typeValue9": "Investissement terminé",
+
+  "typeValue12": "Retrait refusé",
+  "typeValue21": "Remboursement de recharge subordonnée",
+  "typeValue24": "Récompense de première recharge",
+  "typeValue25": "Activité",
+  "typeValue26": "Récompense de deuxième recharge",
+  "typeValue27": "Jour fixe",
+  "typeValue28": "Invitation à la récompense de première recharge",
+  "typeValue33": "Annulation",
+  "typeValue34": "Échange Flash",
+  "typeValue36": "Compensation de recharge"
 }

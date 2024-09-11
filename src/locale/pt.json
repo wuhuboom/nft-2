@@ -1499,6 +1499,25 @@
 "vaid.phone": "Por favor, insira um número de telefone com {num} dígitos",
 "rechargeNum.Enough": "Número de investidores hoje",
 "today.reg.num": "Número de registos hoje",
-"my.all.income":"Rendimento Total"
+"my.all.income":"Rendimento Total",
+"typeValue1": "Recarga",
+  "typeValue2": "Levantamento",
+  "typeValue3": "Investimento",
+  "typeValue4": "Lucro do Investimento",
+  "typeValue5": "Reembolso de Lucro Subordinado",
+  "typeValue6": "Depósito Manual",
+  "typeValue8": "Levantamento Manual",
+  "typeValue9": "Investimento Concluído",
+
+  "typeValue12": "Levantamento Rejeitado",
+  "typeValue21": "Reembolso de Recarga Subordinada",
+  "typeValue24": "Recompensa de Primeira Recarga",
+  "typeValue25": "Atividade",
+  "typeValue26": "Recompensa de Segunda Recarga",
+  "typeValue27": "Dia Fixo",
+  "typeValue28": "Convidar para a Recompensa de Primeira Recarga",
+  "typeValue33": "Reversão",
+  "typeValue34": "Troca Rápida",
+  "typeValue36": "Compensação de Recarga"
 
 }

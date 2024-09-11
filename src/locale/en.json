@@ -1499,5 +1499,24 @@
 	 "vaid.phone": "Please enter a {num}-digit phone number",
 	 "rechargeNum.Enough": "Number of investors today",
 	 "today.reg.num": "Number of registrations today",
-	 "my.all.income":"Total Income"
+	 "my.all.income":"Total Income",
+	 "typeValue1": "Recharge",
+	"typeValue2": "Withdrawal",
+	"typeValue3": "Investment",
+	"typeValue4": "Investment Profit",
+	"typeValue5": "Subordinate Profit Rebate",
+	"typeValue6": "Manual Deposit",
+	"typeValue8": "Manual Withdrawal",
+	"typeValue9": "Investment Completed",
+
+	"typeValue12": "Withdrawal Rejected",
+	"typeValue21": "Subordinate Recharge Rebate",
+	"typeValue24": "First Recharge Reward",
+	"typeValue25": "Activity",
+	"typeValue26": "Second Recharge Reward",
+	"typeValue27": "Fixed Day",
+	"typeValue28": "Invite First Recharge Reward",
+	"typeValue33": "Reversal",
+	"typeValue34": "Flash Exchange",
+	"typeValue36": "Recharge Compensation"
 }

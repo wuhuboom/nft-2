@@ -25,6 +25,7 @@
           {{ divide(item.initMoney) }}
         </p>
       </li>
+      <li v-if="item.remark" class="remark m-t-8 active">{{ item.remark }}</li>
     </ul>
   </div>
 </template>

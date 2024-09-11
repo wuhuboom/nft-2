@@ -21,10 +21,10 @@
       <li>
         <el-select v-model="type" @change="chosen">
           <el-option
-            v-for="item in dataArray.filter((item) => item.label !== 11)"
-            :key="item.label"
-            :label="item.value"
-            :value="item.label"
+            v-for="item in dataArray.filter((item) => item.value !== 11)"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
           >
           </el-option>
         </el-select>
@@ -53,28 +53,26 @@ export default {
   data() {
     return {
       dataArray: [
-        { value: i18n.t("dropdown.billing.all.title.text"), label: 0 },
-        { value: i18n.t("typeValue1"), label: 1 },
-        { value: i18n.t("typeValue2"), label: 2 },
-        { value: i18n.t("typeValue3"), label: 3 },
-        { value: i18n.t("typeValue4"), label: 4 },
-        { value: i18n.t("typeValue5"), label: 5 },
-        { value: i18n.t("typeValue6"), label: 6 },
-        { value: i18n.t("typeValue8"), label: 8 },
-        { value: i18n.t("typeValue9"), label: 9 },
-
-        { value: i18n.t("typeValue1"), label: 11 },
-
-        { value: i18n.t("typeValue12"), label: 12 },
-        { value: i18n.t("typeValue21"), label: 21 },
-        { value: i18n.t("typeValue24"), label: 24 },
-        { value: i18n.t("typeValue25"), label: 25 },
-        { value: i18n.t("typeValue26"), label: 26 },
-        { value: i18n.t("typeValue27"), label: 27 },
-        { value: i18n.t("typeValue28"), label: 28 },
-        { value: i18n.t("typeValue33"), label: 33 },
-        { value: i18n.t("typeValue34"), label: 34 },
-        { value: i18n.t("typeValue36"), label: 36 },
+        { value: 0, label: i18n.t("dropdown.billing.all.title.text") },
+        { value: 1, label: i18n.t("typeValue1") },
+        { value: 2, label: i18n.t("typeValue2") },
+        { value: 3, label: i18n.t("typeValue3") },
+        { value: 4, label: i18n.t("typeValue4") },
+        { value: 5, label: i18n.t("typeValue5") },
+        { value: 6, label: i18n.t("typeValue6") },
+        { value: 8, label: i18n.t("typeValue8") },
+        { value: 9, label: i18n.t("typeValue9") },
+        { value: 11, label: i18n.t("typeValue1") },
+        { value: 12, label: i18n.t("typeValue12") },
+        { value: 21, label: i18n.t("typeValue21") },
+        { value: 24, label: i18n.t("typeValue24") },
+        { value: 25, label: i18n.t("typeValue25") },
+        { value: 26, label: i18n.t("typeValue26") },
+        { value: 27, label: i18n.t("typeValue27") },
+        { value: 28, label: i18n.t("typeValue28") },
+        { value: 33, label: i18n.t("typeValue33") },
+        { value: 34, label: i18n.t("typeValue34") },
+        { value: 36, label: i18n.t("typeValue36") },
       ],
       navs: [
         {
