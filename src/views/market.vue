@@ -98,7 +98,7 @@
         :topBarTitle="$t(`investment`)"
         :styleObj="{ backgroundColor: 'tra' }"
       ></AppTopBar>
-      <div class="buy-detail gray-bg-img p-l-16 p-r-16">
+      <div class="buy-detail gray-bg-img p-l-16 p-r-16 p-b-32">
         <div class="buy-head">
           <div class="align-center">
             <ul class="align-center flex-1 space-between m-b-20">
@@ -134,6 +134,27 @@
             {{ i + 1 }}、{{ d.txt }}
           </li>
         </ul>
+        <div class="align-center m-t-20 blod introduction" v-if="addRate">
+          <ul class="flex-1 radius align-center m-r-8">
+            <li
+              class="center-center flex-1"
+              :class="{ selected: formData.autoInvest == 1 }"
+              @click="formData.autoInvest = 1"
+            >
+              {{ $t(`Participation.fuli`) }}
+            </li>
+            <li
+              class="flex-1 center-center"
+              :class="{ selected: formData.autoInvest == 0 }"
+              @click="formData.autoInvest = 0"
+            >
+              {{ $t(`Participation.putong`) }}
+            </li>
+          </ul>
+          <p class="radius intro-desc center-center" @click="showDesc = true">
+            {{ $t("privacy_support_ques.introduction.title.text") }}?
+          </p>
+        </div>
         <p class="m-t-20 m-b-12 font14">{{ $t(`purchase.amount`) }}</p>
         <van-form class="ntf-form" @submit="onSubmit">
           <van-field
@@ -177,26 +198,6 @@
             </p>
           </div>
 
-          <ul class="m-t-20 m-b-20 align-center justify-between" v-if="addRate">
-            <li class="font14 align-center">
-              {{ $t(`market.rate.many`) }}
-              <van-icon
-                class="green m-l-8"
-                @click="showDesc = true"
-                size="16"
-                name="question-o"
-              />
-            </li>
-            <li>
-              <el-switch
-                v-model="formData.autoInvest"
-                active-text="Yes"
-                active-color="#f5673e"
-                inactive-text="No"
-              >
-              </el-switch>
-            </li>
-          </ul>
           <van-field
             class="m-b-16"
             v-if="parseInt(item.parent && item.parent.inviteRequire) === 1"
@@ -654,6 +655,26 @@ export default {
   }
   .tips-radio {
     align-items: flex-start;
+  }
+}
+.introduction {
+  color: #5d7097;
+  .radius {
+    height: 38px;
+    border-radius: 19px;
+    border: solid 2px #5d7097;
+  }
+  & > ul {
+  }
+  .selected {
+    height: 38px;
+    border-radius: 19px;
+    color: #caffde;
+    border: solid 2px #6ae0c3;
+    background-color: #274d4b;
+  }
+  .intro-desc {
+    padding: 0 8px;
   }
 }
 </style>
