@@ -132,7 +132,7 @@
                 size="small"
                 native-type="button"
                 class="send-code-btn"
-                @click="formData.money = balance"
+                @click="formData.money = Math.floor(balance)"
                 >{{ $t("match.all.text") }}</van-button
               >
             </template>
