@@ -420,7 +420,7 @@ export default {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      //if (this.config.beyShow !== 1) return;
+      if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
       this.planeYeb = {
