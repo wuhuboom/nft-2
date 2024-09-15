@@ -137,21 +137,24 @@
         <div class="align-center m-t-20 blod introduction" v-if="addRate">
           <ul class="flex-1 radius align-center m-r-8">
             <li
-              class="center-center flex-1"
+              class="center-center text-center flex-1"
               :class="{ selected: formData.autoInvest == 1 }"
               @click="formData.autoInvest = 1"
             >
               {{ $t(`Participation.fuli`) }}
             </li>
             <li
-              class="flex-1 center-center"
+              class="flex-1 text-center center-center"
               :class="{ selected: formData.autoInvest == 0 }"
               @click="formData.autoInvest = 0"
             >
               {{ $t(`Participation.putong`) }}
             </li>
           </ul>
-          <p class="radius intro-desc center-center" @click="showDesc = true">
+          <p
+            class="radius intro-desc text-center center-center"
+            @click="showDesc = true"
+          >
             {{ $t("privacy_support_ques.introduction.title.text") }}?
           </p>
         </div>
@@ -243,7 +246,12 @@
           >
         </van-form>
       </div>
-      <img class="my-serve" src="@/assets/img/ntf3/129511@2x.webp" alt="" />
+      <img
+        class="my-serve"
+        @click="$store.dispatch('getServeData', 1)"
+        src="@/assets/img/ntf3/129511@2x.webp"
+        alt=""
+      />
     </van-popup>
     <van-popup class="desc-art-pop" v-model="showDesc" position="center">
       <ul class="font14 desc-art-list color-fff">
