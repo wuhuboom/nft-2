@@ -1,5 +1,5 @@
 <template>
-  <div class="invest-yue-page font12 p-l-16 p-r-16">
+  <div class="invest-yue-page font12 p-l-16 p-r-16 p-b-24">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="planeYeb.name"
@@ -14,22 +14,24 @@
       </template>
     </AppTopBar>
     <div class="plans" v-if="planeYeb.id">
-      <div
-        class="plans-item m-b-16 m-t-24"
-        @click="$router.push({ name: 'InvestDetail' })"
-      >
+      <div class="buy-head m-b-20 m-t-20">
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-8">
-            <img class="d-img" :src="planeYeb.header" alt="" />
-          </p>
-          <ul class="align-center flex-1 space-between">
+          <ul class="align-center flex-1 space-between m-b-20">
             <li>
-              <p class="font16">{{ planeYeb.name }}</p>
+              <p class="font34 blod m-b-8">{{ planeYeb.name }}</p>
+              <p class="in-progress active p-l-8 p-r-8">
+                {{ $t("user.in.progress") }}
+              </p>
             </li>
-            <li class="rate-row" v-if="planeYeb.rateConfig.length">
-              <p class="font16 rate color-active m-b-8">{{ dayItem.rate }}%</p>
-              <p class="gray">{{ $t(`rate.of.return`) }}</p>
+            <li class="invest-pic no-shrink">
+              <img class="d-img" :src="planeYeb.header" alt="" />
             </li>
+          </ul>
+        </div>
+        <div class="buy-desc blod p-l-12 p-r-12 align-center">
+          <ul v-if="planeYeb.rateConfig.length">
+            <li class="font28">{{ dayItem.rate }}%</li>
+            <li>{{ $t(`rate.of.return`) }}</li>
           </ul>
         </div>
       </div>
@@ -79,7 +81,7 @@
         <div>
           <p class="m-t-24 font14 m-b-12">{{ $t(`Rules`) }}</p>
           <div class="rules-desc m-b-16">
-            <van-steps direction="vertical" :active="20" active-color="#f5673e">
+            <van-steps direction="vertical" :active="20" active-color="#38ff7e">
               <van-step>
                 <ul class="color-cc">
                   <li class="color-cc m-b-4">{{ $t("buy.time") }}</li>
@@ -253,6 +255,52 @@ export default {
           border-color: transparent;
         }
       }
+    }
+  }
+  .buy-head {
+    padding: 24px 16px 16px;
+    border-radius: 9px;
+    background-image: linear-gradient(87deg, #242a3b 2%, #273b40 99%);
+    position: relative;
+    .in-progress {
+      height: 24px;
+      line-height: 1;
+      text-align: center;
+      border-radius: 12px;
+      border: solid 1px var(--main);
+      display: inline-flex;
+      align-items: center;
+    }
+    .invest-pic {
+      height: 80px;
+      width: 80px;
+    }
+    .font34 {
+      font-size: 34px;
+    }
+    &::after {
+      height: 2px;
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        #fff 52%,
+        rgba(128, 128, 128, 0)
+      );
+    }
+  }
+  .buy-desc {
+    text-align: center;
+    .one-invite {
+      margin-right: 50px;
+    }
+    .font28 {
+      font-size: 28px;
+      text-shadow: 0 3px 6px rgba(255, 255, 255, 0.49);
     }
   }
 }
