@@ -1518,5 +1518,6 @@
   "typeValue28": "Invitation à la récompense de première recharge",
   "typeValue33": "Annulation",
   "typeValue34": "Échange Flash",
-  "typeValue36": "Compensation de recharge"
+  "typeValue36": "Compensation de recharge",
+  "system.fail":"Le système est occupé. Veuillez réessayer ultérieurement."
 }

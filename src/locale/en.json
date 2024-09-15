@@ -1518,5 +1518,6 @@
 	"typeValue28": "Invite First Recharge Reward",
 	"typeValue33": "Reversal",
 	"typeValue34": "Flash Exchange",
-	"typeValue36": "Recharge Compensation"
+	"typeValue36": "Recharge Compensation",
+	"system.fail":"The system is busy. Please try again later"
 }

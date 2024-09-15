@@ -1518,5 +1518,6 @@
 	"typeValue28": "Invitación a la recompensa de primera recarga",
 	"typeValue33": "Reversión",
 	"typeValue34": "Intercambio rápido",
-	"typeValue36": "Compensación de recarga"
+	"typeValue36": "Compensación de recarga",
+	"system.fail":"El sistema está ocupado. Por favor, inténtelo de nuevo más tarde."
 }

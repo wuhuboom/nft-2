@@ -35,13 +35,12 @@ instance.interceptors.request.use(
   (err) => Promise.reject(err)
 );
 const specialCode = [];
-const txtFail = "system  fail";
 instance.interceptors.response.use(
   (res) => {
     let result = res.data || {};
     let { code, msg, data } = result;
     if ([500].includes(code)) {
-      msg = txtFail;
+      msg = app.$t("system.fail");
     }
     //401-无权访问 402-未登录或者登录失效 403-账号已被禁用
     if ([401, 402, 403].includes(code)) {

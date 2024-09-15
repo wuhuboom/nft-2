@@ -1518,7 +1518,7 @@
 "typeValue28": "Einladung zur ersten Aufladebelohnung",
 "typeValue33": "Stornierung",
 "typeValue34": "Blitz-Austausch",
-"typeValue36": "Aufladekompensation"
-
+"typeValue36": "Aufladekompensation",
+"system.fail":"Das System ist beschäftigt. Bitte versuchen Sie es später erneut."
 
 }

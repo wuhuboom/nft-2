@@ -1518,6 +1518,6 @@
   "typeValue28": "Convidar para a Recompensa de Primeira Recarga",
   "typeValue33": "Reversão",
   "typeValue34": "Troca Rápida",
-  "typeValue36": "Compensação de Recarga"
-
+  "typeValue36": "Compensação de Recarga",
+  "system.fail":"O sistema está ocupado. Por favor, tente novamente mais tarde."
 }
