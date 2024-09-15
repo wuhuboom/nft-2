@@ -70,7 +70,7 @@
         </ul>
       </div>
       <div class="rules-desc m-b-16 m-t-16">
-        <van-steps direction="vertical" :active="20" active-color="#f5673e">
+        <van-steps direction="vertical" :active="20" active-color="#38ff7e">
           <van-step>
             <ul class="color-fff">
               <li class="color-fff m-b-4">{{ $t("buy.time") }}</li>
@@ -106,7 +106,6 @@
         </div>
       </div>
     </div>
-
     <van-popup
       style="width: 80%"
       class="linear-global-pop font14"
@@ -117,10 +116,9 @@
         <li class="m-b-16">{{ $t(`money.sure.back`) }}</li>
         <li class="m-b-16">{{ $t(`money.sure.back.tip`) }}</li>
       </ul>
-      <ul class="flex-column center-center">
-        <li class="m-b-12">
+      <ul class="center-center m-b-12">
+        <li class="m-r-16">
           <van-button
-            style="width: 166px"
             class="ntf-vant-btn"
             @click="(showPay = true), (showDesc = false)"
             type="info"
@@ -130,7 +128,11 @@
         </li>
         <li>
           <van-button
-            style="background-color: transparent; border-color: transparent"
+            style="
+              background-color: #344756;
+              border-color: transparent;
+              background-image: none;
+            "
             class="ntf-vant-btn"
             @click="showDesc = false"
             type="info"
@@ -249,6 +251,22 @@ export default {
       if (err) {
         return;
       }
+      //模拟 res.data 数据
+      // res.data = {
+      //   id: 1,
+      //   plan: {
+      //     name: "余额宝",
+      //   },
+      //   investTotal: 1000,
+      //   moneyIncome: 100,
+      //   status: 0,
+      //   orderNo: "20210719123456789",
+      //   createdAt: 1626662400,
+      //   profitTimeStart: 1626662400,
+      //   profitTime: 1626662400,
+      //   orderCancelTime: 1626662400,
+      //   money: 1000,
+      // };
       this.detail = res.data;
       if (!this.detail.imgUrl) {
         this.detail.imgUrl = yuIcon;
