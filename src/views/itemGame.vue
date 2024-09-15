@@ -19,7 +19,7 @@
           <div class="name els m-t-8">
             {{ item.title }}
           </div>
-          <p class="m-t-8 blob money">{{ item.money }}</p>
+          <p class="m-t-8 blob color-fff money">{{ item.money }}</p>
         </div>
       </div>
     </LoadList>
@@ -71,9 +71,6 @@ export default {
     flex-wrap: wrap;
     justify-content: flex-start;
     padding: 0 8px;
-    .money {
-      color: var(--main);
-    }
     .list {
       margin-bottom: 20px;
       padding: 0 8px;
@@ -81,11 +78,12 @@ export default {
       .img-box {
         width: 100%;
         height: 133px;
-        background: #fff;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
         overflow: hidden;
       }
       .name {
-        color: #fff;
+        color: #e3e7ec;
         font-size: 12px;
       }
     }

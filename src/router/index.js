@@ -527,6 +527,13 @@ const routes = [
       default: () => import("@/views/setting.vue"),
     },
   },
+  {
+    path: "/games/group",
+    name: "gamesGroup",
+    components: {
+      default: () => import("@/views/grameGroup.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

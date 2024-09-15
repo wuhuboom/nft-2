@@ -41,6 +41,7 @@ export default {
 </script>
 <style scoped lang="less">
 .my-swipe {
+  border-radius: 10px;
   height: 160px;
   overflow: hidden;
 }

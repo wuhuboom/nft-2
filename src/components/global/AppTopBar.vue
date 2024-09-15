@@ -1,7 +1,7 @@
 <template>
   <div
     class="appp-top-bar align-center justify-between max-width750"
-    :style="styleObj"
+    :style="styles"
   >
     <div class="appp-top-cont align-center justify-between">
       <van-button
@@ -54,7 +54,7 @@ export default {
     styleObj: {
       type: Object,
       default: () => ({
-        backgroundColor: "#000",
+        backgroundImage: "linear-gradient(to right, #1f383e 0%, #131b26 100%)",
       }),
     },
     showMsg: {
@@ -68,6 +68,14 @@ export default {
     back: {
       type: Function,
       default: null,
+    },
+  },
+  computed: {
+    styles() {
+      return {
+        backgroundImage: "linear-gradient(to right, #1f383e 0%, #131b26 100%)",
+        ...this.styleObj,
+      };
     },
   },
   methods: {

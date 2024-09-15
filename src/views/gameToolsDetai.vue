@@ -5,8 +5,8 @@
       :topBarTitle="$t(`Game.Props`)"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <div class="pic center-center">
-      <van-image fit="contain" :src="item.image" />
+    <div class="pic d-flex">
+      <img class="d-img" :src="item.image" alt="" />
     </div>
     <p class="m-t-16 m-b-20 font16">{{ item.title }}</p>
     <ul class="align-center justify-between icon-tol m-b-20">
@@ -16,7 +16,7 @@
         </p>
         <div class="flex-1 els">
           <p class="m-b-4 els">{{ $t(`user.Wear.thing`) }}</p>
-          <p class="els gray">{{ item.icons }}</p>
+          <p class="els i-text">{{ item.icons }}</p>
         </div>
       </li>
       <li class="align-center justify-between p-x-4">
@@ -25,7 +25,7 @@
         </p>
         <div class="flex-1 els">
           <p class="m-b-4 els">{{ $t(`user.Wear`) }}</p>
-          <p class="els gray font14">{{ item.duality }}</p>
+          <p class="els i-text font14">{{ item.duality }}</p>
         </div>
       </li>
     </ul>
@@ -51,7 +51,9 @@
     <p class="m-b-12 font14">{{ $t(`Properties`) }}</p>
     <div class="attr-content" v-html="item.desp"></div>
     <div class="game-price center-center font16 p-l-24 p-r-24">
-      <p class="price flex-1">{{ $t("home.price") }}: {{ item.money }}</p>
+      <p class="price ntf-vant-btn flex-1">
+        {{ $t("home.price") }}: {{ item.money }}
+      </p>
     </div>
   </div>
 </template>
@@ -100,7 +102,6 @@ export default {
     line-height: 44px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 3px 6px 0 #78350f;
     background-color: #f5673e;
   }
   .gray {
@@ -111,25 +112,36 @@ export default {
       height: 38px;
       line-height: 38px;
       border-radius: 16px;
-      background-color: rgba(255, 255, 255, 0.1);
+      border: solid 1px rgba(55, 251, 124, 0.17);
+      background-color: #040a06;
     }
   }
   .pic {
-    height: 299px;
+    align-items: baseline;
+    justify-content: center;
+    height: 310px;
     border-radius: 15px;
-    background-color: #292929;
-    padding: 22px 42px;
+    padding: 0 42px 42px;
+    background: url("@/assets/img/ntf3/461@2x.webp") no-repeat center bottom;
+    background-size: 100% auto;
+    img {
+      object-fit: contain;
+    }
   }
   .icon-tol {
     & > li {
       width: 166px;
       height: 75px;
       border-radius: 16px;
-      background-color: #282627;
+      border: solid 1px rgba(55, 251, 124, 0.17);
+      background-color: #040a06;
     }
     img {
       height: 36px;
       width: 36px;
+    }
+    .i-text {
+      color: #9db1cd;
     }
   }
   .attr-content {
