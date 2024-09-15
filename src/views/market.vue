@@ -25,20 +25,21 @@
         @click="$router.push({ name: 'InvestDetail' })"
       >
         <div class="align-center">
-          <p class="invest-pic no-shrink m-r-12">
-            <img class="d-img" :src="planeYeb.header" alt="" />
-          </p>
-          <ul class="align-center flex-1 space-between">
+          <ul class="align-center flex-1 space-between m-b-16">
             <li>
-              <p class="font16">{{ planeYeb.name }}</p>
+              <p class="font16 m-b-8">{{ planeYeb.name }}</p>
+              <p class="days p-l-4 p-r-4">{{ $t("user.in.progress") }}</p>
             </li>
-            <li class="rate-row" v-if="planeYeb.rateConfig.length">
-              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-              <p class="font16 rate color-active m-b-8">
-                {{ planeYeb.rateConfig[0].rate }}%
-              </p>
+            <li class="invest-pic no-shrink">
+              <img class="d-img" :src="planeYeb.header" alt="" />
             </li>
           </ul>
+        </div>
+        <div class="rate-row p-l-12 p-r-12 justify-between align-center">
+          <p class="gray">{{ $t(`rate.of.return`) }}</p>
+          <p class="font16 rate color-fff">
+            {{ planeYeb.rateConfig[0].rate }}%
+          </p>
         </div>
         <div v-show="false">
           <van-progress
@@ -419,7 +420,7 @@ export default {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      if (this.config.beyShow !== 1) return;
+      //if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
       this.planeYeb = {
@@ -427,6 +428,7 @@ export default {
         header: yuIcon,
         rateConfig: JSON.parse(res.data.rateConfig || "[]"),
       };
+      console.log(this.planeYeb, "beyShow");
       if (!this.planeYeb.imgUrl) {
         this.planeYeb.imgUrl = yuIcon;
       }
@@ -501,7 +503,7 @@ export default {
   created() {
     this.investMyStatis();
     this.investPlans();
-    // this.investPlanYeb();
+    this.investPlanYeb();
     //更新用户信息
     this.$store.dispatch("getInfo");
   },
