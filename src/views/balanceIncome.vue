@@ -7,17 +7,17 @@
     ></AppTopBar>
     <ChoseNav @chosen="chosen" :cur="cur" :navs="navs" />
     <div v-if="cur === 1">
-      <div class="m-t-16 font12 bg-fff-o-1 p-x-16 m-b-16">
+      <div class="m-t-16 record-head font12 p-x-16 m-b-16">
         <div class="friends">
-          <ul class="justify-between">
-            <li class="m-t-8">{{ $t("income.team.people") }}</li>
-            <li class="font14 blod color-fff">
+          <ul class="justify-between align-center m-b-16">
+            <li>{{ $t("income.team.people") }}</li>
+            <li class="font14 blod color-fff bold">
               {{ income.friendsCount }}
             </li>
           </ul>
-          <ul class="m-t-16 justify-between">
-            <li class="m-t-8">{{ $t("agency.center.teambalance.text") }}</li>
-            <li class="font14 blod color-fff">
+          <ul class="justify-between align-center m-t-16">
+            <li>{{ $t("agency.center.teambalance.text") }}</li>
+            <li class="font14 blod color-fff bold">
               {{ divide(income.friendsBalance) }}
             </li>
           </ul>
@@ -30,7 +30,9 @@
       >
         <li class="justify-between my-first align-center p-b-16">
           <p class="align-center">
-            <span><img class="d-img person" :src="icons[idx]" alt="" /></span>
+            <span
+              ><img class="d-img person m-r-8" :src="icons[idx]" alt=""
+            /></span>
             <span>Grade: lv.{{ idx + 1 }}</span>
           </p>
           <p class="align-center">
@@ -97,9 +99,9 @@ export default {
     return {
       income: {},
       icons: [
-        require("@/assets/img/HomeView/126927-3@2x.png"),
-        require("@/assets/img/HomeView/126927-2@2x.png"),
-        require("@/assets/img/HomeView/126927@2x.png"),
+        require("@/assets/img/ntf3/user/126927@2x.png"),
+        require("@/assets/img/ntf3/user/126927-2@2x.png"),
+        require("@/assets/img/ntf3/user/126927-3@2x.png"),
       ],
       navs: [
         {
@@ -202,8 +204,9 @@ export default {
 <style scoped lang="less">
 .balanceRecord-page {
   .grade {
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: solid 2px rgba(106, 224, 195, 0.5);
+    background-image: linear-gradient(to bottom, #242a3b, #273b40);
     .my-first {
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -245,15 +248,26 @@ export default {
       color: #fff;
     }
   }
+  .record-head {
+    background-color: #17181c;
+    border-radius: 20px;
+    position: relative;
+    //1px 定位居中
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #242b36;
+      position: absolute;
+      left: 16px;
+      right: 16px;
+    }
+  }
   .friends {
-    & > ul:nth-child(1) {
-      color: #f79841;
-    }
-    & > ul:nth-child(2) {
-      color: #6f72e2;
-    }
-    & > ul:nth-child(3) {
-      color: #84cb69;
+    & > ul {
+      color: #9db1cd;
     }
   }
   .my-incom {
