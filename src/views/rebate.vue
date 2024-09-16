@@ -48,7 +48,7 @@
         @load="onLoad"
       >
         <div class="font16">
-          <van-grid class="m-b-16" :border="false" :column-num="3">
+          <van-grid class="m-b-16" :border="false" :column-num="2">
             <van-grid-item v-for="value in head" :key="value">
               {{ value }}
             </van-grid-item>
@@ -58,17 +58,15 @@
           </div>
           <van-grid
             v-show="!nothing"
-            class="m-b-16 font13"
+            class="m-b-4 grid-list font13"
             v-for="(item, idx) in curItem.results"
             :key="idx"
             :border="false"
-            :column-num="3"
+            :column-num="2"
           >
             <van-grid-item class="color-fff">
-              {{ item.ymd }}
-            </van-grid-item>
-            <van-grid-item class="color-fff">
               {{ getType(item.type) }}
+              <p class="m-t-8 gray">{{ item.ymd }}</p>
             </van-grid-item>
             <van-grid-item class="color-fff">
               {{ divide(item.money) }}
@@ -89,7 +87,6 @@ export default {
   data() {
     return {
       head: [
-        i18n.t("bet.index.date.text"),
         i18n.t("rebate.center.list.nav.type.text"),
         i18n.t("rebate.center.list.nav.smount.text"),
       ],
@@ -179,7 +176,7 @@ export default {
   }
 }
 .gray {
-  color: #8e8e93;
+  color: #9c9c9c;
 }
 .tolal-list-all {
   padding: 20px 0;
@@ -210,10 +207,19 @@ export default {
     .van-grid-item__content {
       background-color: transparent;
       padding: 0;
-      text-align: center;
+      justify-content: center;
+      align-items: flex-start;
     }
     .van-grid {
       flex-wrap: nowrap;
+      .van-grid-item:nth-child(2) .van-grid-item__content {
+        align-items: flex-end;
+      }
+    }
+    .grid-list {
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.04);
     }
   }
   .agency-lst {
