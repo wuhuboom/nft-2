@@ -47,7 +47,7 @@
         loading-text="loading"
         @load="onLoad"
       >
-        <div class="font16">
+        <div class="">
           <van-grid class="m-b-16" :border="false" :column-num="2">
             <van-grid-item v-for="value in head" :key="value">
               {{ value }}

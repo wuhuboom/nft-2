@@ -2,7 +2,7 @@
   <ul class="justify-between nvas" :class="className">
     <li
       class="center-center flex-1"
-      :class="{ 'bg-active': item.key == cur }"
+      :class="{ 'bg-active ntf-vant-btn': item.key == cur }"
       v-for="(item, idx) in navs"
       @click="chosen(item)"
       :key="idx"
@@ -41,11 +41,10 @@ export default {
   border-radius: 8.9px;
   background-color: #333335;
   & > li {
-    height: 32px;
+    height: 38px;
     border-radius: 8.9px;
   }
   & > li.bg-active {
-    background-color: var(--main);
     color: #fff;
   }
 }
