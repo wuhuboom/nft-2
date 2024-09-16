@@ -49,7 +49,7 @@
     </ul>
     <div class="hot-live-stream m-t-24">
       <ul
-        @click="$router.push('/pages/live')"
+        @click="$router.push('/item/shop?tab=1')"
         class="item-title p-b-8 justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
       >
         <li class="color-fff font16">{{ $t(`Hot.Live.Stream`) }}</li>

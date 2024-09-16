@@ -1,5 +1,20 @@
 <template>
   <div class="item-shop-page font12">
+    <ul class="justify-between align-center p-x-16">
+      <li class="username">
+        <p class="align-center">
+          Hi
+          <span class="m-l-8">{{ user.username }}</span>
+        </p>
+        <p>Launch the Most Thrilling Top Matches</p>
+      </li>
+      <li
+        class="notice no-shrink center-center"
+        @click="$router.push({ name: 'Message' })"
+      >
+        <van-icon name="volume-o" :size="20" />
+      </li>
+    </ul>
     <ul class="justify-around align-center navs m-t-16 m-b-16 m-l-8 m-r-8">
       <li
         @click="chose(item)"
@@ -77,6 +92,11 @@ export default {
       this.query.pageNo++;
     },
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   created() {
     this.$store.commit("setPdTop", false);
     console.log(this.$store.state.setPdTop);
@@ -105,6 +125,26 @@ export default {
     & > li.cur {
       background: var(--main);
       color: #fff;
+    }
+  }
+  .notice {
+    width: 47px;
+    height: 47px;
+    border-radius: 23.5px;
+    border: solid 1px rgba(255, 255, 255, 0.05);
+    ::v-deep {
+      .van-icon-volume-o {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .username {
+    font-weight: bold;
+    & > p:first-child {
+      font-size: 30px;
+    }
+    & > p:last-child {
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 }
