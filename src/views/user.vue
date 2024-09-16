@@ -54,14 +54,15 @@
         </li>
       </ul>
       <ul class="navs justify-between m-t-16">
+        <!-- :class="{ 'm-r-8': idx !== navs.length - 1 }" -->
         <li
           v-for="(item, idx) in navs"
           :key="idx"
-          @click="item.path && $router.push(item.path)"
+          @click="gopage(item)"
           class="center-center flex-column text-center"
         >
           <img class="d-img" :src="item.img" alt="" />
-          <p class="m-t-12">{{ item.text }}</p>
+          <p class="m-t-8">{{ item.text }}</p>
         </li>
       </ul>
 
@@ -135,6 +136,9 @@ export default {
     };
   },
   computed: {
+    safeConfig() {
+      return this.$store.state.safeConfig;
+    },
     config() {
       return this.$store.state.config;
     },
@@ -144,38 +148,60 @@ export default {
     navs() {
       const arr = [
         {
-          text: this.$t("fuc.rebate.center"),
-          img: require("@/assets/img/ntf/user2.png"),
-          path: "/pages/function/rebate_center",
-        },
-        {
-          text: this.$t("Team.benefits"),
-          path: "/pages/user/income",
-          img: require("@/assets/img/ntf/user3.png"),
+          text: this.$t(`user.menu.title1.text`),
+          path: "/pages/securityCenter/index",
+          img: require("@/assets/img/ntf3/user/130026@2x.png"),
         },
         {
           text: this.$t("user.trade.title4.text"),
-          img: require("@/assets/img/ntf/user4.png"),
+          img: require("@/assets/img/ntf3/user/130027@2x.png"),
           path: "/pages/user/invoice",
         },
-      ];
-      if (this.config.beyShow == 1) {
-        arr.unshift({
-          img: require("@/assets/img/ntf/user1.png"),
-          text: this.$t(`Yu'ebao`),
-          path: "/pages/user/investDetail",
-        });
-      } else {
-        arr.push({
-          img: require("@/assets/img/ntf/user5.webp"),
+        {
+          img: require("@/assets/img/ntf3/user/130030@2x.png"),
           text: this.$t(`me.my.qr.code.text`),
           path: "/pages/me/share",
+        },
+        {
+          img: require("@/assets/img/ntf3/user/130029@2x.png"),
+          text: this.$t(`user.menu.title6.text`),
+          path: "down",
+        },
+      ];
+      //this.config.beyShow == 1
+      // if (this.config.beyShow !== undefined) {
+      //   arr.unshift({
+      //     img: require("@/assets/img/ntf/user1.png"),
+      //     text: this.$t(`Yu'ebao`),
+      //     path: "/pages/user/investDetail",
+      //   });
+      // }
+      if (this.safeConfig.showH5 === 1) {
+        arr.unshift({
+          img: require("@/assets/img/ntf3/user/130028@2x.png"),
+          text: this.$t("fuc.safe.text"),
+          path: "/pages/wallet/index",
         });
       }
       return arr;
     },
   },
   methods: {
+    gopage(v) {
+      if (v.path == "down") {
+        this.download();
+        return;
+      }
+      this.$router.push(v.path);
+    },
+    async download() {
+      this.$toast.loading({
+        duration: 0,
+        forbidClick: true,
+      });
+      await this.$store.dispatch("appDownload");
+      this.$toast.clear();
+    },
     async balanceChangeRequest() {
       const [err, res] = await userApi.balanceChangeReq({
         time: 1,
@@ -197,6 +223,7 @@ export default {
     },
   },
   created() {
+    this.$store.dispatch("setSafeConfig");
     this.$store.commit("setPdTop", false);
     this.investMyStatisItems();
     // this.investMyStatis();
@@ -244,15 +271,14 @@ export default {
 }
 .navs {
   align-items: baseline;
+
   & > li {
     background: no-repeat center center;
     background-size: 100% 100%;
-    &,
+    width: 56px;
     img {
-      width: 57px;
-    }
-    img {
-      height: 57px;
+      height: 26px;
+      width: 26px;
     }
   }
 }
