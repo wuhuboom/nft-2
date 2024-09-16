@@ -13,7 +13,6 @@
         </li>
       </ul>
     </div>
-
     <LoadList :onload="informationGame" :finished="finished">
       <div class="p-l-16 p-r-16 p-t-16">
         <div

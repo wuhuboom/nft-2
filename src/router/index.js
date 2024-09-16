@@ -448,6 +448,7 @@ const routes = [
     name: "ItemShop",
     components: {
       default: () => import("@/views/ItemShop.vue"),
+      AppBtmBar,
     },
   },
   {
