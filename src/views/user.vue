@@ -54,7 +54,6 @@
         </li>
       </ul>
       <ul class="navs justify-between m-t-16">
-        <!-- :class="{ 'm-r-8': idx !== navs.length - 1 }" -->
         <li
           v-for="(item, idx) in navs"
           :key="idx"
@@ -66,73 +65,75 @@
         </li>
       </ul>
 
-      <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
-      <ul class="trade-list d-flex full100 m-b-16 gray">
-        <li class="name">
-          <p class="els">{{ $t("deal.createOrderMer.354499-5") }}</p>
+      <p class="font14 bold m-t-24 m-b-16">{{ $t(`Data.Center`) }}</p>
+      <ul
+        v-if="config.beyShow == 1"
+        class="center-list p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/user/investDetail')"
+      >
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129984@2x.png')"
+            alt=""
+          />
         </li>
-        <li class="flex-1">
-          <p class="els">{{ $t("info.trade.col4.text") }}</p>
-        </li>
-        <li class="no-shrink earnings">
-          <p class="els">{{ $t("Total.earnings") }}</p>
+        <li>
+          <p class="title font14 m-b-4">{{ $t(`Yu'ebao`) }}</p>
+          <p class="desc">{{ $t(`Demat.Account`) }}</p>
         </li>
       </ul>
-      <div v-if="plans.length">
-        <ul
-          class="trade-list d-flex full100 m-b-16"
-          v-for="(item, idx) in plans"
-          :key="idx"
-        >
-          <li class="name els align-center">
-            <img
-              v-if="item.planIcon"
-              class="d-img no-shrink"
-              :src="item.planIcon"
-              alt=""
-            />
-            <p class="els">{{ item.plan }}</p>
-          </li>
-          <li class="flex-1">
-            <p class="els">{{ divide(item.money) }}</p>
-          </li>
-          <li class="no-shrink earnings">
-            <p class="els">{{ divide(item.moneyIncome) }}</p>
-          </li>
-        </ul>
-      </div>
-
-      <NoData v-else />
-      <div
-        class="m-b-16 m-t-24 justify-between align-center"
-        @click="
-          $router.push({
-            name: 'BalanceRecord',
-          })
-        "
+      <ul
+        class="center-list justify-between p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/function/rebate_center')"
       >
-        <p class="font14 bold">{{ $t("property.record.title") }}</p>
-        <van-icon size="16" name="arrow" />
-      </div>
-      <ChangeRecord v-if="changs.length" :list="changs" />
-      <NoData v-else />
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129983@2x.png')"
+            alt=""
+          />
+        </li>
+        <li class="flex-1">
+          <p class="title font14 m-b-4">{{ $t(`fuc.rebate.center`) }}</p>
+          <p class="desc">
+            {{ $t(`backapi.self.rebate.top.content.today.text`) }}
+          </p>
+        </li>
+        <li>{{ divide(todayNum) }}</li>
+      </ul>
+      <ul
+        class="center-list justify-between p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/user/income')"
+      >
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129982@2x.png')"
+            alt=""
+          />
+        </li>
+        <li class="flex-1">
+          <p class="title font14 m-b-4">
+            {{ $t(`myfriends.rank.team.title`) }}
+          </p>
+          <p class="desc">{{ $t(`agency.center.teambalance.text`) }}</p>
+        </li>
+        <li>{{ divide(friendsBalance) }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
 import userApi from "@/api/user";
-import ChangeRecord from "@/components/home/ChangeRecord.vue";
 export default {
   name: "pageUser",
-  components: {
-    ChangeRecord,
-  },
   data() {
     return {
-      invest: {},
-      plans: [],
       changs: [],
+      todayNum: 0,
+      friendsBalance: 0,
     };
   },
   computed: {
@@ -168,14 +169,7 @@ export default {
           path: "down",
         },
       ];
-      //this.config.beyShow == 1
-      // if (this.config.beyShow !== undefined) {
-      //   arr.unshift({
-      //     img: require("@/assets/img/ntf/user1.png"),
-      //     text: this.$t(`Yu'ebao`),
-      //     path: "/pages/user/investDetail",
-      //   });
-      // }
+
       if (this.safeConfig.showH5 === 1) {
         arr.unshift({
           img: require("@/assets/img/ntf3/user/130028@2x.png"),
@@ -187,6 +181,18 @@ export default {
     },
   },
   methods: {
+    async investMyStatisFriends() {
+      const [err, res] = await userApi.investMyStatisFriends2();
+      if (err) {
+        return;
+      }
+      this.friendsBalance = res.data.friendsBalance;
+    },
+    async getStatissticsData() {
+      const [err, resR] = await userApi.rebateStatisReq();
+      if (err) return;
+      this.todayNum = resR.data.today;
+    },
     gopage(v) {
       if (v.path == "down") {
         this.download();
@@ -202,32 +208,11 @@ export default {
       await this.$store.dispatch("appDownload");
       this.$toast.clear();
     },
-    async balanceChangeRequest() {
-      const [err, res] = await userApi.balanceChangeReq({
-        time: 1,
-        pageNo: 1,
-        pageSize: 10,
-      });
-      if (err) return;
-      this.changs = res.data.results;
-    },
-    async investMyStatisItems() {
-      const [err, res] = await userApi.investMyStatisItems();
-      if (err) return;
-      this.plans = res.data;
-    },
-    async investMyStatis() {
-      const [err, res] = await userApi.investMyStatis();
-      if (err) return;
-      this.invest = res.data;
-    },
   },
   created() {
     this.$store.dispatch("setSafeConfig");
     this.$store.commit("setPdTop", false);
-    this.investMyStatisItems();
-    // this.investMyStatis();
-    this.balanceChangeRequest();
+    this.getStatissticsData();
     this.$store.dispatch("getInfo");
   },
   mounted() {
@@ -331,6 +316,17 @@ export default {
   img {
     height: 20px;
     width: 20px;
+  }
+}
+.center-list {
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  img {
+    height: 43px;
+    width: 43px;
+  }
+  .desc {
+    color: #9c9c9c;
   }
 }
 </style>

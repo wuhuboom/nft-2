@@ -472,9 +472,7 @@
 	"backapi.self.withdraw.edit.form.sim.name.text": "name",
 	"backapi.self.sim.list.title.text": "SIM list",
 	"backapi.self.rebate.top.content.total.text": "total rebate",
-	"backapi.self.rebate.top.content.week.text": "Commission rebate this week",
-	"backapi.self.rebate.top.content.today.text": "Today's commission rebate",
-	"backapi.self.rebate.top.content.lastweek.text": "Last commission rebate",
+
 	"backapi.self.statistics.top.title.text": "Failure list",
 	"backapi.self.statistics.top.content.monthAim.text": "Compliance this month",
 	"backapi.self.statistics.top.content.monthUnAim.text": "Not up to standard this month",
@@ -1521,5 +1519,10 @@
 	"system.fail":"The system is busy. Please try again later",
 
 	"Launch.Top.Matches": "Launch the Most Thrilling Top Matches",
-	"Good.Day":"Good Day"
+	"Good.Day":"Good Day",
+	"Data.Center":"Data Center",
+	"Demat.Account":"Demat Account",
+	"backapi.self.rebate.top.content.week.text": "Rebate this week",
+	"backapi.self.rebate.top.content.today.text": "Today rebate",
+	"backapi.self.rebate.top.content.lastweek.text": "Last rebate"
 }
