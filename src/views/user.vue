@@ -64,17 +64,7 @@
           <p class="m-t-12">{{ item.text }}</p>
         </li>
       </ul>
-      <ul
-        v-if="config.beyShow === 1"
-        @click="$router.push({ name: 'Share' })"
-        class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
-      >
-        <li class="font14">{{ $t(`me.my.qr.code.text`) }}</li>
-        <li class="align-center">
-          Click to view the invitation code
-          <van-icon class="m-l-4" name="arrow" />
-        </li>
-      </ul>
+
       <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
       <ul class="trade-list d-flex full100 m-b-16 gray">
         <li class="name">
@@ -214,10 +204,10 @@ export default {
     this.$store.dispatch("getInfo");
   },
   mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
+    document.querySelector("body").classList.add("gray-user-img");
   },
   destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
+    document.querySelector("body").classList.remove("gray-user-img");
   },
 };
 </script>
