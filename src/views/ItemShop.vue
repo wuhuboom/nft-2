@@ -12,13 +12,13 @@
       </li>
     </ul>
     <itemContest v-if="current == 0" />
-    <itemGame v-if="current == 1" />
+    <live :showTab="false" v-if="current == 1" />
     <itemTrade v-if="current == 2" />
   </div>
 </template>
 
 <script>
-import itemGame from "@/views/itemGame";
+import live from "@/views/live";
 import itemTrade from "@/views/itemTrade";
 import itemContest from "@/views/itemContest.vue";
 import i18n from "@/locale";
@@ -26,7 +26,7 @@ import userApi from "@/api/user";
 export default {
   name: "ItemShop",
   components: {
-    itemGame,
+    live,
     itemTrade,
     itemContest,
   },

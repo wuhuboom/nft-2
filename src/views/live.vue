@@ -1,6 +1,7 @@
 <template>
   <div class="live-page">
     <AppTopBar
+      v-if="showTab"
       :titleClass="['app-top-black-title']"
       topBarTitle="Live"
       :styleObj="{
@@ -32,6 +33,12 @@
 import userApi from "@/api/user";
 export default {
   name: "LiveView",
+  props: {
+    showTab: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data() {
     return {
       finished: false,
