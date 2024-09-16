@@ -19,9 +19,9 @@
         <div
           v-for="(item, i) in video"
           :key="i"
-          class="contest-item m-b-8 align-center justify-between p-r-16"
+          class="contest-item m-b-8 align-center justify-between p-x-8"
         >
-          <ul class="time">
+          <ul class="time no-shrink">
             <li v-if="item.startTime">
               {{ date(item.startTime) }}
             </li>
@@ -29,24 +29,26 @@
               {{ date(item.endTime) }}
             </li>
           </ul>
+          <ul class="teem-logo center-center m-r-8">
+            <li class="center-center">
+              <img class="d-img" :src="item.mainImg" />
+            </li>
+            <li class="center-center">
+              <img class="d-img" :src="item.guestImg" />
+            </li>
+          </ul>
           <ul class="cont flex-1">
-            <li class="align-center main-macth justify-between p-b-8">
-              <p class="align-center">
-                <span class="pic m-r-8"
-                  ><img class="d-img" :src="item.mainImg"
-                /></span>
+            <li class="align-center main-macth justify-between p-4-8">
+              <p class="els">
                 {{ item.main }}
               </p>
-              <p>{{ item.scorea }}</p>
+              <p class="active">{{ item.scorea }}</p>
             </li>
-            <li class="align-center justify-between p-t-8">
-              <p class="align-center">
-                <span class="pic m-r-8"
-                  ><img class="d-img" :src="item.guestImg"
-                /></span>
+            <li class="align-center justify-between p-t-4">
+              <p class="els">
                 {{ item.guest }}
               </p>
-              <p>{{ item.scoreb }}</p>
+              <p class="active">{{ item.scoreb }}</p>
             </li>
           </ul>
         </div>
@@ -136,14 +138,35 @@ export default {
     }
   }
   .contest-item {
-    height: 83px;
-    background: url("@/assets/img/ntf/conte.webp") no-repeat center center;
-    background-size: 100% 100%;
+    height: 64px;
+    border-radius: 12px;
+    background-color: #161616;
+  }
+  .teem-logo {
+    & > li {
+      overflow: hidden;
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+      background-color: #211f21;
+      border: solid 1px rgba(255, 255, 255, 0.05);
+      img {
+        height: 22px;
+        width: 22px;
+      }
+    }
+    & > li:first-child {
+      position: relative;
+      z-index: 2;
+    }
+    & > li:last-child {
+      margin-left: -16px;
+    }
   }
   .cont {
-    .pic {
-      height: 22px;
-      width: 22px;
+    overflow: hidden;
+    & > li {
+      overflow: hidden;
     }
   }
   .time {
@@ -156,18 +179,5 @@ export default {
 }
 .main-macth {
   position: relative;
-  ::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1.7px;
-    background-image: linear-gradient(
-      to right,
-      rgba(36, 32, 33, 0) -19%,
-      #464646 99%
-    );
-  }
 }
 </style>
