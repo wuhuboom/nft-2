@@ -9,17 +9,17 @@
     <div v-if="cur === 1">
       <div class="m-t-16 font12 bg-fff-o-1 p-x-16 m-b-16">
         <div class="friends">
-          <ul>
+          <ul class="justify-between">
+            <li class="m-t-8">{{ $t("income.team.people") }}</li>
             <li class="font14 blod color-fff">
               {{ income.friendsCount }}
             </li>
-            <li class="m-t-8">{{ $t("income.team.people") }}</li>
           </ul>
-          <ul class="m-t-16">
+          <ul class="m-t-16 justify-between">
+            <li class="m-t-8">{{ $t("agency.center.teambalance.text") }}</li>
             <li class="font14 blod color-fff">
               {{ divide(income.friendsBalance) }}
             </li>
-            <li class="m-t-8">{{ $t("agency.center.teambalance.text") }}</li>
           </ul>
         </div>
       </div>
