@@ -1,26 +1,58 @@
 <template>
   <div class="p-b-32">
-    <HomeTopBar :title="user.username" />
     <div class="page-user font12 p-l-16 p-r-16">
-      <div class="align-center justify-between m-t-8">
-        <ul>
-          <li class="gray">{{ $t(`my.all.income`) }}</li>
-          <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
-          <li class="green">+{{ divide(invest.today) }}</li>
-        </ul>
-        <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
-          <li>
+      <ul class="justify-between uesr-head align-center p-t-16 p-b-20">
+        <li class="align-center">
+          <p class="icon-user m-r-8">
             <img
-              class="d-img userpic"
-              src="@/assets/img/ntf/userpic.webp"
+              class="d-img"
+              src="@/assets/img/ntf3/user/126928@2x.png"
               alt=""
             />
-          </li>
-          <li class="edt center-center">
-            <van-icon name="edit" class="font14" />
-          </li>
-        </ul>
-      </div>
+          </p>
+          <p class="flex-column good-desc">
+            <span>{{ $t(`Good.Day`) }}</span>
+            <span class="font16 bold">
+              {{ user.username }}
+            </span>
+          </p>
+        </li>
+        <li>
+          <SelectLang />
+        </li>
+      </ul>
+      <ul class="user-balance">
+        <li class="center-center m-b-4">
+          {{ $t(`home.index.account.balance.text`) }}
+        </li>
+        <li class="center-center">
+          {{ divide(user.balance) }}
+        </li>
+        <li class="wi-re center-center m-t-20 m-b-24">
+          <p
+            class="m-r-8 center-center ntf-vant-btn"
+            @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
+          >
+            <img
+              class="d-img m-r-12"
+              src="@/assets/img/ntf3/user/130043@2x.png"
+              alt=""
+            />
+            {{ $t("deal.recharge.354498-0") }}
+          </p>
+          <p
+            class="center-center ntf-vant-btn"
+            @click="$router.push({ path: '/pages/wallet/withdraw' })"
+          >
+            <img
+              class="d-img m-r-12"
+              src="@/assets/img/ntf3/user/157461@2x.png"
+              alt=""
+            />
+            {{ $t(`dropdown.billing.income.withdraw.text`) }}
+          </p>
+        </li>
+      </ul>
       <ul class="navs justify-between m-t-16">
         <li
           v-for="(item, idx) in navs"
@@ -99,12 +131,10 @@
 
 <script>
 import userApi from "@/api/user";
-import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import ChangeRecord from "@/components/home/ChangeRecord.vue";
 export default {
   name: "pageUser",
   components: {
-    HomeTopBar,
     ChangeRecord,
   },
   data() {
@@ -179,7 +209,7 @@ export default {
   created() {
     this.$store.commit("setPdTop", false);
     this.investMyStatisItems();
-    this.investMyStatis();
+    // this.investMyStatis();
     this.balanceChangeRequest();
     this.$store.dispatch("getInfo");
   },
@@ -254,6 +284,37 @@ export default {
     text-align: right;
   }
   .trade {
+  }
+}
+.uesr-head {
+  .icon-user {
+    height: 44px;
+    width: 44px;
+  }
+  .good-desc {
+    & > span:nth-child(1) {
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+.user-balance {
+  & > li:nth-child(1) {
+    font-size: 16px;
+    color: #8e8e8e;
+  }
+  & > li:nth-child(2) {
+    font-size: 28px;
+  }
+}
+.wi-re {
+  & > p {
+    min-width: 139px;
+    height: 39px;
+    padding: 0 4px;
+  }
+  img {
+    height: 20px;
+    width: 20px;
   }
 }
 </style>

@@ -71,6 +71,8 @@ export default {
       padding-left: 32px;
       padding-right: 20px;
       text-align: right;
+      color: #fff;
+      font-weight: bold;
     }
     .el-select-dropdown__item {
       padding: 0 4px;
