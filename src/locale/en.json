@@ -1508,7 +1508,6 @@
 	"typeValue6": "Manual Deposit",
 	"typeValue8": "Manual Withdrawal",
 	"typeValue9": "Investment Completed",
-
 	"typeValue12": "Withdrawal Rejected",
 	"typeValue21": "Subordinate Recharge Rebate",
 	"typeValue24": "First Recharge Reward",
@@ -1519,5 +1518,8 @@
 	"typeValue33": "Reversal",
 	"typeValue34": "Flash Exchange",
 	"typeValue36": "Recharge Compensation",
-	"system.fail":"The system is busy. Please try again later"
+	"system.fail":"The system is busy. Please try again later",
+
+	"Launch.Top.Matches": "Launch the Most Thrilling Top Matches",
+	"Good.Day":"Good Day"
 }

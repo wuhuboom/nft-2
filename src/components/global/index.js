@@ -11,6 +11,7 @@ import RowMatch from "@/components/global/RowMatch.vue";
 import ComfireDialog from "@/components/global/ComfireDialog.vue";
 import BtmActionLang from "@/components/global/BtmActionLang.vue";
 import LoadList from "@/components/global/LoadList.vue";
+import SelectLang from "@/components/global/SelectLang.vue";
 import {
   Form,
   Field,
@@ -55,6 +56,7 @@ export default {
     Vue.component(ComfireDialog.name, ComfireDialog);
     Vue.component(BtmActionLang.name, BtmActionLang);
     Vue.component(LoadList.name, LoadList);
+    Vue.component(SelectLang.name, SelectLang);
     Vue.use(Form);
     Vue.use(Field);
     Vue.use(Button);

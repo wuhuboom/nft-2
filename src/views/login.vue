@@ -1,31 +1,7 @@
 <template>
   <div class="login-view-page font14 p-t-16">
     <div class="p-l-16 p-r-16">
-      <div class="lang align-center">
-        <!-- <p class="lang-pic m-r-8">
-          <img :src="langIcon" alt="" />
-        </p> -->
-        <el-select
-          :value="$store.state.lang"
-          @change="select"
-          :placeholder="$t('index.editor.psd.text')"
-        >
-          <template #prefix>
-            <img class="selectd-icon d-img m-r-8" :src="langIcon" alt="" />
-          </template>
-          <el-option
-            v-for="item in langOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-            <div class="custom-option align-center m-t-8">
-              <img class="d-img m-r-8" :src="item.icon" alt="" />
-              <span class="custom-label">{{ item.label }}</span>
-            </div>
-          </el-option>
-        </el-select>
-      </div>
+      <SelectLang />
       <ul class="flex-column logo-are center-center">
         <li class="logo p--8 p-b-16">
           <img class="d-img" src="@/assets/img/ntf3/reglog.webp" alt="" />
