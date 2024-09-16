@@ -49,23 +49,24 @@
         </li>
       </ul>
     </div>
-    <div v-else class="m-t-40">
-      <ul class="my-incom center-center flex-column">
-        <li class="m-b-16 gray">{{ $t("invest.record.col2.text") }}</li>
-        <li class="center-center m-b-32">
-          <p><img class="d-img" src="@/assets/img/ntf/rmb.webp" alt="" /></p>
-          <p class="my-total bold">{{ divide(myIncome.total) }}</p>
-        </li>
-      </ul>
-      <ul class="m-b-4 d-flex frends-list frends-content">
-        <li style="width: 50%" class="p-l-16">
-          {{ $t("income.team.level.cur") }}
-        </li>
-        <li class="p-r-16" style="width: 50%; text-align: right">
-          {{ divide(myIncome.today) }}
-        </li>
-      </ul>
-      <div>
+    <div v-else>
+      <div class="m-t-16 record-head font12 p-x-16 m-b-16">
+        <div class="friends">
+          <ul class="justify-between align-center m-b-16">
+            <li>{{ $t("invest.record.col2.text") }}</li>
+            <li class="font14 blod color-fff bold">
+              {{ divide(myIncome.total) }}
+            </li>
+          </ul>
+          <ul class="justify-between align-center m-t-16">
+            <li>{{ $t("income.team.level.cur") }}</li>
+            <li class="font14 blod color-fff bold">
+              {{ divide(myIncome.today) }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- <div>
         <ul class="m-b-16 d-flex gray frends-list m-t-24 m-b-16">
           <li>{{ $t(`myfriends.list.col4.text`) }}</li>
           <li>
@@ -80,7 +81,7 @@
           <li class="p-l-16">{{ date(item.time) }}</li>
           <li>{{ divide(item.total) }}</li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
