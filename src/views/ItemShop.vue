@@ -1,23 +1,6 @@
 <template>
   <div class="item-shop-page font12">
-    <AppTopBar
-      :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`user.Item.shop`)"
-    ></AppTopBar>
-    <Banner
-      :imgsList="[
-        {
-          imageUrl: require('@/assets/img/ntf/1.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/2.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/3.png'),
-        },
-      ]"
-    />
-    <ul class="justify-around align-center navs m-t-16 m-b-16">
+    <ul class="justify-around align-center navs m-t-16 m-b-16 m-l-8 m-r-8">
       <li
         @click="chose(item)"
         :class="{ cur: current === item.key }"
@@ -40,14 +23,12 @@ import itemTrade from "@/views/itemTrade";
 import itemContest from "@/views/itemContest.vue";
 import i18n from "@/locale";
 import userApi from "@/api/user";
-import Banner from "@/components/global/Banner.vue";
 export default {
   name: "ItemShop",
   components: {
     itemGame,
     itemTrade,
     itemContest,
-    Banner,
   },
   data() {
     return {
@@ -97,7 +78,14 @@ export default {
     },
   },
   created() {
-    this.getImg();
+    this.$store.commit("setPdTop", false);
+    console.log(this.$store.state.setPdTop);
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
@@ -107,20 +95,16 @@ export default {
     height: 168px;
   }
   .navs {
+    border-bottom: 1px solid var(--main);
     & > li {
       width: 95px;
       text-align: center;
       height: 34px;
       line-height: 34px;
-      background: url("@/assets/img/ntf/shopnav.png") no-repeat center center;
-      background-size: 100% 100%;
     }
     & > li.cur {
-      // background: url("@/assets/img/ntf/shopnav-active.png") no-repeat center center;
-      // background-size: 100% 100%;
-      background: #e4704a;
+      background: var(--main);
       color: #fff;
-      border-radius: 10px;
     }
   }
 }

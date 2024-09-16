@@ -1,16 +1,18 @@
 <template>
   <div class="item-contest-page">
-    <ul class="align-center navs">
-      <li
-        class="els"
-        :class="{ cur: status == item.key }"
-        v-for="(item, i) in navs"
-        @click="chosen(item)"
-        :key="i"
-      >
-        {{ item.name }}
-      </li>
-    </ul>
+    <div class="p-l-4 p-r-4">
+      <ul class="align-center navs">
+        <li
+          class="els"
+          :class="{ cur: status == item.key }"
+          v-for="(item, i) in navs"
+          @click="chosen(item)"
+          :key="i"
+        >
+          {{ item.name }}
+        </li>
+      </ul>
+    </div>
 
     <LoadList :onload="informationGame" :finished="finished">
       <div class="p-l-16 p-r-16 p-t-16">
@@ -118,27 +120,20 @@ export default {
 .item-contest-page {
   .navs {
     & > li {
-      height: 46px;
-      line-height: 46px;
+      height: 38px;
+      line-height: 38px;
+      border-radius: 19px;
+      border: solid 1px rgba(255, 255, 255, 0.05);
       width: 33.33%;
       text-align: center;
       position: relative;
+      margin: 0 4px;
     }
-    .cur::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px; /* 边框的高度 */
-      background-color: var(--main);
+    .cur {
+      border: 1px solid var(--main);
+      background: #fff;
+      color: #000;
     }
-    border-radius: 8px 8px 0 0;
-    background-image: radial-gradient(
-      circle at 11% 8%,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.03) 137%
-    );
   }
   .contest-item {
     height: 83px;
