@@ -25,12 +25,15 @@
         </div>
         <ul class="justify-between">
           <li>
-            <p class="btn copy-button" @click="copy(invitationCode)">
+            <p
+              class="btn ntf-vant-btn copy-button"
+              @click="copy(invitationCode)"
+            >
               {{ $t("invite.code.copy.text") }}
             </p>
           </li>
           <li>
-            <p class="btn copy-button" @click="copy(link)">
+            <p class="btn ntf-vant-btn copy-button" @click="copy(link)">
               {{ $t("invite.link.copy.text") }}
             </p>
           </li>
@@ -124,7 +127,6 @@ export default {
   }
   .btn {
     padding: 0 4px;
-    background-color: var(--main);
     width: 159.5px;
     height: 48px;
     line-height: 48px;
