@@ -121,6 +121,49 @@
         </li>
         <li>{{ divide(friendsBalance) }}</li>
       </ul>
+      <p class="login-out p-l-4 center-center" @click="show = true">
+        <img
+          class="d-img m-r-4"
+          src="@/assets/img/ntf3/user/124545@2x.png"
+          alt=""
+        />
+        {{ $t(`user.menu.title7.text`) }}
+      </p>
+      <van-popup
+        class="linear-global-pop"
+        style="width: 75%"
+        v-model="show"
+        round
+        position="center"
+      >
+        <ul>
+          <li class="font16 text-center m-t-24 m-b-24">{{ $t(`now.exit`) }}</li>
+          <li class="align-center justify-around">
+            <van-button
+              @click="show = false"
+              class="ntf-vant-btn ntf-btn-cancel m-r-24"
+              block
+              type="info"
+            >
+              {{ $t("modal.cancel.text") }}
+            </van-button>
+            <van-button
+              class="ntf-vant-btn"
+              block
+              type="info"
+              @click="loginOut"
+            >
+              {{ $t("modal.confirm.text") }}
+            </van-button>
+          </li>
+        </ul>
+      </van-popup>
+      <img
+        class="my-serve"
+        @click="$store.dispatch('getServeData', 1)"
+        src="@/assets/img/ntf3/129511@2x.webp"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -134,6 +177,7 @@ export default {
       changs: [],
       todayNum: 0,
       friendsBalance: 0,
+      show: false,
     };
   },
   computed: {
@@ -208,6 +252,11 @@ export default {
       await this.$store.dispatch("appDownload");
       this.$toast.clear();
     },
+    loginOut() {
+      this.show = false;
+      this.$store.commit("loginOut");
+      this.$router.replace({ name: "Login" });
+    },
   },
   created() {
     this.$store.dispatch("setSafeConfig");
@@ -224,6 +273,14 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.my-serve {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 120px;
+  right: 12px;
+}
 .gray {
   color: #79869b;
 }
@@ -327,6 +384,18 @@ export default {
   }
   .desc {
     color: #9c9c9c;
+  }
+}
+.login-out {
+  width: 113px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.09);
+  margin: 20px auto 0;
+  img {
+    height: 18px;
+    width: 18px;
   }
 }
 </style>
