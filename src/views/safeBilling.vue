@@ -10,7 +10,7 @@
       <van-Loading color="#1989fa" />
     </div>
     <div v-else class="">
-      <ul class="drop-list justify-between align-center m-b-12">
+      <ul class="drop-list m-r-13 m-r-l justify-between align-center m-b-12">
         <li class="m-l-16">
           <el-select v-model="tabCurrent" @change="changTab">
             <el-option
@@ -189,12 +189,6 @@ export default {
       });
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -211,9 +205,10 @@ export default {
   }
 
   .drop-list {
-    height: 32px;
-    border-bottom: 1px solid #484b4c;
-    border-top: 1px solid #484b4c;
+    // height: 32px;
+    // border-bottom: 1px solid #484b4c;
+    // border-top: 1px solid #484b4c;
+    border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
       height: 18px;
