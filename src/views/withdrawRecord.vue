@@ -384,24 +384,24 @@ export default {
           ? res.data.results
           : this.curItem.results.concat(res.data.results);
       //如果 list 是空数据 加点假数据
-      // if (list.length === 0) {
-      //   list = [
-      //     {
-      //       createdAt: "2021-07-01 12:00:00",
-      //       money: 100,
-      //       status: 3,
-      //       type: 1,
-      //       remark: "失败原因",
-      //     },
-      //     {
-      //       createdAt: "2021-07-01 12:00:00",
-      //       money: 100,
-      //       status: 3,
-      //       type: 1,
-      //       remark: "失败原因",
-      //     },
-      //   ];
-      // }
+      if (list.length === 0) {
+        list = [
+          {
+            createdAt: "2021-07-01 12:00:00",
+            money: 100,
+            status: 3,
+            type: 1,
+            remark: "失败原因",
+          },
+          {
+            createdAt: "2021-07-01 12:00:00",
+            money: 100,
+            status: 3,
+            type: 1,
+            remark: "失败原因",
+          },
+        ];
+      }
       this.curItem = {
         ...res.data,
         results: list,
@@ -409,12 +409,6 @@ export default {
       };
       this.$toast.clear();
     },
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
@@ -466,9 +460,8 @@ export default {
     }
   }
   .drop-list {
-    height: 48px;
-    border-bottom: 1px solid #484b4c;
-    border-top: 1px solid #484b4c;
+    height: 58px;
+    border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
       height: 18px;
