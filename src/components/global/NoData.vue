@@ -1,6 +1,9 @@
 <template>
-  <div class="no-data center-center flex-column" :class="className">
-    <img class="d-img" src="@/assets/img/ntf/nodata.webp" alt="" />
+  <div class="no-data center-center flex-column p-t-40" :class="className">
+    <!-- <img class="d-img" src="@/assets/img/ntf/nodata.webp" alt="" /> -->
+    <div class="enter-center m-b-20 p-t-16">
+      <van-icon name="description-o" size="62" />
+    </div>
     <div class="center-center font14 m-t-4">No Data</div>
   </div>
 </template>
@@ -18,7 +21,7 @@ export default {
 </script>
 <style scoped lang="less">
 .no-data {
-  color: var(--primary);
+  //color: var(--primary);
   img {
     width: 79px;
     height: 79px;

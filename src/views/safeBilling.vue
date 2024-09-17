@@ -168,6 +168,28 @@ export default {
         });
         return;
       }
+      //模拟数据 res.data
+      // res.data = {
+      //   hasNext: true,
+      //   pageNo: 1,
+      //   pageSize: 10,
+      //   results: [
+      //     {
+      //       changeMoney: 100,
+      //       changeType: 1,
+      //       createTime: "2021-08-01 12:00:00",
+      //       id: 1,
+      //       remark: "充值",
+      //     },
+      //     {
+      //       changeMoney: 100,
+      //       changeType: 1,
+      //       createTime: "2021-08-01 12:00:00",
+      //       id: 2,
+      //       remark: "充值",
+      //     },
+      //   ],
+      // };
       if (res.data.pageNo == 1) {
         this.tabsList.forEach((item) => {
           if (item.value === changeType) {
