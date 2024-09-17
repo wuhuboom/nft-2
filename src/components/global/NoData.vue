@@ -21,7 +21,7 @@ export default {
 </script>
 <style scoped lang="less">
 .no-data {
-  //color: var(--primary);
+  color: #fff;
   img {
     width: 79px;
     height: 79px;

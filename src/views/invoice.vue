@@ -12,7 +12,10 @@
         :key="idx"
         @click="$router.push(item.path)"
       >
-        <p class="">{{ item.title }}</p>
+        <p class="align-center">
+          <img class="d-img m-r-12" :src="item.icon" alt="" />
+          {{ item.title }}
+        </p>
         <van-icon size="16" name="arrow" />
       </li>
     </ul>
@@ -29,37 +32,39 @@ export default {
         {
           title: i18n.t("invoice.menu1.text"),
           path: "/pages/function/rechargeHistory",
+          icon: require("@/assets/img/ntf3/user/124556@2x.png"),
         },
         {
           title: i18n.t("invoice.menu2.text"),
           path: "/pages/user/withdrawRecord",
+          icon: require("@/assets/img/ntf3/user/124558@2x.png"),
         },
         {
           title: i18n.t("invoice.menu3.text"),
           path: "/pages/user/balanceRecord",
+          icon: require("@/assets/img/ntf3/user/124560@2x.png"),
         },
         {
           title: i18n.t("invoice.menu4.text"),
           path: "/pages/invest/record",
+          icon: require("@/assets/img/ntf3/user/124562@2x.png"),
         },
       ],
     };
-  },
-
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
 <style scoped lang="less">
 .invoice-page {
   .nav-item {
-    height: 38px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0 16px;
+    height: 52px;
+    border-radius: 20px;
+    background-color: #17181c;
+    img {
+      height: 24px;
+      width: 24px;
+    }
   }
 }
 </style>
