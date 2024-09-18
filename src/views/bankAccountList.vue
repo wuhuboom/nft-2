@@ -89,7 +89,7 @@
           {{ $t("bank.types") }}
         </p>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!usdtList.length && listWay.find((item) => item.type === 2)"
           @click="$router.push({ name: 'AddressUsdt' })"
         >
@@ -99,7 +99,7 @@
           <li>{{ $t("user.Add.usdt.Address") }}</li>
         </ul>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!bankList.length && listWay.find((item) => item.type === 1)"
           @click="$router.push({ name: 'AddBankCard' })"
         >
@@ -109,14 +109,14 @@
           <li>{{ $t("user.new.bank") }}</li>
         </ul>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!wallwtList.length && listWay.find((item) => item.type === 4)"
           @click="$router.push({ name: 'AddressWallet' })"
         >
           <li>
             <i class="el-icon-plus"></i>
           </li>
-          <li>+{{ $t("user.Add.Wallet") }}</li>
+          <li>{{ $t("user.Add.Wallet") }}</li>
         </ul>
       </div>
     </div>
@@ -274,13 +274,11 @@ export default {
   .add-list {
     height: 48px;
     border-radius: 15px;
-    border: solid 1px var(--main);
     margin-bottom: 4px;
 
     color: #fff;
     & > li:first-child {
       padding: 0 8px 0 16px;
-      color: var(--primary);
     }
     img {
       width: 22px;
