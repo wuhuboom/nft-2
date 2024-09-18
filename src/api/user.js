@@ -808,4 +808,17 @@ export default {
       data,
     });
   },
+  ///invest/dayActive
+  investDayActive() {
+    return request({
+      url: "/invest/dayActive",
+    });
+  },
+  postDayActive(data) {
+    return request({
+      url: "/invest/dayActive",
+      method: "post",
+      data,
+    });
+  },
 };

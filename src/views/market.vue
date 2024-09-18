@@ -272,11 +272,13 @@
         </li>
       </ul>
     </van-popup>
+    <activationCode />
   </div>
 </template>
 
 <script>
 //import i18n from "@/locale";
+import activationCode from "@/components/activationCode";
 import yuIcon from "@/assets/img/ntf/yue.png";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
@@ -293,7 +295,7 @@ const initFome = () => {
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: {},
+  components: { activationCode },
   data() {
     return {
       errIcon,

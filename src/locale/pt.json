@@ -1519,5 +1519,8 @@
   "typeValue33": "Reversão",
   "typeValue34": "Troca Rápida",
   "typeValue36": "Compensação de Recarga",
-  "system.fail":"O sistema está ocupado. Por favor, tente novamente mais tarde."
+  "system.fail":"O sistema está ocupado. Por favor, tente novamente mais tarde.",
+  "product.activation.code": "Este produto não está ativado, por favor insira o código de ativação para obter benefícios",
+  "backapi.activeCodeError": "Erro na verificação do código de ativação",
+  "enter.code":"insira o código de ativação"
 }

@@ -1519,5 +1519,8 @@
 	"typeValue33": "Reversal",
 	"typeValue34": "Flash Exchange",
 	"typeValue36": "Recharge Compensation",
-	"system.fail":"The system is busy. Please try again later"
+	"system.fail":"The system is busy. Please try again later",
+	"product.activation.code":"The product is not activated for profits. Please enter the activation code to receive profits",
+  "backapi.activeCodeError": "Activation code verification error",
+  "enter.code":"enter activation code"
 }

@@ -1519,5 +1519,8 @@
   "typeValue33": "Annulation",
   "typeValue34": "Échange Flash",
   "typeValue36": "Compensation de recharge",
-  "system.fail":"Le système est occupé. Veuillez réessayer ultérieurement."
+  "system.fail":"Le système est occupé. Veuillez réessayer ultérieurement.",
+  "product.activation.code": "Ce produit n'est pas activé, veuillez saisir le code d'activation pour obtenir des avantages",
+  "backapi.activeCodeError": "Erreur de vérification du code d'activation",
+  "enter.code":"entrez le code d'activation"
 }

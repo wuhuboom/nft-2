@@ -1519,6 +1519,8 @@
 "typeValue33": "Stornierung",
 "typeValue34": "Blitz-Austausch",
 "typeValue36": "Aufladekompensation",
-"system.fail":"Das System ist beschäftigt. Bitte versuchen Sie es später erneut."
-
+"system.fail":"Das System ist beschäftigt. Bitte versuchen Sie es später erneut.",
+"product.activation.code": "Dieses Produkt ist nicht aktiviert. Bitte geben Sie den Aktivierungscode ein, um Vorteile zu erhalten.",
+"backapi.activeCodeError": "Aktivierungscode-Überprüfungsfehler",
+"enter.code":"Geben Sie den Aktivierungscode ein"
 }
