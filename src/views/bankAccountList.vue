@@ -20,17 +20,17 @@
             {{ item.addr | usdt_left_addr }} **** ****
             {{ item.addr | usdt_right_addr }}
           </p>
-          <p>{{ item.protocol }}</p>
+          <p class="gary">{{ item.protocol }}</p>
         </li>
         <li class="rit">
           <i
-            class="el-icon-edit active"
+            class="el-icon-edit gary"
             @click="
               $router.push({ name: 'AddressUsdt', query: { id: item.id } })
             "
           ></i>
 
-          <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+          <p class="gary">{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
         </li>
       </ul>
       <ul
@@ -219,12 +219,6 @@ export default {
     }
     this.listWay = res.data;
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -241,14 +235,15 @@ export default {
     font-size: 16px;
     margin-bottom: 8px;
   }
+  .gary {
+    color: #9db1cd;
+  }
   .bank {
-    height: 80px;
-    border-radius: 15px;
-    border: solid 1px var(--main);
+    height: 73px;
+    border-radius: 12px;
+    background-color: rgba(106, 103, 103, 0.17);
     margin-bottom: 8px;
-
     background-size: auto 100%;
-
     padding-right: 16px;
     .name {
       & > p:first-child {
