@@ -6,7 +6,7 @@
         <ul>
           <li class="gray">{{ $t(`my.all.income`) }}</li>
           <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
-          <li class="green">+{{ divide(invest.today) }}</li>
+          <li class="green">+{{ divide(invest.todayAll) }}</li>
         </ul>
         <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
           <li>
