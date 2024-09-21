@@ -59,12 +59,13 @@ export default {
       if (!this.allTYpe.includes(type)) {
         return this.$t("dropdown.billing.other");
       }
-      return this.typeOptions.find((item) => {
+      let obj = this.typeOptions.find((item) => {
         if (!Array.isArray(item.value)) {
           return false;
         }
         return item.value.includes(type);
-      }).label;
+      });
+      return obj ? obj.label : "";
     },
   },
 };
