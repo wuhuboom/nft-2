@@ -91,6 +91,7 @@ export default new Vuex.Store({
     },
     paySet: null,
     safeConfig: {},
+    balanceRecord: [],
   },
   getters: {
     defaultCode(state) {
@@ -99,6 +100,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setBalanceRecord(state, data) {
+      state.balanceRecord = data;
+    },
     setwithdrawalLimitMsg(state, data) {
       state.withdrawalLimitMsg = data;
     },

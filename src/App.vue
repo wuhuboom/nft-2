@@ -10,6 +10,7 @@
 <script>
 import MaintainDialog from "@/views/components/MaintainDialog.vue";
 import RootDialog from "@/views/components/RootDialog.vue";
+import i18n from "@/locale";
 export default {
   name: "App",
   components: {
@@ -35,7 +36,38 @@ export default {
       return {};
     },
   },
-  created() {},
+  created() {
+    this.$store.commit("setBalanceRecord", [
+      { value: 0, label: i18n.t("dropdown.billing.all.title.text") },
+      {
+        label: i18n.t("dropdown.billing.rebate"),
+        value: [5, 21, 24, 25, 26, 27, 28],
+        text: "返利",
+      },
+      { label: i18n.t("investment"), value: [3, 4, 9], text: "投资" },
+      {
+        label: i18n.t("home.index.recharge.text"),
+        value: [1, 11],
+        text: "充值",
+      },
+      {
+        label: i18n.t("home.index.withdraw.text"),
+        value: [2, 12, 33],
+        text: "提现",
+      },
+      {
+        label: i18n.t("backapi.self.home.tool.wheel.text"),
+        value: [29, 30],
+        text: "抽奖",
+      },
+      {
+        label: i18n.t("dropdown.billing.other"),
+        value: [6, 8, 34, 36],
+        key: "other",
+        text: "其他",
+      },
+    ]);
+  },
 };
 </script>
 <style lang="less">

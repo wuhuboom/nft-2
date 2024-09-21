@@ -1519,5 +1519,7 @@
   "typeValue36": "充值补偿",
    "product.activation.code": "该产品尚未开启盈利功能。要获取收益，请输入激活码。",
   "backapi.activeCodeError":"激活码验证错误",
-  "enter.code":"输入激活码"
+  "enter.code":"输入激活码",
+  "dropdown.billing.rebate":"返利",
+  "dropdown.billing.other":"其他"
 }

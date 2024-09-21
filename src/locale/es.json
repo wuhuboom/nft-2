@@ -1522,5 +1522,7 @@
 	"system.fail":"El sistema está ocupado. Por favor, inténtelo de nuevo más tarde.",
 	"product.activation.code": "Este producto no está activado, por favor ingrese el código de activación para obtener beneficios",
   "backapi.activeCodeError": "Error de verificación del código de activación",
-  "enter.code":"ingrese el código de activación"
+  "enter.code":"ingrese el código de activación",
+  "dropdown.billing.rebate": "Reembolso",
+"dropdown.billing.other": "Otro"
 }

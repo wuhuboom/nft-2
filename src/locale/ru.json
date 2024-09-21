@@ -1522,5 +1522,7 @@
 	"system.fail":"Система занята. Пожалуйста, попробуйте позже.",
 	"product.activation.code": "Данный продукт не активирован, введите код активации, чтобы получить выгоду",
   "backapi.activeCodeError": "Ошибка проверки кода активации",
-  "enter.code":"введите код активации"
+  "enter.code":"введите код активации",
+  "dropdown.billing.rebate": "Возврат",
+"dropdown.billing.other": "Другое"
 }

@@ -1522,5 +1522,7 @@
 "system.fail":"Das System ist beschäftigt. Bitte versuchen Sie es später erneut.",
 "product.activation.code": "Dieses Produkt ist nicht aktiviert. Bitte geben Sie den Aktivierungscode ein, um Vorteile zu erhalten.",
 "backapi.activeCodeError": "Aktivierungscode-Überprüfungsfehler",
-"enter.code":"Geben Sie den Aktivierungscode ein"
+"enter.code":"Geben Sie den Aktivierungscode ein",
+"dropdown.billing.rebate": "Rabatt",
+"dropdown.billing.other": "Andere"
 }

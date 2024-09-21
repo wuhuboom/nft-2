@@ -1522,5 +1522,7 @@
 	"system.fail":"The system is busy. Please try again later",
 	"product.activation.code":"The product is not activated for profits. Please enter the activation code to receive profits",
   "backapi.activeCodeError": "Activation code verification error",
-  "enter.code":"enter activation code"
+  "enter.code":"enter activation code",
+  "dropdown.billing.rebate": "Rebate",
+"dropdown.billing.other": "Other"
 }

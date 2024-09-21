@@ -1522,5 +1522,7 @@
    "system.fail":"सिस्टम व्यस्त है। कृपया बाद में पुन: प्रयास करें।",
    "product.activation.code": "यह उत्पाद सक्रिय नहीं है, कृपया लाभ प्राप्त करने के लिए सक्रियण कोड दर्ज करें",
   "backapi.activeCodeError": "सक्रियण कोड सत्यापन त्रुटि",
-   "enter.code":"सक्रियण कोड दर्ज करें"
+   "enter.code":"सक्रियण कोड दर्ज करें",
+   "dropdown.billing.rebate": "रिबेट",
+"dropdown.billing.other": "अन्य"
 }

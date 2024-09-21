@@ -1522,5 +1522,7 @@
 "system.fail":"النظام مشغول. يرجى المحاولة مرة أخرى لاحقًا.",
 "product.activation.code": "هذا المنتج غير مفعل، يرجى إدخال رمز التنشيط للحصول على الفوائد",
 "backapi.activeCodeError": "خطأ في تحقق رمز التنشيط",
-"enter.code":"أدخل رمز التفعيل"
+"enter.code":"أدخل رمز التفعيل",
+"dropdown.billing.rebate": "استرداد",
+"dropdown.billing.other": "أخرى"
 }
