@@ -31,7 +31,7 @@
         </div>
       </li>
       <li v-if="isHome" class="align-center lot-icon">
-        <p class="m-r-12" @click="$router.push({ name: 'Wheel' })">
+        <p class="m-r-12" @click="goLot">
           <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
         </p>
       </li>
@@ -55,16 +55,37 @@
 </template>
 
 <script>
+import userApi from "@/api/user";
 export default {
   name: "HomeTopBar",
+  data() {
+    return {
+      base: { switch: null },
+    };
+  },
   props: {
     title: {
       type: String,
       default: "FOTI.VIP",
     },
-    showLot: {
-      type: Boolean,
-      default: false,
+  },
+  methods: {
+    async getBase() {
+      const [err, res] = await userApi.bingoCount();
+      if (err) return;
+      for (let key in res.data) {
+        this.$set(this.base, key, res.data[key]);
+      }
+    },
+    goLot() {
+      if (this.base.switch === 0) {
+        this.$toast(this.$t("backapi.notEnoughTimes"));
+        return;
+      }
+      this.$router.push({ name: "Wheel" });
+    },
+    openLang() {
+      this.$refs.BtmActionLang.open();
     },
   },
   computed: {
@@ -73,11 +94,6 @@ export default {
     },
     user() {
       return this.$store.state.user;
-    },
-  },
-  methods: {
-    openLang() {
-      this.$refs.BtmActionLang.open();
     },
   },
 };

@@ -21,28 +21,52 @@
         <template v-for="(item, idx) in bouns">
           <template v-if="idx == 3">
             <li
-              class="center-center"
+              class="center-center flex-column"
               :key="idx"
-              :class="{ flashing: isFlashingIdx === idx }"
+              :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
             >
+              <p>
+                <img
+                  class="d-img"
+                  src="@/assets/img/ntf/126930@2x.webp"
+                  alt=""
+                />
+              </p>
               {{ item }}
             </li>
-            <li :key="`${idx}-go`" class="center-center" @click="startFlashing">
+            <li
+              :key="`${idx}-go`"
+              class="center-center go-txt"
+              @click="startFlashing"
+            >
               GO
             </li>
           </template>
           <template v-else>
             <li
-              class="center-center"
+              class="center-center flex-column"
               :key="idx"
-              :class="{ flashing: isFlashingIdx === idx }"
+              :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
             >
+              <p>
+                <img
+                  class="d-img"
+                  src="@/assets/img/ntf/126930@2x.webp"
+                  alt=""
+                />
+              </p>
               {{ item }}
             </li>
           </template>
         </template>
       </ul>
     </div>
+    <ul class="font14">
+      <li class="p-b-16">{{ $t("market.rate.desc") }}</li>
+      <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content1.text") }}</li>
+      <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
+      <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
+    </ul>
   </div>
 </template>
 
@@ -53,10 +77,11 @@ export default {
   data() {
     return {
       isFlashing: false,
-      showModal: false,
-      randomPrize: null,
-      isFlashingIdx: 0,
+      isFlashingIdx: null,
+      winIndx: null,
       base: {},
+      loading: false,
+      dayDrawMax: 0,
     };
   },
   computed: {
@@ -79,8 +104,14 @@ export default {
   },
   methods: {
     startFlashing() {
+      if (this.dayDrawMax) {
+        this.$toast.error(this.$t("backapi.unLotteryDraw"));
+        return;
+      }
+      this.winIndx = null;
       // Clear any previous intervals
-      if (this.flashingInterval) clearInterval(this.flashingInterval);
+      if (this.flashingInterval || this.winIndx !== null)
+        clearInterval(this.flashingInterval);
 
       // Start random flashing
       this.flashingInterval = setInterval(() => {
@@ -88,6 +119,7 @@ export default {
         const randomIdx = Math.floor(Math.random() * this.bouns.length);
         this.isFlashingIdx = randomIdx;
       }, 200); // Adjust the speed of flashing here
+      this.bingo();
     },
     async getBase() {
       const [err, res] = await userApi.bingoCount();
@@ -95,8 +127,28 @@ export default {
       for (let key in res.data) {
         this.$set(this.base, key, res.data[key]);
       }
-      // this.base = res.data;
-      // console.log(this.base);
+    },
+    async bingo() {
+      if (this.loading) return;
+      this.loading = true;
+      const [err, res] = await userApi.bingo({
+        model: 0,
+        money: this.pay,
+      });
+      if (err) {
+        this.loading = false;
+        this.this.dayDrawMax = 1;
+        return;
+      }
+      let index = res.data.index;
+      setTimeout(() => {
+        this.winIndx = index;
+        clearInterval(this.flashingInterval);
+        this.isFlashingIdx = null;
+        this.loading = false;
+        this.winIndx = index;
+        this.$toast.success(this.bouns[index]);
+      }, 3000);
     },
   },
   created() {
@@ -110,9 +162,7 @@ export default {
   min-height: 100vh;
   background: url("@/assets/img/ntf/home/lot.webp") no-repeat center top;
   background-size: 100% auto;
-  .flashing {
-    background-color: yellow;
-  }
+
   .logo {
     height: 55px;
     width: 55px;
@@ -129,12 +179,31 @@ export default {
     margin: 24px auto;
   }
   .lot-list {
+    padding: 16px 10px 0 6px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     & > li {
+      color: #721515;
+      font-size: 16px;
+      font-weight: bold;
       width: 100px;
       text-align: center;
       height: 100px;
+      background: url("@/assets/img/ntf/130905@2x.webp") no-repeat center center;
+      background-size: 100% 100%;
+      img {
+        width: 62px;
+        height: 62px;
+      }
+      &.go-txt {
+        font-size: 30px;
+        font-weight: 500;
+        //color: #fff;
+      }
+      &.flashing {
+        background-image: url("@/assets/img/ntf/130904@2x.webp");
+      }
     }
   }
 }

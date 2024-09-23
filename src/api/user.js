@@ -827,4 +827,12 @@ export default {
       url: "/bingo/count",
     });
   },
+  //bingo
+  bingo(data) {
+    return request({
+      url: "/bingo",
+      method: "post",
+      data,
+    });
+  },
 };
