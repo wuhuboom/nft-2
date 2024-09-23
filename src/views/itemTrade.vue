@@ -143,12 +143,6 @@ export default {
       .b-4 {
         color: #808080;
       }
-      border-radius: 8px 8px 0 0;
-      background-image: radial-gradient(
-        circle at 11% 8%,
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0.03) 137%
-      );
     }
   }
 }

@@ -6,20 +6,6 @@ u
       :topBarTitle="$t('Today.History')"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <!-- <HistoryNav />
-    <div class="tab-list m-t-24">
-      <ul class="tab p-b-8 p-t-8">
-        <li
-          class="m-r-16"
-          v-for="(item, idx) in tabSimpleList"
-          @click="changFilter(item.id)"
-          :class="{ 'color-active': filterTab === item.id }"
-          :key="idx"
-        >
-          {{ item.text }}
-        </li>
-      </ul>
-    </div> -->
     <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-12">
       <li>
         <el-select v-model="filterTab" @change="changFilter">
@@ -347,6 +333,21 @@ export default {
         this.curItem.hasNext = false;
         return;
       }
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   {
+      //     createdAt: "2021-08-01 12:00:00",
+      //     type: 1,
+      //     money: 100,
+      //     status: 1,
+      //   },
+      //   {
+      //     createdAt: "2021-08-01 12:00:00",
+      //     type: 1,
+      //     money: 100,
+      //     status: 1,
+      //   },
+      // ];
       let list =
         res.data.pageNo == 1
           ? res.data.results
@@ -358,12 +359,6 @@ export default {
       };
       this.$toast.clear();
     },
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
@@ -415,9 +410,8 @@ export default {
     }
   }
   .drop-list {
-    height: 32px;
-    border-bottom: 1px solid #484b4c;
-    border-top: 1px solid #484b4c;
+    height: 58px;
+    border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
       height: 18px;

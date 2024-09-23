@@ -57,11 +57,11 @@ export default {
     padding: 10px;
     font-size: 12px;
     border-radius: 12.3px;
-    border: solid 1px #62656a;
+    border: solid 1px var(--main);
     background-color: rgba(255, 255, 255, 0.1);
     .cont,
     .time {
-      color: #95989d;
+      color: #9db1cd;
     }
   }
   .cont {

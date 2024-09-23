@@ -10,7 +10,7 @@
       <van-Loading color="#1989fa" />
     </div>
     <div v-else class="">
-      <ul class="drop-list justify-between align-center m-b-12">
+      <ul class="drop-list m-r-13 m-r-l justify-between align-center m-b-12">
         <li class="m-l-16">
           <el-select v-model="tabCurrent" @change="changTab">
             <el-option
@@ -168,6 +168,28 @@ export default {
         });
         return;
       }
+      //模拟数据 res.data
+      // res.data = {
+      //   hasNext: true,
+      //   pageNo: 1,
+      //   pageSize: 10,
+      //   results: [
+      //     {
+      //       changeMoney: 100,
+      //       changeType: 1,
+      //       createTime: "2021-08-01 12:00:00",
+      //       id: 1,
+      //       remark: "充值",
+      //     },
+      //     {
+      //       changeMoney: 100,
+      //       changeType: 1,
+      //       createTime: "2021-08-01 12:00:00",
+      //       id: 2,
+      //       remark: "充值",
+      //     },
+      //   ],
+      // };
       if (res.data.pageNo == 1) {
         this.tabsList.forEach((item) => {
           if (item.value === changeType) {
@@ -189,12 +211,6 @@ export default {
       });
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -211,9 +227,10 @@ export default {
   }
 
   .drop-list {
-    height: 32px;
-    border-bottom: 1px solid #484b4c;
-    border-top: 1px solid #484b4c;
+    // height: 32px;
+    // border-bottom: 1px solid #484b4c;
+    // border-top: 1px solid #484b4c;
+    border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
       height: 18px;

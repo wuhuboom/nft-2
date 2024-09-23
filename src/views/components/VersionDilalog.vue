@@ -4,18 +4,17 @@
     :showConfirmButton="false"
     :showCancelButton="false"
     :closeOnClickOverlay="true"
+    class="linear-global-pop"
   >
     <div class="common-dialog">
-      <p class="close center-center" @click="fromModal2 = false">
-        <van-icon name="cross" />
-      </p>
-      <p class="center-center"><i class="iconfont icon-jingti-copy"></i></p>
-      <div class="cont align-center flex-1">
-        <ul class="update">
-          <li class="update-text">{{ $t("version.update") }}</li>
-          <li class="">
+      <div class="cont full100 align-center flex-1">
+        <ul class="update full100 flex-column center-center">
+          <li class="update-text center-center full100">
+            {{ $t("version.update") }}
+          </li>
+          <li class="full100">
             <p
-              class="btns app-ellipsis"
+              class="btns ntf-vant-btn app-ellipsis"
               @click="simulateProgressBar"
               v-if="!progressBarState"
             >
@@ -23,17 +22,15 @@
             </p>
             <van-progress
               v-else
-              track-color="rgba(255, 255, 255, 0.55)"
+              track-color="rgba(255, 255, 255, 0.25)"
               :show-pivot="false"
-              color="#fff"
+              color="#38ff7e"
               :percentage="progressBar"
               stroke-width="8"
             />
           </li>
         </ul>
       </div>
-
-      <div><img class="sorck" src="@/assets/img/update.webp" alt="" /></div>
     </div>
   </van-dialog>
 </template>
@@ -103,21 +100,18 @@ export default {
   padding: 0 25px;
   position: relative;
   font-size: 16px;
-  background-color: var(--main);
   color: #fff;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   .btns {
     font-size: 13px;
-    color: #222;
     height: 36px;
     border-radius: 10px;
     background-color: #fff;
     padding: 0 8px;
     line-height: 36px;
     text-align: center;
-    width: 115px;
   }
   .close {
     position: absolute;
@@ -131,9 +125,6 @@ export default {
   }
   .cont {
     height: 152px;
-  }
-  .update {
-    width: 146px;
   }
   .update-text {
     margin-bottom: 35px;

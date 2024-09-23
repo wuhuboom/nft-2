@@ -26,8 +26,14 @@
         </li>
       </ul>
       <div class="m-t-20">
-        <p class="m-b-8">{{ getWithdrawChooseName }}</p>
-        <div class="el-ntf-select">
+        <ul class="justify-between align-center m-b-8">
+          <li>{{ getWithdrawChooseName }}</li>
+          <li @click="getWithdrawRoutingJump" class="add-blue">
+            <van-icon name="plus" size="14" class="m-r-4" />
+            {{ getWithdrawBindName }}
+          </li>
+        </ul>
+        <div class="el-ntf-select m-b-16">
           <el-select
             class="full100"
             :placeholder="getWithdrawChooseName"
@@ -41,13 +47,6 @@
             >
             </el-option>
           </el-select>
-        </div>
-        <div
-          class="add-new-card center-center m-t-8 m-b-16"
-          @click="getWithdrawRoutingJump"
-        >
-          <van-icon name="plus" size="14" class="m-r-8" />
-          {{ getWithdrawBindName }}
         </div>
         <p class="m-b-8">{{ $t("deal.buyDetail.387081-3") }}</p>
         <div ref="align">
@@ -175,7 +174,7 @@
             {{ $t("confirm.btn.text") }}</van-button
           >
         </div>
-        <ul class="m-t-16">
+        <ul class="m-t-16 p-x-8 said-text">
           <li>{{ $t(`recharge.tip.title.text`) }}</li>
           <li class="m-b-16">
             1、{{ $t("withdraw.desc.list1") }}
@@ -673,6 +672,9 @@ export default {
 </script>
 <style scoped lang="less">
 .message-page {
+  .add-blue {
+    color: #87b5fa;
+  }
   .add-new-card {
     height: 40px;
     border-radius: 8px;
@@ -851,6 +853,10 @@ export default {
         margin: 10px 0;
       }
     }
+  }
+  .said-text {
+    border: 1px solid var(--main);
+    border-radius: 8px;
   }
 }
 </style>

@@ -1,120 +1,189 @@
 <template>
   <div class="p-b-32">
-    <HomeTopBar :title="user.username" />
     <div class="page-user font12 p-l-16 p-r-16">
-      <div class="align-center justify-between m-t-8">
-        <ul>
-          <li class="gray">{{ $t(`my.all.income`) }}</li>
-          <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
-          <li class="green">+{{ divide(invest.todayAll) }}</li>
-        </ul>
-        <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
-          <li>
+      <ul class="justify-between uesr-head align-center p-t-16 p-b-20">
+        <li class="align-center">
+          <p class="icon-user m-r-8">
             <img
-              class="d-img userpic"
-              src="@/assets/img/ntf/userpic.webp"
+              class="d-img"
+              src="@/assets/img/ntf3/user/126928@2x.png"
               alt=""
             />
-          </li>
-          <li class="edt center-center">
-            <van-icon name="edit" class="font14" />
-          </li>
-        </ul>
-      </div>
+          </p>
+          <p class="flex-column good-desc">
+            <span>{{ $t(`Good.Day`) }}</span>
+            <span class="font16 bold">
+              {{ user.username }}
+            </span>
+          </p>
+        </li>
+        <li>
+          <SelectLang />
+        </li>
+      </ul>
+      <ul class="user-balance">
+        <li class="center-center m-b-4">
+          {{ $t(`home.index.account.balance.text`) }}
+        </li>
+        <li class="center-center">
+          {{ divide(user.balance) }}
+        </li>
+        <li class="wi-re center-center m-t-20 m-b-24">
+          <p
+            class="m-r-8 center-center ntf-vant-btn"
+            @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
+          >
+            <img
+              class="d-img m-r-12"
+              src="@/assets/img/ntf3/user/130043@2x.png"
+              alt=""
+            />
+            {{ $t("deal.recharge.354498-0") }}
+          </p>
+          <p
+            class="center-center ntf-vant-btn"
+            @click="$router.push({ path: '/pages/wallet/withdraw' })"
+          >
+            <img
+              class="d-img m-r-12"
+              src="@/assets/img/ntf3/user/157461@2x.png"
+              alt=""
+            />
+            {{ $t(`dropdown.billing.income.withdraw.text`) }}
+          </p>
+        </li>
+      </ul>
       <ul class="navs justify-between m-t-16">
         <li
           v-for="(item, idx) in navs"
           :key="idx"
-          @click="item.path && $router.push(item.path)"
+          @click="gopage(item)"
           class="center-center flex-column text-center"
         >
           <img class="d-img" :src="item.img" alt="" />
-          <p class="m-t-12">{{ item.text }}</p>
+          <p class="m-t-8">{{ item.text }}</p>
+        </li>
+      </ul>
+
+      <p class="font14 bold m-t-24 m-b-16">{{ $t(`Data.Center`) }}</p>
+      <ul
+        v-if="config.beyShow == 1"
+        class="center-list p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/user/investDetail')"
+      >
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129984@2x.png')"
+            alt=""
+          />
+        </li>
+        <li>
+          <p class="title font14 m-b-4">{{ $t(`Yu'ebao`) }}</p>
+          <p class="desc">{{ $t(`Demat.Account`) }}</p>
         </li>
       </ul>
       <ul
-        v-if="config.beyShow === 1"
-        @click="$router.push({ name: 'Share' })"
-        class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
+        class="center-list justify-between p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/function/rebate_center')"
       >
-        <li class="font14">{{ $t(`me.my.qr.code.text`) }}</li>
-        <li class="align-center">
-          Click to view the invitation code
-          <van-icon class="m-l-4" name="arrow" />
-        </li>
-      </ul>
-      <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
-      <ul class="trade-list d-flex full100 m-b-16 gray">
-        <li class="name">
-          <p class="els">{{ $t("deal.createOrderMer.354499-5") }}</p>
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129983@2x.png')"
+            alt=""
+          />
         </li>
         <li class="flex-1">
-          <p class="els">{{ $t("info.trade.col4.text") }}</p>
+          <p class="title font14 m-b-4">{{ $t(`fuc.rebate.center`) }}</p>
+          <p class="desc">
+            {{ $t(`backapi.self.rebate.top.content.today.text`) }}
+          </p>
         </li>
-        <li class="no-shrink earnings">
-          <p class="els">{{ $t("Total.earnings") }}</p>
-        </li>
+        <li>{{ divide(todayNum) }}</li>
       </ul>
-      <div v-if="plans.length">
-        <ul
-          class="trade-list d-flex full100 m-b-16"
-          v-for="(item, idx) in plans"
-          :key="idx"
-        >
-          <li class="name els align-center">
-            <img
-              v-if="item.planIcon"
-              class="d-img no-shrink"
-              :src="item.planIcon"
-              alt=""
-            />
-            <p class="els">{{ item.plan }}</p>
-          </li>
-          <li class="flex-1">
-            <p class="els">{{ divide(item.money) }}</p>
-          </li>
-          <li class="no-shrink earnings">
-            <p class="els">{{ divide(item.moneyIncome) }}</p>
+      <ul
+        class="center-list justify-between p-x-8 align-center m-b-12"
+        @click="$router.push('/pages/user/income')"
+      >
+        <li class="m-r-12">
+          <img
+            class="d-img"
+            :src="require('@/assets/img/ntf3/user/129982@2x.png')"
+            alt=""
+          />
+        </li>
+        <li class="flex-1">
+          <p class="title font14 m-b-4">
+            {{ $t(`myfriends.rank.team.title`) }}
+          </p>
+          <p class="desc">{{ $t(`agency.center.teambalance.text`) }}</p>
+        </li>
+        <li>{{ divide(friendsBalance) }}</li>
+      </ul>
+      <p class="login-out p-l-4 center-center" @click="show = true">
+        <img
+          class="d-img m-r-4"
+          src="@/assets/img/ntf3/user/124545@2x.png"
+          alt=""
+        />
+        {{ $t(`user.menu.title7.text`) }}
+      </p>
+      <van-popup
+        class="linear-global-pop"
+        style="width: 75%"
+        v-model="show"
+        round
+        position="center"
+      >
+        <ul>
+          <li class="font16 text-center m-t-24 m-b-24">{{ $t(`now.exit`) }}</li>
+          <li class="align-center justify-around">
+            <van-button
+              @click="show = false"
+              class="ntf-vant-btn ntf-btn-cancel m-r-24"
+              block
+              type="info"
+            >
+              {{ $t("modal.cancel.text") }}
+            </van-button>
+            <van-button
+              class="ntf-vant-btn"
+              block
+              type="info"
+              @click="loginOut"
+            >
+              {{ $t("modal.confirm.text") }}
+            </van-button>
           </li>
         </ul>
-      </div>
-
-      <NoData v-else />
-      <div
-        class="m-b-16 m-t-24 justify-between align-center"
-        @click="
-          $router.push({
-            name: 'BalanceRecord',
-          })
-        "
-      >
-        <p class="font14 bold">{{ $t("property.record.title") }}</p>
-        <van-icon size="16" name="arrow" />
-      </div>
-      <ChangeRecord v-if="changs.length" :list="changs" />
-      <NoData v-else />
+      </van-popup>
+      <img
+        class="my-serve"
+        @click="$store.dispatch('getServeData', 1)"
+        src="@/assets/img/ntf3/129511@2x.webp"
+        alt=""
+      />
     </div>
   </div>
 </template>
 
 <script>
 import userApi from "@/api/user";
-import HomeTopBar from "@/components/home/HomeTopBar.vue";
-import ChangeRecord from "@/components/home/ChangeRecord.vue";
 export default {
   name: "pageUser",
-  components: {
-    HomeTopBar,
-    ChangeRecord,
-  },
   data() {
     return {
-      invest: {},
-      plans: [],
       changs: [],
+      todayNum: 0,
+      friendsBalance: 0,
+      show: false,
     };
   },
   computed: {
+    safeConfig() {
+      return this.$store.state.safeConfig;
+    },
     config() {
       return this.$store.state.config;
     },
@@ -124,74 +193,94 @@ export default {
     navs() {
       const arr = [
         {
-          text: this.$t("fuc.rebate.center"),
-          img: require("@/assets/img/ntf/user2.png"),
-          path: "/pages/function/rebate_center",
-        },
-        {
-          text: this.$t("Team.benefits"),
-          path: "/pages/user/income",
-          img: require("@/assets/img/ntf/user3.png"),
+          text: this.$t(`user.menu.title1.text`),
+          path: "/pages/securityCenter/index",
+          img: require("@/assets/img/ntf3/user/130026@2x.png"),
         },
         {
           text: this.$t("user.trade.title4.text"),
-          img: require("@/assets/img/ntf/user4.png"),
+          img: require("@/assets/img/ntf3/user/130027@2x.png"),
           path: "/pages/user/invoice",
         },
-      ];
-      if (this.config.beyShow == 1) {
-        arr.unshift({
-          img: require("@/assets/img/ntf/user1.png"),
-          text: this.$t(`Yu'ebao`),
-          path: "/pages/user/investDetail",
-        });
-      } else {
-        arr.push({
-          img: require("@/assets/img/ntf/user5.webp"),
+        {
+          img: require("@/assets/img/ntf3/user/130030@2x.png"),
           text: this.$t(`me.my.qr.code.text`),
           path: "/pages/me/share",
+        },
+        {
+          img: require("@/assets/img/ntf3/user/130029@2x.png"),
+          text: this.$t(`user.menu.title6.text`),
+          path: "down",
+        },
+      ];
+      //this.safeConfig.showH5 === 1
+      if (this.safeConfig.showH5 !== undefined) {
+        arr.unshift({
+          img: require("@/assets/img/ntf3/user/130028@2x.png"),
+          text: this.$t("fuc.safe.text"),
+          path: "/pages/wallet/index",
         });
       }
       return arr;
     },
   },
   methods: {
-    async balanceChangeRequest() {
-      const [err, res] = await userApi.balanceChangeReq({
-        time: 1,
-        pageNo: 1,
-        pageSize: 10,
+    async investMyStatisFriends() {
+      const [err, res] = await userApi.investMyStatisFriends2();
+      if (err) {
+        return;
+      }
+      this.friendsBalance = res.data.friendsBalance;
+    },
+    async getStatissticsData() {
+      const [err, resR] = await userApi.rebateStatisReq();
+      if (err) return;
+      this.todayNum = resR.data.today;
+    },
+    gopage(v) {
+      if (v.path == "down") {
+        this.download();
+        return;
+      }
+      this.$router.push(v.path);
+    },
+    async download() {
+      this.$toast.loading({
+        duration: 0,
+        forbidClick: true,
       });
-      if (err) return;
-      this.changs = res.data.results;
+      await this.$store.dispatch("appDownload");
+      this.$toast.clear();
     },
-    async investMyStatisItems() {
-      const [err, res] = await userApi.investMyStatisItems();
-      if (err) return;
-      this.plans = res.data;
-    },
-    async investMyStatis() {
-      const [err, res] = await userApi.investMyStatis();
-      if (err) return;
-      this.invest = res.data;
+    loginOut() {
+      this.show = false;
+      this.$store.commit("loginOut");
+      this.$router.replace({ name: "Login" });
     },
   },
   created() {
+    this.$store.dispatch("setSafeConfig");
     this.$store.commit("setPdTop", false);
-    this.investMyStatisItems();
-    this.investMyStatis();
-    this.balanceChangeRequest();
+    this.getStatissticsData();
     this.$store.dispatch("getInfo");
   },
   mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
+    document.querySelector("body").classList.add("gray-user-img");
   },
   destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
+    document.querySelector("body").classList.remove("gray-user-img");
   },
 };
 </script>
 <style scoped lang="less">
+.my-serve {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 120px;
+  right: 12px;
+}
 .gray {
   color: #79869b;
 }
@@ -224,15 +313,14 @@ export default {
 }
 .navs {
   align-items: baseline;
+
   & > li {
     background: no-repeat center center;
     background-size: 100% 100%;
-    &,
+    width: 56px;
     img {
-      width: 57px;
-    }
-    img {
-      height: 57px;
+      height: 26px;
+      width: 26px;
     }
   }
 }
@@ -254,6 +342,60 @@ export default {
     text-align: right;
   }
   .trade {
+  }
+}
+.uesr-head {
+  .icon-user {
+    height: 44px;
+    width: 44px;
+  }
+  .good-desc {
+    & > span:nth-child(1) {
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+.user-balance {
+  & > li:nth-child(1) {
+    font-size: 16px;
+    color: #8e8e8e;
+  }
+  & > li:nth-child(2) {
+    font-size: 28px;
+  }
+}
+.wi-re {
+  & > p {
+    min-width: 139px;
+    height: 39px;
+    padding: 0 4px;
+  }
+  img {
+    height: 20px;
+    width: 20px;
+  }
+}
+.center-list {
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  img {
+    height: 43px;
+    width: 43px;
+  }
+  .desc {
+    color: #9c9c9c;
+  }
+}
+.login-out {
+  width: 113px;
+  height: 31px;
+  line-height: 31px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.09);
+  margin: 20px auto 0;
+  img {
+    height: 18px;
+    width: 18px;
   }
 }
 </style>

@@ -14,10 +14,15 @@
       </template>
     </AppTopBar>
     <AccountBalance />
-
     <div class="justify-around menu text-center m-b-32">
       <ul :key="idx" v-for="(item, idx) in list" @click="goTo(item.name)">
-        <li class="icon"><img class="d-img" :src="item.icon" alt="" /></li>
+        <li class="icon">
+          <van-icon
+            :class="{ tra180: item.icon == 'upgrade' }"
+            :size="24"
+            :name="item.icon"
+          />
+        </li>
         <li class="m-t-8">
           <p>{{ item.text }}</p>
           <p>{{ item.text1 }}</p>
@@ -26,7 +31,7 @@
     </div>
     <ul
       @click="$router.push({ name: 'SafeBilling' })"
-      class="align-center color-fff safe-bill justify-between p-l-16 p-r-16 p-b-12 p-t-12"
+      class="align-center color-fff safe-bill justify-between m-l-16 m-r-16 p-b-12 p-t-12"
     >
       <li class="font14 bold">{{ $t("backapi.self.safe.bill.data.text") }}</li>
       <li><van-icon name="arrow" size="18" /></li>
@@ -61,20 +66,20 @@ export default {
     list() {
       const arr = [
         {
-          icon: require("@/assets/img/ntf/safeh3.png"),
+          icon: "add-o",
           text: i18n.t("home.index.recharge.text"),
           name: "SafeRecharge",
           active: false,
         },
         {
-          icon: require("@/assets/img/ntf/safeh2.png"),
+          icon: "guide-o",
           text: i18n.t("wallet.index.transfer.text"),
           text1: i18n.t("wallet.index.for.subordinate.text"),
           name: "TransferSub",
           active: false,
         },
         {
-          icon: require("@/assets/img/ntf/safeh4.png"),
+          icon: "upgrade",
           text: i18n.t("wallet.index.transfer.text"),
           text1: i18n.t("wallet.index.for.self.text"),
           name: "TransferSelf",
@@ -133,7 +138,7 @@ export default {
   },
   created() {
     this.safeInfo();
-    this.getConfig();
+    //this.getConfig();
     this.getBill();
   },
   mounted() {
@@ -163,14 +168,9 @@ export default {
   }
   .menu {
     color: #fff;
-    .icon {
-      width: 38px;
-      height: 38px;
-      margin: 0 auto;
-      img {
-        display: block;
-      }
-    }
+  }
+  .tra180 {
+    transform: rotate(180deg);
   }
 }
 </style>

@@ -89,8 +89,6 @@ export default {
 <style scoped lang="less">
 .list {
   height: 76px;
-  background: url("@/assets/img/billbg.webp") no-repeat center center;
-  background-size: 100% 100%;
 }
 .gray {
   color: #929292;

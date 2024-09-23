@@ -6,7 +6,7 @@
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <NoData v-if="finished && !video.length" />
-    <LoadList :onload="informationVideo" :finished="finished">
+    <LoadList class="m-t-16" :onload="informationVideo" :finished="finished">
       <div
         class="plans"
         v-for="(item, idx) in video"
@@ -24,7 +24,9 @@
                 <p class="gray">{{ getType(item.type) }}</p>
               </li>
               <li class="rate-row">
-                <p class="days">{{ getType2(item.status) }}</p>
+                <p class="days" :class="{ 'in-progress': item.status === 0 }">
+                  {{ getType2(item.status) }}
+                </p>
               </li>
             </ul>
           </div>
@@ -164,20 +166,13 @@ export default {
       this.query.pageNo++;
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
   .plans-item {
-    border-radius: 14px;
-    border: solid 1px #292929;
-    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: #161a25;
     padding: 24px 8px;
     min-width: 42px;
     .row {
@@ -199,15 +194,19 @@ export default {
     line-height: 18px;
     padding: 0 10px;
     border-radius: 3px;
-    background-color: #5b5a5a;
+    background-color: #23303c;
     color: #fff;
     display: inline-block;
+  }
+  .in-progress {
+    background-color: #004021;
+    color: var(--main);
   }
   .gray {
     color: #cacbce;
   }
   .plans-head {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #2b4745;
   }
   .invest-pic {
     height: 35px;

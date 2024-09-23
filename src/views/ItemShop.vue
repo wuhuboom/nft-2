@@ -1,23 +1,21 @@
 <template>
   <div class="item-shop-page font12">
-    <AppTopBar
-      :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`user.Item.shop`)"
-    ></AppTopBar>
-    <Banner
-      :imgsList="[
-        {
-          imageUrl: require('@/assets/img/ntf/1.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/2.png'),
-        },
-        {
-          imageUrl: require('@/assets/img/ntf/3.png'),
-        },
-      ]"
-    />
-    <ul class="justify-around align-center navs m-t-16 m-b-16">
+    <ul class="justify-between align-center p-x-16">
+      <li class="username">
+        <p class="align-center">
+          Hi
+          <span class="m-l-8">{{ user.username }}</span>
+        </p>
+        <p>Launch the Most Thrilling Top Matches</p>
+      </li>
+      <li
+        class="notice no-shrink center-center"
+        @click="$router.push({ name: 'Message' })"
+      >
+        <van-icon name="volume-o" :size="20" />
+      </li>
+    </ul>
+    <ul class="justify-around align-center navs m-t-16 m-b-16 m-l-8 m-r-8">
       <li
         @click="chose(item)"
         :class="{ cur: current === item.key }"
@@ -28,41 +26,39 @@
         {{ item.name }}
       </li>
     </ul>
-    <itemGame v-if="current == 0" />
-    <itemTrade v-if="current == 1" />
-    <itemContest v-if="current == 2" />
+    <itemContest v-if="current == 0" />
+    <live :showTab="false" v-if="current == 1" />
+    <itemTrade v-if="current == 2" />
   </div>
 </template>
 
 <script>
-import itemGame from "@/views/itemGame";
+import live from "@/views/live";
 import itemTrade from "@/views/itemTrade";
 import itemContest from "@/views/itemContest.vue";
 import i18n from "@/locale";
 import userApi from "@/api/user";
-import Banner from "@/components/global/Banner.vue";
 export default {
   name: "ItemShop",
   components: {
-    itemGame,
+    live,
     itemTrade,
     itemContest,
-    Banner,
   },
   data() {
     return {
       current: +this.$route.query.tab || 0,
       navs: [
         {
-          name: i18n.t(`Game.Props`),
+          name: i18n.t(`user.Contest`),
           key: 0,
         },
         {
-          name: i18n.t(`tabar.bet`),
+          name: i18n.t(`Game.Props`),
           key: 1,
         },
         {
-          name: i18n.t(`user.Contest`),
+          name: i18n.t(`tabar.bet`),
           key: 2,
         },
       ],
@@ -96,8 +92,20 @@ export default {
       this.query.pageNo++;
     },
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   created() {
-    this.getImg();
+    this.$store.commit("setPdTop", false);
+    console.log(this.$store.state.setPdTop);
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
@@ -107,20 +115,36 @@ export default {
     height: 168px;
   }
   .navs {
+    border-bottom: 1px solid var(--main);
     & > li {
       width: 95px;
       text-align: center;
       height: 34px;
       line-height: 34px;
-      background: url("@/assets/img/ntf/shopnav.png") no-repeat center center;
-      background-size: 100% 100%;
     }
     & > li.cur {
-      // background: url("@/assets/img/ntf/shopnav-active.png") no-repeat center center;
-      // background-size: 100% 100%;
-      background: #e4704a;
+      background: var(--main);
       color: #fff;
-      border-radius: 10px;
+    }
+  }
+  .notice {
+    width: 47px;
+    height: 47px;
+    border-radius: 23.5px;
+    border: solid 1px rgba(255, 255, 255, 0.05);
+    ::v-deep {
+      .van-icon-volume-o {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .username {
+    font-weight: bold;
+    & > p:first-child {
+      font-size: 30px;
+    }
+    & > p:last-child {
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 }

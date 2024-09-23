@@ -5,7 +5,7 @@
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
       :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
-    <LoadList :onload="informationVideo" :finished="finished">
+    <LoadList class="m-t-16" :onload="informationVideo" :finished="finished">
       <div class="plans" v-for="(item, idx) in video" :key="idx">
         <div class="plans-item m-b-16">
           <div class="record-item-content">
@@ -130,21 +130,15 @@ export default {
       this.query.pageNo++;
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
+  min-height: 100vh;
   .plans-item {
     border-radius: 14px;
-    border: solid 1px #292929;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 24px 8px;
+    background-color: #161a25;
+    padding: 24px 16px;
     min-width: 42px;
     .row {
       display: flex;

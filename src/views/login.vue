@@ -1,32 +1,14 @@
 <template>
-  <div class="login-view-page font14">
+  <div class="login-view-page font14 p-t-16">
     <div class="p-l-16 p-r-16">
-      <div class="lang align-center">
-        <p class="lang-pic m-r-8">
-          <img src="@/assets/img/ntf/ae.webp" alt="" />
-        </p>
-        <el-select
-          :value="$store.state.lang"
-          @change="select"
-          :placeholder="$t('index.editor.psd.text')"
-        >
-          <el-option
-            v-for="item in langOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
-      </div>
+      <SelectLang />
       <ul class="flex-column logo-are center-center">
         <li class="logo p--8 p-b-16">
-          <img src="@/assets/img/ntf/login.webp" alt="" />
+          <img class="d-img" src="@/assets/img/ntf3/reglog.webp" alt="" />
         </li>
-        <li>{{ $t(`index.index.login`) }}</li>
       </ul>
       <div class="center-center m-b-40">
-        <van-form class="limt-form-with ntf-form" @submit="onSubmit">
+        <van-form class="full100 ntf-form" @submit="onSubmit">
           <van-field
             v-model.trim="form.username"
             autocomplete="new-password"
@@ -36,19 +18,39 @@
           />
           <!-- showText -->
           <van-field
-            class="password m-b-32"
+            class="password m-b-16"
             v-model.trim="form.password"
             autocomplete="new-password"
             :type="showText ? 'text' : 'password'"
             :placeholder="$t('form.password.text')"
             @click-right-icon="openEye"
-            :right-icon="`color-fff icon iconfont color-active ${
+            :right-icon="`color-fff icon iconfont ${
               showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
             }`"
             :rules="[
               { required: true, message: $t('backapi.passwordIsEmpty') },
             ]"
           />
+          <ul class="justify-between align-center m-b-16">
+            <li class="color-o6" @click="$router.push({ name: 'LoginForget' })">
+              {{ $t("index.login.forget.text") }}
+            </li>
+            <li>
+              <p
+                class="login-link color-active flex-wrap"
+                @click="
+                  $router.push({
+                    name: 'Register',
+                    query: {
+                      backUrl: $route.query.backUrl,
+                    },
+                  })
+                "
+              >
+                {{ $t("reg.btn.text") }}
+              </p>
+            </li>
+          </ul>
           <van-button
             class="ntf-vant-btn"
             block
@@ -63,28 +65,6 @@
     <ul class="flex-column p-b-24 p-t-24 center-center text-center contact">
       <li class="m-b-16">
         <p @click="goServe">{{ $t("index.login.service.text") }}</p>
-      </li>
-      <li
-        class="m-b-16 color-active"
-        @click="$router.push({ name: 'LoginForget' })"
-      >
-        {{ $t("index.login.forget.text") }}
-      </li>
-      <li class="full100 center-center text-center flex-wrap">
-        <p class="tips m-r-8">{{ $t("index.login.no.accout.text") }}</p>
-        <p
-          class="login-link color-active flex-wrap"
-          @click="
-            $router.push({
-              name: 'Register',
-              query: {
-                backUrl: $route.query.backUrl,
-              },
-            })
-          "
-        >
-          {{ $t("reg.btn.text") }}
-        </p>
       </li>
     </ul>
   </div>
@@ -118,6 +98,9 @@ export default {
     },
     serveData() {
       return this.$store.state.serveData;
+    },
+    langIcon() {
+      return this.curLang.icon;
     },
     lang() {
       return this.$store.state.lang;
@@ -207,42 +190,75 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.custom-option {
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 14px;
+  }
+}
+.selectd-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 14px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .login-view-page {
   min-height: 100vh;
-  background-color: #131313;
-  padding-top: 60px;
+  background: #131313 url("@/assets/img/ntf3/regbg.webp") no-repeat center top;
+  background-size: 100% auto;
   .lang {
     justify-content: flex-end;
     ::v-deep {
       .el-select {
-        width: 46px;
+        width: 78px;
+      }
+      .el-input {
+        .el-input__suffix {
+          display: none;
+        }
+        display: flex;
+        align-items: center;
+        height: 36px;
+        position: relative;
+        border-radius: 20px;
+        border: solid 1px rgba(55, 251, 124, 0.17);
+        background-image: linear-gradient(to bottom, #242a3b, #273b40);
+      }
+      .el-input__inner {
+        padding-left: 32px;
+        padding-right: 20px;
+        text-align: right;
+      }
+      .el-select-dropdown__item {
+        padding: 0 4px;
       }
     }
     .lang-pic {
       img {
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
         display: block;
       }
     }
   }
+
   .logo-are {
     font-size: 20px;
     padding-bottom: 48px;
     .logo {
       img {
-        width: 181px;
-        height: 181px;
+        width: 180px;
+        height: 180px;
         display: block;
       }
     }
   }
   .limt-form-with {
     width: 264px;
-  }
-  .contact {
-    background: url("@/assets/img/ntf/login-btm-bg.webp");
-    background-size: cover;
   }
 }
 </style>

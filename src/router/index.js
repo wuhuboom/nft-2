@@ -448,6 +448,7 @@ const routes = [
     name: "ItemShop",
     components: {
       default: () => import("@/views/ItemShop.vue"),
+      AppBtmBar,
     },
   },
   {
@@ -525,6 +526,13 @@ const routes = [
     name: "UserSetting",
     components: {
       default: () => import("@/views/setting.vue"),
+    },
+  },
+  {
+    path: "/games/group",
+    name: "gamesGroup",
+    components: {
+      default: () => import("@/views/grameGroup.vue"),
     },
   },
 ];

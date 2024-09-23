@@ -9,7 +9,7 @@
     <LoadList :onload="informationVideo" :finished="finished">
       <div class="p-t-16">
         <ul
-          class="list justify-between align-center m-b-16"
+          class="list p-x-12 justify-between align-center m-b-16"
           v-for="(item, index) in video"
           :key="index"
           @click="
@@ -30,7 +30,7 @@
           </li>
           <li class="font14">
             <p class="color-green">{{ divide(item.money) }}</p>
-            <p class="green m-t-8">{{ divide(item.moneyIncome) }}</p>
+            <p class="green m-t-8">+{{ divide(item.moneyIncome) }}</p>
           </li>
         </ul>
       </div>
@@ -100,7 +100,16 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-
+      //模拟 res.data.results 数据
+      // res.data.results = [
+      //   {
+      //     id: 1,
+      //     money: 100,
+      //     moneyIncome: 10,
+      //     status: 0,
+      //     createdAt: 1626950400,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
@@ -125,6 +134,8 @@ export default {
     color: #1fb759;
   }
   .list {
+    border-radius: 9px;
+    background-color: #17181c;
     & > li:last-child {
       text-align: right;
     }

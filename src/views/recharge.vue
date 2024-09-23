@@ -89,7 +89,7 @@
           {{ $t("recharge.button.now.text") }}</van-button
         >
       </div>
-      <ul class="m-t-20">
+      <ul class="m-t-16 p-x-8 said-text">
         <li>{{ $t(`recharge.tip.title.text`) }}</li>
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content1.text`) }}
@@ -326,6 +326,10 @@ export default {
       flex-basis: 100px;
       white-space: nowrap;
     }
+  }
+  .said-text {
+    border: 1px solid var(--main);
+    border-radius: 8px;
   }
 }
 </style>

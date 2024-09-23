@@ -20,17 +20,17 @@
             {{ item.addr | usdt_left_addr }} **** ****
             {{ item.addr | usdt_right_addr }}
           </p>
-          <p>{{ item.protocol }}</p>
+          <p class="gary">{{ item.protocol }}</p>
         </li>
         <li class="rit">
           <i
-            class="el-icon-edit active"
+            class="el-icon-edit gary"
             @click="
               $router.push({ name: 'AddressUsdt', query: { id: item.id } })
             "
           ></i>
 
-          <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+          <p class="gary">{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
         </li>
       </ul>
       <ul
@@ -89,7 +89,7 @@
           {{ $t("bank.types") }}
         </p>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!usdtList.length && listWay.find((item) => item.type === 2)"
           @click="$router.push({ name: 'AddressUsdt' })"
         >
@@ -99,7 +99,7 @@
           <li>{{ $t("user.Add.usdt.Address") }}</li>
         </ul>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!bankList.length && listWay.find((item) => item.type === 1)"
           @click="$router.push({ name: 'AddBankCard' })"
         >
@@ -109,14 +109,14 @@
           <li>{{ $t("user.new.bank") }}</li>
         </ul>
         <ul
-          class="add-list align-center"
+          class="add-list align-center ntf-vant-btn"
           v-if="!wallwtList.length && listWay.find((item) => item.type === 4)"
           @click="$router.push({ name: 'AddressWallet' })"
         >
           <li>
             <i class="el-icon-plus"></i>
           </li>
-          <li>+{{ $t("user.Add.Wallet") }}</li>
+          <li>{{ $t("user.Add.Wallet") }}</li>
         </ul>
       </div>
     </div>
@@ -219,12 +219,6 @@ export default {
     }
     this.listWay = res.data;
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -241,14 +235,15 @@ export default {
     font-size: 16px;
     margin-bottom: 8px;
   }
+  .gary {
+    color: #9db1cd;
+  }
   .bank {
-    height: 80px;
-    border-radius: 15px;
-    border: solid 1px var(--main);
+    height: 73px;
+    border-radius: 12px;
+    background-color: rgba(106, 103, 103, 0.17);
     margin-bottom: 8px;
-
     background-size: auto 100%;
-
     padding-right: 16px;
     .name {
       & > p:first-child {
@@ -279,13 +274,11 @@ export default {
   .add-list {
     height: 48px;
     border-radius: 15px;
-    border: solid 1px var(--main);
     margin-bottom: 4px;
 
     color: #fff;
     & > li:first-child {
       padding: 0 8px 0 16px;
-      color: var(--primary);
     }
     img {
       width: 22px;

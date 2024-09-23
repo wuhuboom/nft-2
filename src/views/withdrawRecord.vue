@@ -410,12 +410,6 @@ export default {
       this.$toast.clear();
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -466,9 +460,8 @@ export default {
     }
   }
   .drop-list {
-    height: 48px;
-    border-bottom: 1px solid #484b4c;
-    border-top: 1px solid #484b4c;
+    height: 58px;
+    border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
       height: 18px;

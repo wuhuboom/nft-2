@@ -10,31 +10,35 @@
       <van-Loading class="" />
     </div>
     <div v-else>
-      <ul class="flex-column center-center header">
-        <li><img src="@/assets/img/ntf/monney.webp" alt="" /></li>
-        <li class="m-b-8 font14">
-          {{ $t("backapi.self.rebate.top.content.total.text") }}
-        </li>
-        <li class="total-num">{{ divide(totalNum) }}</li>
-      </ul>
-      <ul class="justify-between tolal-list p-b-4">
-        <li class="gray">
-          {{ $t("backapi.self.rebate.top.content.lastweek.text") }}
-        </li>
-        <li class="p-r-8">{{ divide(lastWeekNum) }}</li>
-      </ul>
-      <ul class="justify-between tolal-list p-b-4">
-        <li class="gray">
-          {{ $t("backapi.self.rebate.top.content.today.text") }}
-        </li>
-        <li class="p-r-8">{{ divide(todayNum) }}</li>
-      </ul>
-      <ul class="justify-between tolal-list p-b-4">
-        <li class="gray">
-          {{ $t("backapi.self.rebate.top.content.week.text") }}
-        </li>
-        <li class="p-r-8">{{ divide(weekNum) }}</li>
-      </ul>
+      <div class="rebate-head p-x-12 m-t-12">
+        <ul class="flex-column header">
+          <li class="font14 m-b-8">
+            {{ $t("backapi.self.rebate.top.content.total.text") }}
+          </li>
+          <li class="total-num">{{ divide(totalNum) }}</li>
+        </ul>
+        <div class="d-flex m-t-12 font12 tolal-list-all">
+          <ul class="center-center tolal-list p-b-4 flex-column">
+            <li>
+              {{ $t("backapi.self.rebate.top.content.lastweek.text") }}
+            </li>
+            <li class="p-r-8">{{ divide(lastWeekNum) }}</li>
+          </ul>
+          <ul class="center-center tolal-list p-b-4 flex-column">
+            <li>
+              {{ $t("backapi.self.rebate.top.content.today.text") }}
+            </li>
+            <li class="p-r-8">{{ divide(todayNum) }}</li>
+          </ul>
+          <ul class="center-center tolal-list p-b-4 flex-column">
+            <li>
+              {{ $t("backapi.self.rebate.top.content.week.text") }}
+            </li>
+            <li class="p-r-8">{{ divide(weekNum) }}</li>
+          </ul>
+        </div>
+      </div>
+
       <van-list
         class="m-t-24"
         v-model="loading"
@@ -43,8 +47,8 @@
         loading-text="loading"
         @load="onLoad"
       >
-        <div class="font16">
-          <van-grid class="m-b-16" :border="false" :column-num="3">
+        <div class="">
+          <van-grid class="m-b-16" :border="false" :column-num="2">
             <van-grid-item v-for="value in head" :key="value">
               {{ value }}
             </van-grid-item>
@@ -54,17 +58,15 @@
           </div>
           <van-grid
             v-show="!nothing"
-            class="m-b-16 font13"
+            class="m-b-4 grid-list font13"
             v-for="(item, idx) in curItem.results"
             :key="idx"
             :border="false"
-            :column-num="3"
+            :column-num="2"
           >
             <van-grid-item class="color-fff">
-              {{ item.ymd }}
-            </van-grid-item>
-            <van-grid-item class="color-fff">
               {{ getType(item.type) }}
+              <p class="m-t-8 gray">{{ item.ymd }}</p>
             </van-grid-item>
             <van-grid-item class="color-fff">
               {{ divide(item.money) }}
@@ -85,7 +87,6 @@ export default {
   data() {
     return {
       head: [
-        i18n.t("bet.index.date.text"),
         i18n.t("rebate.center.list.nav.type.text"),
         i18n.t("rebate.center.list.nav.smount.text"),
       ],
@@ -165,42 +166,60 @@ export default {
     this.getStatissticsData();
   },
   components: { NoData },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
 .header {
-  img {
-    width: 95px;
-    height: 95px;
-  }
   .total-num {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
   }
 }
 .gray {
-  color: #8e8e93;
+  color: #9c9c9c;
 }
-.tolal-list {
-  height: 30px;
-  align-items: flex-end;
-  border-bottom: 1px solid #7c7c7c;
+.tolal-list-all {
+  padding: 20px 0;
+  border-radius: 11px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(17, 153, 142, 0.3),
+    rgba(56, 239, 125, 0.3)
+  );
+
+  & > ul {
+    min-height: 58px;
+    padding: 0 4px;
+    width: 33.3333%;
+    border-right: 1px solid rgba(255, 255, 255, 0.17);
+    justify-content: space-around !important;
+    & > li:nth-child(2) {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  & > ul:last-child {
+    border-color: transparent;
+  }
 }
 .agency-page {
   ::v-deep {
     .van-grid-item__content {
       background-color: transparent;
       padding: 0;
-      text-align: center;
+      justify-content: center;
+      align-items: flex-start;
     }
     .van-grid {
       flex-wrap: nowrap;
+      .van-grid-item:nth-child(2) .van-grid-item__content {
+        align-items: flex-end;
+      }
+    }
+    .grid-list {
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.04);
     }
   }
   .agency-lst {
@@ -250,5 +269,9 @@ export default {
       color: #73c74e;
     }
   }
+}
+.rebate-head {
+  border-radius: 9px;
+  background-color: #16212b;
 }
 </style>
