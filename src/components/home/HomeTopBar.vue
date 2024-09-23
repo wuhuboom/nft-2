@@ -30,7 +30,12 @@
           </ul>
         </div>
       </li>
-      <li class="align-center lef-icon">
+      <li v-if="isHome" class="align-center lot-icon">
+        <p class="m-r-12" @click="$router.push({ name: 'Wheel' })">
+          <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
+        </p>
+      </li>
+      <li v-else class="align-center lef-icon">
         <p class="m-r-16" @click="openLang">
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
         </p>
@@ -57,8 +62,15 @@ export default {
       type: String,
       default: "FOTI.VIP",
     },
+    showLot: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
+    isHome() {
+      return this.$route.name === "home";
+    },
     user() {
       return this.$store.state.user;
     },
@@ -111,6 +123,12 @@ export default {
     img {
       height: 32px;
       width: 32px;
+    }
+  }
+  .lot-icon {
+    img {
+      height: 44px;
+      width: 44px;
     }
   }
   .txt {

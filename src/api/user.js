@@ -821,4 +821,10 @@ export default {
       data,
     });
   },
+  ///bingo/count
+  bingoCount() {
+    return request({
+      url: "/bingo/count",
+    });
+  },
 };

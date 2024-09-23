@@ -1524,5 +1524,6 @@
   "backapi.activeCodeError": "Activation code verification error",
   "enter.code":"enter activation code",
   "dropdown.billing.rebate": "Rebate",
-"dropdown.billing.other": "Other"
+	"dropdown.billing.other": "Other",
+	"Number.of.draws": "Number of draws available: {num} times"
 }

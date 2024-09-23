@@ -527,6 +527,13 @@ const routes = [
       default: () => import("@/views/setting.vue"),
     },
   },
+  {
+    path: "/pages/wheel/index",
+    name: "Wheel",
+    components: {
+      default: () => import("@/views/wheel.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
