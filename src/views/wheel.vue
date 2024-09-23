@@ -136,8 +136,10 @@ export default {
         money: this.pay,
       });
       if (err) {
+        this.winIndx = null;
+        clearInterval(this.flashingInterval);
+        this.isFlashingIdx = null;
         this.loading = false;
-        this.this.dayDrawMax = 1;
         return;
       }
       let index = res.data.index;
@@ -146,8 +148,7 @@ export default {
         clearInterval(this.flashingInterval);
         this.isFlashingIdx = null;
         this.loading = false;
-        this.winIndx = index;
-        this.$toast.success(this.bouns[index]);
+        this.$toast.success(this.$t("index.editor.psd.modal.success.text"));
       }, 3000);
     },
   },
