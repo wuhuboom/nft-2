@@ -30,7 +30,7 @@
           </ul>
         </div>
       </li>
-      <li v-if="isHome" class="align-center lot-icon">
+      <li v-if="isHome && base.switch" class="align-center lot-icon">
         <p class="m-r-12" @click="goLot">
           <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
         </p>
@@ -87,6 +87,9 @@ export default {
     openLang() {
       this.$refs.BtmActionLang.open();
     },
+  },
+  created() {
+    this.getBase();
   },
   computed: {
     isHome() {
