@@ -26,13 +26,11 @@
               :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
             >
               <p>
-                <img
-                  class="d-img"
-                  src="@/assets/img/ntf/126930@2x.webp"
-                  alt=""
-                />
+                <img class="d-img" :src="item.icon" alt="" />
               </p>
-              {{ item }}
+              <p v-if="!noTxt.includes(idx)">
+                {{ item.text }}{{ base.symbol }}
+              </p>
             </li>
             <li
               :key="`${idx}-go`"
@@ -47,13 +45,11 @@
               :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
             >
               <p>
-                <img
-                  class="d-img"
-                  src="@/assets/img/ntf/126930@2x.webp"
-                  alt=""
-                />
+                <img class="d-img" :src="item.icon" alt="" />
               </p>
-              {{ item }}
+              <p v-if="!noTxt.includes(idx)">
+                {{ item.text }}{{ base.symbol }}
+              </p>
             </li>
           </template>
         </template>
@@ -74,6 +70,7 @@ export default {
   name: "WithdrawView",
   data() {
     return {
+      noTxt: [4, 5],
       isFlashing: false,
       isFlashingIdx: null,
       winIndx: null,
@@ -93,10 +90,17 @@ export default {
       return this.base.draw[0];
     },
     bouns() {
+      let arr = [];
       if (this.draw.bouns) {
-        return this.draw.bouns.split(",");
+        arr = this.draw.bouns.split(",");
+        arr = arr.map((item, idx) => {
+          return {
+            text: item,
+            icon: require(`@/assets/img/ntf/lot/${idx + 1}.webp`),
+          };
+        });
       }
-      return [];
+      return arr;
     },
     pay() {
       return this.draw.pay || 0;
