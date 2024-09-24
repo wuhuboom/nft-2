@@ -1524,5 +1524,6 @@
 "backapi.activeCodeError": "Aktivierungscode-Überprüfungsfehler",
 "enter.code":"Geben Sie den Aktivierungscode ein",
 "dropdown.billing.rebate": "Rabatt",
-"dropdown.billing.other": "Andere"
+"dropdown.billing.other": "Andere",
+"Number.of.draws": "Verfügbare Ziehungen: {num} Mal"
 }

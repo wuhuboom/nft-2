@@ -1524,5 +1524,6 @@
   "backapi.activeCodeError": "सक्रियण कोड सत्यापन त्रुटि",
    "enter.code":"सक्रियण कोड दर्ज करें",
    "dropdown.billing.rebate": "रिबेट",
-"dropdown.billing.other": "अन्य"
+"dropdown.billing.other": "अन्य",
+"Number.of.draws": "उपलब्ध ड्रॉ की संख्या: {num} बार"
 }

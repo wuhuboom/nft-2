@@ -1524,5 +1524,6 @@
 "backapi.activeCodeError": "خطأ في تحقق رمز التنشيط",
 "enter.code":"أدخل رمز التفعيل",
 "dropdown.billing.rebate": "استرداد",
-"dropdown.billing.other": "أخرى"
+"dropdown.billing.other": "أخرى",
+"Number.of.draws": "عدد السحوبات المتاحة: {num} مرات"
 }

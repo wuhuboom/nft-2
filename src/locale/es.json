@@ -1524,5 +1524,6 @@
   "backapi.activeCodeError": "Error de verificación del código de activación",
   "enter.code":"ingrese el código de activación",
   "dropdown.billing.rebate": "Reembolso",
-"dropdown.billing.other": "Otro"
+"dropdown.billing.other": "Otro",
+"Number.of.draws": "Número de sorteos disponibles: {num} veces"
 }

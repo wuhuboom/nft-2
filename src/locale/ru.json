@@ -1524,5 +1524,6 @@
   "backapi.activeCodeError": "Ошибка проверки кода активации",
   "enter.code":"введите код активации",
   "dropdown.billing.rebate": "Возврат",
-"dropdown.billing.other": "Другое"
+"dropdown.billing.other": "Другое",
+"Number.of.draws": "Доступное количество попыток: {num} раз"
 }
