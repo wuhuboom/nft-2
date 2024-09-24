@@ -1525,5 +1525,7 @@
    "enter.code":"सक्रियण कोड दर्ज करें",
    "dropdown.billing.rebate": "रिबेट",
 "dropdown.billing.other": "अन्य",
-"Number.of.draws": "उपलब्ध ड्रॉ की संख्या: {num} बार"
+"Number.of.draws": "उपलब्ध ड्रॉ की संख्या: {num} बार",
+"your.win.le": "आपने जीत लिया है!",
+"your.win.go": "कृपया अपने खाता केंद्र में जाकर जांचें।"
 }

@@ -1525,5 +1525,7 @@
 "enter.code":"أدخل رمز التفعيل",
 "dropdown.billing.rebate": "استرداد",
 "dropdown.billing.other": "أخرى",
-"Number.of.draws": "عدد السحوبات المتاحة: {num} مرات"
+"Number.of.draws": "عدد السحوبات المتاحة: {num} مرات",
+"your.win.le": "لقد فزت!",
+"your.win.go": "يرجى الذهاب إلى مركز حسابك للتحقق."
 }

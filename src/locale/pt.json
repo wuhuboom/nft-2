@@ -1525,5 +1525,7 @@
   "enter.code":"insira o código de ativação",
   "dropdown.billing.rebate": "Desconto",
 "dropdown.billing.other": "Outro",
-"Number.of.draws": "Número de sorteios disponíveis: {num} vezes"
+"Number.of.draws": "Número de sorteios disponíveis: {num} vezes",
+"your.win.le": "Você ganhou!",
+"your.win.go": "Por favor, vá ao seu centro de conta para verificar."
 }

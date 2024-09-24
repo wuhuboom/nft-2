@@ -1525,5 +1525,7 @@
   "enter.code":"entrez le code d'activation",
   "dropdown.billing.rebate": "Rabais",
 "dropdown.billing.other": "Autre",
-"Number.of.draws": "Nombre de tirages disponibles : {num} fois"
+"Number.of.draws": "Nombre de tirages disponibles : {num} fois",
+"your.win.le": "Vous avez gagné !",
+"your.win.go": "Veuillez vous rendre dans votre centre de compte pour vérifier."
 }
