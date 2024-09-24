@@ -180,6 +180,9 @@
       ref="dangers"
       @close="confirm"
     />
+    <p class="lot-icon lot-icon-app" v-if="base.switch" @click="goLot">
+      <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
+    </p>
   </div>
 </template>
 
@@ -193,6 +196,7 @@ export default {
   name: "HomeView",
   data() {
     return {
+      base: { switch: null },
       notice: {
         content: "",
       },
@@ -237,6 +241,9 @@ export default {
     },
   },
   methods: {
+    goLot() {
+      this.$router.push({ name: "Wheel" });
+    },
     open(d) {
       window.open(d.url);
     },
@@ -272,8 +279,16 @@ export default {
     confirm() {
       this.$store.commit("setwithdrawalLimitMsg", "");
     },
+    async getBase() {
+      const [err, res] = await userApi.bingoCount();
+      if (err) return;
+      for (let key in res.data) {
+        this.$set(this.base, key, res.data[key]);
+      }
+    },
   },
   created() {
+    this.getBase();
     this.getNotice();
     this.$store.commit("setPdTop", false);
     this.informationDealSold();
@@ -291,6 +306,28 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.lot-icon-app {
+  position: fixed;
+  right: 16px;
+  bottom: 180px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  animation: pulse 2s infinite;
+  img {
+    height: 44px;
+    width: 44px;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .from-to {
   width: 34px;
 }

@@ -23,7 +23,7 @@
             <li
               class="center-center flex-column"
               :key="idx"
-              :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
+              :class="{ flashing: isFlashingIdx === idx }"
             >
               <p>
                 <img class="d-img" :src="item.icon" alt="" />
@@ -42,7 +42,7 @@
             <li
               class="center-center flex-column"
               :key="idx"
-              :class="{ flashing: isFlashingIdx === idx || winIndx === idx }"
+              :class="{ flashing: isFlashingIdx === idx }"
             >
               <p>
                 <img class="d-img" :src="item.icon" alt="" />
@@ -61,6 +61,20 @@
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
     </ul>
+    <van-popup @close="close" class="lottery-pop" v-model="show">
+      <ul class="font14">
+        <li class="font16">{{ $t("your.win.le") }}</li>
+        <li class="m-b-20 m-t-20 p-x-20 bg-txt flex-column align-center">
+          <p class="m-b-4 pic">
+            <img class="d-img" :src="curWin.icon" alt="" />
+          </p>
+          <p>{{ curWin.text }}{{ base.symbol }}</p>
+        </li>
+        <li class="" @click="$router.push('/page/user')">
+          {{ $t("your.win.go") }}
+        </li>
+      </ul>
+    </van-popup>
   </div>
 </template>
 
@@ -70,6 +84,7 @@ export default {
   name: "WithdrawView",
   data() {
     return {
+      show: false,
       noTxt: [4, 5],
       isFlashing: false,
       isFlashingIdx: null,
@@ -88,6 +103,12 @@ export default {
         return obj;
 
       return this.base.draw[0];
+    },
+    curWin() {
+      if (!this.bouns[this.winIndx]) {
+        return {};
+      }
+      return this.bouns[this.winIndx];
     },
     bouns() {
       let arr = [];
@@ -158,8 +179,12 @@ export default {
         clearInterval(this.flashingInterval);
         this.isFlashingIdx = null;
         this.loading = false;
+        this.show = true;
         this.$toast.success(this.$t("index.editor.psd.modal.success.text"));
       }, 9000);
+    },
+    close() {
+      this.winIndx = null;
     },
   },
   created() {
@@ -215,6 +240,24 @@ export default {
       }
       &.flashing {
         background-image: url("@/assets/img/ntf/130904@2x.webp");
+      }
+    }
+  }
+}
+.lottery-pop {
+  background-color: transparent;
+  text-align: center;
+  .bg-txt {
+    background: url("@/assets/img/ntf/lot/1@2x.webp");
+    width: 231px;
+    height: 130px;
+    background-size: 100% 100%;
+    justify-content: space-around;
+    .pic {
+      width: 62px;
+      height: 62px;
+      img {
+        object-fit: contain;
       }
     }
   }

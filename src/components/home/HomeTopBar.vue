@@ -30,12 +30,7 @@
           </ul>
         </div>
       </li>
-      <li v-if="isHome && base.switch" class="align-center lot-icon">
-        <p class="m-r-12" @click="goLot">
-          <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
-        </p>
-      </li>
-      <li v-else class="align-center lef-icon">
+      <li class="align-center lef-icon">
         <p class="m-r-16" @click="openLang">
           <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
         </p>
@@ -142,12 +137,6 @@ export default {
     img {
       height: 32px;
       width: 32px;
-    }
-  }
-  .lot-icon {
-    img {
-      height: 44px;
-      width: 44px;
     }
   }
   .txt {

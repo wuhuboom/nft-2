@@ -1521,5 +1521,8 @@
   "backapi.activeCodeError":"激活码验证错误",
   "enter.code":"输入激活码",
   "dropdown.billing.rebate":"返利",
-  "dropdown.billing.other":"其他"
+  "dropdown.billing.other":"其他",
+  
+  "your.win.le":"您抽中了!",
+  "your.win.go":"请前往账户中心查看"
 }

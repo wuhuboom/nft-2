@@ -73,6 +73,7 @@ export default {
 <style lang="less">
 #app {
   padding-top: @navHeight;
+
   .appp-top-bar {
     position: fixed;
     height: @navHeight;
