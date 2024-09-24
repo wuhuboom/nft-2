@@ -77,7 +77,9 @@ export default {
       isFlashing: false,
       isFlashingIdx: null,
       winIndx: null,
-      base: {},
+      base: {
+        quantity: 0,
+      },
       loading: false,
       dayDrawMax: 0,
     };
@@ -119,9 +121,14 @@ export default {
       }, 200); // Adjust the speed of flashing here
       this.bingo();
     },
-    async getBase() {
+    async getBase(key) {
       const [err, res] = await userApi.bingoCount();
       if (err) return;
+      if (key === "quantity") {
+        this.base.quantity = res.data.quantity;
+        console.log(this.base.quantity, "---");
+        return;
+      }
       for (let key in res.data) {
         this.$set(this.base, key, res.data[key]);
       }
@@ -140,6 +147,7 @@ export default {
         this.loading = false;
         return;
       }
+      this.getBase("quantity");
       let index = res.data.index;
       setTimeout(() => {
         this.winIndx = index;
