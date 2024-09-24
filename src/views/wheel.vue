@@ -11,7 +11,7 @@
       <li class="font14 center-center p-x-4">
         {{
           $t("Number.of.draws", {
-            num: 1,
+            num: base.quantity,
           })
         }}
       </li>
@@ -38,9 +38,7 @@
               :key="`${idx}-go`"
               class="center-center go-txt"
               @click="startFlashing"
-            >
-              GO
-            </li>
+            ></li>
           </template>
           <template v-else>
             <li
@@ -149,7 +147,7 @@ export default {
         this.isFlashingIdx = null;
         this.loading = false;
         this.$toast.success(this.$t("index.editor.psd.modal.success.text"));
-      }, 3000);
+      }, 9000);
     },
   },
   created() {
@@ -200,6 +198,7 @@ export default {
       &.go-txt {
         font-size: 30px;
         font-weight: 500;
+        background-image: url("@/assets/img/ntf/130911@2x.webp");
         //color: #fff;
       }
       &.flashing {

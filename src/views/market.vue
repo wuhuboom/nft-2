@@ -132,7 +132,7 @@
                 size="small"
                 native-type="button"
                 class="send-code-btn"
-                @click="formData.money = Math.floor(balance)"
+                @click="formData.money = balance"
                 >{{ $t("match.all.text") }}</van-button
               >
             </template>
@@ -404,6 +404,7 @@ export default {
         }
         return;
       }
+      this.$store.dispatch("getInfo");
       this.formData = initFome();
       this.$toast.success(
         this.$t("backapi.self.safe.bill.detail.status.success.text")
