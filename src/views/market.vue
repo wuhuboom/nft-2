@@ -404,6 +404,7 @@ export default {
         }
         return;
       }
+      this.show = false;
       this.$store.dispatch("getInfo");
       this.formData = initFome();
       this.$toast.success(
@@ -436,6 +437,7 @@ export default {
       this.show = true;
     },
     chose(v) {
+      console.log(v);
       if (v.parent.curr == 100) {
         this.$toast("backapi.planExpired");
         return;
