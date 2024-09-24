@@ -180,7 +180,6 @@ export default {
         this.isFlashingIdx = null;
         this.loading = false;
         this.show = true;
-        this.$toast.success(this.$t("index.editor.psd.modal.success.text"));
       }, 9000);
     },
     close() {
