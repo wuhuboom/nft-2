@@ -61,14 +61,16 @@
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
     </ul>
-    <van-popup @close="close" class="lottery-pop" v-model="show">
+    <van-popup @closed="close" class="lottery-pop" v-model="show">
       <ul class="font14">
         <li class="font16">{{ $t("your.win.le") }}</li>
         <li class="m-b-20 m-t-20 p-x-20 bg-txt flex-column align-center">
-          <p class="m-b-4 pic">
+          <p class="pic">
             <img class="d-img" :src="curWin.icon" alt="" />
           </p>
-          <p>{{ curWin.text }}{{ base.symbol }}</p>
+          <p class="m-b-t" v-if="!noTxt.includes(winIndx)">
+            {{ curWin.text }}{{ base.symbol }}
+          </p>
         </li>
         <li class="" @click="$router.push('/page/user')">
           {{ $t("your.win.go") }}

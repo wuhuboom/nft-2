@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import userApi from "@/api/user";
 export default {
   name: "HomeTopBar",
   data() {
@@ -65,26 +64,9 @@ export default {
     },
   },
   methods: {
-    async getBase() {
-      const [err, res] = await userApi.bingoCount();
-      if (err) return;
-      for (let key in res.data) {
-        this.$set(this.base, key, res.data[key]);
-      }
-    },
-    goLot() {
-      if (this.base.switch === 0) {
-        this.$toast(this.$t("backapi.notEnoughTimes"));
-        return;
-      }
-      this.$router.push({ name: "Wheel" });
-    },
     openLang() {
       this.$refs.BtmActionLang.open();
     },
-  },
-  created() {
-    this.getBase();
   },
   computed: {
     isHome() {
