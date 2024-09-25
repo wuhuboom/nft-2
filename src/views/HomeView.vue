@@ -180,9 +180,12 @@
       ref="dangers"
       @close="confirm"
     />
-    <p class="lot-icon lot-icon-app" v-if="base.switch" @click="goLot">
-      <img class="d-img" src="@/assets/img/ntf/home/126947@2x.webp" alt="" />
-    </p>
+    <p
+      class="lot-icon lot-icon-app"
+      v-draggable
+      v-if="base.switch"
+      @click="goLot"
+    ></p>
   </div>
 </template>
 
@@ -310,12 +313,11 @@ export default {
   position: fixed;
   right: 4px;
   bottom: 180px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  animation: pulse 2s infinite;
-  img {
-    height: 60px;
-    width: 60px;
-  }
+  height: 60px;
+  width: 60px;
+  background: url("@/assets/img/ntf/home/126947@2x.webp") no-repeat center
+    center;
+  background-size: 100% 100%;
 }
 @keyframes pulse {
   0% {

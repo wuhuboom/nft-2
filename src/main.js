@@ -149,6 +149,69 @@ Vue.prototype.$ToSeconds = (timestamp) => {
 
   return timestamp;
 };
+Vue.directive("draggable", {
+  bind(el) {
+    const dragElement = (event, type) => {
+      const disX =
+        type === "touch"
+          ? event.touches[0].clientX - el.offsetLeft
+          : event.clientX - el.offsetLeft;
+      const disY =
+        type === "touch"
+          ? event.touches[0].clientY - el.offsetTop
+          : event.clientY - el.offsetTop;
+
+      const move = (event) => {
+        //添加 类 overflow-hidden
+        let left =
+          type === "touch"
+            ? event.touches[0].clientX - disX
+            : event.clientX - disX;
+        let top =
+          type === "touch"
+            ? event.touches[0].clientY - disY
+            : event.clientY - disY;
+
+        // Ensure the element stays within the screen boundaries
+        const maxWidth = window.innerWidth - el.offsetWidth;
+        const maxHeight = window.innerHeight - el.offsetHeight;
+
+        if (left < 0) left = 0;
+        if (top < 0) top = 0;
+        if (left > maxWidth) left = maxWidth;
+        if (top > maxHeight) top = maxHeight;
+
+        el.style.left = left + "px";
+        el.style.top = top + "px";
+      };
+
+      const stop = () => {
+        //移除 类 overflow-hidden
+        document.removeEventListener(
+          type === "touch" ? "touchmove" : "mousemove",
+          move
+        );
+        document.removeEventListener(
+          type === "touch" ? "touchend" : "mouseup",
+          stop
+        );
+      };
+
+      document.addEventListener(
+        type === "touch" ? "touchmove" : "mousemove",
+        move
+      );
+      document.addEventListener(
+        type === "touch" ? "touchend" : "mouseup",
+        stop
+      );
+    };
+
+    el.addEventListener("mousedown", (e) => dragElement(e, "mouse"));
+    el.addEventListener("touchstart", (e) => dragElement(e, "touch"));
+  },
+});
+
 const app = new Vue({
   router,
   store,
