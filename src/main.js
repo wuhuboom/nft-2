@@ -214,13 +214,16 @@ Vue.directive("draggable", {
       );
     };
     //结束后删除类
-    const stop = () => {
+    const stop = (el) => {
       document.querySelector("body").classList.remove("overflow-hidden");
+      console.log("stop", el);
+      //重置 删除 style 的 left
+      document.querySelector(".js-lot-icon-app").style.left = "";
     };
     el.addEventListener("mousedown", (e) => dragElement(e, "mouse"));
     el.addEventListener("touchstart", (e) => dragElement(e, "touch"));
-    el.addEventListener("mouseup", stop);
-    el.addEventListener("touchend", stop);
+    el.addEventListener("mouseup", (e) => stop(e));
+    el.addEventListener("touchend", (e) => stop(e));
   },
 });
 

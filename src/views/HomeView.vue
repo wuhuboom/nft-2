@@ -181,7 +181,7 @@
       @close="confirm"
     />
     <p
-      class="lot-icon lot-icon-app"
+      class="lot-icon js-lot-icon-app lot-icon-app"
       v-draggable
       v-if="base.switch"
       @click="goLot"
