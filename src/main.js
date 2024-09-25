@@ -152,6 +152,13 @@ Vue.prototype.$ToSeconds = (timestamp) => {
 Vue.directive("draggable", {
   bind(el) {
     const dragElement = (event, type) => {
+      //有overflow-hidden 就不添加
+      if (
+        !document.querySelector("body").classList.contains("overflow-hidden")
+      ) {
+        document.querySelector("body").classList.add("overflow-hidden");
+      }
+
       const disX =
         type === "touch"
           ? event.touches[0].clientX - el.offsetLeft
@@ -206,9 +213,14 @@ Vue.directive("draggable", {
         stop
       );
     };
-
+    //结束后删除类
+    const stop = () => {
+      document.querySelector("body").classList.remove("overflow-hidden");
+    };
     el.addEventListener("mousedown", (e) => dragElement(e, "mouse"));
     el.addEventListener("touchstart", (e) => dragElement(e, "touch"));
+    el.addEventListener("mouseup", stop);
+    el.addEventListener("touchend", stop);
   },
 });
 
