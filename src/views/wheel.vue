@@ -174,7 +174,9 @@ export default {
         this.loading = false;
         return;
       }
-      this.getBase("quantity");
+      // this.getBase("quantity");
+      this.base.quantity = this.base.quantity - 1;
+      this.base.quantity = this.base.quantity < 0 ? 0 : this.base.quantity;
       let index = res.data.index;
       setTimeout(() => {
         this.winIndx = index;

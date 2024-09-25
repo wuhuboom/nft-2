@@ -181,7 +181,7 @@
       @close="confirm"
     />
     <p class="lot-icon lot-icon-app" v-if="base.switch" @click="goLot">
-      <img class="d-img" src="@/assets/img/ntf/home/lot.png" alt="" />
+      <img class="d-img" src="@/assets/img/ntf/home/126947@2x.webp" alt="" />
     </p>
   </div>
 </template>
@@ -308,13 +308,13 @@ export default {
 <style lang="less" scoped>
 .lot-icon-app {
   position: fixed;
-  right: 16px;
+  right: 4px;
   bottom: 180px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   animation: pulse 2s infinite;
   img {
-    height: 44px;
-    width: 44px;
+    height: 60px;
+    width: 60px;
   }
 }
 @keyframes pulse {
