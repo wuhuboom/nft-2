@@ -138,23 +138,60 @@
             </template>
           </van-field>
           <div class="m-t-8 m-b-20 align-center justify-between">
-            <p>
+            <!-- <p>
               {{ $t(`total.return`) }}:<span class="font14">{{
                 earnings
               }}</span>
-            </p>
+            </p> -->
             <p>
               {{ $t(`wallet.index.balance.text`) }}:
               <span class="active">{{ balance }}</span>
             </p>
           </div>
-          <ul class="font12 criteria" v-if="popTxt.length">
+          <ul class="font12 criteria m-b-20" v-if="popTxt.length">
             <li class="font14 m-b-4">{{ $t("Participation.criteria") }}:</li>
             <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
               {{ i + 1 }}、{{ d.txt }}
             </li>
           </ul>
-          <ul class="m-t-20 m-b-20 align-center justify-between" v-if="addRate">
+
+          <div v-if="addRate" class="m-b-12">
+            <div class="justify-between make-way p-x-12 align-center m-b-8">
+              <ul class="way-cont flex-1 m-r-20">
+                <li class="m-b-8 p-b-8">{{ $t(`Participation.putong`) }}</li>
+                <li>
+                  {{ $t(`total.return`) }}:<span class="font14">{{
+                    way1earnings
+                  }}</span>
+                </li>
+              </ul>
+
+              <p @click="formData.autoInvest = 0">
+                <van-checkbox
+                  :class="{ checkboxfff: formData.autoInvest == 1 }"
+                  disabled
+                ></van-checkbox>
+              </p>
+            </div>
+            <div class="justify-between make-way p-x-12 align-center">
+              <ul class="way-cont flex-1 m-r-20">
+                <li class="m-b-8 p-b-8">{{ $t(`Participation.fuli`) }}</li>
+                <li>
+                  {{ $t(`total.return`) }}:<span class="font14">{{
+                    way2earnings
+                  }}</span>
+                </li>
+              </ul>
+              <p @click="formData.autoInvest = 1">
+                <van-checkbox
+                  disabled
+                  :class="{ checkboxfff: formData.autoInvest == 0 }"
+                ></van-checkbox>
+              </p>
+            </div>
+          </div>
+
+          <!-- <ul class="m-t-20 m-b-20 align-center justify-between" v-if="addRate">
             <li class="font14 align-center">
               {{ $t(`market.rate.many`) }}
               <van-icon
@@ -173,7 +210,7 @@
               >
               </el-switch>
             </li>
-          </ul>
+          </ul> -->
           <van-field
             class="m-b-16"
             v-if="parseInt(item.parent && item.parent.inviteRequire) === 1"
@@ -324,6 +361,30 @@ export default {
     },
     right() {
       return this.result.inDays && this.result.groups;
+    },
+    //普通盈利
+    way1earnings() {
+      const val = this.formData.money || 0;
+      if (val > 0) {
+        //= X * (1 + Y/100)*Z
+        const curRate = this.item.rate / 100;
+        let num = val * curRate * this.item.days;
+        return num.toFixed(2);
+      } else {
+        return 0;
+      }
+    },
+    //复利盈利
+    way2earnings() {
+      const val = this.formData.money || 0;
+      if (val > 0) {
+        //= X * (1 + Y/100)*Z
+        const curRate = this.item.rate / 100;
+        let num = val * Math.pow(1 + curRate, this.item.days) - val;
+        return num.toFixed(2);
+      } else {
+        return 0;
+      }
     },
     earnings() {
       const val = this.formData.money || 0;
@@ -476,6 +537,13 @@ export default {
 </script>
 <style scoped lang="less">
 .invest-plans-page {
+  .make-way {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.09);
+    .way-cont > li:first-child {
+      border-bottom: 1px solid rgba(112, 112, 112, 0.4);
+    }
+  }
   .green {
     color: #defb84;
   }
@@ -512,6 +580,18 @@ export default {
     padding-top: @navHeight+24px;
   }
   ::v-deep {
+    .van-checkbox__icon--disabled .van-icon {
+      color: #fff;
+      background-color: var(--main);
+      border-color: var(--main);
+    }
+    .checkboxfff .van-icon {
+      background-color: transparent;
+      border-color: #707070;
+      &::before {
+        opacity: 0;
+      }
+    }
     .el-switch__label--left {
       color: #cacbce;
     }

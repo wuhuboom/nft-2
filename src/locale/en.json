@@ -1527,5 +1527,6 @@
 	"dropdown.billing.other": "Other",
 	"Number.of.draws": "Number of draws available: {num} times",
 	"your.win.le": "You have won!",
-"your.win.go": "Please go to your account center to check."
+"your.win.go": "Please go to your account center to check.",
+"Website.txt":"Website"
 }

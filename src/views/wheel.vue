@@ -82,6 +82,7 @@
 
 <script>
 import userApi from "@/api/user";
+import icon from "@//assets/img/ntf/home/126948@2x.webp";
 export default {
   name: "WithdrawView",
   data() {
@@ -119,7 +120,9 @@ export default {
         arr = arr.map((item, idx) => {
           return {
             text: item,
-            icon: require(`@/assets/img/ntf/lot/${idx + 1}.webp`),
+            icon: !this.noTxt.includes(idx)
+              ? icon
+              : require(`@/assets/img/ntf/lot/${idx + 1}.webp`),
           };
         });
       }
@@ -153,7 +156,6 @@ export default {
       if (err) return;
       if (key === "quantity") {
         this.base.quantity = res.data.quantity;
-        console.log(this.base.quantity, "---");
         return;
       }
       for (let key in res.data) {
