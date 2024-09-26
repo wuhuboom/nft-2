@@ -158,7 +158,15 @@
           <div v-if="addRate" class="m-b-12">
             <div class="justify-between make-way p-x-12 align-center m-b-8">
               <ul class="way-cont flex-1 m-r-20">
-                <li class="m-b-8 p-b-8">{{ $t(`Participation.putong`) }}</li>
+                <li class="m-b-8 p-b-8 align-center">
+                  {{ $t(`Participation.putong`) }}
+                  <van-icon
+                    class="green m-l-8"
+                    @click="showDesc = true"
+                    size="16"
+                    name="question-o"
+                  />
+                </li>
                 <li>
                   {{ $t(`total.return`) }}:<span class="font14">{{
                     way1earnings
@@ -175,7 +183,15 @@
             </div>
             <div class="justify-between make-way p-x-12 align-center">
               <ul class="way-cont flex-1 m-r-20">
-                <li class="m-b-8 p-b-8">{{ $t(`Participation.fuli`) }}</li>
+                <li class="m-b-8 p-b-8 align-center">
+                  {{ $t(`Participation.fuli`) }}
+                  <van-icon
+                    class="green m-l-8"
+                    @click="showDesc = true"
+                    size="16"
+                    name="question-o"
+                  />
+                </li>
                 <li>
                   {{ $t(`total.return`) }}:<span class="font14">{{
                     way2earnings
@@ -537,6 +553,11 @@ export default {
 </script>
 <style scoped lang="less">
 .invest-plans-page {
+  .qustion {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+  }
   .make-way {
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.09);
