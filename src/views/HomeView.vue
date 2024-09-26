@@ -34,12 +34,8 @@
         >
           {{ $t(`dropdown.billing.income.withdraw.text`) }}
         </li>
-        <li
-          v-if="safeConfig.showH5 === 1"
-          class="els"
-          @click="$router.push({ path: '/pages/wallet/index' })"
-        >
-          {{ $t("fuc.safe.text") }}
+        <li class="els" @click="goWeb">
+          {{ $t("Website.txt") }}
         </li>
       </ul>
     </div>
@@ -253,6 +249,11 @@ export default {
     viewVideo(v) {
       //location.href =v.videoUrl
       window.open(v.videoUrl);
+    },
+    goWeb() {
+      if (window.Website) {
+        location.href = window.Website;
+      }
     },
     date(item) {
       return dayjs.unix(this.$ToSeconds(item.createTime)).format("YYYY-MM-DD");
