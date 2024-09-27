@@ -44,7 +44,7 @@
             @click="
               $router.push({
                 name: 'FriendsList',
-                query: { llevel: idx + 1 },
+                query: { level: idx + 1 },
               })
             "
           >

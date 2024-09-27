@@ -21,10 +21,26 @@
         <li>{{ $t("detail.live.4") }}</li>
         <li>{{ $t("detail.live.5") }}</li>
       </ul>
-      <ul>
-        <li></li>
-        <li></li>
-      </ul>
+      <LoadList :onload="investMyFriendsList" :finished="finished">
+        <ul
+          class="list p-l-12 p-r-16 m-b-8 justify-between align-center"
+          v-for="(item, idx) in video"
+          :key="idx"
+        >
+          <li>
+            <i
+              class="doc m-r-8"
+              :style="{
+                backgroundColor: tabsList.find(
+                  (v) => v.value === item.activedStatus
+                ).color,
+              }"
+            ></i>
+            {{ item.username }}
+          </li>
+          <li>{{ date(item.lastInvestTime) }}</li>
+        </ul>
+      </LoadList>
     </div>
   </div>
 </template>
@@ -32,11 +48,18 @@
 <script>
 import userApi from "@/api/user";
 import i18n from "@/locale";
+import dayjs from "dayjs";
 export default {
   name: "FriendsList",
   components: {},
   data() {
     return {
+      video: [],
+      query: {
+        pageNo: 1,
+        pageSize: 30,
+        level: this.$route.query.level,
+      },
       tabsList: [
         {
           name: i18n.t("detail.live.1"),
@@ -62,60 +85,43 @@ export default {
     },
   },
   methods: {
-    async getStatissticsData() {
-      const [err1, res1] = await userApi.investMyFriendsList(
+    date(createTime) {
+      return dayjs.unix(this.$ToSeconds(createTime)).format("YYYY-MM-DD HH:mm");
+    },
+    async investMyFriendsList(obj = {}) {
+      const params = {
+        ...this.query,
+        ...obj,
+      };
+      const [err, res] = await userApi.investMyFriendsList(params);
+      if (err) {
+        this.finished = true;
+        return false;
+      }
+      this.finished = res.data.results.length < this.query.pageSize;
+      //模拟数据 res.data.results
+      res.data.results = [
         {
-          time: this.tabCurrent,
-          key: "first",
+          username: "test",
+          lastInvestTime: 1727422948942,
+          activedStatus: 1,
         },
-        1
-      );
-      if (err1) return;
-      this.cumulativeActivity = res1.data.cumulativeActivity;
-      this.totalBalance = res1.data.totalBalance;
-      this.playerCount = res1.data.playerCount;
-      this.newPlayer = res1.data.newPlayer;
-      this.teamGroupUnAim = res1.data.groupUnAim;
-      this.playerActive = res1.data.playerActive;
-      const [err2, res2] = await userApi.dataCenter(
         {
-          time: this.tabCurrent,
-          key: res1.data.key,
+          username: "test",
+          lastInvestTime: 1727422948942,
+          activedStatus: 2,
         },
-        2
-      );
-      if (err2) return;
-      this.totalRecharge = res2.data.totalRecharge;
-      const [err3, res3] = await userApi.dataCenter(
         {
-          time: this.tabCurrent,
-          key: res2.data.key,
+          username: "test",
+          lastInvestTime: 1727422948942,
+          activedStatus: 3,
         },
-        3
-      );
-      if (err3) return;
-      this.totalWithdrawal = res3.data.totalWithdrawal;
-      const [err4, res4] = await userApi.dataCenter(
-        {
-          time: this.tabCurrent,
-          key: res3.data.key,
-        },
-        4
-      );
-      if (err4) return;
-      this.netProfit = res4.data.netProfit;
-      this.totalBetBalance = res4.data.totalBetBalance;
-      this.totalBetPlayer = res4.data.totalBetPlayer;
-      this.cumulativeWinning = res4.data.cumulativeWinning;
-      const [err5, res5] = await userApi.dataCenter(
-        {
-          time: this.tabCurrent,
-          key: res4.data.key,
-        },
-        5
-      );
-      if (err5) return;
-      this.teamGroupAim = res5.data.groupAim;
+      ];
+      this.video =
+        params.pageNo == 1
+          ? res.data.results
+          : this.video.concat(res.data.results);
+      this.query.pageNo++;
     },
   },
   mounted() {
@@ -130,13 +136,19 @@ export default {
 .head {
   height: 32px;
   background-color: #333335;
-  i {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-  }
 }
 .art {
   height: 32px;
+}
+.list {
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.doc {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
 }
 </style>
