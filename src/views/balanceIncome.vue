@@ -39,7 +39,15 @@
               </p>
             </div>
           </div>
-          <p class="center-center p-x-4 bill-detail">
+          <p
+            class="center-center p-x-4 bill-detail"
+            @click="
+              $router.push({
+                name: 'FriendsList',
+                query: { llevel: idx + 1 },
+              })
+            "
+          >
             {{ $t("backapi.self.safe.bill.detail.text") }}
           </p>
         </li>

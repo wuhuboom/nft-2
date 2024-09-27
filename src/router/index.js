@@ -538,7 +538,7 @@ const routes = [
     path: "/friends/list",
     name: "FriendsList",
     components: {
-      default: () => import("@/views/wheel.vue"),
+      default: () => import("@/views/friendsList.vue"),
     },
   },
 ];
