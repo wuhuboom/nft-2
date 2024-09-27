@@ -5,6 +5,7 @@
     :showConfirmButton="false"
     :showCancelButton="false"
     :closeOnClickOverlay="true"
+    @close="close"
   >
     <div class="common-dialog">
       <p class="center-center"><i class="iconfont icon-jingti-copy"></i></p>
@@ -43,16 +44,19 @@ export default {
     return {
       version: "",
       progressBarState: false,
-      fromModal2: true,
+      fromModal2: false,
       progressBar: 0,
       key: "storageVersion",
     };
   },
   methods: {
+    close() {
+      this.interval && clearInterval(this.interval);
+    },
     simulateProgressBar() {
       this.progressBarState = true;
-      var duration = Math.floor(Math.random() * 6) + 5; // 生成5到10之间的随机秒数
-      var increment = 100 / (duration * 10); // 计算每100毫秒增加的进度
+      var duration = Math.floor(Math.random() * 6) + 5;
+      var increment = 100 / (duration * 10);
 
       var progress = 0;
 
@@ -95,7 +99,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-//deep van-dialog__content
+.van-progress {
+  width: 188px;
+}
 .VersionDilalog {
   width: 270px;
   height: 136px;

@@ -462,6 +462,7 @@ const routes = [
     name: "investMarket",
     components: {
       default: () => import("@/views/market.vue"),
+      AppBtmBar,
     },
   },
   {
