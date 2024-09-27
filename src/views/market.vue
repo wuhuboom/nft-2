@@ -1,91 +1,83 @@
 <template>
-  <div class="">
-    <!-- <AppTopBar
+  <div class="invest-plans-page font12 p-l-16 p-r-16 p-t-12">
+    <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`investment`)"
       :styleObj="{ backgroundColor: 'tra' }"
-    ></AppTopBar> -->
-    <HomeTopBar :showLang="false">
-      <template #title>
-        <span>{{ $t(`investment`) }}</span>
-      </template>
-    </HomeTopBar>
-    <div class="invest-plans-page font12 p-l-16 p-r-16 p-t-12">
-      <div class="plans" v-if="planeYeb.id">
-        <div
-          class="plans-item m-b-16"
-          @click="$router.push({ name: 'InvestDetail' })"
-        >
-          <div class="align-center">
-            <p class="invest-pic no-shrink m-r-12">
-              <img class="d-img" :src="planeYeb.header" alt="" />
-            </p>
-            <ul class="align-center flex-1 space-between">
-              <li>
-                <p class="font16">{{ planeYeb.name }}</p>
-              </li>
-              <li class="rate-row" v-if="planeYeb.rateConfig.length">
-                <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-                <p class="font16 rate color-active m-b-8">
-                  {{ planeYeb.rateConfig[0].rate }}%
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div v-show="false">
-            <van-progress
-              track-color="#808080"
-              color="#f5673e"
-              class="m-t-16 m-b-8"
-              :percentage="+planeYeb.curr"
-            />
-          </div>
+    ></AppTopBar>
+    <div class="plans" v-if="planeYeb.id">
+      <div
+        class="plans-item m-b-16"
+        @click="$router.push({ name: 'InvestDetail' })"
+      >
+        <div class="align-center">
+          <p class="invest-pic no-shrink m-r-12">
+            <img class="d-img" :src="planeYeb.header" alt="" />
+          </p>
+          <ul class="align-center flex-1 space-between">
+            <li>
+              <p class="font16">{{ planeYeb.name }}</p>
+            </li>
+            <li class="rate-row" v-if="planeYeb.rateConfig.length">
+              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
+              <p class="font16 rate color-active m-b-8">
+                {{ planeYeb.rateConfig[0].rate }}%
+              </p>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="plans" v-for="(item, idx) in records" :key="idx">
-        <div
-          class="plans-item m-b-16"
-          v-for="(doc, index) in item.rateConfig"
-          :key="index"
-          @click="
-            chose({
-              parent: item,
-              ...doc,
-            })
-          "
-        >
-          <div class="align-center">
-            <p class="invest-pic no-shrink m-r-12">
-              <img class="d-img" :src="doc.header" alt="" />
-            </p>
-            <ul class="align-center flex-1 space-between">
-              <li>
-                <p class="font16 m-b-8">{{ doc.name }}</p>
-                <p class="days">
-                  {{ doc.days }}
-                  {{
-                    doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`)
-                  }}
-                </p>
-              </li>
-              <li class="rate-row">
-                <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-                <p class="font16 rate color-active">{{ doc.rate }}%</p>
-              </li>
-            </ul>
-          </div>
-          <div v-show="false">
-            <van-progress
-              track-color="#808080"
-              color="#f5673e"
-              class="m-t-16 m-b-8"
-              :percentage="item.curr"
-            />
-          </div>
+        <div v-show="false">
+          <van-progress
+            track-color="#808080"
+            color="#f5673e"
+            class="m-t-16 m-b-8"
+            :percentage="+planeYeb.curr"
+          />
         </div>
       </div>
     </div>
-
+    <div class="plans" v-for="(item, idx) in records" :key="idx">
+      <div
+        class="plans-item m-b-16"
+        v-for="(doc, index) in item.rateConfig"
+        :key="index"
+        @click="
+          chose({
+            parent: item,
+            ...doc,
+          })
+        "
+      >
+        <div class="align-center">
+          <p class="invest-pic no-shrink m-r-12">
+            <img class="d-img" :src="doc.header" alt="" />
+          </p>
+          <ul class="align-center flex-1 space-between">
+            <li>
+              <p class="font16 m-b-8">{{ doc.name }}</p>
+              <p class="days">
+                {{ doc.days }}
+                {{
+                  doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`)
+                }}
+              </p>
+            </li>
+            <li class="rate-row">
+              <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
+              <p class="font16 rate color-active">{{ doc.rate }}%</p>
+            </li>
+          </ul>
+        </div>
+        <div v-show="false">
+          <van-progress
+            track-color="#808080"
+            color="#f5673e"
+            class="m-t-16 m-b-8"
+            :percentage="item.curr"
+          />
+        </div>
+      </div>
+    </div>
     <van-popup v-model="show" position="bottom" :style="{ height: '100%' }">
       <AppTopBar
         :back="close"
@@ -354,7 +346,7 @@
 </template>
 
 <script>
-import HomeTopBar from "@/components/home/HomeTopBar.vue";
+//import i18n from "@/locale";
 import activationCode from "@/components/activationCode";
 import yuIcon from "@/assets/img/ntf/yue.png";
 import errIcon from "@/assets/img/ntf/err.png";
@@ -372,7 +364,7 @@ const initFome = () => {
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: { activationCode, HomeTopBar },
+  components: { activationCode },
   data() {
     return {
       errIcon,
@@ -567,7 +559,6 @@ export default {
   created() {
     this.investPlans();
     this.investPlanYeb();
-    this.$store.commit("setPdTop", false);
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
