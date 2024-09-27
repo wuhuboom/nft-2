@@ -1,5 +1,5 @@
 <template>
-  <div class="font12">
+  <div class="font12 home-index-page">
     <HomeTopBar />
     <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
       <li class="live">
@@ -310,6 +310,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.home-index-page {
+  ::v-deep .index-sticky-nav {
+    background: url("@/assets/img/130937.webp") no-repeat center bottom;
+    background-size: 100% auto;
+  }
+}
 .lot-icon-app {
   position: fixed;
   right: 4px;
