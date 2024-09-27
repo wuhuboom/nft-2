@@ -534,6 +534,13 @@ const routes = [
       default: () => import("@/views/wheel.vue"),
     },
   },
+  {
+    path: "/friends/list",
+    name: "FriendsList",
+    components: {
+      default: () => import("@/views/wheel.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

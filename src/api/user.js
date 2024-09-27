@@ -835,4 +835,12 @@ export default {
       data,
     });
   },
+  ///invest/my/friends/list
+  investMyFriendsList(data) {
+    return request({
+      url: "/invest/my/friends/list",
+      method: "post",
+      data,
+    });
+  },
 };
