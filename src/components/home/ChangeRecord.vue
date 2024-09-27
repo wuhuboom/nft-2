@@ -219,7 +219,7 @@ export default {
       return dayjs.unix(this.$ToSeconds(time)).format("YYYY-MM-DD HH:mm");
     },
     getType(type) {
-      return this.typeOptions.find((item) => item.value === type)?.label;
+      return this.options.find((item) => item.value === type)?.label;
     },
   },
 };
