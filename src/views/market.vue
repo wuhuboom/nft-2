@@ -85,7 +85,7 @@
         :topBarTitle="$t(`investment`)"
         :styleObj="{ backgroundColor: 'tra' }"
       ></AppTopBar>
-      <div class="buy-detail gray-bg-img p-l-16 p-r-16">
+      <div class="buy-detail gray-bg-img p-l-16 p-r-16 p-b-32">
         <div class="align-center">
           <p class="invest-pic no-shrink m-r-12">
             <img class="d-img" :src="item.header" alt="" />
@@ -156,13 +156,16 @@
           </ul>
 
           <div v-if="addRate" class="m-b-12">
-            <div class="justify-between make-way p-x-12 align-center m-b-8">
+            <div
+              @click.stop="formData.autoInvest = 0"
+              class="justify-between make-way p-x-12 align-center m-b-8"
+            >
               <ul class="way-cont flex-1 m-r-20">
                 <li class="m-b-8 p-b-8 align-center">
                   {{ $t(`Participation.putong`) }}
                   <van-icon
                     class="green m-l-8"
-                    @click="showDesc = true"
+                    @click.stop="showDesc = true"
                     size="16"
                     name="question-o"
                   />
@@ -174,20 +177,23 @@
                 </li>
               </ul>
 
-              <p @click="formData.autoInvest = 0">
+              <p>
                 <van-checkbox
                   :class="{ checkboxfff: formData.autoInvest == 1 }"
                   disabled
                 ></van-checkbox>
               </p>
             </div>
-            <div class="justify-between make-way p-x-12 align-center">
+            <div
+              @click="formData.autoInvest = 1"
+              class="justify-between make-way p-x-12 align-center"
+            >
               <ul class="way-cont flex-1 m-r-20">
                 <li class="m-b-8 p-b-8 align-center">
                   {{ $t(`Participation.fuli`) }}
                   <van-icon
                     class="green m-l-8"
-                    @click="showDesc = true"
+                    @click.stop="showDesc1 = true"
                     size="16"
                     name="question-o"
                   />
@@ -198,7 +204,7 @@
                   }}</span>
                 </li>
               </ul>
-              <p @click="formData.autoInvest = 1">
+              <p>
                 <van-checkbox
                   disabled
                   :class="{ checkboxfff: formData.autoInvest == 0 }"
@@ -273,16 +279,26 @@
         </van-form>
       </div>
     </van-popup>
-    <van-popup class="desc-art-pop" v-model="showDesc" position="center">
+    <van-popup
+      v-if="formData.autoInvest"
+      class="desc-art-pop"
+      v-model="showDesc1"
+      position="center"
+    >
       <ul class="font14 desc-art-list color-fff">
-        <li class="m-b-8 green">{{ $t(`Participation.putong`) }}:</li>
-        <li>{{ $t(`Participation.every.day`) }}</li>
         <li class="m-t-8 m-b-8 green">{{ $t(`Participation.fuli`) }}:</li>
         <li class="m-b-4">{{ $t(`market.rate.text1`) }}</li>
         <li class="m-b-4">{{ $t(`market.rate.text2`) }}</li>
         <li class="m-b-4">{{ $t(`market.rate.text3`) }}</li>
       </ul>
     </van-popup>
+    <van-popup class="desc-art-pop" v-model="showDesc" position="center">
+      <ul class="font14 desc-art-list color-fff">
+        <li class="m-b-8 green">{{ $t(`Participation.putong`) }}:</li>
+        <li>{{ $t(`Participation.every.day`) }}</li>
+      </ul>
+    </van-popup>
+
     <van-popup
       style="width: 88%"
       class="right-art-pop linear-global-pop"
@@ -360,6 +376,7 @@ export default {
       show: false,
       records: {},
       showDesc: false,
+      showDesc1: false,
       showRight: false,
       result: {
         inDays: 0,
