@@ -7,7 +7,7 @@
     ></AppTopBar> -->
     <HomeTopBar :showLang="false">
       <template #title>
-        <p class="font16">{{ $t(`investment`) }}</p>
+        <p class="font16" style="font-weight: normal">{{ $t(`investment`) }}</p>
       </template>
     </HomeTopBar>
     <div class="p-l-16 p-r-16 p-t-12">
