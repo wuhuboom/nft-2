@@ -38,7 +38,7 @@
             ></i>
             {{ item.username }}
           </li>
-          <li>{{ date(item.lastInvestTime) }}</li>
+          <li>{{ date(item.theNewLoginTime) }}</li>
         </ul>
       </LoadList>
     </div>
@@ -85,8 +85,9 @@ export default {
     },
   },
   methods: {
-    date(createTime) {
-      return dayjs.unix(this.$ToSeconds(createTime)).format("YYYY-MM-DD HH:mm");
+    date(t) {
+      if (!t) return "-";
+      return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
     async investMyFriendsList(obj = {}) {
       const params = {
