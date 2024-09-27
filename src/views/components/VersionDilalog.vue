@@ -1,21 +1,19 @@
 <template>
   <van-dialog
+    class="VersionDilalog"
     v-model="fromModal2"
     :showConfirmButton="false"
     :showCancelButton="false"
     :closeOnClickOverlay="true"
   >
     <div class="common-dialog">
-      <p class="close center-center" @click="fromModal2 = false">
-        <van-icon name="cross" />
-      </p>
       <p class="center-center"><i class="iconfont icon-jingti-copy"></i></p>
       <div class="cont align-center flex-1">
-        <ul class="update">
+        <ul class="update flex-column center-center">
           <li class="update-text">{{ $t("version.update") }}</li>
           <li class="">
             <p
-              class="btns app-ellipsis"
+              class="btns app-ellipsis center-center"
               @click="simulateProgressBar"
               v-if="!progressBarState"
             >
@@ -23,17 +21,15 @@
             </p>
             <van-progress
               v-else
-              track-color="rgba(255, 255, 255, 0.55)"
+              track-color="rgba(255, 255, 255, 0.25)"
               :show-pivot="false"
-              color="#fff"
+              color="#f5673d"
               :percentage="progressBar"
               stroke-width="8"
             />
           </li>
         </ul>
       </div>
-
-      <div><img class="sorck" src="@/assets/img/update.webp" alt="" /></div>
     </div>
   </van-dialog>
 </template>
@@ -47,7 +43,7 @@ export default {
     return {
       version: "",
       progressBarState: false,
-      fromModal2: false,
+      fromModal2: true,
       progressBar: 0,
       key: "storageVersion",
     };
@@ -99,11 +95,18 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+//deep van-dialog__content
+.VersionDilalog {
+  width: 270px;
+  height: 136px;
+  border-radius: 14px;
+  border: solid 1px rgba(0, 0, 0, 0);
+  background-image: linear-gradient(to bottom, #1f2430, #151515);
+}
 .common-dialog {
-  padding: 0 25px;
   position: relative;
   font-size: 16px;
-  background-color: var(--main);
+
   color: #fff;
   display: flex;
   align-items: flex-end;
@@ -111,13 +114,15 @@ export default {
   .btns {
     font-size: 13px;
     color: #222;
-    height: 36px;
-    border-radius: 10px;
-    background-color: #fff;
+    width: 202px;
+    height: 33px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px 0 #5a3e01;
+    background-color: #f5673e;
     padding: 0 8px;
     line-height: 36px;
     text-align: center;
-    width: 115px;
+    color: #fff;
   }
   .close {
     position: absolute;
@@ -133,10 +138,12 @@ export default {
     height: 152px;
   }
   .update {
-    width: 146px;
+    width: 100%;
+    height: 100%;
   }
   .update-text {
-    margin-bottom: 35px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.8);
   }
   .sorck {
     width: 56px;
