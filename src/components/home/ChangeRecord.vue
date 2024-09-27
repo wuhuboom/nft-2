@@ -2,7 +2,9 @@
   <div>
     <ul class="list m-t-16 p-b-12 gray" v-for="(item, idx) in list" :key="idx">
       <li class="justify-between">
-        <p class="color-fff">{{ getType(item.balanceChangeType) }}</p>
+        <p class="color-fff">
+          {{ $t(`ChangeRecord${item.balanceChangeType}`) }}
+        </p>
         <p
           class="font14 bold"
           :class="[item.changeMoney > 0 ? 'green' : 'red']"

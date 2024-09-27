@@ -100,23 +100,23 @@ export default {
       }
       this.finished = res.data.results.length < this.query.pageSize;
       //模拟数据 res.data.results
-      res.data.results = [
-        {
-          username: "test",
-          lastInvestTime: 1727422948942,
-          activedStatus: 1,
-        },
-        {
-          username: "test",
-          lastInvestTime: 1727422948942,
-          activedStatus: 2,
-        },
-        {
-          username: "test",
-          lastInvestTime: 1727422948942,
-          activedStatus: 3,
-        },
-      ];
+      // res.data.results = [
+      //   {
+      //     username: "test",
+      //     lastInvestTime: 1727422948942,
+      //     activedStatus: 1,
+      //   },
+      //   {
+      //     username: "test",
+      //     lastInvestTime: 1727422948942,
+      //     activedStatus: 2,
+      //   },
+      //   {
+      //     username: "test",
+      //     lastInvestTime: 1727422948942,
+      //     activedStatus: 3,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
