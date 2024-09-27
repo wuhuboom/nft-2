@@ -55,6 +55,7 @@ export default {
   data() {
     return {
       video: [],
+      finished: false,
       query: {
         pageNo: 1,
         pageSize: 30,
