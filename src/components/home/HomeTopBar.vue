@@ -1,6 +1,9 @@
 <template>
-  <van-sticky style="z-index: 999" :offset-top="0">
-    <ul class="nav justify-between align-center">
+  <van-sticky @change="change" style="z-index: 999" :offset-top="0">
+    <ul
+      class="nav index-sticky-nav justify-between align-center"
+      :class="{ 'bg-black': fiexd }"
+    >
       <li class="logo center-center" @click="$router.push({ name: 'home' })">
         <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
       </li>
@@ -57,6 +60,7 @@ export default {
   data() {
     return {
       base: { switch: null },
+      fiexd: false,
     };
   },
   props: {
@@ -70,6 +74,9 @@ export default {
     },
   },
   methods: {
+    change(status) {
+      this.fiexd = status;
+    },
     openLang() {
       this.$refs.BtmActionLang.open();
     },
@@ -90,7 +97,7 @@ export default {
 .nav {
   height: 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: transparent;
+
   .user-info {
     line-height: 1;
     .username {

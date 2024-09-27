@@ -1,6 +1,7 @@
 <template>
   <div
     class="appp-top-bar align-center justify-between max-width750"
+    :class="{ 'bg-black': fiexd }"
     :style="styleObj"
   >
     <div class="appp-top-cont align-center justify-between">
@@ -31,6 +32,9 @@
 import RootDialog from "@/views/components/RootDialog.vue";
 export default {
   name: "AppTopBar",
+  data() {
+    return { fiexd: false };
+  },
   components: {
     RootDialog,
   },
@@ -78,10 +82,28 @@ export default {
         this.$router.go(-1);
       }
     },
+    handleScroll() {
+      if (window.scrollY > 0) {
+        this.fiexd = true;
+      } else {
+        this.fiexd = false;
+      }
+    },
+  },
+  //监听滚动条加背景色
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
 <style scoped lang="less">
+// .appp-top-bar {
+//   background: url("@/assets/img/130937.webp") no-repeat center bottom;
+//   background-size: 100% auto;
+// }
 .right {
   min-width: 43px;
 }
