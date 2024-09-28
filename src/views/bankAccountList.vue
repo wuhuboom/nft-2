@@ -37,31 +37,34 @@
             </p>
           </li>
         </ul>
-
         <ul
-          class="bank align-center"
+          class="bank flex-column justify-between p-x-24"
           v-for="(item, idx) in bankList"
           :key="`${idx}-bank`"
         >
-          <li class="icon-box center-center"><img :src="udticon2" alt="" /></li>
-          <li class="name flex-1 app-ellipsis">
-            <p class="app-ellipsis name-title">
+          <li class="font-14">
+            <p class="m-b-8">{{ item.cardName }}</p>
+            <p>
+              {{ $t("Creation time") }}
+              {{ formatDate(item.createdAt, "yyyy-MM-dd") }}
+            </p>
+          </li>
+          <li class="justify-between align-center">
+            <p class="number">
               {{ item.cardNumber | leftAddr }} **** ****
               {{ item.cardNumber | rightAddr }}
             </p>
-            <p>{{ item.cardName }}</p>
-          </li>
-          <li class="rit">
-            <i
-              class="el-icon-edit active"
-              @click="
-                $router.push({ name: 'AddBankCard', query: { id: item.id } })
-              "
-            ></i>
-
-            <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+            <p>
+              <i
+                class="el-icon-edit"
+                @click="
+                  $router.push({ name: 'AddBankCard', query: { id: item.id } })
+                "
+              ></i>
+            </p>
           </li>
         </ul>
+
         <ul
           class="bank align-center"
           v-for="(item, idx) in wallwtList"
