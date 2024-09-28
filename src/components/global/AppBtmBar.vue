@@ -91,7 +91,7 @@ export default {
 .app-btm-bar {
   &,
   .app-btm-list {
-    height: 104px;
+    height: 87px;
   }
   .btm-item {
     flex-direction: column;
@@ -120,7 +120,7 @@ export default {
     align-items: center;
     position: relative;
     z-index: 999;
-    background: url("@/assets/img/ntf/home/btm-bg1.png") no-repeat center center;
+    background: url("@/assets/img/ntf/130955@3x.webp") no-repeat center center;
     background-size: 100% 100%;
     font-size: 12px;
     color: var(--primary);
