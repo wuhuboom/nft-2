@@ -11,7 +11,7 @@
     <div class="px-16 py-16" v-else>
       <div class="card-list d-flex">
         <ul
-          class="bank flex-column justify-between p-x-24"
+          class="bank usdtList flex-column justify-between p-x-24"
           v-for="(item, idx) in usdtList"
           :key="`${idx}-usdt`"
         >
@@ -64,29 +64,36 @@
             </p>
           </li>
         </ul>
-
         <ul
-          class="bank align-center"
+          class="bank wallwtList flex-column justify-between p-x-24"
           v-for="(item, idx) in wallwtList"
           :key="`${idx}-wallet`"
         >
-          <li class="icon-box center-center"><img :src="udticon3" alt="" /></li>
-          <li class="name flex-1 app-ellipsis">
-            <p class="app-ellipsis name-title">
+          <li class="font-14">
+            <p class="m-b-8">
+              {{ item.type }} {{ $t("wallet.list.wallet.text") }}
+            </p>
+            <p>
+              {{ $t("Creation time") }}
+              {{ formatDate(item.createdAt, "yyyy-MM-dd") }}
+            </p>
+          </li>
+          <li class="justify-between align-center">
+            <p class="number">
               {{ item.address | leftAddr }} **** ****
               {{ item.address | rightAddr }}
             </p>
-            <p>{{ item.type }}{{ $t("wallet.list.wallet.text") }}</p>
-          </li>
-          <li class="rit">
-            <i
-              class="el-icon-edit active"
-              @click="
-                $router.push({ name: 'AddressWallet', query: { id: item.id } })
-              "
-            ></i>
-
-            <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+            <p>
+              <i
+                class="el-icon-edit"
+                @click="
+                  $router.push({
+                    name: 'AddressWallet',
+                    query: { id: item.id },
+                  })
+                "
+              ></i>
+            </p>
           </li>
         </ul>
       </div>
@@ -261,6 +268,12 @@ export default {
       background: url("@/assets/img/ntf/bank.webp") no-repeat center center;
       background-size: 100% 100%;
       color: #f5f6f8;
+      &.wallwtList {
+        background-image: url("@/assets/img/ntf/wa.webp");
+      }
+      &.usdtList {
+        background-image: url("@/assets/img/ntf/usdt.webp");
+      }
       .number {
         font-size: 18px;
       }
