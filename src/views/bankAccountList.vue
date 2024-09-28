@@ -9,78 +9,85 @@
       <van-loading class="color-primary" />
     </div>
     <div class="px-16 py-16" v-else>
-      <ul
-        class="bank align-center"
-        v-for="(item, idx) in usdtList"
-        :key="`${idx}-usdt`"
-      >
-        <li class="icon-box center-center"><img :src="udticon1" alt="" /></li>
-        <li class="name flex-1 app-ellipsis">
-          <p class="app-ellipsis name-title">
-            {{ item.addr | usdt_left_addr }} **** ****
-            {{ item.addr | usdt_right_addr }}
-          </p>
-          <p>{{ item.protocol }}</p>
-        </li>
-        <li class="rit">
-          <i
-            class="el-icon-edit active"
-            @click="
-              $router.push({ name: 'AddressUsdt', query: { id: item.id } })
-            "
-          ></i>
+      <div class="card-list d-flex">
+        <ul
+          class="bank flex-column justify-between p-x-24"
+          v-for="(item, idx) in usdtList"
+          :key="`${idx}-usdt`"
+        >
+          <li class="font-14">
+            <p class="m-b-8">{{ item.protocol }}</p>
+            <p>
+              {{ $t("Creation time") }}
+              {{ formatDate(item.createdAt, "yyyy-MM-dd") }}
+            </p>
+          </li>
+          <li class="justify-between align-center">
+            <p class="number">
+              {{ item.addr | usdt_left_addr }} **** ****
+              {{ item.addr | usdt_right_addr }}
+            </p>
+            <p>
+              <i
+                class="el-icon-edit"
+                @click="
+                  $router.push({ name: 'AddressUsdt', query: { id: item.id } })
+                "
+              ></i>
+            </p>
+          </li>
+        </ul>
 
-          <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
-        </li>
-      </ul>
-      <ul
-        class="bank align-center"
-        v-for="(item, idx) in bankList"
-        :key="`${idx}-bank`"
-      >
-        <li class="icon-box center-center"><img :src="udticon2" alt="" /></li>
-        <li class="name flex-1 app-ellipsis">
-          <p class="app-ellipsis name-title">
-            {{ item.cardNumber | leftAddr }} **** ****
-            {{ item.cardNumber | rightAddr }}
-          </p>
-          <p>{{ item.cardName }}</p>
-        </li>
-        <li class="rit">
-          <i
-            class="el-icon-edit active"
-            @click="
-              $router.push({ name: 'AddBankCard', query: { id: item.id } })
-            "
-          ></i>
+        <ul
+          class="bank align-center"
+          v-for="(item, idx) in bankList"
+          :key="`${idx}-bank`"
+        >
+          <li class="icon-box center-center"><img :src="udticon2" alt="" /></li>
+          <li class="name flex-1 app-ellipsis">
+            <p class="app-ellipsis name-title">
+              {{ item.cardNumber | leftAddr }} **** ****
+              {{ item.cardNumber | rightAddr }}
+            </p>
+            <p>{{ item.cardName }}</p>
+          </li>
+          <li class="rit">
+            <i
+              class="el-icon-edit active"
+              @click="
+                $router.push({ name: 'AddBankCard', query: { id: item.id } })
+              "
+            ></i>
 
-          <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
-        </li>
-      </ul>
-      <ul
-        class="bank align-center"
-        v-for="(item, idx) in wallwtList"
-        :key="`${idx}-wallet`"
-      >
-        <li class="icon-box center-center"><img :src="udticon3" alt="" /></li>
-        <li class="name flex-1 app-ellipsis">
-          <p class="app-ellipsis name-title">
-            {{ item.address | leftAddr }} **** ****
-            {{ item.address | rightAddr }}
-          </p>
-          <p>{{ item.type }}{{ $t("wallet.list.wallet.text") }}</p>
-        </li>
-        <li class="rit">
-          <i
-            class="el-icon-edit active"
-            @click="
-              $router.push({ name: 'AddressWallet', query: { id: item.id } })
-            "
-          ></i>
+            <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+          </li>
+        </ul>
+        <ul
+          class="bank align-center"
+          v-for="(item, idx) in wallwtList"
+          :key="`${idx}-wallet`"
+        >
+          <li class="icon-box center-center"><img :src="udticon3" alt="" /></li>
+          <li class="name flex-1 app-ellipsis">
+            <p class="app-ellipsis name-title">
+              {{ item.address | leftAddr }} **** ****
+              {{ item.address | rightAddr }}
+            </p>
+            <p>{{ item.type }}{{ $t("wallet.list.wallet.text") }}</p>
+          </li>
+          <li class="rit">
+            <i
+              class="el-icon-edit active"
+              @click="
+                $router.push({ name: 'AddressWallet', query: { id: item.id } })
+              "
+            ></i>
 
-          <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
-        </li>
-      </ul>
+            <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+          </li>
+        </ul>
+      </div>
+
       <div class="types-list">
         <p
           class="bank-types"
@@ -158,13 +165,13 @@ export default {
     async getEwalletData() {
       const [err, res] = await userApi.walletInfo();
       if (err) return;
-      // res.data = [
-      //   {
-      //     address: "12132",
-      //     type: "ERC20",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          address: "12132",
+          type: "ERC20",
+          createdAt: 1627584000000,
+        },
+      ];
       if (res.data && !res.data.length) {
         // this.$router.push({ name: "AddressWallet" });
         return;
@@ -177,13 +184,13 @@ export default {
       if (err) {
         return;
       }
-      // res.data = [
-      //   {
-      //     cardNumber: "12132",
-      //     cardName: "中国银行",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          cardNumber: "12132",
+          cardName: "中国银行",
+          createdAt: 1627584000000,
+        },
+      ];
       if (res.data) {
         if (Array.isArray(res.data)) {
           this.bankList = res.data;
@@ -197,13 +204,13 @@ export default {
       if (err) {
         return;
       }
-      // res.data = [
-      //   {
-      //     addr: "12132",
-      //     protocol: "ERC20",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          addr: "12132",
+          protocol: "ERC20",
+          createdAt: 1627584000000,
+        },
+      ];
       this.usdtList = res.data;
     },
   },
@@ -241,38 +248,21 @@ export default {
     font-size: 16px;
     margin-bottom: 8px;
   }
-  .bank {
-    height: 80px;
-    border-radius: 15px;
-    border: solid 1px var(--main);
-    margin-bottom: 8px;
-
-    background-size: auto 100%;
-
-    padding-right: 16px;
-    .name {
-      & > p:first-child {
-        margin-bottom: 8px;
+  .card-list {
+    overflow-x: auto;
+    & > ul {
+      margin-right: 12px;
+      width: 290px;
+      height: 153px;
+      flex-shrink: 0;
+      background: url("@/assets/img/ntf/bank.webp") no-repeat center center;
+      background-size: 100% 100%;
+      color: #f5f6f8;
+      .number {
+        font-size: 18px;
       }
-    }
-    .rit {
-      width: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      img {
-        width: 24px;
-        height: 24px;
-        display: block;
-        margin-bottom: 4px;
-      }
-    }
-    .icon-box {
-      width: 74px;
-      img {
-        width: 44px;
-        height: 44px;
-        object-fit: cover;
+      .el-icon-edit {
+        font-size: 20px;
       }
     }
   }
