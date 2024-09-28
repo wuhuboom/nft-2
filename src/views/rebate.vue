@@ -149,15 +149,15 @@ export default {
         return;
       }
       //模拟数据 res.data.results
-      res.data.results = [
-        { ymd: "2021-09-01", type: 1, money: 100 },
-        { ymd: "2021-09-02", type: 2, money: 200 },
-        { ymd: "2021-09-03", type: 3, money: 300 },
-        { ymd: "2021-09-04", type: 1, money: 400 },
-        { ymd: "2021-09-05", type: 2, money: 500 },
-        { ymd: "2021-09-06", type: 3, money: 600 },
-        { ymd: "2021-09-07", type: 1, money: 700 },
-      ];
+      // res.data.results = [
+      //   { ymd: "2021-09-01", type: 1, money: 100 },
+      //   { ymd: "2021-09-02", type: 2, money: 200 },
+      //   { ymd: "2021-09-03", type: 3, money: 300 },
+      //   { ymd: "2021-09-04", type: 1, money: 400 },
+      //   { ymd: "2021-09-05", type: 2, money: 500 },
+      //   { ymd: "2021-09-06", type: 3, money: 600 },
+      //   { ymd: "2021-09-07", type: 1, money: 700 },
+      // ];
       let list = this.curItem.results.concat(res.data.results);
       // for (let i = 0; i < 7; i++) {
       //   list.push(list[0]);
