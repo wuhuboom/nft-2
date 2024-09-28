@@ -1557,5 +1557,6 @@
 	"detail.live.2": "Offline",
 	"detail.live.3": "Not Used",
 	"detail.live.4": "Member Name",
-	"detail.live.5": "Last Online Time"
+	"detail.live.5": "Last Online Time",
+	"buy.min.money":"Minimum investment"
 }
