@@ -1,57 +1,60 @@
 <template>
-  <van-sticky @change="change" style="z-index: 999" :offset-top="0">
-    <ul
-      class="nav index-sticky-nav justify-between align-center"
-      :class="{ 'bg-black': fiexd }"
-    >
-      <li class="logo center-center" @click="$router.push({ name: 'home' })">
-        <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
-      </li>
-      <li class="flex-1 text-center txt">
-        <slot name="title">
-          <div>
-            <ul class="text-center center-center user-info">
-              <li
-                class="username blod"
-                :class="{ 'm-t-4': !$store.state.shoeName }"
-              >
-                {{ $store.state.shoeName ? user.username : "*****" }}
-              </li>
-              <li class="vipLevel m-t-4" v-if="user.vipLevel">
-                LV.{{ user.vipLevel }}
-              </li>
-              <li>
-                <i
-                  @click="$store.commit('setShowName', !$store.state.shoeName)"
-                  class="font-16 m-l-8 iconfont color-active"
-                  :class="[
-                    $store.state.shoeName
-                      ? 'icon-yanjing_xianshi_o'
-                      : 'icon-yanjing_yincang_o',
-                  ]"
-                ></i>
-              </li>
-            </ul>
-          </div>
-        </slot>
-      </li>
-      <li class="align-center lef-icon">
-        <p class="m-r-16" @click="openLang" v-if="showLang">
-          <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
-        </p>
-        <p class="m-r-16">
-          <img
-            class="d-img"
-            @click="$router.push({ name: 'Message' })"
-            src="@/assets/img/ntf/home/nav2.png"
-            alt=""
-          />
-        </p>
-      </li>
-    </ul>
-
-    <BtmActionLang ref="BtmActionLang" />
-  </van-sticky>
+  <div>
+    <van-sticky @change="change" style="z-index: 999" :offset-top="0">
+      <ul
+        class="nav index-sticky-nav justify-between align-center"
+        :class="{ 'bg-black': fiexd }"
+      >
+        <li class="logo center-center" @click="$router.push({ name: 'home' })">
+          <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
+        </li>
+        <li class="flex-1 text-center txt">
+          <slot name="title">
+            <div>
+              <ul class="text-center center-center user-info">
+                <li
+                  class="username blod"
+                  :class="{ 'm-t-4': !$store.state.shoeName }"
+                >
+                  {{ $store.state.shoeName ? user.username : "*****" }}
+                </li>
+                <li class="vipLevel m-t-4" v-if="user.vipLevel">
+                  LV.{{ user.vipLevel }}
+                </li>
+                <li>
+                  <i
+                    @click="
+                      $store.commit('setShowName', !$store.state.shoeName)
+                    "
+                    class="font-16 m-l-8 iconfont color-active"
+                    :class="[
+                      $store.state.shoeName
+                        ? 'icon-yanjing_xianshi_o'
+                        : 'icon-yanjing_yincang_o',
+                    ]"
+                  ></i>
+                </li>
+              </ul>
+            </div>
+          </slot>
+        </li>
+        <li class="align-center lef-icon">
+          <p class="m-r-16" @click="openLang" v-if="showLang">
+            <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
+          </p>
+          <p class="m-r-16">
+            <img
+              class="d-img"
+              @click="$router.push({ name: 'Message' })"
+              src="@/assets/img/ntf/home/nav2.png"
+              alt=""
+            />
+          </p>
+        </li>
+      </ul>
+      <BtmActionLang ref="BtmActionLang" />
+    </van-sticky>
+  </div>
 </template>
 
 <script>

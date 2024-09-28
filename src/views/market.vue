@@ -10,6 +10,7 @@
         <p class="font16" style="font-weight: normal">{{ $t(`investment`) }}</p>
       </template>
     </HomeTopBar>
+    <MoneyBar />
     <div class="p-l-16 p-r-16 p-t-12">
       <div class="plans" v-if="planeYeb.id">
         <div
@@ -355,10 +356,12 @@
 
 <script>
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
+import MoneyBar from "@/components/home/MoneyBar.vue";
 import activationCode from "@/components/activationCode";
 import yuIcon from "@/assets/img/ntf/yue.png";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
+
 const initFome = () => {
   return {
     planId: "",
@@ -372,7 +375,7 @@ const initFome = () => {
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: { activationCode, HomeTopBar },
+  components: { activationCode, HomeTopBar, MoneyBar },
   data() {
     return {
       errIcon,
@@ -568,7 +571,6 @@ export default {
     this.$store.commit("setPdTop", false);
     this.investPlans();
     this.investPlanYeb();
-    this.$store.dispatch("getInfo");
   },
 };
 </script>

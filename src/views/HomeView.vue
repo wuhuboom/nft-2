@@ -1,24 +1,7 @@
 <template>
   <div class="font12 home-index-page">
     <HomeTopBar />
-    <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
-      <li class="live">
-        <img src="@/assets/img/ntf/home/homeligth.png" alt="" />
-      </li>
-      <li class="m-r-8 m-l-8 center-center flex-1 money-list">
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.available`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.balance) }}</p>
-        </div>
-        <div class="p-x-4">
-          <p class="els">{{ $t(`user.money.purchased`) }}</p>
-          <p class="m-t-4 els">{{ divide(user.frozenBet) }}</p>
-        </div>
-      </li>
-      <li class="serve" @click="$store.dispatch('getServeData', 1)">
-        <img class="d-img" src="@/assets/img/ntf/home/serve.png" alt="" />
-      </li>
-    </ul>
+    <MoneyBar />
     <Banner class="m-b-16" />
     <div class="shop m-l-16 m-r-16 m-b-16">
       <ul class="nav-enter-list justify-between els">
@@ -190,6 +173,7 @@ import dayjs from "dayjs";
 import userApi from "@/api/user";
 import VersionDilalog from "@/views/components/VersionDilalog.vue";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
+import MoneyBar from "@/components/home/MoneyBar.vue";
 import Banner from "@/components/global/Banner.vue";
 export default {
   name: "HomeView",
@@ -230,6 +214,7 @@ export default {
     VersionDilalog,
     HomeTopBar,
     Banner,
+    MoneyBar,
   },
   computed: {
     safeConfig() {
@@ -298,8 +283,6 @@ export default {
     this.informationDealSold();
     this.informationVideo();
     this.$store.dispatch("setSafeConfig");
-    //更新用户信息
-    this.$store.dispatch("getInfo");
   },
   mounted() {
     if (this.$store.state.withdrawalLimitMsg) {
@@ -340,35 +323,7 @@ export default {
 .from-to {
   width: 34px;
 }
-.money-list {
-  //width: 220.5px;
-  text-align: center;
-  height: 38.2px;
-  border-radius: 9.5px;
-  border: solid 1px #2c2c2c;
-  background-image: linear-gradient(to bottom, #000, #373334);
-  font-size: 10px;
-  & > div {
-    width: 50%;
-  }
-  & > div:nth-child(1) {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 153, 123, 0) 0%,
-      rgba(255, 58, 0, 0.33) 100%
-    );
-    border-radius: 9px;
-  }
-}
-.live {
-  img {
-    height: 26px;
-  }
-}
-.serve {
-  width: 31px;
-  height: 31px;
-}
+
 .shop {
   .user-info {
     height: 48px;
