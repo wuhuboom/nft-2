@@ -16,13 +16,13 @@
         </li>
         <li class="total-num">{{ divide(totalNum) }}</li>
       </ul>
-      <ul class="justify-between tolal-list p-b-4">
+      <ul class="justify-between tolal-list p-b-4 m-b-12">
         <li class="gray">
           {{ $t("backapi.self.rebate.top.content.lastweek.text") }}
         </li>
         <li class="p-r-8">{{ divide(lastWeekNum) }}</li>
       </ul>
-      <ul class="justify-between tolal-list p-b-4">
+      <ul class="justify-between tolal-list p-b-4 m-b-12">
         <li class="gray">
           {{ $t("backapi.self.rebate.top.content.today.text") }}
         </li>
@@ -53,7 +53,7 @@
           </div>
           <van-grid
             v-show="!nothing"
-            class="m-b-16 font13"
+            class="m-b-16 bg-line font13"
             v-for="(item, idx) in curItem.results"
             :key="idx"
             :border="false"
@@ -148,6 +148,16 @@ export default {
         this.curItem.hasNext = false;
         return;
       }
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   { ymd: "2021-09-01", type: 1, money: 100 },
+      //   { ymd: "2021-09-02", type: 2, money: 200 },
+      //   { ymd: "2021-09-03", type: 3, money: 300 },
+      //   { ymd: "2021-09-04", type: 1, money: 400 },
+      //   { ymd: "2021-09-05", type: 2, money: 500 },
+      //   { ymd: "2021-09-06", type: 3, money: 600 },
+      //   { ymd: "2021-09-07", type: 1, money: 700 },
+      // ];
       let list = this.curItem.results.concat(res.data.results);
       // for (let i = 0; i < 7; i++) {
       //   list.push(list[0]);
@@ -200,6 +210,12 @@ export default {
     }
     .van-grid {
       flex-wrap: nowrap;
+    }
+    .bg-line {
+      border-radius: 4px;
+      height: 38px;
+      line-height: 38px;
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
   .agency-lst {
