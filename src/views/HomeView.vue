@@ -1,7 +1,7 @@
 <template>
   <div class="font12 home-index-page">
     <HomeTopBar />
-    <MoneyBar />
+    <MoneyBar class="m-b-20" />
     <Banner class="m-b-16" />
     <div class="shop m-l-16 m-r-16 m-b-16">
       <ul class="nav-enter-list justify-between els">

@@ -1,103 +1,113 @@
 <template>
   <div class="p-b-32">
     <HomeTopBar :title="user.username" />
-    <div class="page-user font12 p-l-16 p-r-16">
-      <div class="align-center justify-between m-t-8">
-        <ul>
-          <li class="gray">{{ $t(`my.all.income`) }}</li>
-          <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
-          <li class="green">+{{ divide(invest.todayAll) }}</li>
-        </ul>
-        <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
-          <li>
-            <img
-              class="d-img userpic"
-              src="@/assets/img/ntf/userpic.webp"
-              alt=""
-            />
+    <MoneyBar />
+    <div class="page-user font12">
+      <div class="p-l-16 p-r-16">
+        <div class="align-center justify-between m-t-8">
+          <ul>
+            <li class="gray">{{ $t(`my.all.income`) }}</li>
+            <li class="m-t-8 m-b-8 bold font18">{{ divide(invest.total) }}</li>
+            <li class="green">+{{ divide(invest.todayAll) }}</li>
+          </ul>
+          <ul class="user-set" @click="$router.push({ name: 'UserSetting' })">
+            <li>
+              <img
+                class="d-img userpic"
+                src="@/assets/img/ntf/userpic.webp"
+                alt=""
+              />
+            </li>
+            <li class="edt center-center">
+              <van-icon name="edit" class="font14" />
+            </li>
+          </ul>
+        </div>
+        <ul class="navs justify-between m-t-16">
+          <li
+            v-for="(item, idx) in navs"
+            :key="idx"
+            @click="item.path && $router.push(item.path)"
+            class="center-center flex-column text-center"
+          >
+            <img class="d-img" :src="item.img" alt="" />
+            <p class="m-t-12">{{ item.text }}</p>
           </li>
-          <li class="edt center-center">
-            <van-icon name="edit" class="font14" />
+        </ul>
+        <ul
+          v-if="config.beyShow === 1"
+          @click="$router.push({ name: 'Share' })"
+          class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
+        >
+          <li class="font14">{{ $t(`me.my.qr.code.text`) }}</li>
+          <li class="align-center">
+            Click to view the invitation code
+            <van-icon class="m-l-4" name="arrow" />
           </li>
         </ul>
       </div>
-      <ul class="navs justify-between m-t-16">
-        <li
-          v-for="(item, idx) in navs"
-          :key="idx"
-          @click="item.path && $router.push(item.path)"
-          class="center-center flex-column text-center"
-        >
-          <img class="d-img" :src="item.img" alt="" />
-          <p class="m-t-12">{{ item.text }}</p>
-        </li>
-      </ul>
-      <ul
-        v-if="config.beyShow === 1"
-        @click="$router.push({ name: 'Share' })"
-        class="my-qr flex-column m-t-24 p-l-16 p-b-12 p-t-12 justify-around"
-      >
-        <li class="font14">{{ $t(`me.my.qr.code.text`) }}</li>
-        <li class="align-center">
-          Click to view the invitation code
-          <van-icon class="m-l-4" name="arrow" />
-        </li>
-      </ul>
-      <p class="font14 bold m-t-24 m-b-16">{{ $t(`property.navbar.title`) }}</p>
-      <ul class="trade-list d-flex full100 m-b-16 gray">
-        <li class="name">
-          <p class="els">{{ $t("deal.createOrderMer.354499-5") }}</p>
-        </li>
-        <li class="flex-1">
-          <p class="els">{{ $t("info.trade.col4.text") }}</p>
-        </li>
-        <li class="no-shrink earnings">
-          <p class="els">{{ $t("Total.earnings") }}</p>
-        </li>
-      </ul>
-      <div v-if="plans.length">
-        <ul
-          class="trade-list d-flex full100 m-b-16"
-          v-for="(item, idx) in plans"
-          :key="idx"
-        >
-          <li class="name els align-center">
-            <img
-              v-if="item.planIcon"
-              class="d-img no-shrink"
-              :src="item.planIcon"
-              alt=""
-            />
-            <p class="els">{{ item.plan }}</p>
+      <p class="font16 bold title-line p-b-8 m-t-24 m-b-16 p-l-16 p-r-16">
+        {{ $t(`property.navbar.title`) }}
+      </p>
+      <div class="p-l-16 p-r-16">
+        <ul class="trade-list d-flex full100 m-b-16 gray">
+          <li class="name">
+            <p class="els color88">{{ $t("deal.createOrderMer.354499-5") }}</p>
           </li>
           <li class="flex-1">
-            <p class="els">{{ divide(item.money) }}</p>
+            <p class="els color88">{{ $t("info.trade.col4.text") }}</p>
           </li>
           <li class="no-shrink earnings">
-            <p class="els">{{ divide(item.moneyIncome) }}</p>
+            <p class="els color88">{{ $t("Total.earnings") }}</p>
           </li>
         </ul>
+        <div v-if="plans.length">
+          <ul
+            class="trade-list d-flex full100 m-b-16"
+            v-for="(item, idx) in plans"
+            :key="idx"
+          >
+            <li class="name els align-center">
+              <img
+                v-if="item.planIcon"
+                class="d-img no-shrink"
+                :src="item.planIcon"
+                alt=""
+              />
+              <p class="els">{{ item.plan }}</p>
+            </li>
+            <li class="flex-1">
+              <p class="els">{{ divide(item.money) }}</p>
+            </li>
+            <li class="no-shrink earnings">
+              <p class="els">{{ divide(item.moneyIncome) }}</p>
+            </li>
+          </ul>
+        </div>
+        <NoData className="m-t-40" v-else />
       </div>
 
-      <NoData v-else />
       <div
-        class="m-b-16 m-t-24 justify-between align-center"
+        class="m-b-16 m-t-24 title-line p-b-8 p-l-16 p-r-16 justify-between align-center"
         @click="
           $router.push({
             name: 'BalanceRecord',
           })
         "
       >
-        <p class="font14 bold">{{ $t("property.record.title") }}</p>
+        <p class="font16 bold">{{ $t("property.record.title") }}</p>
         <van-icon size="16" name="arrow" />
       </div>
-      <ChangeRecord v-if="changs.length" :list="changs" />
-      <NoData className="m-t-40" v-else />
+      <div class="p-l-16 p-r-16">
+        <ChangeRecord v-if="changs.length" :list="changs" />
+        <NoData className="m-t-40" v-else />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import MoneyBar from "@/components/home/MoneyBar.vue";
 import userApi from "@/api/user";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import ChangeRecord from "@/components/home/ChangeRecord.vue";
@@ -106,6 +116,7 @@ export default {
   components: {
     HomeTopBar,
     ChangeRecord,
+    MoneyBar,
   },
   data() {
     return {
@@ -147,7 +158,7 @@ export default {
         });
       } else {
         arr.push({
-          img: require("@/assets/img/ntf/user5.webp"),
+          img: require("@/assets/img/ntf/user5.png"),
           text: this.$t(`me.my.qr.code.text`),
           path: "/pages/me/share",
         });
@@ -183,20 +194,20 @@ export default {
     this.balanceChangeRequest();
     this.$store.dispatch("getInfo");
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
+.title-line {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 .gray {
   color: #79869b;
 }
 .green {
   color: #00d91f;
+}
+.color88 {
+  color: #808080;
 }
 .my-qr {
   background: url("@/assets/img/ntf/myqr.webp") no-repeat center center;

@@ -86,7 +86,8 @@ export default {
   },
   computed: {
     addClass() {
-      return ["home", "investMarket"].includes(this.$route.name);
+      //console.log(this.$route.name);
+      return ["home", "investMarket", "User"].includes(this.$route.name);
     },
     isHome() {
       return this.$route.name === "home";

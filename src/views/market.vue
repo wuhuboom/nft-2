@@ -14,7 +14,7 @@
     <div class="p-l-16 p-r-16 p-t-12">
       <div class="plans" v-if="planeYeb.id">
         <div
-          class="plans-item m-b-16"
+          class="plans-item m-b-12"
           @click="goPage({ min: planeYeb.rateConfig[0].min })"
         >
           <div class="align-center">
@@ -47,7 +47,7 @@
       </div>
       <div class="plans" v-for="(item, idx) in records" :key="idx">
         <div
-          class="plans-item m-b-16"
+          class="plans-item m-b-12"
           v-for="(doc, index) in item.rateConfig"
           :key="index"
           @click="
@@ -627,8 +627,7 @@ export default {
     color: #cacbce;
   }
   .plans-item {
-    border-radius: 14px;
-    //border: solid 1px #292929;
+    border-radius: 6px;
     background-color: #252424;
     padding: 24px 8px;
     min-width: 42px;
@@ -637,8 +636,8 @@ export default {
     text-align: right;
   }
   .days {
-    height: 18px;
-    line-height: 18px;
+    height: 14px;
+    line-height: 14px;
     padding: 0 10px;
     border-radius: 3px;
     background-color: #bcff2f;

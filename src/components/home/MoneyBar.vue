@@ -1,5 +1,5 @@
 <template>
-  <ul class="p-l-16 p-r-16 center-center els m-t-8 m-b-12">
+  <ul class="p-l-16 money-bar p-r-16 center-center els p-t-12 p-b-12">
     <li class="live">
       <img src="@/assets/img/ntf/home/homeligth.png" alt="" />
     </li>
@@ -43,8 +43,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+.money-bar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 .money-list {
   //width: 220.5px;
+
   text-align: center;
   height: 38.2px;
   border-radius: 9.5px;
