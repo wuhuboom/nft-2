@@ -30,12 +30,17 @@
       >
         <li class="justify-between my-first align-center p-b-16">
           <div class="align-center">
-            <span><img class="d-img person" :src="icons[idx]" alt="" /></span>
+            <span class="m-r-8"
+              ><img class="d-img person" :src="icons[idx]" alt=""
+            /></span>
             <div>
-              <span>Grade: lv.{{ idx + 1 }}</span>
-              <p class="align-center m-t-12">
-                <van-icon size="20" name="manager-o" />
-                <span class="color-fff m-l-4">{{ item.friendsCount }}</span>
+              <span class="font14 blod">Grade: lv.{{ idx + 1 }}</span>
+              <p class="align-center" style="margin-top: 2px">
+                <van-icon name="contact" size="14" />
+
+                <span class="color-fff m-l-4 font14 blod">{{
+                  item.friendsCount
+                }}</span>
               </p>
             </div>
           </div>
@@ -51,12 +56,15 @@
             {{ $t("backapi.self.safe.bill.detail.text") }}
           </p>
         </li>
-        <!-- <li class="m-t-16">
-          {{ $t("today.reg.num") }}：{{ item.todayReg || 0 }}
-        </li> -->
         <li class="justify-between align-center m-t-16">
-          <p>{{ $t("today.reg.num") }}：{{ item.todayReg || 0 }}</p>
-          <p>{{ $t("rechargeNum.Enough") }}：{{ item.todayInvest }}</p>
+          <p>
+            <span class="bgray"> {{ $t("today.reg.num") }}：</span>
+            <span class="font14 blod">{{ item.todayReg || 0 }}</span>
+          </p>
+          <p>
+            <span class="bgray"> {{ $t("rechargeNum.Enough") }}：</span>
+            <span class="font14 blod">{{ item.todayInvest }}</span>
+          </p>
         </li>
       </ul>
     </div>
@@ -284,6 +292,9 @@ export default {
     border-radius: 14.5px;
     border: solid 1px rgba(157, 157, 157, 0.09);
     background-color: #4b4b4b;
+  }
+  .bgray {
+    color: #ebebf5;
   }
 }
 </style>
