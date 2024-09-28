@@ -568,12 +568,7 @@ export default {
     this.$store.commit("setPdTop", false);
     this.investPlans();
     this.investPlanYeb();
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
+    this.$store.dispatch("getInfo");
   },
 };
 </script>
@@ -600,7 +595,7 @@ export default {
   .plans-item {
     border-radius: 14px;
     //border: solid 1px #292929;
-    background-color: rgba(150, 209, 252, 0.1);
+    background-color: #252424;
     padding: 24px 8px;
     min-width: 42px;
   }
