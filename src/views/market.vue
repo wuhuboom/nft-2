@@ -15,7 +15,7 @@
       <div class="plans" v-if="planeYeb.id">
         <div
           class="plans-item m-b-16"
-          @click="$router.push({ name: 'InvestDetail' })"
+          @click="goPage({ min: planeYeb.rateConfig[0].min })"
         >
           <div class="align-center">
             <p class="invest-pic no-shrink m-r-12">
@@ -26,9 +26,11 @@
                 <p class="font16">{{ planeYeb.name }}</p>
               </li>
               <li class="rate-row" v-if="planeYeb.rateConfig.length">
-                <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-                <p class="font16 rate color-active m-b-8">
+                <p class="font16 rate blod color-active m-b-8">
                   {{ planeYeb.rateConfig[0].rate }}%
+                </p>
+                <p class="colorfff">
+                  {{ $t(`buy.min.money`) }}:{{ planeYeb.rateConfig[0].min }}
                 </p>
               </li>
             </ul>
@@ -70,8 +72,10 @@
                 </p>
               </li>
               <li class="rate-row">
-                <p class="gray m-b-8">{{ $t(`rate.of.return`) }}</p>
-                <p class="font16 rate color-active">{{ doc.rate }}%</p>
+                <p class="font16 rate blod color-active m-b-8">
+                  {{ doc.rate }}%
+                </p>
+                <p class="colorfff">{{ $t(`buy.min.money`) }}:{{ doc.min }}</p>
               </li>
             </ul>
           </div>
@@ -110,8 +114,10 @@
               </p>
             </li>
             <li class="rate-row">
-              <p class="font16 rate color-active m-b-8">{{ item.rate }}%</p>
-              <p class="gray">{{ $t(`rate.of.return`) }}</p>
+              <p class="font16 rate blod color-active m-b-8">
+                {{ item.rate }}%
+              </p>
+              <p class="colorfff">{{ $t(`buy.min.money`) }}:{{ item.min }}</p>
             </li>
           </ul>
         </div>
@@ -475,11 +481,18 @@ export default {
     },
   },
   methods: {
+    goPage(v) {
+      if (this.balance < v.min) {
+        this.$toast(this.$t("backapi.balanceNotEnough"));
+        return;
+      }
+      this.$router.push({ name: "InvestDetail" });
+    },
     validator(v) {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      if (this.config.beyShow !== 1) return;
+      // if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
       this.planeYeb = {
@@ -545,6 +558,10 @@ export default {
       console.log(v);
       if (v.parent.curr == 100) {
         this.$toast("backapi.planExpired");
+        return;
+      }
+      if (this.balance < v.min) {
+        this.$toast(this.$t("backapi.balanceNotEnough"));
         return;
       }
       //更新用户
