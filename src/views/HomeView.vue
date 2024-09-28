@@ -40,7 +40,7 @@
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
       class="item-title justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
     >
-      <li class="color-fff font16">{{ $t(`user.Item.shop`) }}</li>
+      <li class="color-fff font16 blod">{{ $t(`user.Item.shop`) }}</li>
       <li class="center-center more color-active">
         {{ $t(`user.platform.more`) }}
         <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
@@ -54,7 +54,7 @@
         <p>
           <img src="@/assets/img/ntf/home/rit.png" alt="" />
         </p>
-        <ul class="trading m-l-8 m-r-8">
+        <ul class="trading bold m-l-8 m-r-8">
           <li class="els">{{ $t(`user.platform.trading`) }}</li>
           <li class="els">{{ $t(`user.platform.trading.desc`) }}</li>
         </ul>
@@ -89,7 +89,7 @@
     </div>
     <div class="hot-live-stream">
       <div class="title-box flex-wrap">
-        <div class="left flex-grow1">{{ $t(`Hot.Live.Stream`) }}</div>
+        <div class="left flex-grow1 blod">{{ $t(`Hot.Live.Stream`) }}</div>
         <div class="right" @click="$router.push('/pages/live')">
           {{ $t(`user.platform.more`) }}
           <van-icon class="m-l-4" name="arrow" />
@@ -114,7 +114,7 @@
     </div>
 
     <div class="game-download">
-      <div class="title">{{ $t(`Game.Download`) }}</div>
+      <div class="title blod m-b-16">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
         <div
           class="list flex-wrap"
@@ -370,6 +370,7 @@ export default {
   }
   .trading {
     width: 158px;
+    color: #0ecaf6;
   }
 
   .content-box {
@@ -431,7 +432,6 @@ export default {
     padding: 0 16px;
     .left {
       font-size: 16px;
-      font-weight: 600;
     }
     .right {
       color: #f5673e;
@@ -474,7 +474,7 @@ export default {
   color: #e3e7ec;
   .title {
     font-size: 16px;
-    font-weight: 600;
+
     margin-bottom: 14px;
   }
   .list {
