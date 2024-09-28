@@ -92,7 +92,7 @@
         <van-icon size="16" name="arrow" />
       </div>
       <ChangeRecord v-if="changs.length" :list="changs" />
-      <NoData v-else />
+      <NoData className="m-t-40" v-else />
     </div>
   </div>
 </template>

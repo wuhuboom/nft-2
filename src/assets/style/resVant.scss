@@ -22,6 +22,10 @@ $unit: 'px'; // Feel free to change the unit.
 @include list-loop('.p-b-', 'padding-bottom');
 @include list-loop('.p-l-', 'padding-left');
 @include list-loop('.p-x-', 'padding');
+input::placeholder {
+  color: #808080 !important
+
+}
 .limt-form-with {
     width: 264px;
   }
@@ -31,7 +35,7 @@ $unit: 'px'; // Feel free to change the unit.
         padding: 0;
         .van-field__body{
           border-radius: 15px;
-          background-color: #242424;
+          background-color: rgba(255,255,255,0.1);
           height: 48px;
           padding: 8px;
         }
@@ -78,7 +82,7 @@ $unit: 'px'; // Feel free to change the unit.
 .el-ntf-select{
   height: 44px;
   border-radius: 15px;
-  background-color: #242424;
+  background-color: rgba(255,255,255,0.1);
 //   padding-left: 16px;
 //   padding-right: 16px;
   .el-input__inner{

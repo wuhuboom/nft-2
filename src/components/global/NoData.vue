@@ -11,14 +11,15 @@ export default {
   props: {
     className: {
       type: String,
-      default: "m-t-16",
+      default: "",
     },
   },
 };
 </script>
 <style scoped lang="less">
 .no-data {
-  color: var(--primary);
+  color: #95989d;
+  margin-top: 152px;
   img {
     width: 79px;
     height: 79px;
