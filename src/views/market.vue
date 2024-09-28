@@ -121,13 +121,13 @@
             </li>
           </ul>
         </div>
-        <p class="m-t-20 m-b-12 font14">{{ $t(`purchase.amount`) }}</p>
+        <p class="m-t-24 m-b-12 font14">{{ $t(`purchase.amount`) }}</p>
         <van-form class="ntf-form" @submit="onSubmit">
           <van-field
             v-model="formData.money"
             type="digit"
             name="money"
-            class="field-inlude-code"
+            class="field-inlude-code p-x-0"
             :placeholder="limitTxt"
             :rules="[
               {
@@ -152,14 +152,11 @@
               >
             </template>
           </van-field>
-          <div class="m-t-8 m-b-20 align-center justify-between">
-            <!-- <p>
-              {{ $t(`total.return`) }}:<span class="font14">{{
-                earnings
-              }}</span>
-            </p> -->
+          <div class="m-t-8 m-b-24 align-center justify-between">
             <p>
-              {{ $t(`wallet.index.balance.text`) }}:
+              <span class="color80"
+                >{{ $t(`wallet.index.balance.text`) }}:</span
+              >
               <span class="active">{{ balance }}</span>
             </p>
           </div>
@@ -170,7 +167,7 @@
             </li>
           </ul>
 
-          <div v-if="addRate" class="m-b-12">
+          <div v-if="addRate" class="m-b-24">
             <div
               @click.stop="formData.autoInvest = 0"
               class="justify-between make-way p-x-12 align-center m-b-8"
@@ -185,7 +182,7 @@
                     name="question-o"
                   />
                 </li>
-                <li>
+                <li class="active">
                   {{ $t(`total.return`) }}:<span class="font14">{{
                     way1earnings
                   }}</span>
@@ -213,7 +210,7 @@
                     name="question-o"
                   />
                 </li>
-                <li>
+                <li class="active">
                   {{ $t(`total.return`) }}:<span class="font14">{{
                     way2earnings
                   }}</span>
@@ -653,6 +650,7 @@ export default {
   .buy-detail {
     min-height: 100%;
     padding-top: @navHeight+24px;
+    color: #e3e7ec;
   }
   ::v-deep {
     .van-checkbox__icon--disabled .van-icon {
@@ -720,5 +718,8 @@ export default {
       background-color: #f5673e;
     }
   }
+}
+.color80 {
+  color: #808080;
 }
 </style>
