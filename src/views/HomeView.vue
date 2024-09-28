@@ -452,6 +452,7 @@ export default {
       img {
         width: 240px;
         height: 128px;
+        object-fit: cover;
       }
     }
     .list {
