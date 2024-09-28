@@ -160,9 +160,9 @@
               <span class="active">{{ balance }}</span>
             </p>
           </div>
-          <ul class="font12 criteria m-b-20" v-if="popTxt.length">
+          <ul class="font12 criteria m-b-24" v-if="popTxt.length">
             <li class="font14 m-b-4">{{ $t("Participation.criteria") }}</li>
-            <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
+            <li class="color80 m-b-4" v-for="(d, i) in popTxt" :key="i">
               {{ i + 1 }}、{{ d.txt }}
             </li>
           </ul>
@@ -464,6 +464,10 @@ export default {
     popTxt() {
       const arr = [];
       const data = this.item;
+      // Object.assign(data, {
+      //   inDays: 1,
+      //   subPlayer: 1,
+      // });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
