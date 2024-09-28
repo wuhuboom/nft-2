@@ -1,10 +1,6 @@
 <template>
   <div class="change-password-view font12 p-r-12 p-l-12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('security.pass.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.pass.text')"> </AppTopBar>
     <div>
       <van-form ref="form" class="ntf-form m-t-12" @submit="onSubmit">
         <p class="m-b-16 font14">{{ $t("index.editor.psd.text") }}</p>

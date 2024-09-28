@@ -1,9 +1,6 @@
 <template>
   <div class="wallet-page font12 p-r-12 p-l-12">
-    <AppTopBar
-      :topBarTitle="$t(`user.menu.title1.text`)"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    ></AppTopBar>
+    <AppTopBar :topBarTitle="$t(`user.menu.title1.text`)"></AppTopBar>
     <div>
       <ul
         class="align-center menu font16 m-t-12 m-b-12 p-l-12 p-r-12"

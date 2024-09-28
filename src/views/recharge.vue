@@ -1,10 +1,6 @@
 <template>
   <div class="message-page font12 p-l-16 p-r-16">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('deal.recharge.354498-0')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('deal.recharge.354498-0')"> </AppTopBar>
     <div class="center-center py-16" v-if="!rechargeList.length">
       <van-Loading class="color-primary" />
     </div>

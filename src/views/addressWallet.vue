@@ -1,7 +1,6 @@
 <template>
   <div class="address-add font12 p-l-16 p-r-16">
     <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="
         $t(
           id

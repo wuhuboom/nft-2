@@ -1,10 +1,6 @@
 <template>
   <div class="message-page font12 p-l-16 p-r-16">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('home.index.withdraw.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('home.index.withdraw.text')"> </AppTopBar>
     <div class="center-center py-16" v-if="!withdrawList.length">
       <van-Loading class="color-primary" />
     </div>

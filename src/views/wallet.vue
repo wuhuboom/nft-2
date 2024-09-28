@@ -1,9 +1,6 @@
 <template>
   <div class="wallet-page font12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('fuc.safe.text')"
-    >
+    <AppTopBar :topBarTitle="$t('fuc.safe.text')">
       <template #right>
         <van-icon
           class="color-fff"

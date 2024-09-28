@@ -1,20 +1,26 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('security.phone.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.phone.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form m-t-16" @submit="onSubmit">
+        <p class="lable-text">{{ $t("Update.phone.org") }}</p>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           disabled
           :value="user.phone"
           :placeholder="$t('password.setting.phone.old.phone.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124605@2x.webp"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("Update.phone.vaild.code") }}</p>
         <van-field
-          class="mb-16 field-inlude-code"
+          class="field-inlude-code m-b-16 p-x-0"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -38,12 +44,13 @@
             >
           </template>
         </van-field>
+        <p class="lable-text">{{ $t("Update.phone.new") }}</p>
         <van-field
           v-model.trim="form.phone"
           :placeholder="$t('form.phoneNum.text')"
           autocomplete="new-password"
           type="digit"
-          class="left-icon-box m-b-16 align-center phone-input"
+          class="left-icon-box m-b-24 align-center phone-input"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>

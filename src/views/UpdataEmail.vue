@@ -1,10 +1,6 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('security.mail.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.mail.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form m-t-16" @submit="onSubmit">
         <van-field

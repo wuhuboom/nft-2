@@ -1,10 +1,6 @@
 <template>
   <div class="safe-billing font12 color-primary pb-16">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t(`wallet.index.explanation.text`)"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t(`wallet.index.explanation.text`)"> </AppTopBar>
     <ul class="cont-text m-x-16">
       <li class="m-b-16">{{ $t(`backapi.self.safe.rule.content1.text`) }}</li>
       <li class="m-b-16">{{ $t(`backapi.self.safe.rule.content2.text`) }}</li>

@@ -1,10 +1,6 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :topBarTitle="$t('security.fun.pass.text')"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.fun.pass.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form" @submit="onSubmit">
         <ChoseNav

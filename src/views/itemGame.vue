@@ -19,7 +19,7 @@
           <div class="name els m-t-8">
             {{ item.title }}
           </div>
-          <p class="m-t-8 blob money">{{ item.money }}</p>
+          <p class="m-t-8 blob money">{{ item.money }}$</p>
         </div>
       </div>
     </LoadList>

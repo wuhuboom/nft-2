@@ -35,7 +35,9 @@
               {{ item.title }}
             </p>
           </div>
-          <div class="b b-4 text-ellipsis center-center">+{{ item.money }}</div>
+          <div class="b b-4 text-ellipsis center-center">
+            <p class="text-ellipsis">+{{ item.money }}$</p>
+          </div>
           <div class="b b-5 text-ellipsis center-center">
             <p class="text-ellipsis from-to">{{ item.from }}</p>
             /

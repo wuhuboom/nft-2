@@ -1,10 +1,6 @@
 <template>
   <div class="bank-account-list color-primary font12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('security.bank.card.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.bank.card.text')"> </AppTopBar>
     <div class="center-center px-16 py-16" v-if="loading">
       <van-loading class="color-primary" />
     </div>

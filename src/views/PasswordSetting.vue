@@ -1,10 +1,6 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :topBarTitle="$t('security.pass.text')"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.pass.text')"> </AppTopBar>
     <div>
       <img
         class="person m-t-20 m-b-40 d-img"

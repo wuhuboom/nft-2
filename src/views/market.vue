@@ -96,7 +96,6 @@
         :back="close"
         :titleClass="['app-top-black-title']"
         :topBarTitle="$t(`investment`)"
-        :styleObj="{ backgroundColor: 'transparent' }"
       ></AppTopBar>
       <div class="buy-detail gray-bg-img p-l-16 p-r-16 p-b-32">
         <div class="align-center">

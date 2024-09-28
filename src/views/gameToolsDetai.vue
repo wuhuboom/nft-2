@@ -4,7 +4,7 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`Game.Props`)"
     ></AppTopBar>
-    <div class="pic center-center">
+    <div class="pic center-center m-t-16">
       <van-image fit="contain" :src="item.image" />
     </div>
     <p class="m-t-16 m-b-20 font16">{{ item.title }}</p>
@@ -50,7 +50,7 @@
     <p class="m-b-12 font14">{{ $t(`Properties`) }}</p>
     <div class="attr-content" v-html="item.desp"></div>
     <div class="game-price center-center font16 p-l-24 p-r-24">
-      <p class="price flex-1">{{ $t("home.price") }}: {{ item.money }}</p>
+      <p class="price flex-1">{{ $t("home.price") }}: {{ item.money }}$</p>
     </div>
   </div>
 </template>

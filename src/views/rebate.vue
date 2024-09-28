@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('fuc.rebate.center')"
-      :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <!-- v-if="!dataList.length" -->
     <div class="center-center py-16" v-if="totalNum === null">

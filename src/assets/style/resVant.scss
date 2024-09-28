@@ -72,7 +72,7 @@ input::placeholder {
         }
         &.phone-input{
           .van-field__body{
-            padding-left: 60px;
+            padding-left:86px;
           }
           .icon-img{
             width: 20px;
@@ -82,12 +82,23 @@ input::placeholder {
             z-index: 16;
             position: absolute;
             height: 48px;
-            width:58px;
+            width:76px;
             left: 0;
             top: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            &::before {
+              content: "";
+              display: block;
+              width: 1px;
+              height: 25px;
+              background-color: #fff;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 0; /* adjust the position as needed */
+            }
           }
         }
         &::after{

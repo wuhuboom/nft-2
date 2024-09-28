@@ -1,11 +1,7 @@
 <!-- eslint-disable no-unused-vars -->
 <template>
   <div class="invite-friends font14 color-primary">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t(`me.my.qr.code.text`)"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t(`me.my.qr.code.text`)"> </AppTopBar>
     <div>
       <div class="cont">
         <p class="center-center gray long-text">{{ $t(`ercode.Long.QR`) }}</p>

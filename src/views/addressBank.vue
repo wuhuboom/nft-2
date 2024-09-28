@@ -1,7 +1,6 @@
 <template>
   <div class="address-add font12 p-l-12 p-r-12">
     <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="
         id ? $t('Edt.Bank.Card') : $t('bankcard.bankadd.title.text')
       "
