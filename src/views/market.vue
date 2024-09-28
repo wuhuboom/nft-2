@@ -397,7 +397,7 @@ export default {
   components: { activationCode, HomeTopBar, MoneyBar },
   data() {
     return {
-      moneyShow: true,
+      moneyShow: false,
       errIcon,
       ritIcon,
       formData: {
@@ -497,7 +497,7 @@ export default {
   methods: {
     goPage(v) {
       if (this.balance < v.min) {
-        this.$toast(this.$t("backapi.balanceNotEnough"));
+        this.moneyShow = true;
         return;
       }
       this.$router.push({ name: "InvestDetail" });
@@ -575,7 +575,7 @@ export default {
         return;
       }
       if (this.balance < v.min) {
-        this.$toast(this.$t("backapi.balanceNotEnough"));
+        this.moneyShow = true;
         return;
       }
       //更新用户
