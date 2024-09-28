@@ -164,7 +164,7 @@
             </p>
           </div>
           <ul class="font12 criteria m-b-20" v-if="popTxt.length">
-            <li class="font14 m-b-4">{{ $t("Participation.criteria") }}:</li>
+            <li class="font14 m-b-4">{{ $t("Participation.criteria") }}</li>
             <li class="gray m-b-4" v-for="(d, i) in popTxt" :key="i">
               {{ i + 1 }}、{{ d.txt }}
             </li>
