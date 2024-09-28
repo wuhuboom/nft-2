@@ -2,8 +2,8 @@
   <div>
     <van-sticky @change="change" style="z-index: 999" :offset-top="0">
       <ul
-        class="nav index-sticky-nav justify-between align-center"
-        :class="{ 'bg-black': fiexd }"
+        class="nav justify-between align-center"
+        :class="{ 'bg-black': fiexd, 'index-sticky-nav': addClass }"
       >
         <li class="logo center-center" @click="$router.push({ name: 'home' })">
           <img class="d-img" src="@/assets/img/ntf/home/logo.png" alt="" />
@@ -85,6 +85,9 @@ export default {
     },
   },
   computed: {
+    addClass() {
+      return ["home", "investMarket"].includes(this.$route.name);
+    },
     isHome() {
       return this.$route.name === "home";
     },
@@ -97,6 +100,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+.index-sticky-nav {
+  background: url("@/assets/img/130937.webp") no-repeat center bottom;
+  background-size: 100% auto;
+}
 .nav {
   height: 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);

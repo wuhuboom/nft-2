@@ -293,12 +293,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.home-index-page {
-  ::v-deep .index-sticky-nav {
-    background: url("@/assets/img/130937.webp") no-repeat center bottom;
-    background-size: 100% auto;
-  }
-}
 .lot-icon-app {
   position: fixed;
   right: 4px;
