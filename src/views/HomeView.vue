@@ -38,7 +38,7 @@
     </div>
     <ul
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
-      class="item-title justify-between align-center m-t-16 m-l-16 m-r-16 m-b-12"
+      class="item-title justify-between align-center m-t-20 m-l-16 m-r-16 m-b-12"
     >
       <li class="color-fff font16 blod">{{ $t(`user.Item.shop`) }}</li>
       <li class="center-center more color-active">
@@ -50,7 +50,7 @@
       class="game-hot"
       @click="$router.push({ name: `ItemShop`, query: { tab: 1 } })"
     >
-      <div class="center-center hot-title p-t-8 text-center">
+      <div class="center-center hot-title p-t-16 text-center">
         <p>
           <img src="@/assets/img/ntf/home/rit.png" alt="" />
         </p>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>
-    <div class="hot-live-stream">
+    <div class="hot-live-stream m-b-20">
       <div class="title-box flex-wrap">
         <div class="left flex-grow1 blod">{{ $t(`Hot.Live.Stream`) }}</div>
         <div class="right" @click="$router.push('/pages/live')">
@@ -117,7 +117,7 @@
       <div class="title blod m-b-16">{{ $t(`Game.Download`) }}</div>
       <div class="list-box">
         <div
-          class="list flex-wrap"
+          class="list m-b-16 flex-wrap"
           @click="open(d)"
           v-for="(d, i) in down"
           :key="i"
@@ -427,7 +427,7 @@ export default {
   }
 }
 .hot-live-stream {
-  margin-top: 28px;
+  margin-top: 20px;
   .title-box {
     padding: 0 16px;
     .left {
@@ -470,7 +470,6 @@ export default {
 }
 .game-download {
   padding: 0 16px;
-  margin-top: 25px;
   color: #e3e7ec;
   .title {
     font-size: 16px;
@@ -478,8 +477,6 @@ export default {
     margin-bottom: 14px;
   }
   .list {
-    padding-bottom: 21px;
-    padding-top: 17px;
     border-top: 1px solid #020808;
     .img {
       width: 66px;
