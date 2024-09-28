@@ -175,13 +175,13 @@ export default {
     async getEwalletData() {
       const [err, res] = await userApi.walletInfo();
       if (err) return;
-      res.data = [
-        {
-          address: "12132",
-          type: "ERC20",
-          createdAt: 1627584000000,
-        },
-      ];
+      // res.data = [
+      //   {
+      //     address: "12132",
+      //     type: "ERC20",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       if (res.data && !res.data.length) {
         // this.$router.push({ name: "AddressWallet" });
         return;
@@ -194,13 +194,13 @@ export default {
       if (err) {
         return;
       }
-      res.data = [
-        {
-          cardNumber: "12132",
-          cardName: "中国银行",
-          createdAt: 1627584000000,
-        },
-      ];
+      // res.data = [
+      //   {
+      //     cardNumber: "12132",
+      //     cardName: "中国银行",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       if (res.data) {
         if (Array.isArray(res.data)) {
           this.bankList = res.data;
@@ -214,13 +214,13 @@ export default {
       if (err) {
         return;
       }
-      res.data = [
-        {
-          addr: "12132",
-          protocol: "ERC20",
-          createdAt: 1627584000000,
-        },
-      ];
+      // res.data = [
+      //   {
+      //     addr: "12132",
+      //     protocol: "ERC20",
+      //     createdAt: 1627584000000,
+      //   },
+      // ];
       this.usdtList = res.data;
     },
   },
