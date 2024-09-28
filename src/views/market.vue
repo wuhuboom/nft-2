@@ -294,12 +294,7 @@
         </van-form>
       </div>
     </van-popup>
-    <van-popup
-      v-if="formData.autoInvest"
-      class="desc-art-pop"
-      v-model="showDesc1"
-      position="center"
-    >
+    <van-popup class="desc-art-pop" v-model="showDesc1" position="center">
       <ul class="font14 desc-art-list color-fff">
         <li class="m-t-8 m-b-8 green">{{ $t(`Participation.fuli`) }}:</li>
         <li class="m-b-4">{{ $t(`market.rate.text1`) }}</li>
