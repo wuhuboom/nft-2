@@ -483,6 +483,7 @@ export default {
       width: 66px;
       height: 66px;
       border-radius: 8px;
+      object-fit: cover;
     }
     .info-box {
       margin-left: 16px;
