@@ -28,9 +28,15 @@ export default {
       type: Array,
       default: () => [],
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     chosen(item) {
+      console.log("disabled", this.disabled);
+      if (this.disabled) return;
       this.$emit("chosen", item);
     },
   },

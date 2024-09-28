@@ -5,36 +5,19 @@
       :styleObj="{ backgroundColor: 'transparent' }"
     >
     </AppTopBar>
-    <!-- <HistoryNav
-      :type="1"
-      :skip1="{
-        name: 'ChangFundPassword',
-        text: $t(`password.setting.pass.button.text`),
-      }"
-      :skip2="{
-        name: 'FundPasswordSetting',
-        text: $t(`index.login.forget.text`),
-      }"
-    /> -->
     <div>
       <van-form class="ntf-form" @submit="onSubmit">
-        <el-select
-          v-model="form.verificationVal"
-          :placeholder="$t('index.editor.psd.text')"
+        <ChoseNav
+          className="m-t-16 m-b-16"
+          @chosen="form.verificationVal = $event.value"
+          :cur="form.verificationVal"
+          :navs="verificationOpt"
           :disabled="countdown > 0"
-        >
-          <el-option
-            v-for="item in verificationOpt"
-            :key="item.value"
-            :label="item.text"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+        />
         <van-field
           class="m-b-16"
           v-if="form.verificationVal == 1"
-          disabled
+          :disabled="countdown > 0"
           :value="user.email"
           :placeholder="$t('form.email.text')"
         />

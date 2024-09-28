@@ -43,23 +43,10 @@
           :placeholder="$t('form.phoneNum.text')"
           autocomplete="new-password"
           type="digit"
-          class="left-icon-box m-b-16 align-center"
+          class="left-icon-box m-b-16 align-center phone-input"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>
-            <!-- <el-select
-              v-model="form.areaCode"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
-            >
-              <el-option
-                v-for="item in area_code"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
-            </el-select> -->
             <p @click="leftFn" class="align-center area-code color-primary">
               <span>+{{ form.areaCode }}</span> <van-icon name="arrow-down" />
             </p>

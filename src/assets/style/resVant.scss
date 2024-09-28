@@ -30,9 +30,15 @@ input::placeholder {
     width: 264px;
   }
 .ntf-form{
+  .lable-text{
+    font-size: 14px;
+    color: #cacbce;
+    margin-bottom: 16px;
+  }
     .van-cell{
         background-color: transparent;
         padding: 0;
+        
         .van-field__body{
           border-radius: 15px;
           background-color: rgba(255,255,255,0.1);
@@ -51,12 +57,33 @@ input::placeholder {
             position: absolute;
             height: 48px;
             width: 40px;
+            left: 0;
+            top: 0;
             display: flex;
             align-items: center;
             justify-content: center;
           }
         }
-        
+        &.phone-input{
+          .van-field__body{
+            padding-left: 60px;
+          }
+          .icon-img{
+            width: 20px;
+            height: 20px;
+          }
+          .van-field__left-icon{
+            z-index: 16;
+            position: absolute;
+            height: 48px;
+            width:58px;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
         &::after{
             display: none;
         }
