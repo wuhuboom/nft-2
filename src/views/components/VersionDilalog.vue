@@ -4,11 +4,12 @@
     v-model="fromModal2"
     :showConfirmButton="false"
     :showCancelButton="false"
-    :closeOnClickOverlay="true"
+    :closeOnClickOverlay="false"
     @close="close"
   >
     <div class="common-dialog">
       <p class="center-center"><i class="iconfont icon-jingti-copy"></i></p>
+      <van-icon name="cross" @click="fromModal2 = false" class="cross" />
       <div class="cont align-center flex-1">
         <ul class="update flex-column center-center">
           <li class="update-text">{{ $t("version.update") }}</li>
@@ -99,6 +100,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.cross {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.9;
+}
 .van-progress {
   width: 188px;
 }
