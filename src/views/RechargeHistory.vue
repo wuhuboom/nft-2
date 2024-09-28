@@ -4,7 +4,6 @@ u
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <!-- <HistoryNav />
     <div class="tab-list m-t-24">

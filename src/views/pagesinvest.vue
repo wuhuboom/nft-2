@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('invest.record.page.text')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <NoData v-if="finished && !video.length" />
     <LoadList :onload="informationVideo" :finished="finished">

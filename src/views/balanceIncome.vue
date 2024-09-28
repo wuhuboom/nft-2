@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Team.benefits')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <ChoseNav @chosen="chosen" :cur="cur" :navs="navs" />
     <div v-if="cur === 1">

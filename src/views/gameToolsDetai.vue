@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`Game.Props`)"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <div class="pic center-center">
       <van-image fit="contain" :src="item.image" />

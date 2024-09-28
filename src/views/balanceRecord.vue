@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('property.record.title')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <!-- <ChoseNav @chosen="chosen" :cur="cur" :navs="navs" /> -->
     <ul class="drop-list p-l-12 p-r-12 justify-between align-center m-b-12">

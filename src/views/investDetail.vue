@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="planeYeb.name"
-      :styleObj="{ backgroundColor: 'tra' }"
     >
       <template #right>
         <van-icon

@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <ul class="p-l-8 head justify-around align-center">
       <li class="align-center" v-for="(item, idx) in tabsList" :key="idx">

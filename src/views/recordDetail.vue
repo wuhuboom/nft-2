@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
     <LoadList :onload="informationVideo" :finished="finished">
       <div class="plans" v-for="(item, idx) in video" :key="idx">

@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`user.trade.title4.text`)"
-      :styleObj="{ backgroundColor: 'tra' }"
     >
     </AppTopBar>
     <LoadList :onload="informationVideo" :finished="finished">

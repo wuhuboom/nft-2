@@ -3,7 +3,7 @@
     <!-- <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`investment`)"
-      :styleObj="{ backgroundColor: 'tra' }"
+      
     ></AppTopBar> -->
     <HomeTopBar :showLang="false">
       <template #title>
