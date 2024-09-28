@@ -94,7 +94,7 @@
           @click="$router.push({ name: 'AddressUsdt' })"
         >
           <li>
-            <i class="el-icon-plus"></i>
+            <img class="d-img" src="@/assets/img/ntf/129379@3x.webp" alt="" />
           </li>
           <li>{{ $t("user.Add.usdt.Address") }}</li>
         </ul>
@@ -104,7 +104,7 @@
           @click="$router.push({ name: 'AddBankCard' })"
         >
           <li>
-            <i class="el-icon-plus"></i>
+            <img class="d-img" src="@/assets/img/ntf/129379@3x.webp" alt="" />
           </li>
           <li>{{ $t("user.new.bank") }}</li>
         </ul>
@@ -114,9 +114,9 @@
           @click="$router.push({ name: 'AddressWallet' })"
         >
           <li>
-            <i class="el-icon-plus"></i>
+            <img class="d-img" src="@/assets/img/ntf/129379@3x.webp" alt="" />
           </li>
-          <li>+{{ $t("user.Add.Wallet") }}</li>
+          <li>{{ $t("user.Add.Wallet") }}</li>
         </ul>
       </div>
     </div>
@@ -277,21 +277,15 @@ export default {
     }
   }
   .add-list {
-    height: 48px;
-    border-radius: 15px;
-    border: solid 1px var(--main);
-    margin-bottom: 4px;
-
-    color: #fff;
-    & > li:first-child {
-      padding: 0 8px 0 16px;
-      color: var(--primary);
-    }
+    height: 44px;
+    border-radius: 7.5px;
+    border: solid 1px #707070;
+    justify-content: center;
+    margin-bottom: 16px;
     img {
       width: 22px;
-      display: block;
       height: 22px;
-      object-fit: cover;
+      margin-right: 8px;
     }
   }
   .bg-yellow {
