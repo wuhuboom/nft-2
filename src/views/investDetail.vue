@@ -57,8 +57,8 @@
           <template #button>
             <van-button
               size="small"
-              native-type="button"
               class="send-code-btn"
+              native-type="button"
               @click="formData.money = balance"
               >{{ $t("match.all.text") }}</van-button
             >

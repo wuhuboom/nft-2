@@ -5,17 +5,14 @@
       :styleObj="{ backgroundColor: 'transparent' }"
     >
     </AppTopBar>
-    <!-- <HistoryNav
-      :type="1"
-      :skip1="{
-        name: 'ChangPassword',
-        text: $t(`password.setting.pass.button.text`),
-      }"
-      :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
-    /> -->
     <div>
+      <img
+        class="person m-t-20 m-b-40 d-img"
+        src="@/assets/img/ntf/129383@2x.webp"
+        alt=""
+      />
       <van-form class="ntf-form" @submit="onSubmit">
-        <el-select
+        <!-- <el-select
           v-model="form.verificationVal"
           :placeholder="$t('index.editor.psd.text')"
           :disabled="countdown > 0"
@@ -27,7 +24,13 @@
             :value="item.value"
           >
           </el-option>
-        </el-select>
+        </el-select> -->
+        <ChoseNav
+          class="m-b-16"
+          @chosen="cur = $event.value"
+          :cur="cur"
+          :navs="verificationOpt"
+        />
         <van-field
           class="m-b-16"
           v-if="form.verificationVal == 1"
@@ -61,15 +64,17 @@
               @click="sendCode"
               :disabled="countdown > 0"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           v-model.trim="form.password"
           autocomplete="new-password"
+          left-icon="smile-o"
           :type="showText ? 'text' : 'password'"
           :placeholder="$t('form.new.password.text')"
           @click-right-icon="openEye"
@@ -82,9 +87,13 @@
               message: $t('backapi.passwordEasy'),
             },
           ]"
-        />
+        >
+          <template #left-icon>
+            <img class="d-img icon-img" src="@/assets/img/ntf/pw.webp" alt="" />
+          </template>
+        </van-field>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           v-model.trim="form.twoPassword"
           autocomplete="new-password"
           :type="showText ? 'text' : 'password'"
@@ -103,7 +112,11 @@
               message: this.$t('ruls.passtwo.unequal'),
             },
           ]"
-        />
+        >
+          <template #left-icon>
+            <img class="d-img icon-img" src="@/assets/img/ntf/pw.webp" alt="" />
+          </template>
+        </van-field>
         <div class="sumit-section center-center">
           <van-button
             class="ntf-vant-btn"
@@ -129,6 +142,7 @@ export default {
       countdown: 0,
       loading: false,
       showText: false,
+      cur: 1,
       form: {
         vercode: "",
         verificationVal: 1,
@@ -235,6 +249,11 @@ export default {
 </script>
 <style scoped lang="less">
 .change-password-view {
+  .person {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
   ::v-deep {
   }
 }

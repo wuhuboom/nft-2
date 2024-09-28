@@ -67,6 +67,7 @@
                     size="small"
                     @click="setAll"
                     class="send-code-btn"
+                    native-type="button"
                     >{{ $t(`order.search.all.text`) }}</van-button
                   >
                 </template>
@@ -138,6 +139,7 @@
                 @click="sendCode"
                 :disabled="countdown > 0"
                 class="send-code-btn"
+                native-type="button"
                 >{{ $t("deal.chat.921073-7")
                 }}{{ countdown ? `(${countdown})` : "" }}</van-button
               >

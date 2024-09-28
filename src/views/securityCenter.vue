@@ -5,7 +5,6 @@
       :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <div>
-      <img src="" alt="" />
       <ul
         class="align-center menu font16 m-t-12 m-b-12 p-l-12 p-r-12"
         :key="idx"

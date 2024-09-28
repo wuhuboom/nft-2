@@ -40,9 +40,9 @@
           <template #button>
             <van-button
               size="small"
-              native-type="button"
               @click="sendAll"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("match.order.detail.all.text") }}</van-button
             >
           </template>
