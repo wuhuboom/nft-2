@@ -96,7 +96,7 @@
         :back="close"
         :titleClass="['app-top-black-title']"
         :topBarTitle="$t(`investment`)"
-        :styleObj="{ backgroundColor: 'tra' }"
+        :styleObj="{ backgroundColor: 'transparent' }"
       ></AppTopBar>
       <div class="buy-detail gray-bg-img p-l-16 p-r-16 p-b-32">
         <div class="align-center">
@@ -492,7 +492,7 @@ export default {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      // if (this.config.beyShow !== 1) return;
+      if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
       this.planeYeb = {

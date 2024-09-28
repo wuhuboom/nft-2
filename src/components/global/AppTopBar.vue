@@ -104,6 +104,7 @@ export default {
 //   background: url("@/assets/img/130937.webp") no-repeat center bottom;
 //   background-size: 100% auto;
 // }
+
 .right {
   min-width: 43px;
 }
