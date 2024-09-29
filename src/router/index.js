@@ -538,6 +538,13 @@ const routes = [
     },
   },
   {
+    path: "/pages/wheel/index2",
+    name: "Wheel",
+    components: {
+      default: () => import("@/views/wheel2.vue"),
+    },
+  },
+  {
     path: "/pages/wheel/index",
     name: "Wheel",
     components: {
