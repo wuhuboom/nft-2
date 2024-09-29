@@ -105,8 +105,9 @@ export default {
   },
   methods: {
     startFlashing() {
-      if (this.base.quantity) {
+      if (!this.base.quantity) {
         this.$toast.error(this.$t("backapi.unLotteryDraw"));
+        this.close();
         return;
       }
       this.winIndx = null;
@@ -129,8 +130,7 @@ export default {
         money: this.pay,
       });
       if (err) {
-        this.winIndx = null;
-        this.myLucky.init();
+        this.close();
         return;
       }
       // this.getBase("quantity");
