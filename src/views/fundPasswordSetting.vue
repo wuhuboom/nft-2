@@ -11,21 +11,38 @@
           :disabled="countdown > 0"
         />
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           v-if="form.verificationVal == 1"
           :disabled="countdown > 0"
           :value="user.email"
           :placeholder="$t('form.email.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124614@2x.webp"
+              alt=""
+            />
+          </template>
+        </van-field>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           v-if="form.verificationVal == 2"
           :value="user.phone"
           disabled
           :placeholder="$t('password.setting.phone.old.phone.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/ntf/set4.png"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("form.vercode.text") }}</p>
         <van-field
-          class="mb-16 field-inlude-code"
+          class="m-b-16 field-inlude-code p-x-0"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -49,6 +66,13 @@
             >
           </template>
         </van-field>
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
         <van-field
           class="m-b-16"
           v-model.trim="form.password"
@@ -66,6 +90,13 @@
             },
           ]"
         />
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
         <van-field
           class="m-b-16"
           v-model.trim="form.twoPassword"
@@ -87,6 +118,7 @@
             },
           ]"
         />
+
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
             class="ntf-vant-btn"

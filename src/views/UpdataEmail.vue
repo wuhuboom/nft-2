@@ -48,7 +48,7 @@
         <van-field
           v-model.trim="form.email"
           :placeholder="$t('form.email.text')"
-          class="left-icon-box m-b-16"
+          class="left-icon-box m-b-16 icon-input"
           autocomplete="new-password"
           :rules="[
             { required: true, message: $t('ruls.email.empty') },
