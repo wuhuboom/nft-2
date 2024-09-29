@@ -279,8 +279,9 @@ export default {
         return;
       }
       this.show = false;
-      this.$store.dispatch("getInfo");
+
       this.formData = initFome();
+      this.$emit("success");
       this.$toast.success(
         this.$t("backapi.self.safe.bill.detail.status.success.text")
       );

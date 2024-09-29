@@ -123,7 +123,7 @@
         </div>
       </div>
     </div>
-    <buyPop ref="buyPop" :item="item" />
+    <buyPop @success="success" ref="buyPop" :item="item" />
     <NoMony ref="noMony" />
   </div>
 </template>
@@ -200,6 +200,10 @@ export default {
         return;
       }
       this.money = res.data;
+    },
+    success() {
+      this.playerInvestMyTotal();
+      this.$store.dispatch("getInfo");
     },
     async investPlans() {
       const [err, res] = await userApi.investPlans(this.$route.query.id);
