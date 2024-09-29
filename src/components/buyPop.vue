@@ -234,7 +234,9 @@ export default {
     },
     opened() {
       this.$nextTick(() => {
-        this.$refs["invitationCode"].focus();
+        if (this.$refs["invitationCode"]) {
+          this.$refs["invitationCode"].focus();
+        }
       });
     },
     async onSubmit() {
