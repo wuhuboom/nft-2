@@ -13,6 +13,7 @@
   "dependencies": {
     "@choujiaojiao/vue2-countdown": "^1.0.2",
     "@fingerprintjs/fingerprintjs": "^4.2.2",
+    "@lucky-canvas/vue": "^0.1.11",
     "amfe-flexible": "^2.2.1",
     "await-to-js": "^3.0.0",
     "axios": "^1.6.7",

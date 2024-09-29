@@ -843,4 +843,10 @@ export default {
       data,
     });
   },
+  ///player/invest/my/total
+  playerInvestMyTotal() {
+    return request({
+      url: "/invest/my/total",
+    });
+  },
 };

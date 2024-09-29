@@ -1555,5 +1555,13 @@
   "detail.live.3": "未使用",
   "detail.live.4": "会员名字",
   "detail.live.5": "最后上线时间",
-  "buy.min.money": "最低投入"
+  "buy.min.money": "最低投入",
+
+  "buy.invest.money1": "累积投资金额",
+  "buy.invest.money2": "投资冻结",
+  "buy.invest.money3": "累积投资金额",
+  "buy.invest.money4": "投入金额",
+  "buy.invest.money5": "每日收益",
+  "buy.invest.money6": "最高期限",
+  "buy.invest.money7": "投资期限"
 }

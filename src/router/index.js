@@ -458,6 +458,14 @@ const routes = [
     },
   },
   {
+    path: "/pages/invest/market2",
+    name: "investMarket",
+    components: {
+      default: () => import("@/views/market2.vue"),
+      AppBtmBar,
+    },
+  },
+  {
     path: "/pages/invest/market",
     name: "investMarket",
     components: {
@@ -465,6 +473,7 @@ const routes = [
       AppBtmBar,
     },
   },
+
   {
     path: "/pages/user/investDetail",
     name: "InvestDetail",

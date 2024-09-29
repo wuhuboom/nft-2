@@ -23,7 +23,8 @@ import "@/assets/style/resVant.scss";
 import { Locale } from "vant";
 // 引入英文语言包
 import enUS from "vant/es/locale/lang/en-US";
-
+import VueLuckyCanvas from "@lucky-canvas/vue";
+Vue.use(VueLuckyCanvas);
 Locale.use("en-US", enUS);
 Vue.config.productionTip = false;
 Vue.use(global);
