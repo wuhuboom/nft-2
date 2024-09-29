@@ -4,6 +4,11 @@
       <template #title>
         <p class="font16" style="font-weight: normal">{{ $t(`investment`) }}</p>
       </template>
+      <template #right>
+        <p class="m-r-16">
+          {{ $t("invest.history.text") }}
+        </p>
+      </template>
     </HomeTopBar>
     <activationCode />
     <div class="invest-plans-page">
@@ -15,11 +20,11 @@
         <li class="justify-around">
           <p class="flex-column center-center">
             <span>{{ $t("buy.invest.money3") }}</span
-            ><span class="balance">{{ money.totalInvest }}</span>
+            ><span class="balance">{{ divide(money.totalInvest) }}</span>
           </p>
           <p class="flex-column center-center">
             <span>{{ $t("buy.invest.money2") }}</span
-            ><span class="balance">{{ money.frozen }}</span>
+            ><span class="balance">{{ divide(money.frozen) }}</span>
           </p>
         </li>
       </ul>

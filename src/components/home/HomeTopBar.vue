@@ -39,17 +39,19 @@
           </slot>
         </li>
         <li class="align-center lef-icon">
-          <p class="m-r-16" @click="openLang" v-if="showLang">
-            <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
-          </p>
-          <p class="m-r-16">
-            <img
-              class="d-img"
-              @click="$router.push({ name: 'Message' })"
-              src="@/assets/img/ntf/home/nav2.png"
-              alt=""
-            />
-          </p>
+          <slot name="right">
+            <p class="m-r-16" @click="openLang" v-if="showLang">
+              <img class="d-img" src="@/assets/img/ntf/home/nav1.png" alt="" />
+            </p>
+            <p class="m-r-16">
+              <img
+                class="d-img"
+                @click="$router.push({ name: 'Message' })"
+                src="@/assets/img/ntf/home/nav2.png"
+                alt=""
+              />
+            </p>
+          </slot>
         </li>
       </ul>
       <BtmActionLang ref="BtmActionLang" />

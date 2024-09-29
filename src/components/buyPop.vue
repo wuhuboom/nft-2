@@ -16,9 +16,6 @@
             v-model.trim="formData.invitationCode"
             autocomplete="new-password"
             name="invitationCode"
-            :placeholder="`${$t('ruls.xxx.please', {
-              name: $t('form.invitecode.text'),
-            })}`"
             :rules="[
               {
                 required: true,
@@ -29,9 +26,9 @@
             ]"
           >
             <template #label>
-              <p class="align-center">
+              <p class="align-center no-wrap-text">
                 {{ $t("register.invitationCode.text")
-                }}<span class="active">*</span>
+                }}<span class="active">*</span>:
               </p>
             </template>
           </van-field>
@@ -42,9 +39,6 @@
             name="payPwd"
             type="password"
             autocomplete="new-password"
-            :placeholder="`${$t('ruls.xxx.please', {
-              name: $t('Payment.password'),
-            })}`"
             :rules="[
               {
                 required: true,
@@ -55,8 +49,8 @@
             ]"
           >
             <template #label>
-              <p class="align-center">
-                {{ $t("Payment.password") }}<span class="active">*</span>
+              <p class="align-center no-wrap-text">
+                {{ $t("Payment.password") }}<span class="active">*</span>:
               </p>
             </template>
           </van-field>
@@ -313,5 +307,9 @@ export default {
 }
 .tips-radio {
   align-items: flex-start;
+}
+.no-wrap-text {
+  //文字不换行
+  white-space: nowrap;
 }
 </style>
