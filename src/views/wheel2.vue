@@ -81,21 +81,6 @@ export default {
       loading: false,
       dayDrawMax: 0,
       blocks: [{ padding: "10px", background: "#869cfa" }],
-
-      buttons: [
-        {
-          imgs: [
-            {
-              src: startBg,
-              width: 84,
-              height: 100,
-              top: "-60px",
-            },
-          ],
-          pointer: true,
-          fonts: [{ text: "开始" }],
-        },
-      ],
     };
   },
   computed: {
@@ -235,7 +220,20 @@ export default {
           },
         ],
         prizes: this.prizes,
-        buttons: this.buttons,
+        buttons: [
+          {
+            imgs: [
+              {
+                src: startBg,
+                width: 84,
+                height: 100,
+                top: "-60px",
+              },
+            ],
+            pointer: true,
+            fonts: [{ text: "开始" }],
+          },
+        ],
         start: () => {
           // 开始游戏
           myLucky.play();
