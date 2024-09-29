@@ -98,6 +98,7 @@
             <van-field
               class="field-inlude-code m-b-32"
               :placeholder="$t('Submitted.email.code')"
+              v-if="mailCodeRequired === 1"
               v-model.trim="form.code"
               :rules="[
                 {
@@ -233,7 +234,11 @@ export default {
       return this.$store.state.config;
     },
     area_code() {
+      console.log(this.$store.state.config);
       return this.$store.state.config.area_code;
+    },
+    mailCodeRequired() {
+      return this.$store.state.config.mailCodeRequired;
     },
   },
   methods: {

@@ -200,10 +200,10 @@ export default {
     popTxt() {
       const arr = [];
       const data = this.item || {};
-      Object.assign(data, {
-        inDays: 1,
-        subPlayer: 1,
-      });
+      // Object.assign(data, {
+      //   inDays: 1,
+      //   subPlayer: 1,
+      // });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
@@ -267,12 +267,7 @@ export default {
       const [err] = await userApi.invest(para);
       if (err) {
         if (err.code == 108) {
-          //this.result = err.data; 模拟数据
-          this.result = {
-            groups: true,
-            inDays: true,
-          };
-          this.showRight = true;
+          this.result = err.data;
         }
         return;
       }
