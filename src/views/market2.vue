@@ -21,7 +21,7 @@
     </HomeTopBar>
     <activationCode />
     <div class="invest-plans-page">
-      <ul class="total-list p-t-20 m-b-16">
+      <ul class="total-list p-t-20 m-b-16 text-center">
         <li class="flex-column center-center m-b-24">
           <p>{{ $t("fundsRecords.Balance.text") }}</p>
           <p class="balance">{{ balance }}</p>
