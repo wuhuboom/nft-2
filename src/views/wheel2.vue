@@ -25,18 +25,6 @@
       }"
       class="lot-bg"
     ></div>
-    <!-- <div class="lot-bg" v-if="base.switch">
-      <LuckyWheel
-        ref="myLucky"
-        width="346px;"
-        height="346px;"
-        :prizes="prizes"
-        :blocks="blocks"
-        :buttons="buttons"
-        @start="startCallback"
-        @end="endCallback"
-      />
-    </div> -->
     <ul class="font14">
       <li class="p-b-16">{{ $t("market.rate.desc") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content1.text") }}</li>
@@ -65,7 +53,9 @@
 <script>
 import { LuckyWheel } from "lucky-canvas";
 import userApi from "@/api/user";
-import startBg from "@/assets/img/ntf/wheel/2@3x.png";
+// eslint-disable-next-line no-unused-vars
+import startBg from "@/assets/img/ntf/wheel/131010@3x.png";
+const bgWheel = require("@/assets/img/ntf/wheel/131012@3x.png");
 export default {
   name: "WithdrawView",
   data() {
@@ -80,7 +70,6 @@ export default {
       },
       loading: false,
       dayDrawMax: 0,
-      blocks: [{ padding: "10px", background: "#869cfa" }],
     };
   },
   computed: {
@@ -97,18 +86,6 @@ export default {
       }
       return this.bouns[this.winIndx];
     },
-    // blocks() {
-    //   return [];
-    // },
-    // buttons() {
-    //   return [
-    //     {
-    //       pointer: true,
-    //       fonts: [{ text: "开始", top: "-10px" }],
-    //       imgs: [{ src: require("@/assets/img/ntf/wheel/2@3x.png") }],
-    //     },
-    //   ];
-    // },
     prizes() {
       return this.bouns.map((v) => {
         return {
@@ -214,24 +191,36 @@ export default {
       const myLucky = new LuckyWheel("#my-lucky", {
         width: "364px",
         height: "364px",
+        prizes: this.prizes,
         blocks: [
           {
             padding: "48px",
+            imgs: [
+              {
+                rotate: true,
+                src: bgWheel,
+                width: "364px",
+                height: "364px",
+              },
+            ],
           },
         ],
-        prizes: this.prizes,
         buttons: [
+          {
+            radius: "50px",
+          },
+          {
+            radius: "45px",
+          },
           {
             imgs: [
               {
                 src: startBg,
-                width: 84,
-                height: 100,
                 top: "-60px",
+                width: "84px",
+                height: "100px",
               },
             ],
-            pointer: true,
-            fonts: [{ text: "开始" }],
           },
         ],
         start: () => {
@@ -271,8 +260,7 @@ export default {
   }
   .lot-bg {
     margin: 0 auto;
-    background: url("@/assets/img/ntf/wheel/131012@3x.png") no-repeat center
-      center;
+
     background-size: 100% 100%;
   }
   .lot-list {
