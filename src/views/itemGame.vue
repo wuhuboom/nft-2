@@ -81,8 +81,10 @@ export default {
       .img-box {
         width: 100%;
         height: 133px;
-        background: #fff;
+        background: url("@/assets/img/ntf/market/single-item-buy-1@2x.webp")
+          no-repeat center center;
         overflow: hidden;
+        background-size: 100% 100%;
       }
       .name {
         color: #fff;

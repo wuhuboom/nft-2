@@ -5,6 +5,7 @@
       :topBarTitle="$t(`user.Item.shop`)"
     ></AppTopBar>
     <Banner
+      class="m-t-16"
       :imgsList="[
         {
           imageUrl: require('@/assets/img/ntf/1.png'),
@@ -98,6 +99,12 @@ export default {
   },
   created() {
     this.getImg();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
