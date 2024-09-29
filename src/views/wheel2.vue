@@ -1,6 +1,21 @@
 <template>
   <div class="lot-page font12">
-    <AppTopBar :styleObj="{ backgroundColor: 'transparent' }"> </AppTopBar>
+    <AppTopBar :styleObj="{ backgroundColor: 'transparent' }">
+      <template #right>
+        <p
+          @click="$router.push('/pages/invest/record')"
+          class="m-r-16 align-center"
+          style="line-height: 1"
+        >
+          <img
+            class="d-img record"
+            src="@/assets/img/ntf/market/130992@2x.webp"
+            alt=""
+          />
+          {{ $t("lottery.order1") }}
+        </p>
+      </template>
+    </AppTopBar>
     <ul class="p-t-40 m-b-16">
       <li class="center-center p-t-16">
         <img
@@ -29,7 +44,9 @@
       <li class="p-b-16 text-center blod title">
         {{ $t("market.rate.desc") }}
       </li>
-      <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content1.text") }}</li>
+      <li class="p-b-16 m-t-12">
+        {{ $t("backapi.self.wheel.rules.content1.text") }}
+      </li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
     </ul>
@@ -284,5 +301,9 @@ export default {
   .title {
     color: #fad32b;
   }
+}
+.record {
+  height: 25px;
+  width: 25px;
 }
 </style>
