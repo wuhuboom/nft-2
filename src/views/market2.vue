@@ -5,7 +5,8 @@
         <p class="font16" style="font-weight: normal">{{ $t(`investment`) }}</p>
       </template>
       <template #right>
-        <p class="m-r-16">
+        <p class="m-r-4 align-center" style="line-height: 1">
+          <van-icon class="m-r-4" name="todo-list-o" size="16" />
           {{ $t("invest.history.text") }}
         </p>
       </template>
@@ -150,15 +151,15 @@ export default {
     },
     //普通盈利
     way1earnings(doc) {
-      if (doc.showAuto) {
-        //复利
-        this.way2earnings(doc);
-        return;
-      }
+      // if (doc.showAuto) {
+      //   //复利
+      //   this.way2earnings(doc);
+      //   return;
+      // }
       const val = doc.min || 0;
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = val * curRate * doc.days;
+        let num = val * curRate * 1; //天
         return num.toFixed(2);
       } else {
         return 0;

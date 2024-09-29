@@ -458,21 +458,21 @@ const routes = [
     },
   },
   {
-    path: "/pages/invest/market2",
+    path: "/pages/invest/market",
     name: "investMarket",
     components: {
       default: () => import("@/views/market2.vue"),
       AppBtmBar,
     },
   },
-  {
-    path: "/pages/invest/market",
-    name: "investMarket",
-    components: {
-      default: () => import("@/views/market.vue"),
-      AppBtmBar,
-    },
-  },
+  // {
+  //   path: "/pages/invest/market",
+  //   name: "investMarket",
+  //   components: {
+  //     default: () => import("@/views/market.vue"),
+  //     AppBtmBar,
+  //   },
+  // },
 
   {
     path: "/pages/user/investDetail",
