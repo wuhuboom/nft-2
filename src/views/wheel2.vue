@@ -194,11 +194,6 @@ export default {
     height: 58px;
   }
   .lot-bg {
-    background: url("@/assets/img/ntf/130903@2x.webp") no-repeat center top;
-    background-size: 100% 100%;
-    width: 330px;
-    height: 331px;
-    margin: 24px auto;
   }
   .lot-list {
     padding: 16px 10px 0 6px;
