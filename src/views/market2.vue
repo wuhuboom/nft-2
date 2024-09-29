@@ -5,7 +5,11 @@
         <p class="font16" style="font-weight: normal">{{ $t(`investment`) }}</p>
       </template>
       <template #right>
-        <p class="m-r-4 align-center" style="line-height: 1">
+        <p
+          @click="$router.push('/pages/invest/record')"
+          class="m-r-4 align-center"
+          style="line-height: 1"
+        >
           <van-icon class="m-r-4" name="todo-list-o" size="16" />
           {{ $t("invest.history.text") }}
         </p>
@@ -13,7 +17,7 @@
     </HomeTopBar>
     <activationCode />
     <div class="invest-plans-page">
-      <ul class="total-list m-t-20 m-b-16">
+      <ul class="total-list p-t-20 m-b-16">
         <li class="flex-column center-center m-b-24">
           <p>{{ $t("fundsRecords.Balance.text") }}</p>
           <p class="balance">{{ balance }}</p>

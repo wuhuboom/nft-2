@@ -263,6 +263,11 @@ export default {
       position: absolute;
       top: 30px;
       left: 0;
+      //省略号
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
   }
 }
