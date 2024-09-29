@@ -61,11 +61,8 @@
           </van-field>
         </div>
         <!-- <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length"></ul> -->
-        <div
-          class="font12 criteria br p-t-8 p-b-8"
-          v-if="popTxt.length && Object.keys(result).length"
-        >
-          <ul class="font14 desc-art-list color-fff">
+        <div class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length">
+          <ul class="font14 desc-art-list">
             <li
               class="font14 align-center font14 m-b-4"
               :class="{ red: !right }"
@@ -83,16 +80,16 @@
             </li>
             <li
               v-for="(d, i) in popTxt"
-              class="align-center tips-radio gray m-t-8"
+              class="align-center tips-radio m-t-8"
               :class="{ red: !result[d.key] }"
               :key="i"
             >
-              <p class="c-pic m-r-4">
+              <!-- <p class="c-pic m-r-4">
                 <img
                   class="d-img rit"
                   :src="result[d.key] ? ritIcon : errIcon"
                 />
-              </p>
+              </p> -->
               <p>{{ i + 1 }}、{{ d.txt }}</p>
             </li>
           </ul>
@@ -161,7 +158,7 @@
 
 <script>
 import errIcon from "@/assets/img/ntf/err.png";
-import ritIcon from "@/assets/img/ntf/right.png";
+import ritIcon from "@/assets/img/ntf/market/130995@2x.webp";
 import userApi from "@/api/user";
 const initFome = () => {
   return {
@@ -185,8 +182,8 @@ export default {
       show: false,
       showRight: false,
       result: {
-        // groups: true,
-        // inDays: true,
+        groups: true,
+        inDays: true,
       },
     };
   },
@@ -230,7 +227,10 @@ export default {
     open() {
       this.formData = initFome();
       this.show = true;
-      this.result = {};
+      this.result = {
+        groups: true,
+        inDays: true,
+      };
     },
     opened() {
       this.$nextTick(() => {
@@ -265,6 +265,11 @@ export default {
         money: this.item.min,
       });
       const [err] = await userApi.invest(para);
+
+      // this.result = {
+      //   groups: 1,
+      //   inDays: 0,
+      // };
       if (err) {
         if (err.code == 108) {
           this.result = err.data;
@@ -354,7 +359,6 @@ export default {
 }
 //tanc
 .desc-art-list {
-  color: #e3e7eb;
 }
 .red {
   color: #ef3501;
