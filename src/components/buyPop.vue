@@ -311,6 +311,9 @@ export default {
       &::after {
         display: none;
       }
+      .van-field__label {
+        width: auto;
+      }
       .van-field__body {
         input {
           color: #fff;
