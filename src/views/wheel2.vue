@@ -69,7 +69,6 @@ export default {
         quantity: 0,
       },
       loading: false,
-      dayDrawMax: 0,
     };
   },
   computed: {
@@ -97,14 +96,6 @@ export default {
       let arr = [];
       if (this.draw.bouns) {
         arr = this.draw.bouns.split(",");
-        // arr = arr.map((item, idx) => {
-        //   return {
-        //     text: item,
-        //     icon: !this.noTxt.includes(idx)
-        //       ? icon
-        //       : require(`@/assets/img/ntf/lot/${idx + 1}.webp`),
-        //   };
-        // });
       }
       return arr;
     },
@@ -113,38 +104,12 @@ export default {
     },
   },
   methods: {
-    // 点击抽奖按钮会触发star回调
-    startCallback() {
-      // 调用抽奖组件的play方法开始游戏
-      this.$refs.myLucky.play();
-      // 模拟调用接口异步抽奖
-      setTimeout(() => {
-        // 假设后端返回的中奖索引是0
-        const index = 0;
-        // 调用stop停止旋转并传递中奖索引
-        this.$refs.myLucky.stop(index);
-      }, 3000);
-    },
-    // 抽奖结束会触发end回调
-    endCallback(prize) {
-      console.log(prize);
-    },
     startFlashing() {
-      if (this.dayDrawMax) {
+      if (this.base.quantity) {
         this.$toast.error(this.$t("backapi.unLotteryDraw"));
         return;
       }
       this.winIndx = null;
-      // Clear any previous intervals
-      if (this.flashingInterval || this.winIndx !== null)
-        clearInterval(this.flashingInterval);
-
-      // Start random flashing
-      this.flashingInterval = setInterval(() => {
-        // Pick a random index
-        const randomIdx = Math.floor(Math.random() * this.bouns.length);
-        this.isFlashingIdx = randomIdx;
-      }, 200); // Adjust the speed of flashing here
       this.bingo();
     },
     async getBase(key) {
@@ -159,36 +124,28 @@ export default {
       }
     },
     async bingo() {
-      if (this.loading) return;
-      this.loading = true;
       const [err, res] = await userApi.bingo({
         model: 0,
         money: this.pay,
       });
       if (err) {
         this.winIndx = null;
-        clearInterval(this.flashingInterval);
-        this.isFlashingIdx = null;
-        this.loading = false;
+        this.myLucky.init();
         return;
       }
       // this.getBase("quantity");
       this.base.quantity = this.base.quantity - 1;
       this.base.quantity = this.base.quantity < 0 ? 0 : this.base.quantity;
-      let index = res.data.index;
-      setTimeout(() => {
-        this.winIndx = index;
-        clearInterval(this.flashingInterval);
-        this.isFlashingIdx = null;
-        this.loading = false;
-        this.show = true;
-      }, 9000);
+
+      this.winIndx = res.data.index;
+      this.myLucky.stop(this.winIndx);
     },
     close() {
       this.winIndx = null;
+      this.myLucky.init();
     },
     initGame() {
-      const myLucky = new LuckyWheel("#my-lucky", {
+      this.myLucky = new LuckyWheel("#my-lucky", {
         width: "364px",
         height: "364px",
         prizes: this.prizes,
@@ -224,16 +181,17 @@ export default {
           },
         ],
         start: () => {
-          // 开始游戏
-          myLucky.play();
-          // 使用定时器模拟接口
-          setTimeout(() => {
-            // 结束游戏
-            myLucky.stop(0);
-          }, 3000);
+          this.myLucky.play();
+          this.startFlashing();
+        },
+        end: () => {
+          if (this.winIndx !== null) {
+            this.show = true;
+          }
         },
       });
-      console.log(myLucky);
+      //myLucky.stop(0);
+      // myLucky.init();
     },
   },
   async mounted() {
