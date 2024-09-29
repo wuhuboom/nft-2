@@ -17,7 +17,26 @@
         }}
       </li>
     </ul>
-    <div class="lot-bg" v-if="base.switch"></div>
+    <div
+      id="my-lucky"
+      :style="{
+        width: '364px',
+        height: '364px',
+      }"
+      class="lot-bg"
+    ></div>
+    <!-- <div class="lot-bg" v-if="base.switch">
+      <LuckyWheel
+        ref="myLucky"
+        width="346px;"
+        height="346px;"
+        :prizes="prizes"
+        :blocks="blocks"
+        :buttons="buttons"
+        @start="startCallback"
+        @end="endCallback"
+      />
+    </div> -->
     <ul class="font14">
       <li class="p-b-16">{{ $t("market.rate.desc") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content1.text") }}</li>
@@ -44,7 +63,9 @@
 </template>
 
 <script>
+import { LuckyWheel } from "lucky-canvas";
 import userApi from "@/api/user";
+import startBg from "@/assets/img/ntf/wheel/2@3x.png";
 export default {
   name: "WithdrawView",
   data() {
@@ -59,7 +80,22 @@ export default {
       },
       loading: false,
       dayDrawMax: 0,
-      //buttonImg: require(""),
+      blocks: [{ padding: "10px", background: "#869cfa" }],
+
+      buttons: [
+        {
+          imgs: [
+            {
+              src: startBg,
+              width: 84,
+              height: 100,
+              top: "-60px",
+            },
+          ],
+          pointer: true,
+          fonts: [{ text: "开始" }],
+        },
+      ],
     };
   },
   computed: {
@@ -76,20 +112,22 @@ export default {
       }
       return this.bouns[this.winIndx];
     },
-    buttons() {
-      return [
-        {
-          pointer: true,
-          fonts: [{ text: "开始", top: "-10px" }],
-          imgs: [{ src: "开始" }],
-        },
-      ];
-    },
+    // blocks() {
+    //   return [];
+    // },
+    // buttons() {
+    //   return [
+    //     {
+    //       pointer: true,
+    //       fonts: [{ text: "开始", top: "-10px" }],
+    //       imgs: [{ src: require("@/assets/img/ntf/wheel/2@3x.png") }],
+    //     },
+    //   ];
+    // },
     prizes() {
-      //{ background: '#e9e8fe', fonts: [{ text: '0' }] },
       return this.bouns.map((v) => {
         return {
-          fonts: [{ text: v }],
+          fonts: [{ text: v, fontColor: "#fff" }],
         };
       });
     },
@@ -113,6 +151,22 @@ export default {
     },
   },
   methods: {
+    // 点击抽奖按钮会触发star回调
+    startCallback() {
+      // 调用抽奖组件的play方法开始游戏
+      this.$refs.myLucky.play();
+      // 模拟调用接口异步抽奖
+      setTimeout(() => {
+        // 假设后端返回的中奖索引是0
+        const index = 0;
+        // 调用stop停止旋转并传递中奖索引
+        this.$refs.myLucky.stop(index);
+      }, 3000);
+    },
+    // 抽奖结束会触发end回调
+    endCallback(prize) {
+      console.log(prize);
+    },
     startFlashing() {
       if (this.dayDrawMax) {
         this.$toast.error(this.$t("backapi.unLotteryDraw"));
@@ -171,10 +225,34 @@ export default {
     close() {
       this.winIndx = null;
     },
+    initGame() {
+      const myLucky = new LuckyWheel("#my-lucky", {
+        width: "364px",
+        height: "364px",
+        blocks: [
+          {
+            padding: "48px",
+          },
+        ],
+        prizes: this.prizes,
+        buttons: this.buttons,
+        start: () => {
+          // 开始游戏
+          myLucky.play();
+          // 使用定时器模拟接口
+          setTimeout(() => {
+            // 结束游戏
+            myLucky.stop(0);
+          }, 3000);
+        },
+      });
+      console.log(myLucky);
+    },
   },
-  created() {
+  async mounted() {
     this.$store.commit("setPdTop", false);
-    this.getBase();
+    await this.getBase();
+    this.initGame();
   },
 };
 </script>
@@ -194,6 +272,10 @@ export default {
     height: 58px;
   }
   .lot-bg {
+    margin: 0 auto;
+    background: url("@/assets/img/ntf/wheel/131012@3x.png") no-repeat center
+      center;
+    background-size: 100% 100%;
   }
   .lot-list {
     padding: 16px 10px 0 6px;
