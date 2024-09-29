@@ -1,6 +1,10 @@
 <template>
   <div>
-    <van-popup v-model="show" class="buy-plans-pop p-l-16 p-r-16 p-b-16">
+    <van-popup
+      @opened="opened"
+      v-model="show"
+      class="buy-plans-pop p-l-16 p-r-16 p-b-16"
+    >
       <p class="head">
         <img
           class="d-img"
@@ -16,6 +20,7 @@
             v-model.trim="formData.invitationCode"
             autocomplete="new-password"
             name="invitationCode"
+            ref="invitationCode"
           >
             <!-- :rules="[
               {
@@ -55,8 +60,43 @@
             </template>
           </van-field>
         </div>
-        <div>
-          <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length">
+        <!-- <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length"></ul> -->
+        <div
+          class="font12 criteria br p-t-8 p-b-8"
+          v-if="popTxt.length && Object.keys(result).length"
+        >
+          <ul class="font14 desc-art-list color-fff">
+            <li
+              class="font14 align-center font14 m-b-4"
+              :class="{ red: !right }"
+            >
+              <p class="m-r-4">
+                <img class="d-img rit" :src="right ? ritIcon : errIcon" />
+              </p>
+              <p>
+                {{
+                  right
+                    ? $t(`Participation.every.day2`)
+                    : $t(`Participation.every.day3`)
+                }}
+              </p>
+            </li>
+            <li
+              v-for="(d, i) in popTxt"
+              class="align-center tips-radio gray m-t-8"
+              :class="{ red: !result[d.key] }"
+              :key="i"
+            >
+              <p class="c-pic m-r-4">
+                <img
+                  class="d-img rit"
+                  :src="result[d.key] ? ritIcon : errIcon"
+                />
+              </p>
+              <p>{{ i + 1 }}、{{ d.txt }}</p>
+            </li>
+          </ul>
+          <!-- <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length">
             <li class="font14 align-center font14 m-b-4">
               <img
                 class="rit"
@@ -68,7 +108,7 @@
             <li class="color80 m-b-4" v-for="(d, i) in popTxt" :key="i">
               {{ i + 1 }}、{{ d.txt }}
             </li>
-          </ul>
+          </ul> -->
         </div>
         <ul class="justify-between height62 buy-much align-center">
           <li>{{ $t("buy.invest.money4") }}</li>
@@ -84,7 +124,7 @@
         </van-button>
       </van-form>
     </van-popup>
-    <van-popup
+    <!-- <van-popup
       style="width: 88%"
       class="right-art-pop linear-global-pop"
       v-model="showRight"
@@ -114,18 +154,8 @@
           </p>
           <p>{{ i + 1 }}、{{ d.txt }}</p>
         </li>
-        <li class="center-center m-t-24">
-          <van-button
-            class="ntf-vant-btn"
-            @click="showRight = false"
-            block
-            type="info"
-            native-type="button"
-            >{{ $t("modal.confirm.text") }}</van-button
-          >
-        </li>
       </ul>
-    </van-popup>
+    </van-popup> -->
   </div>
 </template>
 
@@ -154,7 +184,10 @@ export default {
       },
       show: false,
       showRight: false,
-      result: {},
+      result: {
+        // groups: true,
+        // inDays: true,
+      },
     };
   },
   props: {
@@ -167,10 +200,10 @@ export default {
     popTxt() {
       const arr = [];
       const data = this.item || {};
-      // Object.assign(data, {
-      //   inDays: 1,
-      //   subPlayer: 1,
-      // });
+      Object.assign(data, {
+        inDays: 1,
+        subPlayer: 1,
+      });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
@@ -197,6 +230,12 @@ export default {
     open() {
       this.formData = initFome();
       this.show = true;
+      this.result = {};
+    },
+    opened() {
+      this.$nextTick(() => {
+        this.$refs["invitationCode"].focus();
+      });
     },
     async onSubmit() {
       if (!this.formData.invitationCode) {
@@ -228,7 +267,11 @@ export default {
       const [err] = await userApi.invest(para);
       if (err) {
         if (err.code == 108) {
-          this.result = err.data;
+          //this.result = err.data; 模拟数据
+          this.result = {
+            groups: true,
+            inDays: true,
+          };
           this.showRight = true;
         }
         return;
