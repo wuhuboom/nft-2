@@ -1,7 +1,7 @@
 <template>
   <div class="lot-page font12">
     <AppTopBar :styleObj="{ backgroundColor: 'transparent' }"> </AppTopBar>
-    <ul class="p-t-40">
+    <ul class="p-t-40 m-b-16">
       <li class="center-center p-t-16">
         <img
           class="d-img ligt"
@@ -25,24 +25,33 @@
       }"
       class="lot-bg"
     ></div>
-    <ul class="font14">
-      <li class="p-b-16">{{ $t("market.rate.desc") }}</li>
+    <ul class="font14 btm-text">
+      <li class="p-b-16 text-center blod title">
+        {{ $t("market.rate.desc") }}
+      </li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content1.text") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
     </ul>
     <van-popup @closed="close" class="lottery-pop" v-model="show">
       <ul class="font14">
-        <li class="font16">{{ $t("your.win.le") }}</li>
         <li class="m-b-20 m-t-20 p-x-20 bg-txt flex-column align-center">
           <p class="pic">
-            <img class="d-img" :src="curWin.icon" alt="" />
+            <img
+              class="d-img"
+              :src="
+                !noTxt.includes(winIndx)
+                  ? require('@/assets/img/ntf/wheel/126965@3x.png')
+                  : require('@/assets/img/ntf/wheel/126968@3x.png')
+              "
+              alt=""
+            />
           </p>
-          <p class="m-b-t" v-if="!noTxt.includes(winIndx)">
-            {{ curWin.text }}{{ base.symbol }}
+          <p class="m-b-t font16" v-if="!noTxt.includes(winIndx)">
+            {{ curWin }}{{ base.symbol }}
           </p>
         </li>
-        <li class="" @click="$router.push('/page/user')">
+        <li class="p-l-16 p-r-16" @click="$router.push('/page/user')">
           {{ $t("your.win.go") }}
         </li>
       </ul>
@@ -61,7 +70,7 @@ export default {
   data() {
     return {
       show: false,
-      noTxt: [4, 5],
+      noTxt: [7],
       isFlashing: false,
       isFlashingIdx: null,
       winIndx: null,
@@ -190,8 +199,6 @@ export default {
           }
         },
       });
-      //myLucky.stop(0);
-      // myLucky.init();
     },
   },
   async mounted() {
@@ -254,19 +261,28 @@ export default {
 .lottery-pop {
   background-color: transparent;
   text-align: center;
+  background: url("@/assets/img/ntf/wheel/131007@3x.png");
+  width: 276px;
+  height: 288.5px;
+  background-size: 100% 100%;
   .bg-txt {
-    background: url("@/assets/img/ntf/lot/1@2x.webp");
-    width: 231px;
-    height: 130px;
-    background-size: 100% 100%;
     justify-content: space-around;
     .pic {
-      width: 62px;
-      height: 62px;
+      width: 90px;
+      height: 90px;
       img {
         object-fit: contain;
       }
     }
+  }
+}
+.btm-text {
+  background: url("@/assets/img/ntf/wheel/131011@3x.png");
+  min-height: 265px;
+  background-size: 100% 100%;
+  padding: 22px 16px 0 16px;
+  .title {
+    color: #fad32b;
   }
 }
 </style>
