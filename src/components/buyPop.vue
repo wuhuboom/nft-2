@@ -200,7 +200,7 @@ export default {
     },
     async onSubmit() {
       if (!this.formData.invitationCode) {
-        this.$toast.fail(
+        this.$toast(
           this.$t("ruls.xxx.empty", {
             name: this.$t("form.invitecode.text"),
           })
@@ -208,7 +208,7 @@ export default {
         return;
       }
       if (!this.formData.payPwd) {
-        this.$toast.fail(
+        this.$toast(
           this.$t("ruls.xxx.empty", {
             name: this.$t("Payment.password"),
           })

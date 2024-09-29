@@ -26,12 +26,12 @@
           <p>{{ $t("fundsRecords.Balance.text") }}</p>
           <p class="balance">{{ balance }}</p>
         </li>
-        <li class="justify-around">
-          <p class="flex-column center-center">
-            <span>{{ $t("buy.invest.money3") }}</span
+        <li class="justify-around m-btm">
+          <p class="flex-column center-center p-l-8 p-r-8">
+            <span>{{ $t("buy.invest.money1") }}</span
             ><span class="balance">{{ divide(money.totalInvest) }}</span>
           </p>
-          <p class="flex-column center-center">
+          <p class="flex-column center-center p-l-8 p-r-p">
             <span>{{ $t("buy.invest.money2") }}</span
             ><span class="balance">{{ divide(money.frozen) }}</span>
           </p>
@@ -287,5 +287,11 @@ export default {
 .record {
   height: 25px;
   width: 25px;
+}
+.m-btm {
+  & > p {
+    width: 50%;
+    flex-shrink: 0;
+  }
 }
 </style>
