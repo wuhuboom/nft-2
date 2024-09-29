@@ -3,14 +3,24 @@
     <AppTopBar :topBarTitle="$t('security.mail.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form m-t-16" @submit="onSubmit">
+        <p class="lable-text">{{ $t("security.update.oldemail.text") }}</p>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           disabled
           :value="user.email"
           :placeholder="$t('updata.email.success.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124614@2x.webp"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("form.vercode.text") }}</p>
         <van-field
-          class="mb-16 field-inlude-code"
+          class="m-b-16 field-inlude-code p-x-0"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -34,6 +44,7 @@
             >
           </template>
         </van-field>
+        <p class="lable-text">{{ $t("security.update.newemail.text") }}</p>
         <van-field
           v-model.trim="form.email"
           :placeholder="$t('form.email.text')"
@@ -49,9 +60,13 @@
             },
           ]"
         >
-          <!-- <template #button>
-            <span class="emial-fix">{{ emailFix }}</span>
-          </template> -->
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124614@2x.webp"
+              alt=""
+            />
+          </template>
         </van-field>
 
         <div class="sumit-section center-center">
