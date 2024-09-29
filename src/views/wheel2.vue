@@ -106,8 +106,8 @@ export default {
   methods: {
     startFlashing() {
       if (!this.base.quantity) {
-        this.$toast.error(this.$t("backapi.unLotteryDraw"));
         this.close();
+        this.$toast(this.$t("backapi.unLotteryDraw"));
         return;
       }
       this.winIndx = null;
