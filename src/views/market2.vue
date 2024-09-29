@@ -92,24 +92,34 @@
               </ul>
             </div>
           </div>
-
-          <p class="buy-btn d-flex">
+          <p
+            class="buy-btn d-flex"
+            @click="
+              open({
+                parent: item,
+                ...doc,
+              })
+            "
+          >
             <span>{{ $t("deal.buyDetail.387081-12") }}</span>
           </p>
         </div>
       </div>
     </div>
+    <buyPop ref="buyPop" :item="item" />
   </div>
 </template>
 <script>
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import activationCode from "@/components/activationCode";
+import buyPop from "@/components/buyPop";
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: { activationCode, HomeTopBar },
+  components: { activationCode, HomeTopBar, buyPop },
   data() {
     return {
+      item: { min: 1 },
       money: {
         frozen: 0,
         totalInvest: 0,
@@ -118,6 +128,11 @@ export default {
     };
   },
   methods: {
+    open(doc) {
+      this.item = doc;
+      console.log(doc);
+      this.$refs.buyPop.open();
+    },
     //普通盈利
     way1earnings(doc) {
       if (doc.showAuto) {

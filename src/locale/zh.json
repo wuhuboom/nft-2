@@ -1563,5 +1563,6 @@
   "buy.invest.money4": "投入金额",
   "buy.invest.money5": "每日收益",
   "buy.invest.money6": "最高期限",
-  "buy.invest.money7": "投资期限"
+  "buy.invest.money7": "投资期限",
+  "confirm.order":"请确认订单"
 }
