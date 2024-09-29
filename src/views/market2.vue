@@ -107,16 +107,18 @@
       </div>
     </div>
     <buyPop ref="buyPop" :item="item" />
+    <NoMony ref="noMony" />
   </div>
 </template>
 <script>
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import activationCode from "@/components/activationCode";
 import buyPop from "@/components/buyPop";
+import NoMony from "@/components/NoMony";
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: { activationCode, HomeTopBar, buyPop },
+  components: { activationCode, HomeTopBar, buyPop, NoMony },
   data() {
     return {
       item: { min: 1 },
@@ -130,7 +132,15 @@ export default {
   methods: {
     open(doc) {
       this.item = doc;
-      console.log(doc);
+      if (doc.parent.curr == 100) {
+        this.$toast("backapi.planExpired");
+        return;
+      }
+      if (this.balance < doc.min) {
+        console.log(this.$refs);
+        this.$refs.noMony.open();
+        return;
+      }
       this.$refs.buyPop.open();
     },
     //普通盈利

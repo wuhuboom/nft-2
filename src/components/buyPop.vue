@@ -10,9 +10,9 @@
       </p>
       <van-form @submit="onSubmit">
         <p class="active font16 blod text-center">{{ $t("confirm.order") }}</p>
-        <!-- v-if="parseInt(item.parent && item.parent.inviteRequire) === 1" -->
         <div class="height62 align-center">
           <van-field
+            v-if="parseInt(item.parent && item.parent.inviteRequire) === 1"
             v-model.trim="formData.invitationCode"
             autocomplete="new-password"
             name="invitationCode"
@@ -173,10 +173,10 @@ export default {
     popTxt() {
       const arr = [];
       const data = this.item || {};
-      Object.assign(data, {
-        inDays: 1,
-        subPlayer: 1,
-      });
+      // Object.assign(data, {
+      //   inDays: 1,
+      //   subPlayer: 1,
+      // });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
@@ -201,6 +201,7 @@ export default {
   },
   methods: {
     open() {
+      this.formData = initFome();
       this.show = true;
     },
     async onSubmit() {
