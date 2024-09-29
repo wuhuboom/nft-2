@@ -16,15 +16,15 @@
             v-model.trim="formData.invitationCode"
             autocomplete="new-password"
             name="invitationCode"
-            :rules="[
+          >
+            <!-- :rules="[
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
                   name: this.$t('form.invitecode.text'),
                 }),
               },
-            ]"
-          >
+            ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
                 {{ $t("register.invitationCode.text")
@@ -39,15 +39,15 @@
             name="payPwd"
             type="password"
             autocomplete="new-password"
-            :rules="[
+          >
+            <!-- :rules="[
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
                   name: this.$t('Payment.password'),
                 }),
               },
-            ]"
-          >
+            ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
                 {{ $t("Payment.password") }}<span class="active">*</span>:
@@ -199,6 +199,22 @@ export default {
       this.show = true;
     },
     async onSubmit() {
+      if (!this.formData.invitationCode) {
+        this.$toast.fail(
+          this.$t("ruls.xxx.empty", {
+            name: this.$t("form.invitecode.text"),
+          })
+        );
+        return;
+      }
+      if (!this.formData.payPwd) {
+        this.$toast.fail(
+          this.$t("ruls.xxx.empty", {
+            name: this.$t("Payment.password"),
+          })
+        );
+        return;
+      }
       this.$toast.loading({
         duration: 0,
         forbidClick: true,
