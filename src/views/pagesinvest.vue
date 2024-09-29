@@ -5,7 +5,7 @@
       :topBarTitle="$t('invest.record.page.text')"
     ></AppTopBar>
     <NoData v-if="finished && !video.length" />
-    <LoadList :onload="informationVideo" :finished="finished">
+    <LoadList class="p-t-16" :onload="informationVideo" :finished="finished">
       <div
         class="plans"
         v-for="(item, idx) in video"

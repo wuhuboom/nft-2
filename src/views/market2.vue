@@ -10,8 +10,12 @@
           class="m-r-4 align-center"
           style="line-height: 1"
         >
-          <van-icon class="m-r-4" name="todo-list-o" size="16" />
-          {{ $t("invest.history.text") }}
+          <img
+            class="d-img record"
+            src="@/assets/img/ntf/market/130992@2x.webp"
+            alt=""
+          />
+          <!-- {{ $t("invest.history.text") }} -->
         </p>
       </template>
     </HomeTopBar>
@@ -279,5 +283,9 @@ export default {
       padding-top: 6px;
     }
   }
+}
+.record {
+  height: 25px;
+  width: 25px;
 }
 </style>
