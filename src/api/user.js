@@ -846,7 +846,7 @@ export default {
   ///player/invest/my/total
   playerInvestMyTotal() {
     return request({
-      url: "/invest/my/total",
+      url: "/invest/my/t2",
     });
   },
 };

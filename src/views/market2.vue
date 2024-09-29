@@ -23,13 +23,16 @@
     <div class="invest-plans-page">
       <ul class="total-list p-t-20 m-b-16 text-center">
         <li class="flex-column center-center m-b-24">
-          <p>{{ $t("fundsRecords.Balance.text") }}</p>
-          <p class="balance">{{ balance }}</p>
+          <p @click="refresh">{{ $t("fundsRecords.Balance.text") }}</p>
+          <p @click="refresh" class="balance">
+            {{ balance }}
+            <i class="el-icon-refresh-left"></i>
+          </p>
         </li>
         <li class="justify-around m-btm">
           <p class="flex-column center-center p-l-8 p-r-8">
-            <span>{{ $t("buy.invest.money1") }}</span
-            ><span class="balance">{{ divide(money.totalInvest) }}</span>
+            <span>{{ $t("invest.record.status0.text") }}</span
+            ><span class="balance">{{ divide(money.currInvest) }}</span>
           </p>
           <p class="flex-column center-center p-l-8 p-r-p">
             <span>{{ $t("buy.invest.money2") }}</span
@@ -144,6 +147,12 @@ export default {
     };
   },
   methods: {
+    refresh() {
+      this.$toast.loading({
+        forbidClick: true,
+      });
+      this.$store.dispatch("getInfo");
+    },
     open(doc) {
       this.item = doc;
       if (doc.parent.curr == 100) {
