@@ -1558,5 +1558,13 @@
   "detail.live.3": "उपयोग नहीं किया गया",
   "detail.live.4": "सदस्य का नाम",
   "detail.live.5": "अंतिम ऑनलाइन समय",
-  "buy.min.money":"न्यूनतम निवेश"
+  "buy.min.money":"न्यूनतम निवेश",
+  "buy.invest.money1": "संचयी निवेश राशि",
+"buy.invest.money2": "निवेश फ्रीज़",
+"buy.invest.money3": "संचयी निवेश राशि",
+"buy.invest.money4": "निवेशित राशि",
+"buy.invest.money5": "दैनिक आय",
+"buy.invest.money6": "अधिकतम अवधि",
+"buy.invest.money7": "निवेश अवधि",
+"confirm.order": "कृपया आदेश की पुष्टि करें"
 }

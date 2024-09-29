@@ -1559,5 +1559,14 @@
 "detail.live.3": "غير مستخدم",
 "detail.live.4": "اسم العضو",
 "detail.live.5": "آخر وقت للتواجد على الإنترنت",
-"buy.min.money":"الحد الأدنى من الاستثمار"
+"buy.min.money":"الحد الأدنى من الاستثمار",
+"buy.invest.money1": "إجمالي مبلغ الاستثمار",
+"buy.invest.money2": "الاستثمار مجمّد",
+"buy.invest.money3": "إجمالي مبلغ الاستثمار",
+"buy.invest.money4": "المبلغ المستثمر",
+"buy.invest.money5": "الأرباح اليومية",
+"buy.invest.money6": "أقصى مدة",
+"buy.invest.money7": "مدة الاستثمار",
+"confirm.order": "يرجى تأكيد الطلب"
+
 }

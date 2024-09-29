@@ -1559,6 +1559,13 @@
 "detail.live.3": "प्रयोग नगरिएको",
 "detail.live.4": "सदस्य नाम",
 "detail.live.5": "अन्तिम अनलाइन समय",
-"buy.min.money":"न्यूनतम लगानी"
-
+"buy.min.money":"न्यूनतम लगानी",
+"buy.invest.money1": "कुल लगानी राशि",
+"buy.invest.money2": "लगानी रोक्का",
+"buy.invest.money3": "कुल लगानी राशि",
+"buy.invest.money4": "लगानी गरिएको रकम",
+"buy.invest.money5": "दैनिक आम्दानी",
+"buy.invest.money6": "अधिकतम अवधि",
+"buy.invest.money7": "लगानी अवधि",
+"confirm.order": "कृपया अर्डर पुष्टि गर्नुहोस्"
 }

@@ -1559,5 +1559,13 @@
 "detail.live.3": "Nicht verwendet",
 "detail.live.4": "Mitgliedsname",
 "detail.live.5": "Letzte Online-Zeit",
-"buy.min.money":"Mindestinvestition"
+"buy.min.money":"Mindestinvestition",
+"buy.invest.money1": "Kumulierte Investitionssumme",
+"buy.invest.money2": "Investition eingefroren",
+"buy.invest.money3": "Kumulierte Investitionssumme",
+"buy.invest.money4": "Investierte Summe",
+"buy.invest.money5": "Tägliche Erträge",
+"buy.invest.money6": "Maximale Laufzeit",
+"buy.invest.money7": "Investitionslaufzeit",
+"confirm.order": "Bitte bestätigen Sie die Bestellung"
 }

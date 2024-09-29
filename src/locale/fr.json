@@ -1559,5 +1559,13 @@
 "detail.live.3": "Non utilisé",
 "detail.live.4": "Nom du membre",
 "detail.live.5": "Dernière connexion",
-"buy.min.money":"Investissement minimum"
+"buy.min.money":"Investissement minimum",
+"buy.invest.money1": "Montant d'investissement cumulé",
+"buy.invest.money2": "Investissement gelé",
+"buy.invest.money3": "Montant d'investissement cumulé",
+"buy.invest.money4": "Montant investi",
+"buy.invest.money5": "Revenus quotidiens",
+"buy.invest.money6": "Durée maximale",
+"buy.invest.money7": "Durée de l'investissement",
+"confirm.order": "Veuillez confirmer la commande"
 }

@@ -1559,5 +1559,13 @@
 "detail.live.3": "Não Usado",
 "detail.live.4": "Nome do Membro",
 "detail.live.5": "Última Conexão",
-"buy.min.money":"Investimento Mínimo"
+"buy.min.money":"Investimento Mínimo",
+"buy.invest.money1": "Montante Acumulado de Investimento",
+"buy.invest.money2": "Investimento Congelado",
+"buy.invest.money3": "Montante Acumulado de Investimento",
+"buy.invest.money4": "Montante Investido",
+"buy.invest.money5": "Ganhos Diários",
+"buy.invest.money6": "Prazo Máximo",
+"buy.invest.money7": "Prazo de Investimento",
+"confirm.order": "Por favor, Confirme o Pedido"
 }
