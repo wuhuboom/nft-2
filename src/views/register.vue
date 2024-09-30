@@ -318,6 +318,10 @@ export default {
       if (this.authConfig.mailCodeRequired !== 1) {
         delete data.emailCode;
       }
+      if (this.form.areaCode == 91 && data.phone.length == 11) {
+        //删掉第一个字符
+        data.phone = data.phone.slice(1);
+      }
       this.$toast.loading({
         forbidClick: true,
         duration: 0,
