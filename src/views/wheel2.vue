@@ -47,7 +47,7 @@
       <li class="p-b-16 m-t-12">
         {{ $t("backapi.self.wheel.rules.content1.text") }}
       </li>
-      <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content2.text") }}</li>
+      <li class="p-b-16">2.{{ $t("lottery.my.frend") }}</li>
       <li class="p-b-16">{{ $t("backapi.self.wheel.rules.content3.text") }}</li>
     </ul>
     <van-popup @closed="close" class="lottery-pop" v-model="show">
