@@ -64,8 +64,8 @@
               alt=""
             />
           </p>
-          <p class="m-b-t font16" v-if="!noTxt.includes(winIndx)">
-            {{ curWin }}{{ base.symbol }}
+          <p class="m-b-t font16">
+            {{ isNaN(curWin) ? curWin : `${curWin}${base.symbol}` }}
           </p>
         </li>
         <li class="p-l-16 p-r-16" @click="$router.push('/page/user')">
@@ -114,7 +114,12 @@ export default {
     prizes() {
       return this.bouns.map((v) => {
         return {
-          fonts: [{ text: v, fontColor: "#fff" }],
+          fonts: [
+            {
+              text: isNaN(v) ? v : `${v}${this.base.symbol}`,
+              fontColor: "#fff",
+            },
+          ],
         };
       });
     },
