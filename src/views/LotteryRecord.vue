@@ -13,7 +13,7 @@
         >
           <li>
             {{ $t("ChangeRecord29") }}
-            <span>
+            <span class="yellow">
               {{
                 item.changeMoney > 0
                   ? `+${divide(item.changeMoney)}`
@@ -21,7 +21,7 @@
               }}
             </span>
           </li>
-          <li>{{ date(item.createdAt) }}</li>
+          <li class="time">{{ date(item.createdAt) }}</li>
         </ul>
       </div>
 
@@ -108,5 +108,11 @@ export default {
   height: 45px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
+  .time {
+    color: #ebebf5;
+  }
+  .yellow {
+    color: #f8b123;
+  }
 }
 </style>
