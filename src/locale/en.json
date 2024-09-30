@@ -668,7 +668,7 @@
 	"withdraw.modal.text1": "Withdrawal type not linked",
 	"withdraw.modal.text2": "Would you like to bind it now?",
 	"withdraw.desc.list1": "The Number Of Daily Withdrawals Waived For Handling Fees",
-	"withdraw.desc.list2": "Maximum order for withdrawal is 15 times",
+	"withdraw.desc.list2": "Maximum order for withdrawal is {num} times",
 	"withdraw.desc.list3": "Withdrawal Fee",
 	"withdraw.desc.list4": "Maximum Withdrawal Amount ",
 	"withdraw.desc.list5": "Minimum Withdrawal",

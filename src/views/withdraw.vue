@@ -177,8 +177,11 @@
           <li>{{ $t(`recharge.tip.title.text`) }}</li>
 
           <li class="m-b-16">
-            1、{{ $t("withdraw.desc.list2") }}
-            {{ chooseRecType.everydayWithdrawTimes }}
+            1、{{
+              $t("withdraw.desc.list2", {
+                num: chooseRecType.everydayWithdrawTimes,
+              })
+            }}
           </li>
           <li class="m-b-16">
             2、{{ $t("withdraw.desc.list3") }}

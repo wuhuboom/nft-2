@@ -668,7 +668,7 @@
   "withdraw.modal.text1": "Type de retrait non lié",
   "withdraw.modal.text2": "Souhaitez-vous le lier maintenant?",
   "withdraw.desc.list1": "Nombre de retraits quotidiens sans frais de gestion",
-"withdraw.desc.list2": "Le nombre maximum de retraits par commande est de 15 fois",
+"withdraw.desc.list2": "Le montant maximum pour un retrait est de {num} fois",
 "withdraw.desc.list3": "Frais de retrait",
 "withdraw.desc.list4": "Montant maximum de retrait",
 "withdraw.desc.list5": "Montant minimum de retrait",

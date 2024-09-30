@@ -668,7 +668,7 @@
   "withdraw.modal.text1": "Auszahlungstyp nicht verknüpft",
   "withdraw.modal.text2": "Möchten Sie es jetzt verknüpfen?",
   "withdraw.desc.list1": "Die Anzahl der täglichen Auszahlungen ohne Bearbeitungsgebühren",
-"withdraw.desc.list2": "Maximale Anzahl der Auszahlungen pro Auftrag beträgt 15 Mal",
+"withdraw.desc.list2": "Die maximale Abhebungsanzahl beträgt {num} Mal",
 "withdraw.desc.list3": "Auszahlungsgebühr",
 "withdraw.desc.list4": "Maximaler Auszahlungsbetrag",
 "withdraw.desc.list5": "Mindestbetrag für Auszahlung",

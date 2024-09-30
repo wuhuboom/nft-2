@@ -668,7 +668,7 @@
 	"withdraw.modal.text1": "निकासी प्रकार जडान गरिएको छैन",
 	"withdraw.modal.text2": "के तपाईं यस अब जोड्न चाहनुहुन्छ?",
 	"withdraw.desc.list1": "दैनिक निकासीहरूको लागि शुल्क छुट संख्या",
-"withdraw.desc.list2": "निकासीको लागि अधिकतम अर्डर १५ पटक हो",
+"withdraw.desc.list2": "निकासीको लागि अधिकतम आदेश {num} पटक हो",
 "withdraw.desc.list3": "निकासी शुल्क",
 "withdraw.desc.list4": "अधिकतम निकासी रकम",
 "withdraw.desc.list5": "न्यूनतम निकासी",

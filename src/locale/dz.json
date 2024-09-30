@@ -668,7 +668,7 @@
   "withdraw.modal.text1": "نوع السحب غير مرتبط",
   "withdraw.modal.text2": "هل ترغب في ربطه الآن؟",
  "withdraw.desc.list1": "عدد السحوبات اليومية المعفاة من رسوم المعالجة",
-"withdraw.desc.list2": "الحد الأقصى لعدد السحوبات هو 15 مرة",
+"withdraw.desc.list2": "الحد الأقصى لسحب الأموال هو {num} مرات",
 "withdraw.desc.list3": "رسوم السحب",
 "withdraw.desc.list4": "الحد الأقصى لمبلغ السحب",
 "withdraw.desc.list5": "الحد الأدنى للسحب",

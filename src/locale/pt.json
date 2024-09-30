@@ -668,7 +668,7 @@
   "withdraw.modal.text1": "Tipo de saque não vinculado",
   "withdraw.modal.text2": "Gostaria de vinculá-lo agora?",
  "withdraw.desc.list1": "Número de retiradas diárias isentas de taxas",
-"withdraw.desc.list2": "O número máximo de pedidos de retirada é 15 vezes",
+"withdraw.desc.list2": "O valor máximo para retirada é de {num} vezes",
 "withdraw.desc.list3": "Taxa de Retirada",
 "withdraw.desc.list4": "Valor Máximo de Retirada",
 "withdraw.desc.list5": "Valor Mínimo de Retirada",

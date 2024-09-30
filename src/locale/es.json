@@ -668,7 +668,7 @@
 	"withdraw.modal.text1": "Tipo de retiro no vinculado",
 	"withdraw.modal.text2": "¿Desea vincularlo ahora?",
 	"withdraw.desc.list1": "Número de retiros diarios exentos de comisiones",
-"withdraw.desc.list2": "El número máximo de retiros por orden es de 15 veces",
+"withdraw.desc.list2": "El pedido máximo para retiro es de {num} veces",
 "withdraw.desc.list3": "Tarifa de retiro",
 "withdraw.desc.list4": "Monto máximo de retiro",
 "withdraw.desc.list5": "Monto mínimo de retiro",
