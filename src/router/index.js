@@ -558,6 +558,13 @@ const routes = [
       default: () => import("@/views/friendsList.vue"),
     },
   },
+  {
+    path: "/LotteryRecord",
+    name: "LotteryRecord",
+    components: {
+      default: () => import("@/views/LotteryRecord.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({

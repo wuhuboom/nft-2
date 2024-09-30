@@ -3,7 +3,7 @@
     <AppTopBar :styleObj="{ backgroundColor: 'transparent' }">
       <template #right>
         <p
-          @click="$router.push('/pages/invest/record')"
+          @click="$router.push({ name: `LotteryRecord` })"
           class="m-r-16 align-center"
           style="line-height: 1"
         >
