@@ -32,7 +32,7 @@
         <li class="justify-around m-btm">
           <p class="flex-column center-center p-l-8 p-r-8">
             <span>{{ $t("invest.record.status0.text") }}</span
-            ><span class="balance">{{ divide(money.currInvest) }}</span>
+            ><span class="balance">{{ money.currInvest }}</span>
           </p>
           <p class="flex-column center-center p-l-8 p-r-p">
             <span>{{ $t("buy.invest.money2") }}</span

@@ -239,6 +239,13 @@ export default {
         }
       });
     },
+    sleep(v) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, v * 1000);
+      });
+    },
     async onSubmit() {
       if (!this.formData.invitationCode) {
         this.$toast(
@@ -278,6 +285,7 @@ export default {
         }
         return;
       }
+      await this.sleep(1.5);
       this.show = false;
 
       this.formData = initFome();
