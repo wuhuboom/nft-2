@@ -538,6 +538,13 @@ const routes = [
     },
   },
   {
+    path: "/pages/wheel/index2",
+    name: "Wheel",
+    components: {
+      default: () => import("@/views/wheel2.vue"),
+    },
+  },
+  {
     path: "/pages/wheel/index",
     name: "Wheel",
     components: {
@@ -549,6 +556,13 @@ const routes = [
     name: "FriendsList",
     components: {
       default: () => import("@/views/friendsList.vue"),
+    },
+  },
+  {
+    path: "/LotteryRecord",
+    name: "LotteryRecord",
+    components: {
+      default: () => import("@/views/LotteryRecord.vue"),
     },
   },
 ];
