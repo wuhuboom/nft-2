@@ -253,7 +253,7 @@
 	"invest.record.col5.text": "Index token income to be released",
 	"invest.record.order.text": "investment order",
 	"invest.record.table.col1.text": "Amount",
-	"invest.record.table.col2.text": "Finish Time",
+	"invest.record.table.col2.text": "Redemption Period",
 	"invest.record.table.col3.text": "Type",
 	"invest.record.table.col4.text": "Estimated Revenue",
 	"invest.record.table.col5.text": "Status",
