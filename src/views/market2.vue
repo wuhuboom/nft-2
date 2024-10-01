@@ -173,10 +173,11 @@ export default {
       //   this.way2earnings(doc);
       //   return;
       // }
+      const base = +(doc.fixed || 0);
       const val = doc.min || 0;
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = val * curRate * 1; //天
+        let num = val * curRate * 1 + base; //天
         return num.toFixed(2);
       } else {
         return 0;
