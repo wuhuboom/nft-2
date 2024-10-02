@@ -15,7 +15,7 @@ import np from "./np.json";
 import store from "@/store";
 // 注册i18n
 Vue.use(VueI18n);
-// 语言包根据语言环境分类
+// 语言包根据语言环境分类 中文  英语 阿拉伯语  德语  俄语  法语  葡萄牙语  西班牙语  印地语  尼泊尔语
 export const messages = {
   en: { ...en, ...deal.en },
   zh: { ...zh, ...deal.zh },

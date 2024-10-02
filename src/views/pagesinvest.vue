@@ -1,72 +1,107 @@
 <template>
-  <div class="pagesinvest-page font12 p-l-12 p-r-12">
+  <div class="pagesinvest-page font12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('invest.record.page.text')"
     ></AppTopBar>
+    <ul class="drop-list p-l-12 p-r-12 justify-between align-center m-b-12">
+      <li>
+        <el-select v-model="cur" @change="chosen">
+          <el-option
+            v-for="item in navs"
+            :key="item.key"
+            :label="item.name"
+            :value="item.key"
+          >
+          </el-option>
+        </el-select>
+      </li>
+      <li>
+        <el-select v-model="status" @change="chosen">
+          <el-option
+            v-for="(item, idx) in dataArray"
+            :key="idx"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </li>
+    </ul>
     <NoData v-if="finished && !video.length" />
-    <LoadList class="p-t-16" :onload="informationVideo" :finished="finished">
-      <div
-        class="plans"
-        v-for="(item, idx) in video"
-        :key="idx"
-        @click="goDetail(item)"
-      >
-        <div class="plans-item m-b-16">
-          <div class="align-center plans-head p-b-8 m-b-8">
-            <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
-              <img class="d-img" :src="item.planIcon" alt="" />
-            </p>
-            <ul class="align-center flex-1 space-between">
-              <li>
-                <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
-                <p class="gray">{{ getType(item.type) }}</p>
-              </li>
-              <li class="rate-row">
-                <p class="days">{{ getType2(item.status) }}</p>
-              </li>
-            </ul>
-          </div>
-          <div class="record-item-content">
-            <div class="row">
-              <div class="left">{{ $t(`invest.days.text`) }}</div>
-              <div class="right">{{ item.days }}</div>
+    <div class="p-l-12 p-r-12">
+      <LoadList class="p-t-16" :onload="informationVideo" :finished="finished">
+        <div
+          class="plans"
+          v-for="(item, idx) in video"
+          :key="idx"
+          @click="goDetail(item)"
+        >
+          <div class="plans-item m-b-16">
+            <div class="align-center plans-head p-b-8 m-b-8">
+              <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
+                <img class="d-img" :src="item.planIcon" alt="" />
+              </p>
+              <ul class="align-center flex-1 space-between">
+                <li>
+                  <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
+                  <p class="gray">{{ getType(item.type) }}</p>
+                </li>
+                <li class="rate-row">
+                  <p class="days">{{ getType2(item.status) }}</p>
+                </li>
+              </ul>
             </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col1.text") }}</div>
-              <div class="right">{{ divide(item.money) }}</div>
-            </div>
-            <div class="row">
+            <div class="record-item-content">
+              <div class="row">
+                <div class="left">{{ $t(`invest.days.text`) }}</div>
+                <div class="right">{{ item.days }}</div>
+              </div>
+              <div class="row">
+                <div class="left">
+                  {{ $t("invest.record.table.col1.text") }}
+                </div>
+                <div class="right">{{ divide(item.money) }}</div>
+              </div>
+              <!-- <div class="row">
               <div class="left">{{ $t("make.money.date") }}</div>
               <div class="right gray">
                 {{
                   +item.autoInvest ? $t(`make.show.money`) : $t(`make.show.hie`)
                 }}
               </div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col4.text") }}</div>
-              <div class="right active">
-                {{ count(item) }}
+            </div> -->
+              <div class="row">
+                <div class="left">
+                  {{ $t("invest.record.table.col4.text") }}
+                </div>
+                <div class="right active">
+                  {{ count(item) }}
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col6.text") }}</div>
-              <div class="right">{{ item.rate }}%</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col7.text") }}</div>
-              <div class="right">{{ item.orderNo }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col2.text") }}</div>
-              <!-- formatDate() -->
-              <div class="right">{{ date(item.finishTime) }}</div>
+              <!-- % -->
+              <div class="row">
+                <div class="left">{{ $t("activation.day") }}</div>
+                <div class="right">{{ item.activedDays }}</div>
+              </div>
+              <div class="row">
+                <div class="left">
+                  {{ $t("invest.record.table.col7.text") }}
+                </div>
+                <div class="right">{{ item.orderNo }}</div>
+              </div>
+              <div class="row">
+                <div class="left">
+                  {{ $t("invest.record.table.col2.text") }}
+                </div>
+                <!-- formatDate() -->
+                <div class="right">{{ date(item.finishTime) }}</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </LoadList>
+      </LoadList>
+    </div>
   </div>
 </template>
 
@@ -78,6 +113,40 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
+      status: 3, //类型
+      cur: 0, //时间
+      navs: [
+        {
+          name: i18n.t(`property.record.search.time1.text`),
+          key: 0,
+        },
+        {
+          name: i18n.t(`property.record.search.time2.text`),
+          key: 1,
+        },
+        {
+          name: i18n.t(`property.record.search.time3.text`),
+          key: 2,
+        },
+      ],
+      dataArray: [
+        {
+          label: i18n.t("order.search.all.text"),
+          value: 3,
+        },
+        {
+          label: i18n.t("invest.record.status0.text"),
+          value: 0,
+        },
+        {
+          label: i18n.t("invest.record.status1.text"),
+          value: 1,
+        },
+        {
+          label: i18n.t("invest.record.status2.text"),
+          value: 2,
+        },
+      ],
       finished: false,
       video: [],
       query: {
@@ -113,6 +182,11 @@ export default {
     };
   },
   methods: {
+    chosen() {
+      this.query.pageNo = 1;
+      this.video = [];
+      this.informationVideo();
+    },
     goDetail(item) {
       this.$router.push({
         path: "/pages/invest/recordDetail?id=" + item.id,
@@ -148,6 +222,8 @@ export default {
       const params = {
         ...this.query,
         ...obj,
+        status: this.status,
+        time: this.cur,
       };
       const [err, res] = await userApi.investMyPost(params);
       if (err) {
@@ -155,7 +231,23 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-
+      //模拟数据  res.data.results
+      // res.data.results = [
+      //   {
+      //     id: 1,
+      //     plan: {
+      //       name: "测试",
+      //     },
+      //     planIcon: "https://img.yzcdn.cn/vant/cat.jpeg",
+      //     days: 1,
+      //     money: 100,
+      //     autoInvest: 1,
+      //     rate: 0.1,
+      //     orderNo: "123456",
+      //     finishTime: 1617264000,
+      //     status: 1,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
@@ -217,6 +309,18 @@ export default {
   .buy-detail {
     min-height: 100%;
     padding-top: @navHeight+24px;
+  }
+  .drop-list {
+    height: 32px;
+    border-bottom: 1px solid #484b4c;
+    border-top: 1px solid #484b4c;
+    .search {
+      min-width: 74px;
+      height: 18px;
+      border-radius: 8px;
+      background-color: var(--primary);
+      color: #fff;
+    }
   }
 }
 </style>

@@ -203,8 +203,9 @@ export default {
       this.money = res.data;
     },
     success() {
-      this.playerInvestMyTotal();
-      this.$store.dispatch("getInfo");
+      // this.playerInvestMyTotal();
+      // this.$store.dispatch("getInfo");
+      this.$router.push("/pages/invest/record");
     },
     async investPlans() {
       const [err, res] = await userApi.investPlans(this.$route.query.id);
