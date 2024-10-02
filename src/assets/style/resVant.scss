@@ -46,14 +46,15 @@ input::placeholder {
         padding: 0;
         
         .van-field__body{
-          border-radius: 15px;
-          background-color: rgba(255,255,255,0.1);
+          border-radius: 20px;
+          background-color: #17181c;
           height: 48px;
           padding: 8px 8px 8px 16px;
         }
         &.icon-input{
           .van-field__body{
             padding-left: 40px;
+           
           }
           .icon-img{
             width: 20px;
@@ -68,6 +69,7 @@ input::placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 3;
           }
         }
         &.phone-input{
@@ -88,6 +90,7 @@ input::placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 3;
             &::before {
               content: "";
               display: block;
