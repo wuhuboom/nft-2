@@ -462,9 +462,19 @@ const routes = [
     path: "/pages/invest/market",
     name: "investMarket",
     components: {
-      default: () => import("@/views/market.vue"),
+      default: () => import("@/views/market2.vue"),
+      AppBtmBar,
     },
   },
+  // {
+  //   path: "/pages/invest/market",
+  //   name: "investMarket",
+  //   components: {
+  //     default: () => import("@/views/market.vue"),
+  //     AppBtmBar,
+  //   },
+  // },
+
   {
     path: "/pages/user/investDetail",
     name: "InvestDetail",
@@ -533,6 +543,27 @@ const routes = [
     name: "gamesGroup",
     components: {
       default: () => import("@/views/grameGroup.vue"),
+    },
+  },
+  {
+    path: "/pages/wheel/index",
+    name: "Wheel",
+    components: {
+      default: () => import("@/views/wheel2.vue"),
+    },
+  },
+  {
+    path: "/friends/list",
+    name: "FriendsList",
+    components: {
+      default: () => import("@/views/friendsList.vue"),
+    },
+  },
+  {
+    path: "/LotteryRecord",
+    name: "LotteryRecord",
+    components: {
+      default: () => import("@/views/LotteryRecord.vue"),
     },
   },
 ];

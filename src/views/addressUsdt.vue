@@ -1,7 +1,6 @@
 <template>
   <div class="address-add font12 p-l-16 p-r-16">
     <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="id ? $t('Edit.USDT.Address') : $t('Add.USDT.Address')"
     >
     </AppTopBar>
@@ -86,6 +85,7 @@
               @click="sendCode"
               :disabled="countdown > 0"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >

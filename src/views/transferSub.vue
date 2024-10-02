@@ -1,7 +1,6 @@
 <template>
   <div class="address-add font12 olor-primary">
     <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="`${$t('wallet.index.transfer.text')}( ${$t(
         'wallet.index.for.subordinate.text'
       )})`"

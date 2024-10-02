@@ -1,52 +1,48 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :topBarTitle="$t('security.fun.pass.text')"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    >
-    </AppTopBar>
-    <!-- <HistoryNav
-      :type="1"
-      :skip1="{
-        name: 'ChangFundPassword',
-        text: $t(`password.setting.pass.button.text`),
-      }"
-      :skip2="{
-        name: 'FundPasswordSetting',
-        text: $t(`index.login.forget.text`),
-      }"
-    /> -->
+    <AppTopBar :topBarTitle="$t('security.fun.pass.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form" @submit="onSubmit">
-        <el-select
-          v-model="form.verificationVal"
-          :placeholder="$t('index.editor.psd.text')"
+        <ChoseNav
+          className="m-t-16 m-b-16"
+          @chosen="form.verificationVal = $event.value"
+          :cur="form.verificationVal"
+          :navs="verificationOpt"
           :disabled="countdown > 0"
-        >
-          <el-option
-            v-for="item in verificationOpt"
-            :key="item.value"
-            :label="item.text"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
-        <van-field
-          class="m-b-16"
-          v-if="form.verificationVal == 1"
-          disabled
-          :value="user.email"
-          :placeholder="$t('form.email.text')"
         />
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
+          v-if="form.verificationVal == 1"
+          :disabled="countdown > 0"
+          :value="user.email"
+          :placeholder="$t('form.email.text')"
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124614@2x.webp"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <van-field
+          class="m-b-16 icon-input"
           v-if="form.verificationVal == 2"
           :value="user.phone"
           disabled
           :placeholder="$t('password.setting.phone.old.phone.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/ntf/set4.png"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("form.vercode.text") }}</p>
         <van-field
-          class="mb-16 field-inlude-code"
+          class="m-b-16 field-inlude-code p-x-0"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -64,11 +60,19 @@
               @click="sendCode"
               :disabled="countdown > 0"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
         <van-field
           class="m-b-16"
           v-model.trim="form.password"
@@ -86,6 +90,13 @@
             },
           ]"
         />
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
         <van-field
           class="m-b-16"
           v-model.trim="form.twoPassword"
@@ -107,6 +118,7 @@
             },
           ]"
         />
+
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
             class="ntf-vant-btn"

@@ -1,10 +1,11 @@
 @import './ellipsis';
 @import './comm.less';
+
 .d-img{
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .display-flex,.d-flex{
 	display: flex;
@@ -413,6 +414,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .color-o6{
   color: rgba(255, 255, 255, 0.6);
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+.bg-black{
+  background-color: #000;
 }

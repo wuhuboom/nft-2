@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`invoice.menu3.text`)"
-      :styleObj="{ backgroundColor: 'tra' }"
     >
     </AppTopBar>
     <div v-if="detail.imgUrl">

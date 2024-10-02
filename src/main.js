@@ -19,11 +19,12 @@ import { publicDateTimeSolt } from "@/plugins/publicTool.js";
 // 公共样式
 import "@/assets/style/base.less";
 import "@/assets/font/iconfont.css";
-import "@/assets/style/resVant.less";
+import "@/assets/style/resVant.scss";
 import { Locale } from "vant";
 // 引入英文语言包
 import enUS from "vant/es/locale/lang/en-US";
-
+import VueLuckyCanvas from "@lucky-canvas/vue";
+Vue.use(VueLuckyCanvas);
 Locale.use("en-US", enUS);
 Vue.config.productionTip = false;
 Vue.use(global);
@@ -149,6 +150,84 @@ Vue.prototype.$ToSeconds = (timestamp) => {
 
   return timestamp;
 };
+Vue.directive("draggable", {
+  bind(el) {
+    const dragElement = (event, type) => {
+      //有overflow-hidden 就不添加
+      if (
+        !document.querySelector("body").classList.contains("overflow-hidden")
+      ) {
+        document.querySelector("body").classList.add("overflow-hidden");
+      }
+
+      const disX =
+        type === "touch"
+          ? event.touches[0].clientX - el.offsetLeft
+          : event.clientX - el.offsetLeft;
+      const disY =
+        type === "touch"
+          ? event.touches[0].clientY - el.offsetTop
+          : event.clientY - el.offsetTop;
+
+      const move = (event) => {
+        //添加 类 overflow-hidden
+        let left =
+          type === "touch"
+            ? event.touches[0].clientX - disX
+            : event.clientX - disX;
+        let top =
+          type === "touch"
+            ? event.touches[0].clientY - disY
+            : event.clientY - disY;
+
+        // Ensure the element stays within the screen boundaries
+        const maxWidth = window.innerWidth - el.offsetWidth;
+        const maxHeight = window.innerHeight - el.offsetHeight;
+
+        if (left < 0) left = 0;
+        if (top < 0) top = 0;
+        if (left > maxWidth) left = maxWidth;
+        if (top > maxHeight) top = maxHeight;
+
+        el.style.left = left + "px";
+        el.style.top = top + "px";
+      };
+
+      const stop = () => {
+        //移除 类 overflow-hidden
+        document.removeEventListener(
+          type === "touch" ? "touchmove" : "mousemove",
+          move
+        );
+        document.removeEventListener(
+          type === "touch" ? "touchend" : "mouseup",
+          stop
+        );
+      };
+
+      document.addEventListener(
+        type === "touch" ? "touchmove" : "mousemove",
+        move
+      );
+      document.addEventListener(
+        type === "touch" ? "touchend" : "mouseup",
+        stop
+      );
+    };
+    //结束后删除类
+    const stop = (el) => {
+      document.querySelector("body").classList.remove("overflow-hidden");
+      console.log("stop", el);
+      //重置 删除 style 的 left
+      document.querySelector(".js-lot-icon-app").style.left = "";
+    };
+    el.addEventListener("mousedown", (e) => dragElement(e, "mouse"));
+    el.addEventListener("touchstart", (e) => dragElement(e, "touch"));
+    el.addEventListener("mouseup", (e) => stop(e));
+    el.addEventListener("touchend", (e) => stop(e));
+  },
+});
+
 const app = new Vue({
   router,
   store,

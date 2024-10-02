@@ -3,7 +3,6 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t(`Settings`)"
-      :styleObj="{ backgroundColor: 'transparent' }"
     ></AppTopBar>
     <ul class="flex-column center-center">
       <li class="m-t-20">

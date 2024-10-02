@@ -1,20 +1,26 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('security.phone.text')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('security.phone.text')"> </AppTopBar>
     <div>
       <van-form class="ntf-form m-t-16" @submit="onSubmit">
+        <p class="lable-text">{{ $t("Update.phone.org") }}</p>
         <van-field
-          class="m-b-16"
+          class="m-b-16 icon-input"
           disabled
           :value="user.phone"
           :placeholder="$t('password.setting.phone.old.phone.text')"
-        />
+        >
+          <template #left-icon>
+            <img
+              class="d-img icon-img"
+              src="@/assets/img/124605@2x.webp"
+              alt=""
+            />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("Update.phone.vaild.code") }}</p>
         <van-field
-          class="mb-16 field-inlude-code"
+          class="field-inlude-code m-b-16 p-x-0"
           :placeholder="$t('form.vercode.text')"
           v-model.trim="form.vercode"
           :rules="[
@@ -32,33 +38,22 @@
               @click="sendCode"
               :disabled="countdown > 0"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
+        <p class="lable-text">{{ $t("Update.phone.new") }}</p>
         <van-field
           v-model.trim="form.phone"
           :placeholder="$t('form.phoneNum.text')"
           autocomplete="new-password"
           type="digit"
-          class="left-icon-box m-b-16 align-center"
+          class="left-icon-box m-b-24 align-center phone-input"
           :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
         >
           <template #left-icon>
-            <!-- <el-select
-              v-model="form.areaCode"
-              class="full100"
-              :placeholder="$t('index.editor.psd.text')"
-            >
-              <el-option
-                v-for="item in area_code"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
-            </el-select> -->
             <p @click="leftFn" class="align-center area-code color-primary">
               <span>+{{ form.areaCode }}</span> <van-icon name="arrow-down" />
             </p>

@@ -1,19 +1,18 @@
 <template>
   <div class="main-tain-dialog">
     <van-dialog
-      class="tain-upload-dialog linear-global-pop"
+      class="tain-upload-dialog"
       :showConfirmButton="false"
       v-model="showDialog"
       :close-on-click-overlay="false"
     >
-      <ul class="upload-cont">
-        <li class="center-center">
-          <!-- <img src="@/assets/img/notification.png" alt="" /> -->
-        </li>
-        <li class="center-center tip color-fff">
+      <ul class="upload-cont flex-column center-center">
+        <li class="tip align-center p-l-12">
           {{ $t(`UserProfile.Notification`) }}
         </li>
-        <li class="color-primary">{{ msg }}</li>
+        <li class="cont center-center p-x-20">
+          {{ msg }}
+        </li>
       </ul>
     </van-dialog>
   </div>
@@ -72,30 +71,24 @@ export default {
 <style lang="less">
 .main-tain-dialog {
   .tain-upload-dialog {
-    padding: 20px 30px 30px;
-    background-size: 100% 100%;
-    .van-hairline--top::after {
-      display: none;
-    }
+    background-color: transparent;
+    width: 277px;
     .tip {
-      padding: 12px 0;
-      font-size: 22px;
-      font-weight: bold;
+      background: url("@/assets/img/ntf/131019@2x.webp") no-repeat center center;
+      background-size: 100% 100%;
+      width: 260px;
+      height: 120px;
+      font-size: 20px;
+      color: #f7dcbe;
+      padding-top: 30px;
     }
-    .upload-cont {
-      & > li:nth-child(1) {
-        img {
-          width: 190px;
-          height: 102px;
-          object-fit: contain;
-          display: block;
-        }
-      }
-
-      & > li:nth-child(3) {
-        font-size: 14px;
-        line-height: 1.8;
-      }
+    .cont {
+      text-align: center;
+      width: 100%;
+      margin-top: -20px;
+      min-height: 148px;
+      border-radius: 20px;
+      background-image: linear-gradient(to bottom, #45382b, #201c2f);
     }
   }
 }

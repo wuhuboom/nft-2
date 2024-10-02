@@ -1,10 +1,6 @@
 <template>
   <div class="message-page color-primary">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('fuc.message.center')"
-    >
-    </AppTopBar>
+    <AppTopBar :topBarTitle="$t('fuc.message.center')"> </AppTopBar>
     <div class="center-center py-16" v-if="!noticeList">
       <van-Loading color="#1989fa" />
     </div>

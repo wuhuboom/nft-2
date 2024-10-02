@@ -1,33 +1,69 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
-    <AppTopBar
-      :topBarTitle="$t('security.pass.text')"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    >
-    </AppTopBar>
-    <!-- <HistoryNav
-      :type="1"
-      :skip1="{
-        name: 'ChangPassword',
-        text: $t(`password.setting.pass.button.text`),
-      }"
-      :skip2="{ name: 'ForgetPassword', text: $t(`index.login.forget.text`) }"
-    /> -->
+    <AppTopBar :topBarTitle="$t('security.pass.text')"> </AppTopBar>
     <div>
-      <van-form class="ntf-form" @submit="onSubmit">
-        <el-select
-          v-model="form.verificationVal"
-          :placeholder="$t('index.editor.psd.text')"
-          :disabled="countdown > 0"
+      <img
+        class="person m-t-20 m-b-40 d-img"
+        src="@/assets/img/ntf/129383@2x.webp"
+        alt=""
+      />
+      <van-form class="ntf-form p-b-24" @submit="onSubmit">
+        <p class="lable-text">{{ $t("security.update.pwd.label") }}</p>
+        <van-field
+          class="m-b-16 icon-input"
+          v-model.trim="form.password"
+          autocomplete="new-password"
+          left-icon="smile-o"
+          :type="showText ? 'text' : 'password'"
+          :placeholder="$t('form.new.password.text')"
+          @click-right-icon="openEye"
+          :right-icon="`color-fff icon iconfont color-fff ${
+            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+          }`"
+          :rules="[
+            {
+              validator: validatePassword,
+              message: $t('backapi.passwordEasy'),
+            },
+          ]"
         >
-          <el-option
-            v-for="item in verificationOpt"
-            :key="item.value"
-            :label="item.text"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+          <template #left-icon>
+            <img class="d-img icon-img" src="@/assets/img/ntf/pw.webp" alt="" />
+          </template>
+        </van-field>
+        <p class="lable-text">{{ $t("security.update.pwd.label") }}</p>
+        <van-field
+          class="m-b-16 icon-input"
+          v-model.trim="form.twoPassword"
+          autocomplete="new-password"
+          :type="showText ? 'text' : 'password'"
+          :placeholder="$t('form.confirm.password.text')"
+          @click-right-icon="openEye"
+          :right-icon="`color-fff icon iconfont color-fff ${
+            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+          }`"
+          :rules="[
+            {
+              validator: validatePassword,
+              message: $t('backapi.passwordEasy'),
+            },
+            {
+              validator: validateTwo,
+              message: this.$t('ruls.passtwo.unequal'),
+            },
+          ]"
+        >
+          <template #left-icon>
+            <img class="d-img icon-img" src="@/assets/img/ntf/pw.webp" alt="" />
+          </template>
+        </van-field>
+        <ChoseNav
+          className="m-t-16 m-b-16"
+          @chosen="form.verificationVal = $event.value"
+          :cur="form.verificationVal"
+          :navs="verificationOpt"
+          :disabled="countdown > 0"
+        />
         <van-field
           class="m-b-16"
           v-if="form.verificationVal == 1"
@@ -61,49 +97,12 @@
               @click="sendCode"
               :disabled="countdown > 0"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("deal.chat.921073-7")
               }}{{ countdown ? `(${countdown})` : "" }}</van-button
             >
           </template>
         </van-field>
-        <van-field
-          class="m-b-16"
-          v-model.trim="form.password"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.new.password.text')"
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont color-fff ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            {
-              validator: validatePassword,
-              message: $t('backapi.passwordEasy'),
-            },
-          ]"
-        />
-        <van-field
-          class="m-b-16"
-          v-model.trim="form.twoPassword"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.confirm.password.text')"
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont color-fff ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            {
-              validator: validatePassword,
-              message: $t('backapi.passwordEasy'),
-            },
-            {
-              validator: validateTwo,
-              message: this.$t('ruls.passtwo.unequal'),
-            },
-          ]"
-        />
         <div class="sumit-section center-center">
           <van-button
             class="ntf-vant-btn"
@@ -129,6 +128,7 @@ export default {
       countdown: 0,
       loading: false,
       showText: false,
+      cur: 1,
       form: {
         vercode: "",
         verificationVal: 1,
@@ -235,6 +235,11 @@ export default {
 </script>
 <style scoped lang="less">
 .change-password-view {
+  .person {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
   ::v-deep {
   }
 }

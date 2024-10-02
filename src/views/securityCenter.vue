@@ -1,9 +1,6 @@
 <template>
   <div class="wallet-page font12 p-r-12 p-l-12">
-    <AppTopBar
-      :topBarTitle="$t(`user.menu.title1.text`)"
-      :styleObj="{ backgroundColor: 'transparent' }"
-    ></AppTopBar>
+    <AppTopBar :topBarTitle="$t(`user.menu.title1.text`)"></AppTopBar>
     <div>
       <ul
         class="align-center menu font16 m-t-12 m-b-12 p-l-12 p-r-12"
@@ -14,7 +11,7 @@
         <li class="icon m-r-16">
           <img class="d-img" :src="item.icon" alt="" />
         </li>
-        <li class="flex-1 align-center justify-between">
+        <li class="flex-1 align-center text justify-between">
           {{ item.text }}
         </li>
       </ul>
@@ -158,6 +155,11 @@ export default {
       width: 24px;
       height: 24px;
     }
+  }
+  .text {
+    font-size: 13px;
+
+    color: #cacbce;
   }
 }
 </style>

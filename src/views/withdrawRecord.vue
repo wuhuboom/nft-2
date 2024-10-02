@@ -4,7 +4,6 @@ u
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
-      :styleObj="{ backgroundColor: 'tra' }"
     ></AppTopBar>
 
     <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-16">

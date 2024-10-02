@@ -1,7 +1,6 @@
 <template>
   <div class="address-add font12">
     <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
       :topBarTitle="`${$t('wallet.index.transfer.text')}( ${$t(
         'wallet.index.for.self.text'
       )})`"
@@ -40,9 +39,9 @@
           <template #button>
             <van-button
               size="small"
-              native-type="button"
               @click="sendAll"
               class="send-code-btn"
+              native-type="button"
               >{{ $t("match.order.detail.all.text") }}</van-button
             >
           </template>

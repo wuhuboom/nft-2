@@ -821,4 +821,32 @@ export default {
       data,
     });
   },
+  ///bingo/count
+  bingoCount() {
+    return request({
+      url: "/bingo/count",
+    });
+  },
+  //bingo
+  bingo(data) {
+    return request({
+      url: "/bingo",
+      method: "post",
+      data,
+    });
+  },
+  ///invest/my/friends/list
+  investMyFriendsList(data) {
+    return request({
+      url: "/invest/my/friends/list",
+      method: "post",
+      data,
+    });
+  },
+  ///player/invest/my/total
+  playerInvestMyTotal() {
+    return request({
+      url: "/invest/my/t2",
+    });
+  },
 };

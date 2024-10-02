@@ -1,9 +1,6 @@
 <template>
   <div class="safe-billing font12 color-primary pb-16">
-    <AppTopBar
-      :styleObj="{ backgroundColor: 'transparent' }"
-      :topBarTitle="$t('backapi.self.safe.bill.data.text')"
-    >
+    <AppTopBar :topBarTitle="$t('backapi.self.safe.bill.data.text')">
     </AppTopBar>
     <!-- v-if="!dataList.length" -->
     <div class="center-center py-16" v-if="false">
