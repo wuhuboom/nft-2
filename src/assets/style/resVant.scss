@@ -29,7 +29,7 @@ $unit: 'px'; // Feel free to change the unit.
 @include list-loop('.p-l-', 'padding-left');
 @include list-loop('.p-x-', 'padding');
 input::placeholder {
-  color: #808080 !important
+  color: #545d6a !important
 
 }
 .limt-form-with {
@@ -39,7 +39,7 @@ input::placeholder {
   .lable-text{
     font-size: 14px;
     color: #cacbce;
-    margin-bottom: 16px;
+    margin-bottom:8px;
   }
     .van-cell{
         background-color: transparent;
@@ -113,9 +113,16 @@ input::placeholder {
     }
 }
 .ntf-vant-btn{
+    height: 48px;
     border-radius: 15px;
     background-color: var(--main);
     border-color: var(--main);
+}
+.linear-btn{
+  border-radius: 9px;
+  border:none;
+  background-image: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+  background-color: transparent;
 }
 .ntf-btn-cancel{
     background-color: #344756;

@@ -9,20 +9,33 @@
       </ul>
       <div class="center-center m-b-40">
         <van-form class="full100 ntf-form" @submit="onSubmit">
+          <p class="lable-text">{{ $t("form.account.text") }}</p>
           <van-field
             v-model.trim="form.username"
             autocomplete="new-password"
-            :placeholder="$t('form.account.text')"
-            class="username m-b-32"
+            :placeholder="
+              $t('ruls.xxx.please', { name: $t('form.account.text') })
+            "
+            class="username m-b-32 icon-input"
             :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
-          />
-          <!-- showText -->
+          >
+            <template #left-icon>
+              <img
+                class="d-img icon-img"
+                src="@/assets/img/ntf3/form/email.webp"
+                alt=""
+              />
+            </template>
+          </van-field>
+          <p class="lable-text">{{ $t("form.password.text") }}</p>
           <van-field
-            class="password m-b-16"
+            class="password m-b-16 icon-input"
             v-model.trim="form.password"
             autocomplete="new-password"
             :type="showText ? 'text' : 'password'"
-            :placeholder="$t('form.password.text')"
+            :placeholder="
+              $t('ruls.xxx.please', { name: $t('form.password.text') })
+            "
             @click-right-icon="openEye"
             :right-icon="`color-fff icon iconfont ${
               showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
@@ -30,7 +43,15 @@
             :rules="[
               { required: true, message: $t('backapi.passwordIsEmpty') },
             ]"
-          />
+          >
+            <template #left-icon>
+              <img
+                class="d-img icon-img"
+                src="@/assets/img/ntf3/form/pw.webp"
+                alt=""
+              />
+            </template>
+          </van-field>
           <ul class="justify-between align-center m-b-16">
             <li class="color-o6" @click="$router.push({ name: 'LoginForget' })">
               {{ $t("index.login.forget.text") }}
@@ -52,7 +73,7 @@
             </li>
           </ul>
           <van-button
-            class="ntf-vant-btn"
+            class="ntf-vant-btn linear-btn"
             block
             type="info"
             native-type="submit"
