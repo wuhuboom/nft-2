@@ -1,3 +1,4 @@
+$dark-color: #17181c;
 .field-inlude-code{
   padding-top: 6px !important;
   padding-bottom: 6px !important;
@@ -47,7 +48,7 @@ input::placeholder {
         
         .van-field__body{
           border-radius: 20px;
-          background-color: #17181c;
+          background-color: $dark-color;
           height: 48px;
           padding: 8px 8px 8px 16px;
         }
@@ -153,7 +154,7 @@ input::placeholder {
 .el-ntf-select{
   height: 44px;
   border-radius: 15px;
-  background-color: rgba(255,255,255,0.1);
+  background-color: $dark-color;
 //   padding-left: 16px;
 //   padding-right: 16px;
   .el-input__inner{
