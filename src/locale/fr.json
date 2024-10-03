@@ -1570,5 +1570,6 @@
 "confirm.order": "Veuillez confirmer la commande",
 "lottery.order1": "Historique des tirages",
 "lottery.my.frend": "Invitez un ami et rechargez 2000 roupies pour avoir la chance de gagner à la loterie.",
-"activation.day":"Jours d'activation"
+"activation.day":"Jours d'activation",
+"login.fail":"Échec de la connexion" 
 }
