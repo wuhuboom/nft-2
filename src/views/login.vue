@@ -16,7 +16,7 @@
             :placeholder="
               $t('ruls.xxx.please', { name: $t('form.account.text') })
             "
-            class="username m-b-32 icon-input"
+            class="username m-b-16 icon-input"
             :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
           >
             <template #left-icon>

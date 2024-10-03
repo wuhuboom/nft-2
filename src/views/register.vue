@@ -6,7 +6,7 @@
         <div class="flex-column center-center">
           <div class="full100">
             <van-field
-              class="username m-b-32"
+              class="username m-b-16"
               v-model.trim="form.username"
               autocomplete="new-password"
               name="username"
@@ -22,7 +22,7 @@
               ]"
             />
             <van-field
-              class="res-icon-size password m-b-32"
+              class="res-icon-size password m-b-16"
               v-model.trim="form.password"
               autocomplete="new-password"
               :type="showText ? 'text' : 'password'"
@@ -42,7 +42,7 @@
             <van-field
               v-model.trim="form.twoPassword"
               autocomplete="new-password"
-              class="res-icon-size password m-b-32"
+              class="res-icon-size password m-b-16"
               @click-right-icon="openEye"
               :type="showText ? 'text' : 'password'"
               :placeholder="$t('form.twoPassword.text')"
@@ -64,7 +64,7 @@
             <van-field
               v-model.trim="form.invitationCode"
               type="number"
-              class="res-icon-size login-ceode m-b-32"
+              class="res-icon-size login-ceode m-b-16"
               autocomplete="new-password"
               :placeholder="$t('form.invitecode.text')"
               :rules="[
@@ -77,7 +77,7 @@
             <van-field
               v-model.trim="form.email"
               :placeholder="$t('form.email.text')"
-              class="email res-icon-size m-b-32"
+              class="email res-icon-size m-b-16 icon-input"
               autocomplete="new-password"
               name="email"
               :rules="[
@@ -88,10 +88,17 @@
                 },
               ]"
             >
+              <template #left-icon>
+                <img
+                  class="d-img icon-img"
+                  src="@/assets/img/ntf3/form/email.webp"
+                  alt=""
+                />
+              </template>
             </van-field>
             <!-- v-if="authConfig.mailCodeRequired === 1" -->
             <van-field
-              class="field-inlude-code m-b-32"
+              class="field-inlude-code m-b-16"
               :placeholder="$t('Submitted.email.code')"
               v-model.trim="form.code"
               :rules="[
