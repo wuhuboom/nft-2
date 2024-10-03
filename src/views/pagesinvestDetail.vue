@@ -7,10 +7,10 @@
       <ul class="align-center flex-1 space-between">
         <li>
           <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
-          <p class="gray">{{ getType(item.type) }}</p>
+          <p class="gray">{{ getType(item.getType) }}</p>
         </li>
         <li class="rate-row">
-          <p class="days">{{ $t("table.head.detail.text") }}</p>
+          <p class="days prog">{{ getType2(item.status) }}</p>
         </li>
       </ul>
     </div>
@@ -25,10 +25,29 @@
         </div>
         <div class="right">{{ divide(item.money) }}</div>
       </div>
-
       <div class="row">
-        <div class="left">{{ $t("invest.record.table.col5.text") }}</div>
-        <div class="right green">{{ getType2(item.status) }}</div>
+        <div class="left">
+          {{ $t("invest.record.table.col4.text") }}
+        </div>
+        <div class="right active">
+          {{ count(item) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="left">{{ $t("activation.day") }}</div>
+        <div class="right">{{ item.activedDays }}</div>
+      </div>
+      <div class="row">
+        <div class="left">
+          {{ $t("invest.record.table.col7.text") }}
+        </div>
+        <div class="right">{{ item.orderNo }}</div>
+      </div>
+      <div class="row">
+        <div class="left">
+          {{ $t("invest.record.table.col2.text") }}
+        </div>
+        <div class="right">{{ date(item.finishTime) }}</div>
       </div>
     </div>
   </div>
@@ -74,10 +93,6 @@ export default {
     },
   },
   methods: {
-    getType2(value) {
-      let res = this.typeOptions2.find((item) => item.value == value);
-      return res.label;
-    },
     date(t) {
       return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
@@ -92,6 +107,10 @@ export default {
         return 0;
       }
     },
+    getType2(value) {
+      let res = this.typeOptions2.find((item) => item.value == value);
+      return res.label;
+    },
     getType(value) {
       let res = this.typeOptions.find((item) => item.value === value);
       if (!res) return "";
@@ -103,7 +122,7 @@ export default {
 <style scoped lang="less">
 .pagesinvest-item {
   border-radius: 14px;
-  background-color: rgba(255, 255, 255, 0.1);
+  //background-color: rgba(255, 255, 255, 0.1);
   .row {
     display: flex;
     justify-content: space-between;
@@ -129,8 +148,8 @@ export default {
   .plans-head {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .green {
-    color: #48d511;
+  .prog {
+    background-color: #48d513;
   }
 }
 </style>

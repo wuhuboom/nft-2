@@ -38,7 +38,7 @@
           @click="goDetail(item)"
         >
           <pagesinvestItem :item="item" />
-          <div class="plans-item m-b-16">
+          <!-- <div class="plans-item m-b-16">
             <div class="align-center plans-head p-b-8 m-b-8">
               <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
                 <img class="d-img" :src="item.planIcon" alt="" />
@@ -89,7 +89,7 @@
                 <div class="right">{{ date(item.finishTime) }}</div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </LoadList>
     </div>
@@ -186,6 +186,7 @@ export default {
       this.informationVideo();
     },
     goDetail(item) {
+      window.localStorage.setItem("recroedItem", JSON.stringify(item));
       this.$router.push({
         path: "/pages/invest/recordDetail?id=" + item.id,
       });

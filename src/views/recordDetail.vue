@@ -4,30 +4,12 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
     ></AppTopBar>
+    <pagesinvestDetail :item="detail" class="m-t-16" />
+    <p class="font14 m-b-8">{{ $t("buy.invest.money5") }}</p>
     <LoadList :onload="informationVideo" :finished="finished">
-      <div class="plans" v-for="(item, idx) in video" :key="idx">
-        <div class="plans-item m-b-16">
-          <div class="record-item-content">
-            <div class="row">
-              <div class="left">{{ $t(`invest.money.text`) }}</div>
-              <div class="right">{{ divide(item.orderMoney) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`one.day.rate`) }}</div>
-              <div class="right">{{ divide(item.money) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`fundsRecords.orderNo.text`) }}</div>
-              <div class="right">
-                {{ item.orderNo }}
-              </div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`make.money.date`) }}</div>
-              <div class="right">{{ date(item.createdAt) }}</div>
-            </div>
-          </div>
-        </div>
+      <div class="row" v-for="(item, idx) in video" :key="idx">
+        <div class="left">{{ date(item.createdAt) }}</div>
+        <div class="right green">+{{ divide(item.money) }}</div>
       </div>
       <NoData v-if="query.pageNo > 1 && !video.length" />
     </LoadList>
@@ -38,18 +20,20 @@
 import i18n from "@/locale";
 import userApi from "@/api/user";
 import dayjs from "dayjs";
+import pagesinvestDetail from "@/views/pagesinvestDetail.vue";
 export default {
   name: "balanceRecordView",
+  components: {
+    pagesinvestDetail,
+  },
   data() {
     return {
       finished: false,
       video: [],
-      //       pageNo: 1
-      // pageSize: 10
-      // id: 6742
+      detail: {},
       query: {
         pageNo: 1,
-        pageSize: 10,
+        pageSize: 20,
         id: this.$route.query.id,
       },
       typeOptions: [
@@ -118,13 +102,38 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-
+      //res.data.results 模拟数据
+      // res.data.results = [
+      //   {
+      //     orderMoney: 1000,
+      //     money: 100,
+      //     orderNo: "202107010001",
+      //     createdAt: 1625097600,
+      //   },
+      //   {
+      //     orderMoney: 2000,
+      //     money: 200,
+      //     orderNo: "202107010002",
+      //     createdAt: 1625097600,
+      //   },
+      //   {
+      //     orderMoney: 3000,
+      //     money: 300,
+      //     orderNo: "202107010003",
+      //     createdAt: 1625097600,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
           : this.video.concat(res.data.results);
       this.query.pageNo++;
     },
+  },
+  created() {
+    let detail = window.localStorage.getItem("recroedItem");
+    detail = detail ? JSON.parse(detail) : {};
+    this.detail = detail;
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
@@ -136,22 +145,12 @@ export default {
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
-  .plans-item {
-    border-radius: 14px;
-    border: solid 1px #292929;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 24px 8px;
-    min-width: 42px;
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      .left {
-        color: #929292;
-      }
-      .right {
-      }
-    }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    height: 36px;
   }
   .rate-row {
     text-align: right;
@@ -180,6 +179,9 @@ export default {
   .buy-detail {
     min-height: 100%;
     padding-top: @navHeight+24px;
+  }
+  .green {
+    color: #1fb759;
   }
 }
 </style>
