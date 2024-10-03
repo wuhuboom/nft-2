@@ -113,7 +113,7 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
-      status: 3, //类型
+      status: 0, //类型
       cur: 0, //时间
       navs: [
         {
@@ -195,15 +195,12 @@ export default {
     date(t) {
       return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
-    count(item) {
-      const val = this.divide(item.money) || 0;
+    count(doc) {
+      const val = this.divide(doc.money) || 0;
+      const base = +(doc.fixed || 0);
       if (val > 0) {
-        //= X * (1 + Y/100)*Z
-        const curRate = item.rate / 100;
-        let num = val * curRate * item.days;
-        if (+item.autoInvest === 1) {
-          num = val * Math.pow(1 + curRate, item.days) - val;
-        }
+        const curRate = doc.rate / 100;
+        let num = val * curRate * 1 + base; //天
         return num.toFixed(2);
       } else {
         return 0;
