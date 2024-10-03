@@ -201,13 +201,13 @@
           </van-field>
           <div class="m-t-8 m-b-20 align-center justify-between">
             <p>
-              {{ $t(`total.return`) }}:<span class="font14">{{
-                earnings
-              }}</span>
+              <span class="gray">{{ $t(`total.return`) }}:</span
+              ><span class="color-fff">{{ earnings }}</span>
             </p>
             <p>
-              {{ $t(`wallet.index.balance.text`) }}:
-              <span class="active">{{ balance }}</span>
+              <span class="gray"> {{ $t(`wallet.index.balance.text`) }}:</span>
+
+              <span class="color-fff">{{ balance }}</span>
             </p>
           </div>
 
@@ -279,15 +279,12 @@
     </van-popup>
     <van-popup
       style="width: 88%"
-      class="right-art-pop linear-global-pop"
+      class="right-art-pop"
       v-model="showRight"
       position="center"
     >
-      <ul class="font14 desc-art-list color-fff">
+      <ul class="font14 desc-art-list color-fff p-x-20">
         <li class="center-center flex-column" :class="{ red: !right }">
-          <p class="h-pic m-r-4">
-            <img class="d-img" :src="right ? ritIcon : errIcon" />
-          </p>
           <p>
             {{
               right
@@ -307,7 +304,7 @@
           </p>
           <p>{{ i + 1 }}、{{ d.txt }}</p>
         </li>
-        <li class="center-center m-t-24">
+        <!-- <li class="center-center m-t-24">
           <van-button
             class="ntf-vant-btn"
             @click="showRight = false"
@@ -316,7 +313,7 @@
             native-type="button"
             >{{ $t("modal.confirm.text") }}</van-button
           >
-        </li>
+        </li> -->
       </ul>
     </van-popup>
     <activationCode />
@@ -394,10 +391,10 @@ export default {
       const arr = [];
       const data = this.item;
       //模拟数据
-      Object.assign(data, {
-        subPlayer: 1,
-        inDays: 1,
-      });
+      // Object.assign(data, {
+      //   subPlayer: 1,
+      //   inDays: 1,
+      // });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
@@ -735,5 +732,9 @@ export default {
       }
     }
   }
+}
+.right-art-pop {
+  border-radius: 9px;
+  background-image: linear-gradient(88deg, #242a3b 2%, #273b40 99%);
 }
 </style>
