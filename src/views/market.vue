@@ -265,12 +265,16 @@
     </van-popup>
     <van-popup class="desc-art-pop" v-model="showDesc" position="center">
       <ul class="font14 desc-art-list color-fff">
-        <li class="m-b-8 green">{{ $t(`Participation.putong`) }}:</li>
-        <li>{{ $t(`Participation.every.day`) }}</li>
-        <li class="m-t-8 m-b-8 green">{{ $t(`Participation.fuli`) }}:</li>
-        <li class="m-b-4">{{ $t(`market.rate.text1`) }}</li>
-        <li class="m-b-4">{{ $t(`market.rate.text2`) }}</li>
-        <li class="m-b-4">{{ $t(`market.rate.text3`) }}</li>
+        <li v-if="formData.autoInvest == 0">
+          <p class="m-b-8 green">{{ $t(`Participation.putong`) }}:</p>
+          <p>{{ $t(`Participation.every.day`) }}</p>
+        </li>
+        <li v-if="formData.autoInvest == 1">
+          <p class="m-t-8 m-b-8 green">{{ $t(`Participation.fuli`) }}:</p>
+          <p class="m-b-4">{{ $t(`market.rate.text1`) }}</p>
+          <p class="m-b-4">{{ $t(`market.rate.text2`) }}</p>
+          <p class="m-b-4">{{ $t(`market.rate.text3`) }}</p>
+        </li>
       </ul>
     </van-popup>
     <van-popup
@@ -389,6 +393,11 @@ export default {
     popTxt() {
       const arr = [];
       const data = this.item;
+      //模拟数据
+      Object.assign(data, {
+        subPlayer: 1,
+        inDays: 1,
+      });
       if (data.subPlayer) {
         arr.push({
           key: "groups",
