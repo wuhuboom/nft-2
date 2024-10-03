@@ -6,7 +6,16 @@
     >
     </AppTopBar>
     <div v-if="detail.imgUrl">
-      <ul class="m-t-12 head">
+      <ul class="m-t-32 m-b-12">
+        <li class="font14 m-b-4 align-center">
+          {{ $t("Total.asset.value") }}
+          <p class="prog m-l-16">
+            {{ getType2(detail.status) }}
+          </p>
+        </li>
+        <li class="total">{{ divide(detail.investTotal) }}</li>
+      </ul>
+      <!-- <ul class="m-t-12 head">
         <li class="align-center plan-name">
           <p class="m-r-8">
             <img class="d-img" :src="detail.imgUrl" alt="" />
@@ -17,7 +26,7 @@
           <p class="blod m-r-8">{{ divide(detail.investTotal) }}</p>
           <p class="blod green">{{ detail.moneyIncome }}</p>
         </li>
-      </ul>
+      </ul> -->
       <div class="p-l-12 p-r-12 p-t-12 m-t-24 order-msg">
         <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`order.type`) }}</li>
@@ -56,13 +65,14 @@
           </li>
         </ul>
         <ul class="justify-between row m-b-12">
-          <li class="color-blue">{{ $t(`invest.money.text`) }}</li>
-          <li>{{ divide(detail.money) }}</li>
+          <li class="color-blue">{{ $t(`hoe.much.money`) }}</li>
+          <li class="caff">{{ divide(detail.money) }}</li>
         </ul>
         <ul class="justify-between row m-b-12">
-          <li class="color-blue">{{ $t(`hoe.much.money`) }}</li>
-          <li>{{ divide(detail.money) }}</li>
+          <li class="color-blue">{{ $t(`invest.money.text`) }}</li>
+          <li class="active">{{ divide(detail.money) }}</li>
         </ul>
+
         <ul class="justify-between row p-b-12">
           <li class="color-blue">{{ $t(`order.pays`) }}</li>
           <li>{{ $t(`backapi.self.safe.balance.text`) }}</li>
@@ -72,7 +82,12 @@
         {{ $t("wallet.index.explanation.text") }}
       </p>
       <div class="rules-desc m-b-16">
-        <van-steps direction="vertical" :active="20" active-color="#F6B123">
+        <van-steps
+          direction="vertical"
+          class="l34"
+          :active="20"
+          active-color="#F6B123"
+        >
           <van-step>
             <ul class="color-fff font12 justify-between align-center">
               <li class="color-fff m-b-4">{{ $t("buy.time") }}</li>
@@ -225,6 +240,11 @@ export default {
     },
   },
   methods: {
+    getType2(value) {
+      let res = this.typeOptions2.find((item) => item.value == value);
+      if (!res) return "";
+      return res ? res.label : "";
+    },
     async onSubmit() {
       const [err] = await userApi.investMyStopYeb({
         id: this.$route.query.id,
@@ -242,10 +262,7 @@ export default {
     date(t) {
       return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
-    getType2(value) {
-      let res = this.typeOptions2.find((item) => item.value == value);
-      return res ? res.label : "";
-    },
+
     async investMyDetail() {
       let [err, res] = await userApi.investMyDetail({
         id: this.$route.query.id,
@@ -254,22 +271,22 @@ export default {
         return;
       }
       //模拟 res.data 数据
-      res.data = {
-        id: 1,
-        plan: {
-          name: "余额宝",
-        },
-        investTotal: 1000,
-        moneyIncome: 100,
-        status: 0,
-        orderNo: "20210719123456789",
-        createdAt: 1626662400,
-        profitTimeStart: 1626662400,
-        profitTime: 1626662400,
-        orderCancelTime: 1626662400,
-        money: 1000,
-      };
-      this.detail = res.data;
+      // res.data = {
+      //   id: 1,
+      //   plan: {
+      //     name: "余额宝",
+      //   },
+      //   investTotal: 1000,
+      //   moneyIncome: 100,
+      //   status: 0,
+      //   orderNo: "20210719123456789",
+      //   createdAt: 1626662400,
+      //   profitTimeStart: 1626662400,
+      //   profitTime: 1626662400,
+      //   orderCancelTime: 1626662400,
+      //   money: 1000,
+      // };
+      this.detail = res.data || {};
       if (!this.detail.imgUrl) {
         this.detail.imgUrl = yuIcon;
       }
@@ -311,8 +328,10 @@ export default {
     border-radius: 9px;
     background-color: #17181c;
   }
-  .rules-desc {
+  .l34 {
     margin-left: -12px;
+  }
+  .rules-desc {
     ::v-deep {
       .van-steps {
         border-radius: 8px;
@@ -337,6 +356,21 @@ export default {
     & > li:last-child {
       color: #cacbce;
     }
+  }
+  .total {
+    font-size: 24px;
+    font-weight: bold;
+
+    color: #fff;
+  }
+  .prog {
+    padding: 0 4px;
+    line-height: 1;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 3px;
+    background-color: #004021;
+    display: inline-block;
   }
 }
 </style>

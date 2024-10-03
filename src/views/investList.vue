@@ -86,6 +86,7 @@ export default {
     },
     getType2(value) {
       let res = this.typeOptions2.find((item) => item.value == value);
+      if (!res) return "";
       return res ? res.label : "";
     },
     async informationVideo(obj = {}) {
@@ -100,15 +101,15 @@ export default {
       }
       this.finished = res.data.results.length < this.query.pageSize;
       //模拟 res.data.results 数据
-      // res.data.results = [
-      //   {
-      //     id: 1,
-      //     money: 100,
-      //     moneyIncome: 10,
-      //     status: 0,
-      //     createdAt: 1626950400,
-      //   },
-      // ];
+      res.data.results = [
+        {
+          id: 1,
+          money: 100,
+          moneyIncome: 10,
+          status: 0,
+          createdAt: 1626950400,
+        },
+      ];
       this.video =
         params.pageNo == 1
           ? res.data.results
@@ -141,6 +142,9 @@ export default {
     border-radius: 3px;
     background-color: #004021;
     display: inline-block;
+  }
+  .caff {
+    color: #caffde;
   }
 }
 </style>
