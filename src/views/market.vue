@@ -167,7 +167,7 @@
           </p>
         </div>
         <p class="m-t-20 m-b-12 font14">{{ $t(`purchase.amount`) }}</p>
-        <van-form class="ntf-form" @submit="onSubmit">
+        <van-form class="ntf-form ntf-form-up" @submit="onSubmit">
           <van-field
             v-model="formData.money"
             type="digit"
@@ -435,7 +435,7 @@ export default {
       return v >= this.item.min && v <= this.item.max;
     },
     async investPlanYeb() {
-      if (this.config.beyShow !== 1) return;
+      // if (this.config.beyShow !== 1) return;
       const [err, res] = await userApi.investPlanYeb();
       if (err) return;
       this.planeYeb = {
@@ -520,7 +520,7 @@ export default {
   created() {
     this.investMyStatis();
     this.investPlans();
-    //this.investPlanYeb();
+    this.investPlanYeb();
     this.$store.commit("setPdTop", false);
     //更新用户信息
     this.$store.dispatch("getInfo");
@@ -690,10 +690,7 @@ export default {
   width: 39px;
   height: 39px;
 }
-.send-code-btn {
-  background: none;
-  min-width: auto;
-}
+
 .introduction {
   color: #5d7097;
   .radius {
@@ -723,17 +720,6 @@ export default {
   right: 12px;
 }
 
-.ntf-form {
-  ::v-deep {
-    .van-field__body {
-      border-radius: 9px;
-      background-image: linear-gradient(89deg, #17181c 1%, #273b40 100%);
-      input::placeholder {
-        color: #85898f !important;
-      }
-    }
-  }
-}
 .right-art-pop {
   border-radius: 9px;
   background-image: linear-gradient(88deg, #242a3b 2%, #273b40 99%);
