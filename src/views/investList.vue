@@ -101,15 +101,15 @@ export default {
       }
       this.finished = res.data.results.length < this.query.pageSize;
       //模拟 res.data.results 数据
-      res.data.results = [
-        {
-          id: 1,
-          money: 100,
-          moneyIncome: 10,
-          status: 0,
-          createdAt: 1626950400,
-        },
-      ];
+      // res.data.results = [
+      //   {
+      //     id: 1,
+      //     money: 100,
+      //     moneyIncome: 10,
+      //     status: 0,
+      //     createdAt: 1626950400,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
