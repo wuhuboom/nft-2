@@ -1,10 +1,8 @@
 <template>
   <div class="invest-plans-page font12 p-l-16 p-r-16 p-t-12">
-    <AppTopBar
-      :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`investment`)"
-      :styleObj="{ backgroundColor: 'tra' }"
-    ></AppTopBar>
+    <div>
+      <img class="d-img logo" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
+    </div>
     <div class="circle center-center" id="circle">
       <ul class="purchased">
         <li>{{ $t(`user.money.purchased`) }}</li>
@@ -522,6 +520,7 @@ export default {
     this.investMyStatis();
     this.investPlans();
     //this.investPlanYeb();
+    this.$store.commit("setPdTop", false);
     //更新用户信息
     this.$store.dispatch("getInfo");
   },
@@ -737,5 +736,9 @@ export default {
 .right-art-pop {
   border-radius: 9px;
   background-image: linear-gradient(88deg, #242a3b 2%, #273b40 99%);
+}
+.logo {
+  width: 75px;
+  height: 35px;
 }
 </style>
