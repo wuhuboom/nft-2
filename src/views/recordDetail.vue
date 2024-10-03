@@ -121,7 +121,15 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   {
+      //     orderMoney: 1000,
+      //     money: 0.1,
+      //     orderNo: "202107010001",
+      //     createdAt: 1625097600,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results
