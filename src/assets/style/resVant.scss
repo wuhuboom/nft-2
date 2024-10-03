@@ -118,8 +118,9 @@ input::placeholder {
 .ntf-vant-btn{
     height: 48px;
     border-radius: 15px;
-    background-color: var(--main);
-    border-color: var(--main);
+    background-color:transparent;
+    background-image: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+    border:none;
 }
 .linear-btn{
   border-radius: 9px;
@@ -142,8 +143,10 @@ input::placeholder {
     border-radius: 15px;
     min-width: 84px;
     padding: 0 8px;
-    background-color: var(--main);
-    border-color: var(--main);
+    background-color:transparent;
+    background-image: linear-gradient(to bottom, #11998e 0%, #38ef7d 100%);
+
+    border:none;
     color: #fff;
 }
 

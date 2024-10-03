@@ -127,7 +127,7 @@
               :placeholder="$t('form.phoneNum.text')"
               type="digit"
               autocomplete="new-password"
-              class="left-icon-box res-icon-size login-phone align-center"
+              class="left-icon-box res-icon-size login-phone align-center phone-input"
               :rules="[
                 { required: true, message: $t('ruls.phone.empty') },
                 {
@@ -182,7 +182,7 @@
           <div class="full100 center-center m-t-32 text-center flex-wrap">
             <p class="tips m-r-8">{{ $t("Already.a.account") }}</p>
             <p
-              class="login-link color-active flex-wrap"
+              class="login-link color-fff flex-wrap"
               @click="$router.push({ name: 'Login' })"
             >
               {{ $t("index.index.login") }}
@@ -390,5 +390,8 @@ export default {
   height: 39px;
   border-radius: 11.5px;
   border: solid 1px #232323;
+}
+.tips {
+  color: rgba(255, 255, 255, 0.6);
 }
 </style>
