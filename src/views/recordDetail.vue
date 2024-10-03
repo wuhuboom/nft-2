@@ -11,7 +11,7 @@
         <div class="left">{{ date(item.createdAt) }}</div>
         <div class="right green">+{{ divide(item.money) }}</div>
       </div>
-      <NoData v-if="query.pageNo > 1 && !video.length" />
+      <NoData class="m-t-40" v-if="query.pageNo > 1 && !video.length" />
     </LoadList>
   </div>
 </template>
