@@ -21,8 +21,8 @@
     </HomeTopBar>
     <activationCode />
     <div class="invest-plans-page">
-      <ul class="total-list p-t-20 m-b-16 text-center">
-        <li class="flex-column center-center m-b-24">
+      <ul class="total-list p-t-20 m-b-12 text-center">
+        <li class="flex-column center-center m-b-12">
           <p @click="refresh">{{ $t("fundsRecords.Balance.text") }}</p>
           <p @click="refresh" class="balance">
             {{ balance }}
@@ -251,7 +251,7 @@ export default {
     font-size: 15px;
     color: #e3e7ec;
     .balance {
-      font-size: 22px;
+      font-size: 20px;
       color: #fff;
       font-weight: bold;
     }

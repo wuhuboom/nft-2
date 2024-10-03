@@ -37,6 +37,7 @@
           :key="idx"
           @click="goDetail(item)"
         >
+          <pagesinvestItem :item="item" />
           <div class="plans-item m-b-16">
             <div class="align-center plans-head p-b-8 m-b-8">
               <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
@@ -63,14 +64,6 @@
                 </div>
                 <div class="right">{{ divide(item.money) }}</div>
               </div>
-              <!-- <div class="row">
-              <div class="left">{{ $t("make.money.date") }}</div>
-              <div class="right gray">
-                {{
-                  +item.autoInvest ? $t(`make.show.money`) : $t(`make.show.hie`)
-                }}
-              </div>
-            </div> -->
               <div class="row">
                 <div class="left">
                   {{ $t("invest.record.table.col4.text") }}
@@ -79,7 +72,6 @@
                   {{ count(item) }}
                 </div>
               </div>
-              <!-- % -->
               <div class="row">
                 <div class="left">{{ $t("activation.day") }}</div>
                 <div class="right">{{ item.activedDays }}</div>
@@ -94,7 +86,6 @@
                 <div class="left">
                   {{ $t("invest.record.table.col2.text") }}
                 </div>
-                <!-- formatDate() -->
                 <div class="right">{{ date(item.finishTime) }}</div>
               </div>
             </div>
@@ -106,6 +97,7 @@
 </template>
 
 <script>
+import pagesinvestItem from "@/views/pagesinvestItem";
 import i18n from "@/locale";
 import userApi from "@/api/user";
 import dayjs from "dayjs";
@@ -183,6 +175,9 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    pagesinvestItem,
   },
   methods: {
     chosen() {
