@@ -56,7 +56,9 @@ u
           </li>
           <li class="justify-between m-t-12 m-b-12">
             <p>{{ item.createdAt | timestampStr }}</p>
-            <p class="green">{{ getState(+item.status) }}</p>
+            <p :class="[+item.status == 3 ? 'red' : 'green']">
+              {{ getState(+item.status) }}
+            </p>
           </li>
 
           <li v-if="item.remark" class="remark m-t-8 p-x-8">
@@ -417,7 +419,7 @@ export default {
       //     {
       //       createdAt: "2021-07-01 12:00:00",
       //       money: 100,
-      //       status: 3,
+      //       status: 2,
       //       type: 1,
       //       remark: "失败原因",
       //     },
@@ -518,5 +520,8 @@ export default {
 }
 .green {
   color: #85f823;
+}
+.red {
+  color: #f82354;
 }
 </style>
