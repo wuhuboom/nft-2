@@ -468,6 +468,7 @@ export default {
         }
         return;
       }
+      this.$router.push({ name: "Investrecord" });
       this.formData = initFome();
       this.$toast.success(
         this.$t("backapi.self.safe.bill.detail.status.success.text")
