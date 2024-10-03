@@ -19,21 +19,21 @@
         </li>
       </ul>
       <div class="p-l-12 p-r-12 p-t-12 m-t-24 order-msg">
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`order.type`) }}</li>
           <li>{{ $t(`buy.take`) }}</li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`order.say`) }}</li>
           <li>{{ $t(`buy.desc.tip`) }}</li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`recharge.Status`) }}</li>
           <li class="align-center">
             {{ getType2(detail.status) }}
           </li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`fundsRecords.orderNo.text`) }}</li>
           <li
             class="align-center"
@@ -44,26 +44,26 @@
             <i class="el-icon-copy-document m-l-4 font16"></i>
           </li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`make.order.time`) }}</li>
           <li>{{ date(detail.createdAt) }}</li>
         </ul>
 
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`manege.product`) }}</li>
           <li v-if="detail.plan" class="align-center">
             {{ detail.plan.name }}
           </li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`invest.money.text`) }}</li>
           <li>{{ divide(detail.money) }}</li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row m-b-12">
           <li class="color-blue">{{ $t(`hoe.much.money`) }}</li>
           <li>{{ divide(detail.money) }}</li>
         </ul>
-        <ul class="justify-between m-b-12">
+        <ul class="justify-between row p-b-12">
           <li class="color-blue">{{ $t(`order.pays`) }}</li>
           <li>{{ $t(`backapi.self.safe.balance.text`) }}</li>
         </ul>
@@ -329,6 +329,14 @@ export default {
   .wit101 {
     width: 101px;
     height: 33px;
+  }
+  .row {
+    & > li:first-child {
+      color: #9fa0a2;
+    }
+    & > li:last-child {
+      color: #cacbce;
+    }
   }
 }
 </style>
