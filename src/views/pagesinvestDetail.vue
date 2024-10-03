@@ -7,7 +7,7 @@
       <ul class="align-center flex-1 space-between">
         <li>
           <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
-          <p class="gray">{{ getType(item.getType) }}</p>
+          <p class="gray">{{ getType(item.type) }}</p>
         </li>
         <li class="rate-row">
           <p class="days prog">{{ getType2(item.status) }}</p>
