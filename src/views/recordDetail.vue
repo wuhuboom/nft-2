@@ -91,6 +91,15 @@ export default {
       let res = this.typeOptions2.find((item) => item.value == value);
       return res.label;
     },
+    async investMyDetail() {
+      const [err, res] = await userApi.investMyDetail({
+        id: this.query.id,
+      });
+      if (err) {
+        return false;
+      }
+      this.detail = res.data;
+    },
     async informationVideo(obj = {}) {
       const params = {
         ...this.query,
@@ -131,9 +140,10 @@ export default {
     },
   },
   created() {
-    let detail = window.localStorage.getItem("recroedItem");
-    detail = detail ? JSON.parse(detail) : {};
-    this.detail = detail;
+    // let detail = window.localStorage.getItem("recroedItem");
+    // detail = detail ? JSON.parse(detail) : {};
+    // this.detail = detail;
+    this.investMyDetail();
   },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");

@@ -186,7 +186,7 @@ export default {
       this.informationVideo();
     },
     goDetail(item) {
-      window.localStorage.setItem("recroedItem", JSON.stringify(item));
+      //window.localStorage.setItem("recroedItem", JSON.stringify(item));
       this.$router.push({
         path: "/pages/invest/recordDetail?id=" + item.id,
       });
