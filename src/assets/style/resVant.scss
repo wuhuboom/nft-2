@@ -60,6 +60,7 @@ input::placeholder {
           .icon-img{
             width: 20px;
             height: 20px;
+            object-fit: contain;
           }
           .van-field__left-icon{
             position: absolute;
@@ -155,8 +156,6 @@ input::placeholder {
   height: 44px;
   border-radius: 15px;
   background-color: $dark-color;
-//   padding-left: 16px;
-//   padding-right: 16px;
   .el-input__inner{
     padding-left: 16px;
   }
