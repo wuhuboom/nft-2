@@ -39,14 +39,14 @@
               <div class="left">{{ $t("invest.record.table.col1.text") }}</div>
               <div class="right">{{ divide(item.money) }}</div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="left">{{ $t("make.money.date") }}</div>
               <div class="right gray">
                 {{
                   +item.autoInvest ? $t(`make.show.money`) : $t(`make.show.hie`)
                 }}
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col4.text") }}</div>
               <div class="right active">
@@ -158,7 +158,24 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-
+      // res.data.results 模拟数据
+      // res.data.results = [
+      //   {
+      //     id: 1,
+      //     plan: {
+      //       name: "plan1",
+      //     },
+      //     planIcon: "https://img.yzcdn.cn/vant/cat.jpeg",
+      //     type: 0,
+      //     status: 0,
+      //     days: 10,
+      //     money: 1000,
+      //     autoInvest: 1,
+      //     rate: 10,
+      //     orderNo: "123456",
+      //     finishTime: 1620000000,
+      //   },
+      // ];
       this.video =
         params.pageNo == 1
           ? res.data.results

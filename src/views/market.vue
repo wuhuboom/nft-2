@@ -504,6 +504,7 @@ export default {
       }
       //更新用户
       this.$store.dispatch("getInfo");
+      console.log(v);
       this.item = v;
       this.show = true;
       if (this.addRate) {
