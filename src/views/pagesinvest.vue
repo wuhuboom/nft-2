@@ -6,7 +6,7 @@
     ></AppTopBar>
     <ul class="drop-list p-l-12 p-r-12 justify-between align-center m-b-12">
       <li>
-        <el-select v-model="cur" @change="chosen">
+        <el-select v-model="query.time" @change="chosen">
           <el-option
             v-for="item in navs"
             :key="item.key"
@@ -17,7 +17,7 @@
         </el-select>
       </li>
       <li>
-        <el-select v-model="status" @change="chosen">
+        <el-select v-model="query.status" @change="chosen">
           <el-option
             v-for="(item, idx) in dataArray"
             :key="idx"
@@ -113,8 +113,6 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
-      status: 0, //类型
-      cur: 0, //时间
       navs: [
         {
           name: i18n.t(`property.record.search.time1.text`),
@@ -127,6 +125,10 @@ export default {
         {
           name: i18n.t(`property.record.search.time3.text`),
           key: 2,
+        },
+        {
+          name: i18n.t(`property.record.search.time5.text`),
+          key: 4,
         },
       ],
       dataArray: [
@@ -150,10 +152,11 @@ export default {
       finished: false,
       video: [],
       query: {
-        time: 1,
         pageNo: 1,
         pageSize: 10,
         type: 1,
+        time: 0,
+        status: 0,
       },
       typeOptions: [
         {
@@ -219,8 +222,6 @@ export default {
       const params = {
         ...this.query,
         ...obj,
-        status: this.status,
-        time: this.cur,
       };
       const [err, res] = await userApi.investMyPost(params);
       if (err) {
@@ -252,10 +253,20 @@ export default {
       this.query.pageNo++;
     },
   },
+  created() {
+    if (this.$store.state.fromRoute.name === "RecordDetail") {
+      this.query = this.$store.state.recroed.query;
+      this.video = this.$store.state.recroed.video;
+    }
+  },
   mounted() {
     document.querySelector("body").classList.add("gray-bg-img");
   },
   destroyed() {
+    this.$store.commit("setRecroed", {
+      video: this.video,
+      query: this.query,
+    });
     document.querySelector("body").classList.remove("gray-bg-img");
   },
 };

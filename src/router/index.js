@@ -7,6 +7,7 @@ import store from "@/store";
 import Nprogress from "nprogress";
 //import AppTopBar from "@/components/global/AppTopBar";
 import AppBtmBar from "@/components/global/AppBtmBar";
+import app from "@/main";
 const routes = [
   {
     path: "/",
@@ -607,8 +608,9 @@ router.beforeEach(async (to, from, next) => {
   }
   next();
 });
-router.afterEach(() => {
+router.afterEach((to, from) => {
   store.commit("setPdTop", true);
   Nprogress.done();
+  app.$store.commit("setFromRoute", from);
 });
 export default router;
