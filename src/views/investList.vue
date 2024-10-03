@@ -20,7 +20,7 @@
         >
           <li>
             <p class="font14">{{ user.currencySymbol }}</p>
-            <p class="m-t-4">
+            <p class="m-t-4 prog">
               {{ getType2(item.status) }}
             </p>
             <p class="m-t-4 color-88">
@@ -116,12 +116,6 @@ export default {
       this.query.pageNo++;
     },
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -130,7 +124,7 @@ export default {
     color: #808080;
   }
   .green {
-    color: #1fb759;
+    color: #caffde;
   }
   .list {
     border-radius: 9px;
@@ -138,6 +132,15 @@ export default {
     & > li:last-child {
       text-align: right;
     }
+  }
+  .prog {
+    padding: 0 4px;
+    line-height: 1;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 3px;
+    background-color: #004021;
+    display: inline-block;
   }
 }
 </style>
