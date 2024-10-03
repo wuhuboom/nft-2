@@ -124,7 +124,16 @@
               </li>
             </ul>
             <ul>
-              <li class="font28">{{ item.rate }}%</li>
+              <li class="font28 align-center">
+                {{ item.rate }}%
+                <p>
+                  <img
+                    class="d-img ligth"
+                    src="@/assets/img/ntf3/166@2x.webp"
+                    alt=""
+                  />
+                </p>
+              </li>
               <li>{{ $t(`rate.of.return`) }}</li>
             </ul>
           </div>
@@ -505,7 +514,7 @@ export default {
   created() {
     this.investMyStatis();
     this.investPlans();
-    this.investPlanYeb();
+    //this.investPlanYeb();
     //更新用户信息
     this.$store.dispatch("getInfo");
   },
@@ -670,6 +679,14 @@ export default {
     align-items: flex-start;
   }
 }
+.ligth {
+  width: 39px;
+  height: 39px;
+}
+.send-code-btn {
+  background: none;
+  min-width: auto;
+}
 .introduction {
   color: #5d7097;
   .radius {
@@ -697,5 +714,17 @@ export default {
   position: fixed;
   bottom: 120px;
   right: 12px;
+}
+
+.ntf-form {
+  ::v-deep {
+    .van-field__body {
+      border-radius: 9px;
+      background-image: linear-gradient(89deg, #17181c 1%, #273b40 100%);
+      input::placeholder {
+        color: #85898f !important;
+      }
+    }
+  }
 }
 </style>
