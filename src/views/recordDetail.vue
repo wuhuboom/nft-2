@@ -89,6 +89,7 @@ export default {
     },
     getType2(value) {
       let res = this.typeOptions2.find((item) => item.value == value);
+      if (!res) return "";
       return res.label;
     },
     async investMyDetail() {
