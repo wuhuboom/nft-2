@@ -88,7 +88,7 @@ export default {
       margin-top: -20px;
       min-height: 148px;
       border-radius: 20px;
-      background-image: linear-gradient(to bottom, #45382b, #201c2f);
+      background-image: linear-gradient(to bottom, #1f2430, #151515);
     }
   }
 }
