@@ -29,13 +29,22 @@
         </div>
         <div class="buy-desc blod p-l-12 p-r-12 align-center">
           <ul v-if="planeYeb.rateConfig.length">
-            <li class="font28">{{ dayItem.rate }}%</li>
+            <li class="font28 align-center">
+              {{ dayItem.rate }}%
+              <p>
+                <img
+                  class="d-img ligth"
+                  src="@/assets/img/ntf3/166@2x.webp"
+                  alt=""
+                />
+              </p>
+            </li>
             <li>{{ $t(`rate.of.return`) }}</li>
           </ul>
         </div>
       </div>
       <p class="color-cc font14 m-b-12">{{ $t(`purchase.amount`) }}</p>
-      <van-form class="ntf-form" @submit="onSubmit">
+      <van-form class="ntf-form ntf-form-up" @submit="onSubmit">
         <van-field
           v-model="formData.money"
           type="digit"
@@ -302,5 +311,9 @@ export default {
       text-shadow: 0 3px 6px rgba(255, 255, 255, 0.49);
     }
   }
+}
+.ligth {
+  width: 39px;
+  height: 39px;
 }
 </style>
