@@ -68,24 +68,27 @@
           <li>{{ $t(`backapi.self.safe.balance.text`) }}</li>
         </ul>
       </div>
-      <div class="rules-desc m-b-16 m-t-16">
-        <van-steps direction="vertical" :active="20" active-color="#38ff7e">
+      <p class="explanation font14 m-t-16">
+        {{ $t("wallet.index.explanation.text") }}
+      </p>
+      <div class="rules-desc m-b-16">
+        <van-steps direction="vertical" :active="20" active-color="#F6B123">
           <van-step>
-            <ul class="color-fff">
+            <ul class="color-fff font12 justify-between align-center">
               <li class="color-fff m-b-4">{{ $t("buy.time") }}</li>
               <li>{{ date(detail.profitTimeStart) }}</li>
             </ul>
           </van-step>
           <van-step>
-            <ul class="color-fff">
-              <li class="color-fff color-fff m-b-4">
+            <ul class="color-fff justify-between align-center">
+              <li class="color-fff font12 color-fff m-b-4">
                 {{ $t("give.money.time") }}
               </li>
               <li>{{ date(detail.profitTime) }}</li>
             </ul>
           </van-step>
           <van-step>
-            <ul class="color-fff">
+            <ul class="color-fff font12 justify-between align-center">
               <li class="color-fff color-fff m-b-4">
                 {{ $t("return.time") }}
               </li>
@@ -118,7 +121,7 @@
       <ul class="center-center m-b-12">
         <li class="m-r-16">
           <van-button
-            class="ntf-vant-btn"
+            class="ntf-vant-btn wit101"
             @click="(showPay = true), (showDesc = false)"
             type="info"
             size="small"
@@ -132,7 +135,7 @@
               border-color: transparent;
               background-image: none;
             "
-            class="ntf-vant-btn"
+            class="ntf-vant-btn wit101"
             @click="showDesc = false"
             type="info"
             size="small"
@@ -251,21 +254,21 @@ export default {
         return;
       }
       //模拟 res.data 数据
-      // res.data = {
-      //   id: 1,
-      //   plan: {
-      //     name: "余额宝",
-      //   },
-      //   investTotal: 1000,
-      //   moneyIncome: 100,
-      //   status: 0,
-      //   orderNo: "20210719123456789",
-      //   createdAt: 1626662400,
-      //   profitTimeStart: 1626662400,
-      //   profitTime: 1626662400,
-      //   orderCancelTime: 1626662400,
-      //   money: 1000,
-      // };
+      res.data = {
+        id: 1,
+        plan: {
+          name: "余额宝",
+        },
+        investTotal: 1000,
+        moneyIncome: 100,
+        status: 0,
+        orderNo: "20210719123456789",
+        createdAt: 1626662400,
+        profitTimeStart: 1626662400,
+        profitTime: 1626662400,
+        orderCancelTime: 1626662400,
+        money: 1000,
+      };
       this.detail = res.data;
       if (!this.detail.imgUrl) {
         this.detail.imgUrl = yuIcon;
@@ -305,15 +308,16 @@ export default {
     background-size: contain;
   }
   .order-msg {
-    border-radius: 14px;
-    border: solid 1px #292a2b;
-    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 9px;
+    background-color: #17181c;
   }
   .rules-desc {
+    margin-left: -12px;
     ::v-deep {
       .van-steps {
         border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.09);
+        background-color: transparent;
+        font-size: 12px;
       }
       .van-hairline {
         &::after {
@@ -321,6 +325,10 @@ export default {
         }
       }
     }
+  }
+  .wit101 {
+    width: 101px;
+    height: 33px;
   }
 }
 </style>
