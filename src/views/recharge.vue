@@ -31,6 +31,16 @@
               class="full100"
               :placeholder="$t('backapi.self.safe.bill.data.type.text')"
             >
+              <template #prefix>
+                <p>
+                  <img
+                    class="d-img icon-prefix"
+                    :src="chooseRecType.img"
+                    alt=""
+                  />
+                </p>
+                <!-- 自定义前缀图标 -->
+              </template>
               <el-option
                 v-for="item in rechargeList"
                 :key="item.id"
@@ -109,7 +119,7 @@
       <div class="center-center m-t-20">
         <van-button
           block
-          class="ntf-vant-btn"
+          class="ntf-vant-btn max-btn"
           type="info"
           :loading="loading"
           @click="$refs.form.submit()"
@@ -380,13 +390,25 @@ export default {
   border: solid 1px #37ff7e;
   background-color: #101010;
   ::v-deep {
+    .el-input__prefix {
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+    }
     [type="text"] {
-      height: 52px;
+      height: 50px;
+      padding-left: 60px;
       color: #caffde !important;
     }
     .el-select-dropdown__item {
       height: 46px;
     }
+  }
+}
+.el-ntf-select {
+  img {
+    height: 30px;
+    width: 30px;
   }
 }
 .select-solt {
