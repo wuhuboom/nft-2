@@ -5,11 +5,14 @@
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
     ></AppTopBar>
     <pagesinvestDetail :item="detail" class="m-t-16" />
-    <p class="font14 m-b-8">{{ $t("buy.invest.money5") }}</p>
+    <p class="font14 p-t-16 m-b-24">{{ $t("buy.invest.money5") }}</p>
     <LoadList :onload="informationVideo" :finished="finished">
-      <div class="row" v-for="(item, idx) in video" :key="idx">
-        <div class="left">{{ date(item.createdAt) }}</div>
-        <div class="right green">+{{ divide(item.money) }}</div>
+      <div class="row p-b-8 p-t-8" v-for="(item, idx) in video" :key="idx">
+        <div class="left font13 m-b-4">{{ date(item.createdAt) }}</div>
+        <div class="right justify-between align-center">
+          <p class="font10 gray">{{ item.orderNo }}</p>
+          <p class="green font14">+{{ divide(item.money) }}</p>
+        </div>
       </div>
       <NoData class="m-t-40" v-if="query.pageNo > 1 && !video.length" />
     </LoadList>
@@ -156,15 +159,14 @@ export default {
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    height: 36px;
+  .gray {
+    color: #808080;
   }
   .rate-row {
     text-align: right;
+  }
+  .row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .days {
     height: 18px;
@@ -175,9 +177,7 @@ export default {
     color: #fff;
     display: inline-block;
   }
-  .gray {
-    color: #cacbce;
-  }
+
   .plans-head {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -193,6 +193,12 @@ export default {
   }
   .green {
     color: #1fb759;
+  }
+  .font10 {
+    font-size: 10px;
+  }
+  .font13 {
+    font-size: 13px;
   }
 }
 </style>

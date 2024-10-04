@@ -123,7 +123,8 @@ export default {
 <style scoped lang="less">
 .pagesinvest-item {
   border-radius: 14px;
-  //background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
   .row {
     display: flex;
     justify-content: space-between;
