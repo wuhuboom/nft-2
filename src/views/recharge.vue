@@ -300,6 +300,7 @@ export default {
       padding: 4px;
     }
     .num {
+      color: #fff;
       text-align: center;
       line-height: 31px;
       height: 31px;
