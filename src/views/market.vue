@@ -1,7 +1,12 @@
 <template>
   <div class="invest-plans-page font12 p-l-16 p-r-16 p-t-12">
     <div>
-      <img class="d-img logo" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
+      <img
+        @click="$router.push('/')"
+        class="d-img logo"
+        src="@/assets/img/ntf3/130105@2x.webp"
+        alt=""
+      />
     </div>
     <div class="circle center-center" id="circle">
       <ul class="purchased">
