@@ -47,6 +47,12 @@
         <div class="left">
           {{ $t("invest.record.table.col2.text") }}
         </div>
+        <div class="right">{{ date(item.createdAt) }}</div>
+      </div>
+      <div class="row">
+        <div class="left">
+          {{ $t("finish.time") }}
+        </div>
         <div class="right">{{ date(item.finishTime) }}</div>
       </div>
     </div>

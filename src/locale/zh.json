@@ -1569,5 +1569,6 @@
   "lottery.my.frend":"邀请好友并且充值2000卢比,获得抽奖机会",
   "activation.day":"激活天数",
   "login.fail":"登录失败",
-  "reg.name.user": "用户名不能是纯数字"
+  "reg.name.user": "用户名不能是纯数字",
+  "finish.time":"到期时间"
 }

@@ -112,7 +112,7 @@ export default {
         },
         {
           name: i18n.t(`property.record.search.time2.text`),
-          key: 1,
+          key: 4,
         },
         {
           name: i18n.t(`property.record.search.time3.text`),
@@ -120,7 +120,7 @@ export default {
         },
         {
           name: i18n.t(`property.record.search.time5.text`),
-          key: 4,
+          key: 3,
         },
       ],
       dataArray: [
@@ -136,10 +136,10 @@ export default {
           label: i18n.t("invest.record.status1.text"),
           value: 1,
         },
-        {
-          label: i18n.t("invest.record.status2.text"),
-          value: 2,
-        },
+        // {
+        //   label: i18n.t("invest.record.status2.text"),
+        //   value: 2,
+        // },
       ],
       finished: false,
       video: [],

@@ -1570,5 +1570,7 @@
 "lottery.order1": "Lottery Record",
 "lottery.my.frend": "Invite a friend and recharge 2000 rupees to get a chance to win a lottery.",
 "activation.day":"Activation Days",
-"login.fail":"Login failed"  
+"login.fail":"Login failed",
+"reg.name.user": "Username cannot be purely numeric",
+"finish.time": "Expiration Time"  
 }

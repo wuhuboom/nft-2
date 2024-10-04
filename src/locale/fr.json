@@ -1571,5 +1571,7 @@
 "lottery.order1": "Historique des tirages",
 "lottery.my.frend": "Invitez un ami et rechargez 2000 roupies pour avoir la chance de gagner à la loterie.",
 "activation.day":"Jours d'activation",
-"login.fail":"Échec de la connexion" 
+"login.fail":"Échec de la connexion",
+"reg.name.user": "Le nom d'utilisateur ne peut pas être uniquement numérique",
+"finish.time": "Date d'expiration" 
 }
