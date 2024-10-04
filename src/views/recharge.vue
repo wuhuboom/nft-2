@@ -1,12 +1,11 @@
 <template>
-  <div class="message-page font12 p-l-16 p-r-16">
+  <div class="message-page font14 p-l-16 p-r-16">
     <AppTopBar :topBarTitle="$t('deal.recharge.354498-0')"> </AppTopBar>
     <div class="center-center py-16" v-if="!rechargeList.length">
       <van-Loading class="color-primary" />
     </div>
     <div v-else class="m-t-12 gray">
-      <p class="font13 m-b-12">{{ $t(`rechange.way`) }}</p>
-      <ul class="type-list m-b-8">
+      <!-- <ul class="type-list m-b-8">
         <li
           v-for="(item, index) in rechargeList"
           class="m-r-16"
@@ -21,36 +20,37 @@
             <p class="center-center">{{ item.name }}</p>
           </div>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="ntf-form rech-form m-b-12">
-        <div class="el-ntf-select m-b-16">
-          <el-select
-            v-model="typeId"
-            class="full100"
-            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
-          >
-            <el-option
-              v-for="item in rechargeList"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-              class="m-b-8 m-t-8"
-            >
-              <ul
-                class="align-center select-solt"
-                :class="{ 'color-fff': typeId !== item.id }"
-              >
-                <li class="m-r-16">
-                  <img class="d-img" :src="item.img" alt="" />
-                </li>
-                <li>{{ item.name }}</li>
-              </ul>
-            </el-option>
-          </el-select>
-        </div>
         <van-form ref="form" @submit="onSubmit">
-          <p class="lable-text">{{ $t(`recharge.amount.text`) }}</p>
+          <p class="lable-text m-t-20 m-b-20">{{ $t(`rechange.way`) }}</p>
+          <div class="el-ntf-select m-b-20">
+            <el-select
+              v-model="typeId"
+              class="full100"
+              :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+            >
+              <el-option
+                v-for="item in rechargeList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+                class="m-b-8 m-t-8"
+              >
+                <ul
+                  class="align-center select-solt"
+                  :class="{ 'color-fff': typeId !== item.id }"
+                >
+                  <li class="m-r-16">
+                    <img class="d-img" :src="item.img" alt="" />
+                  </li>
+                  <li>{{ item.name }}</li>
+                </ul>
+              </el-option>
+            </el-select>
+          </div>
+          <p class="lable-text m-b-20">{{ $t(`recharge.amount.text`) }}</p>
           <van-field
             v-model.trim="amount"
             :rules="[
@@ -65,12 +65,12 @@
               <!-- <span class="color-fff">{{ chooseRecType.currencySymbol }}</span> -->
             </template>
           </van-field>
-          <p class="limit m-t-8 active">
+          <p class="limit m-t-16 color-fff font12">
             {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
           </p>
-          <div class="justify-between m-t-8">
-            <p>
-              <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
+          <div class="m-t-8 m-b-20">
+            <p class="m-b-4">
+              <span class="">{{ $t("recharge.usdt.rate.text") }}:</span
               ><span class="color-fff">
                 <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
               }} -->
@@ -78,7 +78,7 @@
               >
             </p>
             <p class="flex-1 amount-text">
-              <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
+              <span class="">{{ $t("recharge.real.amount.text") }}:</span
               ><span class="color-fff"
                 >{{ ngnToUsdtMoney }}
                 <!-- {{ chooseRecType.currencySymbol }} -->
@@ -94,7 +94,10 @@
           @click="amount = item"
           :key="idx"
         >
-          <div class="num center-center" :class="{ active: item == amount }">
+          <div
+            class="num center-center color-fff"
+            :class="{ chose: item == amount }"
+          >
             {{ item }}
           </div>
         </li>
@@ -238,10 +241,9 @@ export default {
 <style scoped lang="less">
 .message-page {
   .amount-text {
-    text-align: right;
   }
   .gray {
-    color: #cacbce;
+    color: #a6a6a6;
   }
   .type-text {
     text-align: center;
@@ -326,11 +328,14 @@ export default {
     }
     .num {
       text-align: center;
-      line-height: 31px;
-      height: 31px;
-      border-radius: 6px;
-      border: solid 1px #393939;
-      background-color: #292929;
+      line-height: 471px;
+      height: 47px;
+
+      border-radius: 5.5px;
+      border: solid 1px #606060;
+      &.chose {
+        border-color: var(--main);
+      }
     }
     .active {
       background-color: var(--main);
@@ -368,11 +373,12 @@ export default {
 .el-ntf-select {
   border-radius: 5.5px;
   height: 52px;
-  border: solid 1px #606060;
+  border: solid 1px #37ff7e;
   background-color: #101010;
   ::v-deep {
     [type="text"] {
       height: 52px;
+      color: #caffde !important;
     }
     .el-select-dropdown__item {
       height: 46px;
