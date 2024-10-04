@@ -22,10 +22,35 @@
           </div>
         </li>
       </ul>
-      <p class="font13 m-b-12 m-t-16">{{ $t(`recharge.amount.text`) }}</p>
-      <div class="ntf-form m-b-12">
+
+      <div class="ntf-form rech-form m-b-12">
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="typeId"
+            class="full100"
+            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+          >
+            <el-option
+              v-for="item in rechargeList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+              class="m-b-8 m-t-8"
+            >
+              <ul
+                class="align-center select-solt"
+                :class="{ 'color-fff': typeId !== item.id }"
+              >
+                <li class="m-r-16">
+                  <img class="d-img" :src="item.img" alt="" />
+                </li>
+                <li>{{ item.name }}</li>
+              </ul>
+            </el-option>
+          </el-select>
+        </div>
         <van-form ref="form" @submit="onSubmit">
-          <!-- :placeholder="inputPlace" -->
+          <p class="lable-text">{{ $t(`recharge.amount.text`) }}</p>
           <van-field
             v-model.trim="amount"
             :rules="[
@@ -110,7 +135,8 @@ export default {
     return {
       loading: false,
       rechargeList: [],
-      chooseRecType: {},
+      typeId: "",
+
       amount: "",
       rechargeTipLists: [
         i18n.t("backapi.self.recharge.tip.content1.text"),
@@ -120,6 +146,9 @@ export default {
     };
   },
   computed: {
+    chooseRecType() {
+      return this.rechargeList.find((v) => v.id === this.typeId) || {};
+    },
     quickAmountList() {
       if (this.chooseRecType.fast) {
         return this.chooseRecType.fast.split("-");
@@ -187,15 +216,17 @@ export default {
       const [err, res] = await userApi.recharge(params);
       if (err) return;
       this.rechargeList = res.data;
+
       this.chose(this.rechargeList[0]);
     },
     chose(item) {
       if (!item) return;
-      this.chooseRecType = item;
+      // this.chooseRecType = item;
       // if (this.quickAmountList && this.quickAmountList.length > 0) {
       //   this.amount = this.quickAmountList[0];
       //   return;
       // }
+      this.typeId = item.id;
       this.amount = this.chooseRecType.def;
     },
   },
@@ -320,6 +351,38 @@ export default {
   .said-text {
     border: 1px solid var(--main);
     border-radius: 8px;
+  }
+}
+.rech-form {
+  ::v-deep {
+    .van-cell {
+      .van-field__body {
+        height: 53px;
+        border-radius: 5.5px;
+        border: solid 1px #606060;
+        background-color: #101010;
+      }
+    }
+  }
+}
+.el-ntf-select {
+  border-radius: 5.5px;
+  height: 52px;
+  border: solid 1px #606060;
+  background-color: #101010;
+  ::v-deep {
+    [type="text"] {
+      height: 52px;
+    }
+    .el-select-dropdown__item {
+      height: 46px;
+    }
+  }
+}
+.select-solt {
+  img {
+    height: 30px;
+    width: 30px;
   }
 }
 </style>
