@@ -305,7 +305,7 @@ export default {
       height: 31px;
       border-radius: 6px;
       border: solid 1px #393939;
-      background-color: #292929;
+      background-color: #818181;
     }
     .active {
       background-color: var(--main);

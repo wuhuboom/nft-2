@@ -126,7 +126,7 @@ export default {
       dataArray: [
         {
           label: i18n.t("order.search.all.text"),
-          value: 3,
+          value: "",
         },
         {
           label: i18n.t("invest.record.status0.text"),
@@ -220,6 +220,9 @@ export default {
         ...this.query,
         ...obj,
       };
+      if (params.status === "") {
+        delete params.status;
+      }
       const [err, res] = await userApi.investMyPost(params);
       if (err) {
         this.finished = true;
