@@ -102,6 +102,10 @@
           </div>
         </li>
       </ul>
+      <p class="m-b-20 m-t-40">
+        <i class="el-icon-check active bold"></i>
+        {{ $t("verify.carefully.transfer") }}
+      </p>
       <div class="center-center m-t-20">
         <van-button
           block
@@ -113,7 +117,7 @@
           {{ $t("recharge.button.now.text") }}</van-button
         >
       </div>
-      <ul class="m-t-16 p-x-8 said-text">
+      <!-- <ul class="m-t-16 p-x-8 said-text">
         <li>{{ $t(`recharge.tip.title.text`) }}</li>
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content1.text`) }}
@@ -124,7 +128,7 @@
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content3.text`) }}
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
@@ -390,5 +394,8 @@ export default {
     height: 30px;
     width: 30px;
   }
+}
+.el-icon-check {
+  font-size: 20px;
 }
 </style>
