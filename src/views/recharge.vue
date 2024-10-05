@@ -8,62 +8,27 @@
       <div class="top-desc center-center m-b-20 p-t-24">
         <img class="d-img" src="@/assets/img/ntf3/user/129517@2x.webp" alt="" />
       </div>
-      <ul class="type-list m-b-8">
-        <li
-          v-for="(item, index) in rechargeList"
-          class="m-r-16"
-          @click="chose(item)"
-          :class="{ 'color-active': item.id === chooseRecType.id }"
-          :key="index"
-        >
-          <div class="cont">
-            <p v-if="item.img" class="pic center-center">
-              <img :src="item.img" alt="" />
-            </p>
-            <p class="center-center">{{ item.name }}</p>
-          </div>
-        </li>
-      </ul>
 
       <div class="ntf-form rech-form m-b-12">
         <van-form ref="form" @submit="onSubmit">
-          <p class="lable-text m-t-20 m-b-20">{{ $t(`rechange.way`) }}</p>
-          <div class="el-ntf-select m-b-20">
-            <el-select
-              v-model="typeId"
-              class="full100"
-              :placeholder="$t('backapi.self.safe.bill.data.type.text')"
+          <p class="lable-text m-t-20 m-b-12">{{ $t(`rechange.way`) }}</p>
+          <ul class="type-list m-b-16">
+            <li
+              v-for="(item, index) in rechargeList"
+              class="m-r-20"
+              @click="chose(item)"
+              :class="{ 'color-active': item.id === chooseRecType.id }"
+              :key="index"
             >
-              <template #prefix>
-                <p>
-                  <img
-                    class="d-img icon-prefix"
-                    :src="chooseRecType.img"
-                    alt=""
-                  />
+              <div class="cont center-center">
+                <p v-if="item.img" class="pic center-center">
+                  <img :src="item.img" alt="" />
                 </p>
-                <!-- 自定义前缀图标 -->
-              </template>
-              <el-option
-                v-for="item in rechargeList"
-                :key="item.id"
-                :label="item.name"
-                :value="item.id"
-                class="m-b-8 m-t-8"
-              >
-                <ul
-                  class="align-center select-solt"
-                  :class="{ 'color-fff': typeId !== item.id }"
-                >
-                  <li class="m-r-16">
-                    <img class="d-img" :src="item.img" alt="" />
-                  </li>
-                  <li>{{ item.name }}</li>
-                </ul>
-              </el-option>
-            </el-select>
-          </div>
-          <p class="lable-text m-b-20">{{ $t(`recharge.amount.text`) }}</p>
+                <p class="center-center">{{ item.name }}</p>
+              </div>
+            </li>
+          </ul>
+          <p class="lable-text m-b-12">{{ $t(`recharge.amount.text`) }}</p>
           <van-field
             v-model.trim="amount"
             :rules="[
@@ -253,6 +218,12 @@ export default {
   created() {
     this.recharge();
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
@@ -273,20 +244,20 @@ export default {
     }
     & > li {
       .cont {
-        width: 73px;
-        height: 55px;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         align-items: center;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.1);
+        padding: 0 14px;
+        height: 28px;
+        border-radius: 14px;
+        background-color: #30405b;
         border: 1px solid transparent;
+        color: #fff;
       }
 
       .pic {
-        width: 65px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
         img {
           width: 100%;
           height: 100%;
@@ -300,7 +271,8 @@ export default {
     }
     & > li.color-active {
       .cont {
-        border-color: var(--main) !important;
+        background-image: linear-gradient(to bottom, #11998e, #38ef7d);
+        background-color: transparent;
       }
     }
   }
