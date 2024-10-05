@@ -6,7 +6,7 @@
           Hi
           <span class="m-l-8">{{ user.username }}</span>
         </p>
-        <p>Launch the Most Thrilling Top Matches</p>
+        <p>{{ $t("Most.top.Matches") }}</p>
       </li>
       <li
         class="notice no-shrink center-center"

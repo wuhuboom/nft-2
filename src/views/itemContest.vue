@@ -39,15 +39,20 @@
           <ul class="cont flex-1">
             <li class="align-center main-macth justify-between p-4-8">
               <p class="els">
-                {{ item.main }}
+                {{ conutMain(item) }}
               </p>
-              <p class="active">{{ item.scorea }}</p>
+              <p class="active" v-if="status !== 0">{{ item.scorea }}</p>
             </li>
-            <li class="align-center justify-between p-t-4">
+            <li v-if="status == 0" class="align-center justify-between p-t-4">
+              <p class="active">
+                {{ date(item.startTime) }}
+              </p>
+            </li>
+            <li v-else class="align-center justify-between p-t-4">
               <p class="els">
                 {{ item.guest }}
               </p>
-              <p class="active">{{ item.scoreb }}</p>
+              <p class="active" v-if="status !== 0">{{ item.scoreb }}</p>
             </li>
           </ul>
         </div>
@@ -88,8 +93,14 @@ export default {
     };
   },
   methods: {
+    conutMain(item) {
+      if (this.status === 0) {
+        return `${item.main} VS ${item.guest}`;
+      }
+      return item.main;
+    },
     date(tiem) {
-      return dayjs.unix(this.$ToSeconds(tiem)).format("MM-DD HH:mm");
+      return dayjs.unix(this.$ToSeconds(tiem)).format("YY-MM-DD HH:mm");
     },
     async chosen(item) {
       this.status = item.key;
