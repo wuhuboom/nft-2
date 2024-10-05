@@ -20,14 +20,14 @@
           :key="i"
           class="contest-item m-b-8 align-center justify-between p-x-8"
         >
-          <ul class="time no-shrink">
+          <!-- <ul class="time no-shrink">
             <li v-if="item.startTime">
               {{ date(item.startTime) }}
             </li>
             <li v-if="item.endTime">
               {{ date(item.endTime) }}
             </li>
-          </ul>
+          </ul> -->
           <ul class="teem-logo center-center m-r-8">
             <li class="center-center">
               <img class="d-img" :src="item.mainImg" />
