@@ -9,6 +9,9 @@
       <van-loading class="color-primary" />
     </div>
     <div class="px-16 py-16" v-else>
+      <p v-if="usdtList.length" class="caff m-b-8">
+        {{ $t("withdraw.record.center.show.detail.usdt.bank.text") }}
+      </p>
       <ul
         class="bank align-center"
         v-for="(item, idx) in usdtList"
@@ -22,17 +25,20 @@
           </p>
           <p class="gary">{{ item.protocol }}</p>
         </li>
-        <li class="rit">
+        <li class="rit gary">
           <i
-            class="el-icon-edit gary"
+            class="el-icon-edit"
             @click="
               $router.push({ name: 'AddressUsdt', query: { id: item.id } })
             "
           ></i>
 
-          <p class="gary">{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
+          <p class="">{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
         </li>
       </ul>
+      <p v-if="bankList.length" class="caff m-b-8 m-t-12">
+        {{ $t("withdraw.record.center.show.detail.type.bank.text") }}
+      </p>
       <ul
         class="bank align-center"
         v-for="(item, idx) in bankList"
@@ -44,11 +50,11 @@
             {{ item.cardNumber | leftAddr }} **** ****
             {{ item.cardNumber | rightAddr }}
           </p>
-          <p>{{ item.cardName }}</p>
+          <p class="gary">{{ item.cardName }}</p>
         </li>
-        <li class="rit">
+        <li class="rit gary">
           <i
-            class="el-icon-edit active"
+            class="el-icon-edit"
             @click="
               $router.push({ name: 'AddBankCard', query: { id: item.id } })
             "
@@ -57,6 +63,9 @@
           <p>{{ formatDate(item.createdAt, "yyyy-MM-dd") }}</p>
         </li>
       </ul>
+      <p v-if="wallwtList.length" class="caff m-b-8 m-t-12">
+        {{ $t("wallet.list.wallet.text") }}
+      </p>
       <ul
         class="bank align-center"
         v-for="(item, idx) in wallwtList"
@@ -68,11 +77,11 @@
             {{ item.address | leftAddr }} **** ****
             {{ item.address | rightAddr }}
           </p>
-          <p>{{ item.type }}{{ $t("wallet.list.wallet.text") }}</p>
+          <p class="gary">{{ item.type }}{{ $t("wallet.list.wallet.text") }}</p>
         </li>
-        <li class="rit">
+        <li class="rit gary">
           <i
-            class="el-icon-edit active"
+            class="el-icon-edit"
             @click="
               $router.push({ name: 'AddressWallet', query: { id: item.id } })
             "
@@ -158,13 +167,13 @@ export default {
     async getEwalletData() {
       const [err, res] = await userApi.walletInfo();
       if (err) return;
-      // res.data = [
-      //   {
-      //     address: "12132",
-      //     type: "ERC20",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          address: "12132",
+          type: "ERC20",
+          createdAt: 1627584000000,
+        },
+      ];
       if (res.data && !res.data.length) {
         // this.$router.push({ name: "AddressWallet" });
         return;
@@ -177,13 +186,13 @@ export default {
       if (err) {
         return;
       }
-      // res.data = [
-      //   {
-      //     cardNumber: "12132",
-      //     cardName: "中国银行",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          cardNumber: "12132",
+          cardName: "中国银行",
+          createdAt: 1627584000000,
+        },
+      ];
       if (res.data) {
         if (Array.isArray(res.data)) {
           this.bankList = res.data;
@@ -197,13 +206,13 @@ export default {
       if (err) {
         return;
       }
-      // res.data = [
-      //   {
-      //     addr: "12132",
-      //     protocol: "ERC20",
-      //     createdAt: 1627584000000,
-      //   },
-      // ];
+      res.data = [
+        {
+          addr: "12132",
+          protocol: "ERC20",
+          createdAt: 1627584000000,
+        },
+      ];
       this.usdtList = res.data;
     },
   },
@@ -292,6 +301,12 @@ export default {
   }
   .bg-blue {
     background-color: #0022ff;
+  }
+  .caff {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: #caffde;
   }
 }
 </style>

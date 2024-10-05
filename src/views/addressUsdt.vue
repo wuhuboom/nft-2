@@ -288,10 +288,10 @@ export default {
     this.clearTimer();
   },
   mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
+    document.querySelector("body").classList.add("form-page-bg");
   },
   destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
+    document.querySelector("body").classList.remove("form-page-bg");
   },
 };
 </script>
