@@ -1567,6 +1567,10 @@
 "confirm.order": "Please Confirm the Order",
 "lottery.order1": "Lottery Record",
 "lottery.my.frend": "Invite a friend and recharge 2000 rupees to get a chance to win a lottery.",
+"activation.day":"Activation Days",
+"login.fail":"Login failed",
+"reg.name.user": "Username cannot be purely numeric",
+"finish.time": "Expiration Time",
 
 "Launch.Top.Matches": "Launch the Most Thrilling Top Matches",
 "Good.Day":"Good Day",
@@ -1574,5 +1578,6 @@
 "Demat.Account":"Demat Account",
 "backapi.self.rebate.top.content.week.text": "Rebate this week",
 "backapi.self.rebate.top.content.today.text": "Today rebate",
-"backapi.self.rebate.top.content.lastweek.text": "Last rebate"
+"backapi.self.rebate.top.content.lastweek.text": "Last rebate",
+ "Total.asset.value":"Total Investment Amount"
 }

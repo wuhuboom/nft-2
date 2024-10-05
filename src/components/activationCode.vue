@@ -52,8 +52,11 @@ export default {
       if (err) {
         return;
       }
-      this.$toast.clear();
+      //this.$toast.clear();
       this.show = false;
+      this.$toast.success({
+        className: "toast-success-activa",
+      });
     },
     async open() {
       const [err, res] = await userApi.investDayActive();
@@ -75,6 +78,9 @@ export default {
 <style>
 .overlay-active-code {
   top: 44px !important;
+}
+.toast-success-activa {
+  color: green;
 }
 </style>
 <style scoped lang="less">

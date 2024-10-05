@@ -1569,5 +1569,9 @@
 "buy.invest.money7": "Prazo de Investimento",
 "confirm.order": "Por favor, Confirme o Pedido",
 "lottery.order1": "Registro da Loteria",
-"lottery.my.frend": "Convide um amigo e recarregue 2000 rúpias para ter a chance de ganhar uma loteria."
+"lottery.my.frend": "Convide um amigo e recarregue 2000 rúpias para ter a chance de ganhar uma loteria.",
+"activation.day":"Dias de ativação",
+"login.fail":"Falha no login",
+"reg.name.user": "O nome de usuário não pode ser apenas numérico",
+"finish.time": "Data de expiração" 
 }

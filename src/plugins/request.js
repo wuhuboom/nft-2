@@ -44,13 +44,18 @@ instance.interceptors.response.use(
     }
     //401-无权访问 402-未登录或者登录失效 403-账号已被禁用
     if ([401, 402, 403].includes(code)) {
+      const isLogin = res.config.url.includes("/auth/login");
       app.$toast.clear();
-      app.$store.commit("loginOut");
-      app.$router.push({
-        name: "Login",
-        backUrl: app.$router.currentRoute.fullPath,
-      });
-      app.$toast.clear();
+      if (!isLogin) {
+        app.$store.commit("loginOut");
+        app.$router.push({
+          name: "Login",
+          backUrl: app.$router.currentRoute.fullPath,
+        });
+      }
+      if (code == 403 && isLogin) {
+        app.$toast(app.$t("login.fail"));
+      }
       return Promise.reject({ code });
     }
     if (code !== 200) {

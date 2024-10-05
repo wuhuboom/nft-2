@@ -41,7 +41,31 @@ u
     >
       <NoData v-if="notthing" />
       <div v-else>
-        <van-grid class="color-primary" :border="false" :column-num="4">
+        <ul
+          class="list m-t-16 p-b-12 gray m-l-16 m-r-16"
+          v-for="(item, idx) in curItem.results"
+          :key="idx"
+        >
+          <li class="justify-between">
+            <p class="color-fff">
+              {{ getType(+item.type) }}
+            </p>
+            <p class="font14 bold color-fff blod">
+              {{ divide(item.money) }}
+            </p>
+          </li>
+          <li class="justify-between m-t-12 m-b-12">
+            <p>{{ item.createdAt | timestampStr }}</p>
+            <p :class="[+item.status == 3 ? 'red' : 'green']">
+              {{ getState(+item.status) }}
+            </p>
+          </li>
+
+          <li v-if="item.remark" class="remark m-t-8 p-x-8">
+            {{ item.remark }}
+          </li>
+        </ul>
+        <!-- <van-grid class="color-primary" :border="false" :column-num="4">
           <van-grid-item v-for="value in head" :key="value">
             {{ value }}
           </van-grid-item>
@@ -71,7 +95,7 @@ u
           >
             {{ $t("withdraw.record.status.fail.text") }}：{{ item.remark }}
           </div>
-        </van-grid>
+        </van-grid> -->
       </div>
     </van-list>
   </div>
@@ -395,7 +419,7 @@ export default {
       //     {
       //       createdAt: "2021-07-01 12:00:00",
       //       money: 100,
-      //       status: 3,
+      //       status: 2,
       //       type: 1,
       //       remark: "失败原因",
       //     },
@@ -476,5 +500,21 @@ export default {
       text-align: center;
     }
   }
+}
+.list {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.remark {
+  background-color: rgba(255, 0, 0, 0.19);
+  color: #f82354;
+}
+.gray {
+  color: #929292;
+}
+.green {
+  color: #85f823;
+}
+.red {
+  color: #f82354;
 }
 </style>

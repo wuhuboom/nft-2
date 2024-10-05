@@ -7,6 +7,7 @@ import util from "@/plugins/util";
 import delang from "@/assets/img/de-lang.webp";
 import dzlang from "@/assets/img/dz-lang.webp";
 import app from "@/main";
+import { set } from "nprogress";
 Vue.use(Vuex);
 const lang = location.href.includes("zmkm") ? "zh" : "";
 export default new Vuex.Store({
@@ -92,6 +93,11 @@ export default new Vuex.Store({
     paySet: null,
     safeConfig: {},
     balanceRecord: [],
+    recroed: {
+      query: {},
+      video: [],
+    },
+    fromRoute: {},
   },
   getters: {
     defaultCode(state) {
@@ -100,6 +106,12 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setFromRoute(state, data) {
+      state.fromRoute = data;
+    },
+    setRecroed(state, data) {
+      state.recroed = data;
+    },
     setBalanceRecord(state, data) {
       state.balanceRecord = data;
     },
