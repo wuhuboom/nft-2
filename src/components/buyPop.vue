@@ -16,7 +16,7 @@
         <p class="active font16 blod text-center">{{ $t("confirm.order") }}</p>
         <div class="height62 align-center">
           <van-field
-            v-if="parseInt(item.parent && item.parent.inviteRequire) === 1"
+            v-if="showInvite"
             v-model.trim="formData.invitationCode"
             autocomplete="new-password"
             name="invitationCode"
@@ -193,6 +193,9 @@ export default {
     },
   },
   computed: {
+    showInvite() {
+      return parseInt(this.item.parent && this.item.parent.inviteRequire) === 1;
+    },
     popTxt() {
       const arr = [];
       const data = this.item || {};
@@ -246,7 +249,7 @@ export default {
       });
     },
     async onSubmit() {
-      if (!this.formData.invitationCode) {
+      if (!this.formData.invitationCode && this.showInvite) {
         this.$toast(
           this.$t("ruls.xxx.empty", {
             name: this.$t("enter.inint.code"),
@@ -268,7 +271,7 @@ export default {
       });
       const para = Object.assign(this.formData, {
         days: this.item.days,
-        index: this.item.index,
+        id: this.item.id,
         planId: this.item.parent.id,
         autoInvest: this.item.showAuto,
         money: this.item.min,
