@@ -82,7 +82,7 @@
         </div>
 
         <div ref="align">
-          <div class="justify-between m-t-8">
+          <div class="justify-between font12 m-t-8">
             <p class="font12 justify-between">
               <span>{{ $t("recharge.usdt.rate.text") }}:</span
               ><span>{{ chooseRecType.rate }}</span>
@@ -92,7 +92,7 @@
               ><span>{{ balanceMoneyNum }}</span>
             </p>
           </div>
-          <div class="justify-between m-t-8">
+          <div class="justify-between font12 m-t-8">
             <p class="font12 justify-between">
               <span>{{ $t("Withdrawal.risk.fee") }}:</span
               ><span
@@ -787,6 +787,16 @@ export default {
       }
     }
   }
+  .ntf-form {
+    ::v-deep {
+      .van-cell .van-field__body {
+        background-color: #1d222b;
+      }
+    }
+    .el-ntf-select {
+      background-color: #1d222b;
+    }
+  }
   .count-col {
     background: url("@/assets/img/red/witbg.webp") no-repeat center bottom;
     background-size: 100% 100%;
@@ -905,8 +915,7 @@ export default {
     }
   }
   .said-text {
-    border: 1px solid var(--main);
-    border-radius: 8px;
+    color: #9db1cd;
   }
 }
 </style>
