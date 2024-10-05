@@ -11,7 +11,9 @@
 
       <div class="ntf-form rech-form m-b-12">
         <van-form ref="form" @submit="onSubmit">
-          <p class="lable-text m-t-20 m-b-12">{{ $t(`rechange.way`) }}</p>
+          <p class="lable-text m-t-20 m-b-12">
+            {{ $t(`rechange.way`) }}
+          </p>
           <ul class="type-list m-b-16">
             <li
               v-for="(item, index) in rechargeList"
@@ -28,9 +30,14 @@
               </div>
             </li>
           </ul>
-          <p class="lable-text m-b-12">{{ $t(`recharge.amount.text`) }}</p>
+          <p class="lable-text m-b-12">
+            {{ $t(`recharge.amount.text`) }}
+          </p>
           <van-field
             v-model.trim="amount"
+            :placeholder="`${$t(`deal.buyDetail.387081-5`)}:${
+              chooseRecType.minMax
+            }`"
             :rules="[
               {
                 validator,
@@ -43,11 +50,9 @@
               <!-- <span class="color-fff">{{ chooseRecType.currencySymbol }}</span> -->
             </template>
           </van-field>
-          <p class="limit m-t-16 color-fff font12">
-            {{ $t(`deal.buyDetail.387081-5`) }}:{{ chooseRecType.minMax }}
-          </p>
-          <div class="m-t-8 m-b-20">
-            <p class="m-b-4">
+
+          <div class="m-t-8 m-b-20 align-center justify-between">
+            <p>
               <span class="">{{ $t("recharge.usdt.rate.text") }}:</span
               ><span class="color-fff">
                 <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
@@ -55,7 +60,7 @@
                 {{ chooseRecType.rate }}</span
               >
             </p>
-            <p class="flex-1 amount-text">
+            <p class="amount-text">
               <span class="">{{ $t("recharge.real.amount.text") }}:</span
               ><span class="color-fff"
                 >{{ ngnToUsdtMoney }}
@@ -80,14 +85,10 @@
           </div>
         </li>
       </ul>
-      <p class="m-b-20 m-t-40">
-        <i class="el-icon-check active bold"></i>
-        {{ $t("verify.carefully.transfer") }}
-      </p>
       <div class="center-center m-t-20">
         <van-button
           block
-          class="ntf-vant-btn max-btn"
+          class="ntf-vant-btn"
           type="info"
           :loading="loading"
           @click="$refs.form.submit()"
@@ -95,7 +96,7 @@
           {{ $t("recharge.button.now.text") }}</van-button
         >
       </div>
-      <!-- <ul class="m-t-16 p-x-8 said-text">
+      <ul class="m-t-16 p-x-8 said-text">
         <li>{{ $t(`recharge.tip.title.text`) }}</li>
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content1.text`) }}
@@ -106,7 +107,7 @@
         <li class="m-b-16">
           {{ $t(`backapi.self.recharge.tip.content3.text`) }}
         </li>
-      </ul> -->
+      </ul>
     </div>
   </div>
 </template>
@@ -120,7 +121,7 @@ export default {
     return {
       loading: false,
       rechargeList: [],
-      typeId: "",
+      chooseRecType: {},
 
       amount: "",
       rechargeTipLists: [
@@ -131,9 +132,6 @@ export default {
     };
   },
   computed: {
-    chooseRecType() {
-      return this.rechargeList.find((v) => v.id === this.typeId) || {};
-    },
     quickAmountList() {
       if (this.chooseRecType.fast) {
         return this.chooseRecType.fast.split("-");
@@ -206,13 +204,12 @@ export default {
     },
     chose(item) {
       if (!item) return;
-      // this.chooseRecType = item;
+      this.chooseRecType = item;
       // if (this.quickAmountList && this.quickAmountList.length > 0) {
       //   this.amount = this.quickAmountList[0];
       //   return;
       // }
-      this.typeId = item.id;
-      this.amount = this.chooseRecType.def;
+      this.amount = this.chooseRecType.def || "";
     },
   },
   created() {
@@ -231,7 +228,7 @@ export default {
   .amount-text {
   }
   .gray {
-    color: #a6a6a6;
+    color: #9db1cd;
   }
   .type-text {
     text-align: center;
@@ -317,13 +314,13 @@ export default {
     }
     .num {
       text-align: center;
-      line-height: 471px;
-      height: 47px;
+      height: 31px;
+      border-radius: 15.5px;
 
-      border-radius: 5.5px;
-      border: solid 1px #606060;
+      background-color: #30405b;
       &.chose {
-        border-color: var(--main);
+        background-color: transparent;
+        background-image: linear-gradient(to right, #11998e, #38ef7d 96%);
       }
     }
     .active {
@@ -343,55 +340,20 @@ export default {
     }
   }
   .said-text {
-    border: 1px solid var(--main);
-    border-radius: 8px;
   }
 }
 .rech-form {
   ::v-deep {
     .van-cell {
       .van-field__body {
-        height: 53px;
-        border-radius: 5.5px;
-        border: solid 1px #606060;
-        background-color: #101010;
+        border-radius: 12px;
+        border: solid 0.5px #545d6a;
+        background-color: #1d222b;
       }
     }
   }
 }
-.el-ntf-select {
-  border-radius: 5.5px;
-  height: 52px;
-  border: solid 1px #37ff7e;
-  background-color: #101010;
-  ::v-deep {
-    .el-input__prefix {
-      display: flex;
-      align-items: center;
-      padding-left: 8px;
-    }
-    [type="text"] {
-      height: 50px;
-      padding-left: 60px;
-      color: #caffde !important;
-    }
-    .el-select-dropdown__item {
-      height: 46px;
-    }
-  }
-}
-.el-ntf-select {
-  img {
-    height: 30px;
-    width: 30px;
-  }
-}
-.select-solt {
-  img {
-    height: 30px;
-    width: 30px;
-  }
-}
+
 .el-icon-check {
   font-size: 20px;
 }
@@ -400,5 +362,8 @@ export default {
     width: 343px;
     height: 83px;
   }
+}
+.lable-text {
+  color: #fff;
 }
 </style>

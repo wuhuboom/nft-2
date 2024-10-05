@@ -1574,6 +1574,5 @@
 "Demat.Account":"Demat Account",
 "backapi.self.rebate.top.content.week.text": "Rebate this week",
 "backapi.self.rebate.top.content.today.text": "Today rebate",
-"backapi.self.rebate.top.content.lastweek.text": "Last rebate",
-"verify.carefully.transfer":"Please verify the account carefully before making a transfer. The company will not be responsible for any errors caused"
+"backapi.self.rebate.top.content.lastweek.text": "Last rebate"
 }
