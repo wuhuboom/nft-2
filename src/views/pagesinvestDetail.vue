@@ -107,7 +107,7 @@ export default {
       const base = +(doc.fixed || 0);
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = val * curRate * 1 + base; //天
+        let num = doc.days * (val * curRate + base); //天
         return num.toFixed(2);
       } else {
         return 0;
