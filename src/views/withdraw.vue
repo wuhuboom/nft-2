@@ -46,7 +46,7 @@
             {{ getWithdrawBindName }}
           </li>
         </ul>
-        <div class="el-ntf-select m-b-16">
+        <div class="comnine">
           <el-select
             class="full100"
             :placeholder="getWithdrawChooseName"
@@ -60,32 +60,28 @@
             >
             </el-option>
           </el-select>
-        </div>
-        <p class="m-b-8">{{ $t("deal.buyDetail.387081-3") }}</p>
-        <div ref="align">
-          <div>
-            <div class="ntf-form">
-              <van-field
-                ref="amount"
-                class="field-inlude-code"
-                :placeholder="`${$t('deal.buyDetail.387081-5')} ${
-                  chooseRecType.withdrawMin
-                }-${chooseRecType.withdrawMax}`"
-                v-model.trim="amount"
-                type="number"
+          <p class="m-b-8 m-t-24">{{ $t("deal.buyDetail.387081-3") }}</p>
+          <van-field
+            ref="amount"
+            :placeholder="`${$t('deal.buyDetail.387081-5')} ${
+              chooseRecType.withdrawMin
+            }-${chooseRecType.withdrawMax}`"
+            v-model.trim="amount"
+            type="number"
+          >
+            <template #button>
+              <van-button
+                size="small"
+                @click="setAll"
+                class="wi-code-btn"
+                native-type="button"
+                >{{ $t(`order.search.all.text`) }}</van-button
               >
-                <template #button>
-                  <van-button
-                    size="small"
-                    @click="setAll"
-                    class="send-code-btn"
-                    native-type="button"
-                    >{{ $t(`order.search.all.text`) }}</van-button
-                  >
-                </template>
-              </van-field>
-            </div>
-          </div>
+            </template>
+          </van-field>
+        </div>
+
+        <div ref="align">
           <div class="justify-between m-t-8">
             <p class="font12 justify-between">
               <span>{{ $t("recharge.usdt.rate.text") }}:</span
@@ -751,6 +747,43 @@ export default {
       .cont {
         background-image: linear-gradient(to bottom, #11998e, #38ef7d);
         background-color: transparent;
+      }
+    }
+  }
+  .comnine {
+    padding: 16px 12px;
+    border-radius: 10px;
+    border: solid 1px #242b36;
+    background-color: #1d222b;
+    .wi-code-btn {
+      border: none;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      padding: 6px 16px;
+      border-radius: 14px;
+      background-color: #5d7097;
+      color: #fff;
+    }
+    ::v-deep {
+      input {
+        color: #fff;
+      }
+
+      .el-select {
+        [type="text"] {
+          height: 31px;
+          border-radius: 15.5px;
+          background-color: #30405b !important;
+          padding-left: 14px;
+        }
+        input::placeholder {
+          color: #fff !important;
+        }
+      }
+      .van-cell {
+        background-color: transparent;
+        padding: 0;
       }
     }
   }
