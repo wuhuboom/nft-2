@@ -268,6 +268,7 @@ export default {
       });
       const para = Object.assign(this.formData, {
         days: this.item.days,
+        index: this.item.index,
         planId: this.item.parent.id,
         autoInvest: this.item.showAuto,
         money: this.item.min,

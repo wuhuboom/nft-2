@@ -115,6 +115,7 @@
               open({
                 parent: item,
                 ...doc,
+                index,
               })
             "
           >
