@@ -1573,5 +1573,7 @@
 "activation.day":"Dias de ativação",
 "login.fail":"Falha no login",
 "reg.name.user": "O nome de usuário não pode ser apenas numérico",
-"finish.time": "Data de expiração" 
+"finish.time": "Data de expiração",
+"init.money.time": "Tempo de Investimento",
+"come.money.time": "Tempo de Resgate" 
 }

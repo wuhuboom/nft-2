@@ -45,13 +45,13 @@
       </div>
       <div class="row">
         <div class="left">
-          {{ $t("invest.record.table.col2.text") }}
+          {{ $t("init.money.time") }}
         </div>
         <div class="right">{{ date(item.createdAt) }}</div>
       </div>
       <div class="row">
         <div class="left">
-          {{ $t("finish.time") }}
+          {{ $t("come.money.time") }}
         </div>
         <div class="right">{{ date(item.finishTime) }}</div>
       </div>
@@ -107,7 +107,7 @@ export default {
       const base = +(doc.fixed || 0);
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = val * curRate * 1 + base; //天
+        let num = doc.days * (val * curRate + base); //天
         return num.toFixed(2);
       } else {
         return 0;

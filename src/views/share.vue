@@ -43,6 +43,22 @@
           />
         </li>
       </ul>
+      <ul class="promotion-cont font14">
+        <li class="tip font16 blod p-t-24 p-b-12">
+          {{ $t(`Promotion.Internet.rules`) }}!
+        </li>
+        <li class="tip colorfff p-b-16">
+          {{ $t(`WARNING.desc`) }}
+        </li>
+      </ul>
+      <li class="center-center p-b-32">
+        <img
+          class="d-img"
+          style="max-width: 100%"
+          src="@/assets/img/red/share1.png"
+          alt=""
+        />
+      </li>
     </div>
   </div>
 </template>
@@ -93,6 +109,7 @@ export default {
 .invite-friends {
   text-align: center;
   background-color: #0a101b;
+  min-height: 100vh;
   .page-cont {
     margin: 0 auto;
   }
@@ -155,35 +172,6 @@ export default {
         //padding: 0;
       }
     }
-    .promotion-cont {
-      & > li:nth-child(1) {
-        margin-bottom: 10px;
-        img {
-          height: 48px;
-          width: 48px;
-          object-fit: cover;
-          display: block;
-        }
-      }
-      & > li {
-        margin-bottom: 12px;
-      }
-      & > li:nth-child(1) {
-        img {
-          height: 48px;
-          width: 48px;
-          object-fit: cover;
-          display: block;
-        }
-      }
-      & > li:nth-child(3) {
-        img {
-          height: 40px;
-          object-fit: cover;
-          display: block;
-        }
-      }
-    }
   }
 }
 .txt {
@@ -191,5 +179,8 @@ export default {
   line-height: 39px;
   border-radius: 7px;
   border: solid 1px #37ff7e;
+}
+.promotion-cont {
+  text-align: left;
 }
 </style>

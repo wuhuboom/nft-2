@@ -716,6 +716,11 @@ export default {
       url: "/invest/my/statis/items",
     });
   },
+  myStatis2() {
+    return request({
+      url: "/invest/my/statis2",
+    });
+  },
   investMyStatis() {
     return request({
       url: "/invest/my/statis3",
