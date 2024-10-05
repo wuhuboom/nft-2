@@ -6,11 +6,13 @@
     </div>
     <div v-else class="p-x-12">
       <ul class="msg-list" v-for="(item, index) in noticeList" :key="index">
-        <li class="bold">{{ item.title }}</li>
-        <li class="cont font12 gray">{{ item.content }}</li>
-        <li class="time font12 gray">
-          {{ formatDate(item.createdAt, "yyyy-MM-dd hh:mm:ss") }}
+        <li class="p-b-8 list-head">
+          <p class="bold font16">{{ item.title }}</p>
+          <p class="time m-t-4 font12 gray">
+            {{ formatDate(item.createdAt, "yyyy-MM-dd hh:mm:ss") }}
+          </p>
         </li>
+        <li class="cont font12 gray">{{ item.content }}</li>
       </ul>
     </div>
   </div>
@@ -38,12 +40,6 @@ export default {
   created() {
     this.getMsgList();
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -54,7 +50,7 @@ export default {
     font-size: 12px;
     border-radius: 12.3px;
     border: solid 1px var(--main);
-    background-color: rgba(255, 255, 255, 0.1);
+
     .cont,
     .time {
       color: #9db1cd;
@@ -62,6 +58,9 @@ export default {
   }
   .cont {
     margin: 8px 0;
+  }
+  .list-head {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 </style>
