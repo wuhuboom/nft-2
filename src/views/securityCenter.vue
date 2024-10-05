@@ -122,12 +122,6 @@ export default {
     this.safeInfo();
     this.getConfig();
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
@@ -148,9 +142,10 @@ export default {
   }
   .menu {
     height: 52px;
+    border-radius: 20px;
+    background-color: #17181c;
     color: #cacbce;
-    background-color: rgba(255, 255, 255, 0.04);
-    border-radius: 8px;
+
     img {
       width: 24px;
       height: 24px;

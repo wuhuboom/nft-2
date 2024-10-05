@@ -2,12 +2,12 @@
   <ul class="justify-between nvas" :class="className">
     <li
       class="center-center flex-1"
-      :class="{ 'bg-active ntf-vant-btn': item.key == cur }"
+      :class="{ 'bg-active ntf-vant-btn': (item.key || item.value) == cur }"
       v-for="(item, idx) in navs"
       @click="chosen(item)"
       :key="idx"
     >
-      {{ item.name }}
+      {{ item.name || item.text }}
     </li>
   </ul>
 </template>

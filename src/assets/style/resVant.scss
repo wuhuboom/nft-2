@@ -116,6 +116,28 @@ input::placeholder {
     .van-field--error .van-field__control, .van-field--error .van-field__control::placeholder{
         color: #fff;
     }
+    &.squere-form{
+      .van-cell{
+        .van-field__body{
+          border-radius: 5.5px;
+          border: solid 1px #606060;
+          background-color: transparent;
+        }
+        input::placeholder {
+          color:  #85898f !important
+        
+        }
+        .send-code-btn{
+          background: none;
+          border: none;
+          min-width: auto;
+          border-radius: 16px;
+          padding: 0 12px;
+          background-image: linear-gradient(to bottom, #242a3b, #273b40);
+        }
+      }
+    
+    }
 }
 .ntf-form-up {
   .van-cell{

@@ -2,7 +2,7 @@
   <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar :topBarTitle="$t('security.phone.text')"> </AppTopBar>
     <div>
-      <van-form class="ntf-form m-t-16" @submit="onSubmit">
+      <van-form class="ntf-form m-t-16 squere-form" @submit="onSubmit">
         <p class="lable-text">{{ $t("Update.phone.org") }}</p>
         <van-field
           class="m-b-16 icon-input"
@@ -206,12 +206,6 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>

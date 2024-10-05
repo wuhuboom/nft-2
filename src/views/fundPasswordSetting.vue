@@ -1,8 +1,60 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar :topBarTitle="$t('security.fun.pass.text')"> </AppTopBar>
-    <div>
-      <van-form class="ntf-form" @submit="onSubmit">
+    <div class="m-t-20">
+      <van-form class="ntf-form squere-form" @submit="onSubmit">
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
+        <van-field
+          class="m-b-16"
+          v-model.trim="form.password"
+          autocomplete="new-password"
+          :type="showText ? 'text' : 'password'"
+          :placeholder="$t('form.new.password.text')"
+          @click-right-icon="openEye"
+          :right-icon="`color-fff icon iconfont ${
+            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+          }`"
+          :rules="[
+            {
+              validator: validatePassword,
+              message: $t('ruls.pass.length6'),
+            },
+          ]"
+        />
+        <p class="lable-text">
+          {{
+            $t(
+              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
+            )
+          }}
+        </p>
+        <van-field
+          class="m-b-16"
+          v-model.trim="form.twoPassword"
+          autocomplete="new-password"
+          :type="showText ? 'text' : 'password'"
+          :placeholder="$t('form.confirm.password.text')"
+          @click-right-icon="openEye"
+          :right-icon="`color-fff icon iconfont ${
+            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
+          }`"
+          :rules="[
+            {
+              validator: validatePassword,
+              message: $t('ruls.pass.length6'),
+            },
+            {
+              validator: validateTwo,
+              message: this.$t('ruls.passtwo.unequal'),
+            },
+          ]"
+        />
         <ChoseNav
           className="m-t-16 m-b-16"
           @chosen="form.verificationVal = $event.value"
@@ -66,58 +118,6 @@
             >
           </template>
         </van-field>
-        <p class="lable-text">
-          {{
-            $t(
-              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
-            )
-          }}
-        </p>
-        <van-field
-          class="m-b-16"
-          v-model.trim="form.password"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.new.password.text')"
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            {
-              validator: validatePassword,
-              message: $t('ruls.pass.length6'),
-            },
-          ]"
-        />
-        <p class="lable-text">
-          {{
-            $t(
-              "user.security.center.bankcard.bankadd.input.place.pay.pass.text"
-            )
-          }}
-        </p>
-        <van-field
-          class="m-b-16"
-          v-model.trim="form.twoPassword"
-          autocomplete="new-password"
-          :type="showText ? 'text' : 'password'"
-          :placeholder="$t('form.confirm.password.text')"
-          @click-right-icon="openEye"
-          :right-icon="`color-fff icon iconfont ${
-            showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
-          }`"
-          :rules="[
-            {
-              validator: validatePassword,
-              message: $t('ruls.pass.length6'),
-            },
-            {
-              validator: validateTwo,
-              message: this.$t('ruls.passtwo.unequal'),
-            },
-          ]"
-        />
 
         <div class="sumit-section center-center pt-16 px-16">
           <van-button
@@ -240,19 +240,12 @@ export default {
   beforeDestroy() {
     this.clearTimer();
   },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
 };
 </script>
 <style scoped lang="less">
 .change-password-view {
   ::v-deep {
     .iconfont {
-      color: var(--primary);
     }
   }
 }

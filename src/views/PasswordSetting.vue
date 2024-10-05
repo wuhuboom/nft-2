@@ -1,13 +1,8 @@
 <template>
   <div class="change-password-view font12 p-l-12 p-r-12">
     <AppTopBar :topBarTitle="$t('security.pass.text')"> </AppTopBar>
-    <div>
-      <img
-        class="person m-t-20 m-b-40 d-img"
-        src="@/assets/img/ntf/129383@2x.webp"
-        alt=""
-      />
-      <van-form class="ntf-form p-b-24" @submit="onSubmit">
+    <div class="m-t-20">
+      <van-form class="ntf-form p-b-24 squere-form" @submit="onSubmit">
         <p class="lable-text">{{ $t("security.update.pwd.label") }}</p>
         <van-field
           class="m-b-16 icon-input"
@@ -224,12 +219,6 @@ export default {
   },
   beforeDestroy() {
     this.clearTimer();
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
