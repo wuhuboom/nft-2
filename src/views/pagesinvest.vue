@@ -4,33 +4,20 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('invest.record.page.text')"
     ></AppTopBar>
-    <ul class="drop-list p-l-12 p-r-12 justify-between align-center m-b-12">
-      <li>
-        <el-select v-model="query.time" @change="chosen">
-          <el-option
-            v-for="item in navs"
-            :key="item.key"
-            :label="item.name"
-            :value="item.key"
-          >
-          </el-option>
-        </el-select>
-      </li>
-      <li>
-        <el-select v-model="query.status" @change="chosen">
-          <el-option
-            v-for="(item, idx) in dataArray"
-            :key="idx"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+    <ul class="btn-head p-l-16 align-center">
+      <li
+        @click="chosen(item.value)"
+        class="m-r-16"
+        :class="{ 'active-bg': query.status === item.value }"
+        v-for="(item, idx) in dataArray"
+        :key="idx"
+      >
+        {{ item.label }}
       </li>
     </ul>
     <NoData v-if="finished && !video.length" />
     <div class="p-l-12 p-r-12">
-      <LoadList class="p-t-16" :onload="informationVideo" :finished="finished">
+      <LoadList :onload="informationVideo" :finished="finished">
         <div
           class="plans"
           v-for="(item, idx) in video"
@@ -38,58 +25,6 @@
           @click="goDetail(item)"
         >
           <pagesinvestItem :item="item" />
-          <!-- <div class="plans-item m-b-16">
-            <div class="align-center plans-head p-b-8 m-b-8">
-              <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
-                <img class="d-img" :src="item.planIcon" alt="" />
-              </p>
-              <ul class="align-center flex-1 space-between">
-                <li>
-                  <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
-                  <p class="gray">{{ getType(item.type) }}</p>
-                </li>
-                <li class="rate-row">
-                  <p class="days">{{ getType2(item.status) }}</p>
-                </li>
-              </ul>
-            </div>
-            <div class="record-item-content">
-              <div class="row">
-                <div class="left">{{ $t(`invest.days.text`) }}</div>
-                <div class="right">{{ item.days }}</div>
-              </div>
-              <div class="row">
-                <div class="left">
-                  {{ $t("invest.record.table.col1.text") }}
-                </div>
-                <div class="right">{{ divide(item.money) }}</div>
-              </div>
-              <div class="row">
-                <div class="left">
-                  {{ $t("invest.record.table.col4.text") }}
-                </div>
-                <div class="right active">
-                  {{ count(item) }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="left">{{ $t("activation.day") }}</div>
-                <div class="right">{{ item.activedDays }}</div>
-              </div>
-              <div class="row">
-                <div class="left">
-                  {{ $t("invest.record.table.col7.text") }}
-                </div>
-                <div class="right">{{ item.orderNo }}</div>
-              </div>
-              <div class="row">
-                <div class="left">
-                  {{ $t("invest.record.table.col2.text") }}
-                </div>
-                <div class="right">{{ date(item.finishTime) }}</div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </LoadList>
     </div>
@@ -125,21 +60,13 @@ export default {
       ],
       dataArray: [
         {
-          label: i18n.t("order.search.all.text"),
-          value: "",
-        },
-        {
           label: i18n.t("invest.record.status0.text"),
           value: 0,
         },
         {
-          label: i18n.t("invest.record.status1.text"),
+          label: i18n.t("Today.History"),
           value: 1,
         },
-        // {
-        //   label: i18n.t("invest.record.status2.text"),
-        //   value: 2,
-        // },
       ],
       finished: false,
       video: [],
@@ -147,7 +74,7 @@ export default {
         pageNo: 1,
         pageSize: 10,
         type: 1,
-        time: 0,
+
         status: 0,
       },
       typeOptions: [
@@ -180,7 +107,8 @@ export default {
     pagesinvestItem,
   },
   methods: {
-    chosen() {
+    chosen(v) {
+      this.query.status = v;
       this.query.pageNo = 1;
       this.video = [];
       this.informationVideo();
@@ -328,6 +256,23 @@ export default {
       border-radius: 8px;
       background-color: var(--primary);
       color: #fff;
+    }
+  }
+  .btn-head {
+    height: 56px;
+    & > li {
+      background: url("@/assets/img/ntf/home/single-item-buy-2@2x.webp")
+        no-repeat center center;
+      min-width: 95px;
+      padding: 0 2px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      background-size: 100% 100%;
+      &.active-bg {
+        border-radius: 10px;
+        background: #f5673e;
+      }
     }
   }
 }
