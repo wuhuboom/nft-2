@@ -236,7 +236,7 @@ export default {
   .type-list {
     display: flex;
     flex-wrap: wrap;
-    & > li:nth-child(4n) {
+    & > li:nth-child(3n) {
       margin-right: 0 !important;
     }
     & > li {

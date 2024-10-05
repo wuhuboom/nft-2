@@ -1,10 +1,24 @@
 <template>
-  <div class="message-page font12 p-l-16 p-r-16">
+  <div class="message-page font14 p-l-16 p-r-16">
     <AppTopBar :topBarTitle="$t('home.index.withdraw.text')"> </AppTopBar>
     <div class="center-center py-16" v-if="!withdrawList.length">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-t-12">
+    <div v-else class="m-t-24">
+      <ul class="wallet-head m-b-20 p-l-12 p-r-12 align-center justify-between">
+        <li class="align-center">
+          <img
+            class="d-img"
+            src="@/assets/img/ntf3/user/130003@2x.webp"
+            alt=""
+          />
+          <span class="m-l-16 font16">{{ $t("home.index.safe.text") }}</span>
+        </li>
+        <li class="">
+          <p class="font12 gray m-b-8">{{ $t("wallet.index.balance.text") }}</p>
+          <p class="blod">{{ balanceMoneyNum }}</p>
+        </li>
+      </ul>
       <ul class="type-list m-b-8">
         <li
           class="m-r-16"
@@ -655,6 +669,22 @@ export default {
 </script>
 <style scoped lang="less">
 .message-page {
+  .gray {
+    color: #85898f;
+  }
+  .wallet-head {
+    height: 55px;
+    border-radius: 10px;
+    border: solid 1px #6690b8;
+    background-color: #30405b;
+    & > li:nth-child(2) {
+      text-align: right;
+    }
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
   .add-blue {
     color: #87b5fa;
   }
@@ -684,25 +714,25 @@ export default {
   .type-list {
     display: flex;
     flex-wrap: wrap;
-    & > li:nth-child(4n) {
+    & > li:nth-child(3n) {
       margin-right: 0 !important;
     }
     & > li {
       .cont {
-        width: 73px;
-        height: 55px;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         align-items: center;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.1);
+        padding: 0 14px;
+        height: 28px;
+        border-radius: 14px;
+        background-color: #30405b;
         border: 1px solid transparent;
+        color: #fff;
       }
 
       .pic {
-        width: 65px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
         img {
           width: 100%;
           height: 100%;
@@ -716,7 +746,8 @@ export default {
     }
     & > li.color-active {
       .cont {
-        border-color: var(--main) !important;
+        background-image: linear-gradient(to bottom, #11998e, #38ef7d);
+        background-color: transparent;
       }
     }
   }
