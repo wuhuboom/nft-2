@@ -1,6 +1,6 @@
 u
 <template>
-  <div class="wallet-page font12 color-primary font12">
+  <div class="wallet-page font12 color-primary font12 p-l-12 p-r-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
@@ -13,30 +13,19 @@ u
         :name="item.id"
       ></van-tab>
     </van-tabs>
-    <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-16">
-      <!-- <li>
-        <el-select v-model="filterTab" @change="changFilter">
-          <el-option
-            v-for="item in tabSimpleList"
-            :key="item.id"
-            :label="item.text"
-            :value="item.id"
-          >
-          </el-option>
-        </el-select>
-      </li> -->
-      <li>
-        <el-select v-model="status" @change="changeStatus">
-          <el-option
-            v-for="item in inputSearchListItemArray"
-            :key="item.id"
-            :label="item.text"
-            :value="item.id"
-          >
-          </el-option>
-        </el-select>
+    <ul class="status-bar align-center">
+      <li
+        class="p-l-16 p-r-16 center-center"
+        :class="{ 'bg-active': status === item.id }"
+        @click="changeStatus(item.id)"
+        v-for="item in inputSearchListItemArray"
+        :key="item.id"
+        :label="item.text"
+      >
+        {{ item.text }}
       </li>
     </ul>
+
     <van-list
       v-model="loading"
       :finished="
@@ -49,7 +38,7 @@ u
       <NoData v-if="notthing" />
       <div v-else>
         <ul
-          class="list m-t-16 p-b-12 gray m-l-16 m-r-16"
+          class="list m-b-16 p-b-12 gray"
           v-for="(item, idx) in curItem.results"
           :key="idx"
         >
@@ -526,6 +515,9 @@ export default {
 }
 .tabs-title {
   ::v-deep {
+    .van-tab {
+      margin-right: 8px;
+    }
     .van-tabs__nav {
       background-color: transparent;
     }
@@ -541,6 +533,25 @@ export default {
     }
     .van-tabs__wrap {
       border-bottom: 1px solid rgba(112, 112, 112, 0.34);
+      overflow-x: auto;
+      height: 60px;
+    }
+    .van-tab__text--ellipsis {
+      overflow: visible;
+      //名字不换行
+      white-space: nowrap;
+    }
+  }
+}
+.status-bar {
+  height: 68px;
+  & > li {
+    height: 36px;
+    border-radius: 18px;
+    background-color: #30405b;
+    margin-right: 10px;
+    &.bg-active {
+      background-image: linear-gradient(to bottom, #11998e, #38ef7d);
     }
   }
 }
