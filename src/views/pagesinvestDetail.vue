@@ -45,13 +45,13 @@
       </div>
       <div class="row">
         <div class="left">
-          {{ $t("invest.record.table.col2.text") }}
+          {{ $t("init.money.time") }}
         </div>
         <div class="right">{{ date(item.createdAt) }}</div>
       </div>
       <div class="row">
         <div class="left">
-          {{ $t("finish.time") }}
+          {{ $t("come.money.time") }}
         </div>
         <div class="right">{{ date(item.finishTime) }}</div>
       </div>
