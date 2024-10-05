@@ -4,8 +4,11 @@
     <div class="center-center py-16" v-if="!rechargeList.length">
       <van-Loading class="color-primary" />
     </div>
-    <div v-else class="m-t-12 gray">
-      <!-- <ul class="type-list m-b-8">
+    <div v-else class="gray">
+      <div class="top-desc center-center m-b-20 p-t-24">
+        <img class="d-img" src="@/assets/img/ntf3/user/129517@2x.webp" alt="" />
+      </div>
+      <ul class="type-list m-b-8">
         <li
           v-for="(item, index) in rechargeList"
           class="m-r-16"
@@ -20,7 +23,7 @@
             <p class="center-center">{{ item.name }}</p>
           </div>
         </li>
-      </ul> -->
+      </ul>
 
       <div class="ntf-form rech-form m-b-12">
         <van-form ref="form" @submit="onSubmit">
@@ -419,5 +422,11 @@ export default {
 }
 .el-icon-check {
   font-size: 20px;
+}
+.top-desc {
+  img {
+    width: 343px;
+    height: 83px;
+  }
 }
 </style>
