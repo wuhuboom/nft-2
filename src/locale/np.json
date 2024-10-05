@@ -1572,5 +1572,7 @@
 "activation.day":"सक्रिय दिनहरू",
 "login.fail":"लगइन असफल भयो",
 "reg.name.user": "युजरनेम केवल अंक हुन सक्दैन",
-"finish.time": "म्याद समय" 
+"finish.time": "म्याद समय",
+"init.money.time": "निवेशको समय",
+"come.money.time": "फिर्ता समय" 
 }

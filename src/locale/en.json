@@ -1572,5 +1572,7 @@
 "activation.day":"Activation Days",
 "login.fail":"Login failed",
 "reg.name.user": "Username cannot be purely numeric",
-"finish.time": "Expiration Time"  
+"finish.time": "Expiration Time",
+"init.money.time": "Investment Time",
+ "come.money.time": "Redemption Time"  
 }

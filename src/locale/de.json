@@ -1573,5 +1573,7 @@
 "activation.day":"Aktivierungstage",
 "login.fail":"Anmeldung fehlgeschlagen",
 "reg.name.user": "Der Benutzername darf nicht rein numerisch sein",
-"finish.time": "Ablaufzeit" 
+"finish.time": "Ablaufzeit",
+"init.money.time": "Investitionszeit",
+ "come.money.time": "Rücknahmezeit" 
 }

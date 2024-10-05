@@ -1572,5 +1572,7 @@
 "activation.day":"सक्रियण के दिन",
 "login.fail":"लॉगिन विफल",
 "reg.name.user": "उपयोगकर्ता नाम केवल संख्या नहीं हो सकता",
-"finish.time": "समाप्ति समय"   
+"finish.time": "समाप्ति समय",
+"init.money.time": "निवेश का समय",
+"come.money.time": "निकासी का समय"   
 }
