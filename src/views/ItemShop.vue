@@ -15,7 +15,9 @@
         <van-icon name="volume-o" :size="20" />
       </li>
     </ul>
-    <ul class="justify-around align-center navs m-t-16 m-b-16 m-l-8 m-r-8">
+    <ul
+      class="justify-around font14 blod align-center navs m-t-16 m-b-16 m-l-8 m-r-8"
+    >
       <li
         @click="chose(item)"
         :class="{ cur: current === item.key }"
@@ -124,7 +126,7 @@ export default {
     }
     & > li.cur {
       background: var(--main);
-      color: #fff;
+      color: #000000;
     }
   }
   .notice {
