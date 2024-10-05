@@ -48,7 +48,7 @@
         @load="onLoad"
       >
         <div class="">
-          <van-grid class="m-b-16" :border="false" :column-num="2">
+          <van-grid class="m-b-16 title-head" :border="false" :column-num="2">
             <van-grid-item v-for="value in head" :key="value">
               {{ value }}
             </van-grid-item>
@@ -150,6 +150,24 @@ export default {
         this.curItem.hasNext = false;
         return;
       }
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   {
+      //     type: 1,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 2,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 3,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      // ];
       let list = this.curItem.results.concat(res.data.results);
       // for (let i = 0; i < 7; i++) {
       //   list.push(list[0]);
@@ -273,5 +291,8 @@ export default {
 .rebate-head {
   border-radius: 9px;
   background-color: #16212b;
+}
+.title-head {
+  color: #9f9f9f;
 }
 </style>
