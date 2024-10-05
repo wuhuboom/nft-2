@@ -5,7 +5,7 @@
       <van-Loading class="color-primary" />
     </div>
     <div v-else class="m-t-24">
-      <ul class="wallet-head m-b-20 p-l-12 p-r-12 align-center justify-between">
+      <ul class="wallet-head m-b-16 p-l-12 p-r-12 align-center justify-between">
         <li class="align-center">
           <img
             class="d-img"
@@ -19,6 +19,9 @@
           <p class="blod">{{ balanceMoneyNum }}</p>
         </li>
       </ul>
+      <p class="lable-text m-b-12">
+        {{ $t(`rechange.way`) }}
+      </p>
       <ul class="type-list m-b-8">
         <li
           class="m-r-16"
@@ -36,7 +39,7 @@
         </li>
       </ul>
       <div class="m-t-20">
-        <ul class="justify-between align-center m-b-8">
+        <ul class="justify-between align-center m-b-16">
           <li>{{ getWithdrawChooseName }}</li>
           <li @click="getWithdrawRoutingJump" class="add-blue">
             <van-icon name="plus" size="14" class="m-r-4" />
