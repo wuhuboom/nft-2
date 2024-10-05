@@ -41,6 +41,8 @@ import {
   Popup,
   Step,
   Steps,
+  tabs,
+  tab,
 } from "vant";
 export default {
   install(Vue) {
@@ -85,5 +87,7 @@ export default {
     Vue.use(Popup);
     Vue.use(Step);
     Vue.use(Steps);
+    Vue.use(tabs);
+    Vue.use(tab);
   },
 };

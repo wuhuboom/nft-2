@@ -5,9 +5,16 @@ u
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
     ></AppTopBar>
-
+    <van-tabs class="tabs-title" v-model="filterTab" @change="changFilter">
+      <van-tab
+        :key="item.id"
+        :title="item.text"
+        v-for="item in tabSimpleList"
+        :name="item.id"
+      ></van-tab>
+    </van-tabs>
     <ul class="drop-list justify-between p-l-16 p-r-16 align-center m-b-16">
-      <li>
+      <!-- <li>
         <el-select v-model="filterTab" @change="changFilter">
           <el-option
             v-for="item in tabSimpleList"
@@ -17,7 +24,7 @@ u
           >
           </el-option>
         </el-select>
-      </li>
+      </li> -->
       <li>
         <el-select v-model="status" @change="changeStatus">
           <el-option
@@ -509,12 +516,32 @@ export default {
   color: #f82354;
 }
 .gray {
-  color: #929292;
+  color: #9fa0a2;
 }
 .green {
   color: #85f823;
 }
 .red {
   color: #f82354;
+}
+.tabs-title {
+  ::v-deep {
+    .van-tabs__nav {
+      background-color: transparent;
+    }
+    .van-tab__text {
+      color: #9db1cd;
+    }
+    .van-tab--active .van-tab__text {
+      color: #fff;
+    }
+    .van-tabs__line {
+      height: 2px;
+      background-color: #fff;
+    }
+    .van-tabs__wrap {
+      border-bottom: 1px solid rgba(112, 112, 112, 0.34);
+    }
+  }
 }
 </style>
