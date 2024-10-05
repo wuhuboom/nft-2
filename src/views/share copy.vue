@@ -2,22 +2,68 @@
 <template>
   <div class="invite-friends font14 color-primary">
     <AppTopBar :topBarTitle="$t(`me.my.qr.code.text`)"> </AppTopBar>
-    <div class="page-cont p-t-12" style="width: 351px">
-      <div>
-        <div class="qr-bg" style="height: 451px">
-          <div style="padding-top: 81px">
-            <QrcodeVue :value="link" :size="176" />
-            <ul>
-              <li>{{ $t(`ercode.referral.code`) }}:</li>
-              <li>{{ invitationCode }}</li>
-              <li @click="copy(invitationCode)">
-                {{ $t("invite.code.copy.text") }}
-              </li>
-            </ul>
-          </div>
+    <div>
+      <div class="cont">
+        <p class="center-center gray long-text">{{ $t(`ercode.Long.QR`) }}</p>
+        <div class="center-center">
+          <QrcodeVue :value="link" :size="146" />
         </div>
+        <div
+          class="hrefs center-center m-b-12 m-t-32 copy-button"
+          @click="copy(invitationCode)"
+        >
+          {{ $t(`ercode.referral.code`) }}:
+          {{ invitationCode }}
+        </div>
+        <div class="hrefs center-center copy-button m-b-20" @click="copy(link)">
+          <span class="href-link flex-1 app-ellipsis">{{ link }}</span
+          ><i class="iconfont icon-copy color-active"></i>
+        </div>
+        <ul class="justify-between">
+          <li>
+            <p
+              class="btn ntf-vant-btn copy-button"
+              @click="copy(invitationCode)"
+            >
+              {{ $t("invite.code.copy.text") }}
+            </p>
+          </li>
+          <li>
+            <p class="btn ntf-vant-btn copy-button" @click="copy(link)">
+              {{ $t("invite.link.copy.text") }}
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
+    <van-dialog
+      class="promotion-upload-dialog linear-global-pop"
+      :showConfirmButton="false"
+      v-model="showDialog"
+      :close-on-click-overlay="true"
+    >
+      <ul class="promotion-cont font14">
+        <li></li>
+        <li class="center-center tip color-active font16 p-t-24 p-b-24">
+          {{ $t(`WARNING`) }}!
+        </li>
+        <li class="center-center">
+          <img src="@/assets/img/red/share1.png" alt="" />
+        </li>
+        <li class="center-center tip colorfff p-t-24">
+          {{ $t(`WARNING.desc`) }}
+        </li>
+      </ul>
+      <div class="center-center p-b-24 p-t-24">
+        <van-button
+          class="ntf-vant-btn"
+          block
+          type="info"
+          @click="showDialog = false"
+          >{{ $t("modal.confirm.text") }}</van-button
+        >
+      </div>
+    </van-dialog>
   </div>
 </template>
 
@@ -61,19 +107,17 @@ export default {
       });
     },
   },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .invite-friends {
   text-align: center;
-  background-color: #0a101b;
-  .page-cont {
-    margin: 0 auto;
-  }
-  .qr-bg {
-    background: url("@/assets/img/ntf3/130110@2x.webp") no-repeat center center;
-    background-size: 100% 100%;
-  }
   .gray {
     color: #8a929a;
   }
