@@ -272,6 +272,7 @@ export default {
         planId: this.item.parent.id,
         autoInvest: this.item.showAuto,
         money: this.item.min,
+        id: this.item.id,
       });
       const [err] = await userApi.invest(para);
 

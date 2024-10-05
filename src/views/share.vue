@@ -7,16 +7,41 @@
         <div class="qr-bg" style="height: 451px">
           <div style="padding-top: 81px">
             <QrcodeVue :value="link" :size="176" />
-            <ul>
-              <li>{{ $t(`ercode.referral.code`) }}:</li>
-              <li>{{ invitationCode }}</li>
+            <ul style="margin-top: 39px">
+              <li class="blod">{{ $t(`ercode.referral.code`) }}:</li>
+              <li
+                class="blod"
+                style="font-size: 20px; margin-bottom: 15px; margin-top: 10px"
+              >
+                {{ invitationCode }}
+              </li>
               <li @click="copy(invitationCode)">
-                {{ $t("invite.code.copy.text") }}
+                <img
+                  class="d-img"
+                  style="width: 129px; height: 41px; margin: 0 auto"
+                  src="@/assets/img/ntf3/130056@2x.webp"
+                  alt=""
+                />
               </li>
             </ul>
           </div>
         </div>
       </div>
+    </div>
+    <div class="p-l-12 p-r-12">
+      <ul>
+        <li class="blod p-t-24 p-b-16">{{ $t("Share.Link") }}</li>
+        <li class="txt els p-l-8 p-r-8">{{ link }}</li>
+        <li class="m-t-20">
+          <img
+            class="d-img"
+            @click="copy(link)"
+            style="width: 129px; height: 41px; margin: 0 auto"
+            src="@/assets/img/ntf3/130057@2x.webp"
+            alt=""
+          />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -159,5 +184,11 @@ export default {
       }
     }
   }
+}
+.txt {
+  height: 39px;
+  line-height: 39px;
+  border-radius: 7px;
+  border: solid 1px #37ff7e;
 }
 </style>
