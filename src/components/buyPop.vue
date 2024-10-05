@@ -32,8 +32,7 @@
             ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
-                {{ $t("register.invitationCode.text")
-                }}<span class="active">*</span>:
+                {{ $t("enter.inint.code") }}<span class="active">*</span>:
               </p>
             </template>
           </van-field>
@@ -250,7 +249,7 @@ export default {
       if (!this.formData.invitationCode) {
         this.$toast(
           this.$t("ruls.xxx.empty", {
-            name: this.$t("form.invitecode.text"),
+            name: this.$t("enter.inint.code"),
           })
         );
         return;
