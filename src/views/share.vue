@@ -15,9 +15,10 @@
               >
                 {{ invitationCode }}
               </li>
-              <li @click="copy(invitationCode)">
+              <li>
                 <img
-                  class="d-img"
+                  @click="copy(invitationCode)"
+                  class="d-img copy-button"
                   style="width: 129px; height: 41px; margin: 0 auto"
                   src="@/assets/img/ntf3/130056@2x.webp"
                   alt=""
@@ -34,7 +35,7 @@
         <li class="txt els p-l-8 p-r-8">{{ link }}</li>
         <li class="m-t-20">
           <img
-            class="d-img"
+            class="d-img copy-button"
             @click="copy(link)"
             style="width: 129px; height: 41px; margin: 0 auto"
             src="@/assets/img/ntf3/130057@2x.webp"
