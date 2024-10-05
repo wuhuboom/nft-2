@@ -5,11 +5,9 @@
   >
     <li class="m-b-8">
       <p class="m-b-4 font16">{{ $t("wallet.Account.Balance") }}</p>
-      <p class="money-str m-b-4">
+      <p class="money-str m-b-4 center-center">
         {{ numToFixed(moneyStr, $globalUnit.val) }}
-      </p>
-      <p class="m-t-4">
-        <i class="iconfont font16 icon-shuaxin"></i>
+        <i class="iconfont m-l-8 font16 icon-shuaxin"></i>
       </p>
     </li>
   </ul>
@@ -70,7 +68,9 @@ export default {
 <style scoped lang="less">
 .account-balance {
   border-radius: 12px;
-  background-color: var(--main);
+  background: url("@/assets/img/ntf3/40363@2x.webp") no-repeat center center;
+  height: 186px;
+  background-size: 100% 100%;
   position: relative;
   padding: 24px 16px;
   &::after {

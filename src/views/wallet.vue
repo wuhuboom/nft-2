@@ -11,20 +11,25 @@
       </template>
     </AppTopBar>
     <AccountBalance />
-    <div class="justify-around menu text-center m-b-32">
-      <ul :key="idx" v-for="(item, idx) in list" @click="goTo(item.name)">
-        <li class="icon">
-          <van-icon
-            :class="{ tra180: item.icon == 'upgrade' }"
-            :size="24"
-            :name="item.icon"
-          />
-        </li>
-        <li class="m-t-8">
-          <p>{{ item.text }}</p>
-          <p>{{ item.text1 }}</p>
-        </li>
-      </ul>
+    <div class="justify-between menu text-center p-l-8 p-r-8">
+      <div
+        class="cont-all m-b-16 p-l-8 p-r-8"
+        :key="idx"
+        v-for="(item, idx) in list"
+      >
+        <ul class="center-center" @click="goTo(item.name)">
+          <li class="icon m-r-8">
+            <van-icon
+              :class="{ tra180: item.icon == 'upgrade' }"
+              :size="24"
+              :name="item.icon"
+            />
+          </li>
+          <li>
+            <p>{{ item.text }} {{ item.text1 }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
     <ul
       @click="$router.push({ name: 'SafeBilling' })"
@@ -105,7 +110,24 @@ export default {
         pageSize: 16,
       });
       if (err) return;
-
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   {
+      //     type: 1,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 2,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 3,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      // ];
       this.results = res.data.results;
     },
     goTo(name) {
@@ -165,6 +187,17 @@ export default {
   }
   .menu {
     color: #fff;
+    flex-wrap: wrap;
+    .cont-all {
+      width: 50%;
+
+      & > ul {
+        height: 54px;
+
+        border-radius: 10px;
+        border: solid 1px #2ba776;
+      }
+    }
   }
   .tra180 {
     transform: rotate(180deg);
