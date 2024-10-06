@@ -98,6 +98,7 @@ export default new Vuex.Store({
       video: [],
     },
     fromRoute: {},
+    safeData: {},
   },
   getters: {
     defaultCode(state) {
@@ -106,6 +107,10 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    changeSafe(state, data) {
+      console.log(data);
+      state.safeData = data;
+    },
     setFromRoute(state, data) {
       state.fromRoute = data;
     },
@@ -233,6 +238,11 @@ export default new Vuex.Store({
       if (err) return [err];
       commit("setFbMsg", result.data);
       return [null, result];
+    },
+    async safeInfo({ commit }) {
+      const [err, res] = await userApi.safeInfo();
+      if (err) return;
+      commit("changeSafe", res.data);
     },
   },
   modules: {},

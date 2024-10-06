@@ -1581,5 +1581,7 @@
 "backapi.self.rebate.top.content.lastweek.text": "Last rebate",
  "Total.asset.value":"Total Investment Amount",
  "Most.top.Matches":"Launch the Most Thrilling Top Matches",
- "Share.Link":"Share Link"
+ "Share.Link":"Share Link",
+ "From":"From",
+ "To.game.account":"To game account"
 }

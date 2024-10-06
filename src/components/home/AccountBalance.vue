@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import userApi from "@/api/user";
 export default {
   name: "ChangeRecord",
   data() {
@@ -29,38 +28,34 @@ export default {
     },
   },
   computed: {
+    safeData() {
+      return this.$store.state.safeData;
+    },
     moneyStr() {
-      return this.data.money / this.$globalNum.val;
+      return this.safeData.money / this.$globalNum.val;
     },
     todayIncomeStr() {
-      return this.data.todayIncome / this.$globalNum.val;
+      return this.safeData.todayIncome / this.$globalNum.val;
     },
     totalIncomeStr() {
-      return this.data.totalIncome / this.$globalNum.val;
+      return this.safeData.totalIncome / this.$globalNum.val;
     },
     symbolStr() {
-      return this.data.symbol;
+      return this.safeData.symbol;
     },
   },
   methods: {
-    async safeInfo() {
-      this.loading = true;
-      const [err, res] = await userApi.safeInfo();
-      this.loading = false;
-      if (err) return;
-      this.data = res.data;
-    },
     async refresh() {
       this.$toast.loading({
         duration: 0,
         forbidClick: true,
       });
-      await this.safeInfo();
+      await this.$store.dispatch("safeInfo");
       this.$toast.clear();
     },
   },
   created() {
-    this.safeInfo();
+    this.$store.dispatch("safeInfo");
   },
 };
 </script>

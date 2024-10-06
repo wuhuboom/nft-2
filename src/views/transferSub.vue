@@ -10,44 +10,67 @@
       <van-Loading class="color-primary" />
     </div>
     <div v-else>
-      <AccountBalance />
-      <ul class="m-l-32 m-r-32">
-        <li class="center-center icon-desc">
-          <p class="center-center">
-            <van-icon class="color-fff" name="down" size="20" />
-          </p>
-        </li>
-      </ul>
-      <div class="ntf-form m-t-32">
+      <div class="ntf-form squere-form m-t-32">
         <van-form class="p-l-16 p-r-16" @submit="onSubmit">
+          <p class="lable-text bold">{{ $t("From") }}</p>
+          <ul
+            class="wallet-head m-b-16 p-l-12 p-r-12 align-center justify-between"
+          >
+            <li class="align-center">
+              <img
+                class="d-img"
+                src="@/assets/img/ntf3/user/130003@2x.webp"
+                alt=""
+              />
+              <span class="m-l-16 font16 gray">{{ $t("fuc.safe.text") }}</span>
+            </li>
+            <li class="">
+              <p class="font12 gray gray m-b-8">
+                {{ $t("wallet.index.balance.text") }}
+              </p>
+              <p class="blod">{{ mygold }}</p>
+            </li>
+          </ul>
+          <p class="lable-text bold">
+            {{ $t("To.game.account") }}
+          </p>
           <van-field
             class="m-b-24"
             v-model.trim="form.account"
             :placeholder="$t('form.account.text')"
             :rules="[{ required: true, message: $t('ruls.accout.empty') }]"
           />
-          <van-field
-            v-model.trim="form.amount"
-            class="m-b-24 field-inlude-code"
-            :placeholder="$t('backapi.self.safe.transfer.money.text')"
-            type="number"
-            :rules="[
-              {
-                required: true,
-                message: $t('ruls.amount.length'),
-              },
-            ]"
-          >
-            <template #button>
-              <van-button
-                size="small"
-                class="send-code-btn"
-                native-type="button"
-                @click="sendAll"
-                >{{ $t("match.order.detail.all.text") }}</van-button
-              >
-            </template>
-          </van-field>
+          <div class="m-b-24 money-list">
+            <p class="lable-text p-l-16 p-t-12">
+              {{ $t("To.game.account") }}
+            </p>
+            <van-field
+              v-model.trim="form.amount"
+              class="field-inlude-code"
+              :placeholder="$t('backapi.self.safe.transfer.money.text')"
+              type="number"
+              :rules="[
+                {
+                  required: true,
+                  message: $t('ruls.amount.length'),
+                },
+              ]"
+            >
+              <template #button>
+                <van-button
+                  size="small"
+                  class="send-code-btn"
+                  native-type="button"
+                  @click="sendAll"
+                  >{{ $t("invest.detail.enter.max.text") }}</van-button
+                >
+              </template>
+            </van-field>
+          </div>
+
+          <p class="lable-text bold">
+            {{ $t("form.pwd2.text") }}
+          </p>
           <van-field
             class="m-b-24"
             v-model.trim="form.password"
@@ -79,7 +102,6 @@
 
 <script>
 import userApi from "@/api/user";
-import AccountBalance from "@/components/home/AccountBalance";
 const initData = () => {
   return { account: "", amount: "", password: "" };
 };
@@ -95,26 +117,19 @@ export default {
       playerInfo: {},
     };
   },
-  components: {
-    AccountBalance,
-  },
+  components: {},
   computed: {
+    safeData() {
+      return this.$store.state.safeData;
+    },
     mygold() {
       return (
-        this.numToFixed(this.playerInfo.money, this.$globalUnit.val) /
+        this.numToFixed(this.safeData.money, this.$globalUnit.val) /
         this.$globalNum.val
       );
     },
   },
   methods: {
-    async refresh() {
-      this.$toast.loading({
-        duration: 0,
-        forbidClick: true,
-      });
-      await this.detailSafeInfo();
-      this.$toast.clear();
-    },
     sendAll() {
       this.form.amount = this.mygold;
     },
@@ -136,22 +151,10 @@ export default {
         this.$toast(res.msg);
       }
       this.form = { ...initData() };
-    },
-    async detailSafeInfo() {
-      const [err, res] = await userApi.safeInfo();
-      if (err) return;
-      this.playerInfo = res.data;
+      this.$store.dispatch("safeInfo");
     },
   },
-  created() {
-    this.detailSafeInfo();
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
-  },
+  created() {},
 };
 </script>
 <style scoped lang="less">
@@ -192,6 +195,31 @@ export default {
       width: 50px;
       height: 50px;
       object-fit: cover;
+    }
+  }
+}
+.wallet-head {
+  height: 55px;
+  border-radius: 10px;
+  border: solid 1px #606060;
+  & > li:nth-child(2) {
+    text-align: right;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+.gray {
+  color: #85898f;
+}
+.money-list {
+  border-radius: 5.5px;
+  border: solid 1px #37ff7e;
+  ::v-deep {
+    .van-cell .van-field__body {
+      border-color: transparent;
+      background-color: transparent;
     }
   }
 }
