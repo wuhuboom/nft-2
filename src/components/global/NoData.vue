@@ -1,9 +1,7 @@
 <template>
   <div class="no-data center-center flex-column p-t-40" :class="className">
-    <!-- <img class="d-img" src="@/assets/img/ntf/nodata.webp" alt="" /> -->
-    <div class="enter-center m-b-20 p-t-16">
-      <van-icon name="description-o" size="62" />
-    </div>
+    <img class="d-img m-b-32" src="@/assets/img/ntf3/template_01.png" alt="" />
+
     <div class="center-center font14 m-t-4">No Data</div>
   </div>
 </template>
@@ -23,8 +21,8 @@ export default {
 .no-data {
   color: #fff;
   img {
-    width: 79px;
-    height: 79px;
+    width: 100px;
+
     object-fit: contain;
   }
 }
