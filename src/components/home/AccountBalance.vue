@@ -69,7 +69,8 @@ export default {
 .account-balance {
   border-radius: 12px;
   background: url("@/assets/img/ntf3/40363@2x.webp") no-repeat center center;
-  height: 186px;
+  //height: 186px;
+  padding: 42px 0;
   background-size: 100% 100%;
   position: relative;
   padding: 24px 16px;

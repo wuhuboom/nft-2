@@ -31,12 +31,12 @@
         </ul>
       </div>
     </div>
+    <!-- @click="$router.push({ name: 'SafeBilling' })" -->
     <ul
-      @click="$router.push({ name: 'SafeBilling' })"
       class="align-center color-fff safe-bill justify-between m-l-16 m-r-16 p-b-12 p-t-12"
     >
       <li class="font14 bold">{{ $t("backapi.self.safe.bill.data.text") }}</li>
-      <li><van-icon name="arrow" size="18" /></li>
+      <li><SelectNav /></li>
     </ul>
     <div class="p-l-16 p-r-16">
       <BillsList :list="results" />

@@ -13,6 +13,7 @@ import BtmActionLang from "@/components/global/BtmActionLang.vue";
 import LoadList from "@/components/global/LoadList.vue";
 import SelectLang from "@/components/global/SelectLang.vue";
 import ChoseNav from "@/components/global/ChoseNav.vue";
+import SelectNav from "@/components/global/SelectNav.vue";
 import {
   Form,
   Field,
@@ -61,6 +62,7 @@ export default {
     Vue.component(LoadList.name, LoadList);
     Vue.component(SelectLang.name, SelectLang);
     Vue.component(ChoseNav.name, ChoseNav);
+    Vue.component(SelectNav.name, SelectNav);
     Vue.use(Form);
     Vue.use(Field);
     Vue.use(Button);
