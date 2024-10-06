@@ -296,12 +296,17 @@
     color: var(--color-fff);
     font-size: 12px;
     font-weight: normal;
+    padding: 0 !important;
+    margin: 0 20px;
+  
     &.selected {
-    
       color: var(--main);
     }
   }
  }
+ .el-select-dropdown__item:not(:last-child) {
+  border-bottom: 1px solid rgba(112, 112, 112, 0.5);
+}
  .black-form{
   .van-cell{
     background-color: transparent;
