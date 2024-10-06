@@ -36,12 +36,19 @@
       class="align-center color-fff safe-bill justify-between m-l-16 m-r-16 p-b-12 p-t-12"
     >
       <li class="font14 bold">{{ $t("backapi.self.safe.bill.data.text") }}</li>
-      <li><SelectNav /></li>
+      <li><SelectNav @chosen="chosen" :navs="tabsList" :cur="tabCurrent" /></li>
     </ul>
-    <div class="p-l-16 p-r-16">
-      <BillsList :list="results" />
-      <NoData v-if="!results.length" />
-    </div>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      loading-text="loading"
+      @load="getBill"
+    >
+      <div class="p-l-16 p-r-16">
+        <BillsList :list="results" />
+        <NoData v-if="!results.length" />
+      </div>
+    </van-list>
   </div>
 </template>
 
@@ -58,10 +65,45 @@ export default {
   },
   data() {
     return {
-      loading: false,
       data: {},
       playerConfig: {},
       results: [],
+      tabsList: [
+        {
+          value: 0,
+          label: i18n.t("backapi.self.safe.bill.data.choose.type.all.text"),
+        },
+        {
+          value: 1,
+          label: i18n.t("backapi.self.safe.recharge.text"),
+        },
+        {
+          value: 2,
+          label: i18n.t("backapi.self.safe.transfer.text"),
+        },
+        {
+          value: 3,
+          label: i18n.t(
+            "backapi.self.safe.account.change.type.recharge.offer.text"
+          ),
+        },
+        {
+          value: 4,
+          label: i18n.t("backapi.self.safe.huaz.transfer.text"),
+        },
+        {
+          value: 5,
+          label: i18n.t("safe.recharge.compensation"),
+        },
+        {
+          value: 6,
+          label: i18n.t("safe.billing.manual"),
+        },
+      ],
+      tabCurrent: 0,
+      pageNo: 1,
+      finished: false,
+      loading: false,
     };
   },
   computed: {
@@ -104,12 +146,31 @@ export default {
     },
   },
   methods: {
-    async getBill() {
-      const [err, res] = await userApi.safeChangeLog({
-        pageNo: 1,
-        pageSize: 16,
+    async chosen(item) {
+      this.tabCurrent = item.value;
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
       });
-      if (err) return;
+      await this.getBill({
+        pageNo: 1,
+      });
+    },
+    async getBill(obj = {}) {
+      const query = {
+        pageNo: this.pageNo,
+        pageSize: 16,
+        changeType: this.tabCurrent,
+        ...obj,
+      };
+      const isFirst = query.pageNo === 1;
+      const [err, res] = await userApi.safeChangeLog(query);
+      this.loading = false;
+      if (err) {
+        this.finished = true;
+        return;
+      }
+      this.$toast.clear();
       //模拟数据 res.data.results
       // res.data.results = [
       //   {
@@ -128,17 +189,14 @@ export default {
       //     money: 100,
       //   },
       // ];
-      this.results = res.data.results;
+      this.finished = res.data.results.length < query.pageSize;
+      this.results = isFirst
+        ? res.data.results
+        : this.results.concat(res.data.results);
+      this.pageNo = query.pageNo + 1;
     },
     goTo(name) {
       this.$router.push({ name });
-    },
-    async safeInfo() {
-      this.loading = true;
-      const [err, res] = await userApi.safeInfo();
-      this.loading = false;
-      if (err) return;
-      this.data = res.data;
     },
     async getConfig() {
       const [err, res] = await userApi.palyerConfig();
@@ -146,17 +204,8 @@ export default {
       this.playerConfig = res.data;
       console.log(this.playerConfig);
     },
-    async refresh() {
-      this.$toast.loading({
-        duration: 0,
-        forbidClick: true,
-      });
-      await this.safeInfo();
-      this.$toast.clear();
-    },
   },
   created() {
-    this.safeInfo();
     //this.getConfig();
     this.getBill();
   },
