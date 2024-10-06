@@ -44,7 +44,7 @@
           <img class="d-img" :src="item.image" alt="" />
         </p>
         <p class="els m-b-8 m-t-8">{{ item.title }}</p>
-        <p>{{ item.money }}</p>
+        <p>{{ item.money }}$</p>
       </li>
     </ul>
     <div class="hot-live-stream m-t-24">

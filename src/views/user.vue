@@ -214,7 +214,7 @@ export default {
         },
       ];
       //this.safeConfig.showH5 === 1
-      if (this.safeConfig.showH5 !== undefined) {
+      if (this.safeConfig.showH5 === 1) {
         arr.unshift({
           img: require("@/assets/img/ntf3/user/130028@2x.png"),
           text: this.$t("fuc.safe.text"),
