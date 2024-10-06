@@ -4,11 +4,29 @@
       :topBarTitle="`${$t(`fuc.safe.text`)} ${$t('home.index.recharge.text')}`"
     >
     </AppTopBar>
-    <div class="font14">
-      <p class="m-b-16 m-t-16 gray center-center">
-        {{ $t(`recharge.amount.text`) }}
-      </p>
-      <van-form ref="form" @submit="onSubmit">
+    <div>
+      <van-form
+        class="ntf-form squere-form p-t-20"
+        ref="form"
+        @submit="onSubmit"
+      >
+        <p class="lable-text">{{ $t(`rechange.way`) }}</p>
+        <div class="el-ntf-select m-b-16">
+          <el-select
+            v-model="typeId"
+            class="full100"
+            :placeholder="$t('index.editor.psd.text')"
+          >
+            <el-option
+              v-for="item in rechargeList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <p class="lable-text">{{ $t(`recharge.amount.text`) }}</p>
         <van-field
           class="amount-form"
           :placeholder="`${$t('deal.buyDetail.387081-5')}:${
@@ -21,28 +39,29 @@
             },
           ]"
           type="number"
-          v-model="amount"
+          v-model.trim="amount"
         />
-      </van-form>
-      <div class="flex-column center-center gray m-b-32">
-        <p class="m-t-12">
-          <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
-          ><span class="color-fff">
-            <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
+        <div class="justify-between align-center gray m-b-20 m-t-8">
+          <p>
+            <span class="m-b-4">{{ $t("recharge.usdt.rate.text") }}:</span
+            ><span class="color-fff">
+              <!-- {{ chooseRecType.type == 1 ? "USDT" : ""
               }} -->
-            {{ chooseRecType.rate }}</span
-          >
-        </p>
-        <p class="flex-1 amount-text m-t-12">
-          <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
-          ><span class="color-fff"
-            >{{ ngnToUsdtMoney }}
-            <!-- {{ chooseRecType.currencySymbol }} -->
-          </span>
-        </p>
-      </div>
+              {{ chooseRecType.rate }}</span
+            >
+          </p>
+          <p class="flex-1 amount-text">
+            <span class="m-b-4">{{ $t("recharge.real.amount.text") }}:</span
+            ><span class="color-fff"
+              >{{ ngnToUsdtMoney }}
+              <!-- {{ chooseRecType.currencySymbol }} -->
+            </span>
+          </p>
+        </div>
+      </van-form>
     </div>
-    <p class="font13 m-b-12 m-t-12">{{ $t(`rechange.way`) }}</p>
+
+    <!-- <p class="font13 m-b-12 m-t-12">{{ $t(`rechange.way`) }}</p>
     <ul class="type-list m-b-8">
       <li
         class="m-b-8 align-center justify-between p-l-8 p-r-8"
@@ -64,7 +83,7 @@
         ></van-checkbox>
         <van-checkbox v-else checked-color="#ee0a24"></van-checkbox>
       </li>
-    </ul>
+    </ul> -->
     <div class="">
       <ul class="pre-amount m-t-8">
         <li
@@ -73,7 +92,10 @@
           @click="amount = item"
           :key="idx"
         >
-          <div class="num center-center" :class="{ active: item == amount }">
+          <div
+            class="num center-center"
+            :class="{ 'asctve-btn': item == amount }"
+          >
             {{ item }}
           </div>
         </li>
@@ -105,11 +127,14 @@ export default {
       loading: false,
       rechargeList: [],
       amount: "",
-      chooseRecType: {},
+      typeId: "",
       data: {},
     };
   },
   computed: {
+    chooseRecType() {
+      return this.rechargeList.find((v) => v.id === this.typeId) || {};
+    },
     moneyStr() {
       return this.data.money / this.$globalNum.val;
     },
@@ -173,10 +198,11 @@ export default {
     },
     chose(item) {
       if (!item) return;
-      this.chooseRecType = item;
-      this.rechargeList.forEach((v) => {
-        v.chose = v.id === item.id;
-      });
+      // this.chooseRecType = item;
+      // this.rechargeList.forEach((v) => {
+      //   v.chose = v.id === item.id;
+      // });
+      this.typeId = item.id;
       if (this.quickAmountList && this.quickAmountList.length > 0) {
         this.amount = this.quickAmountList[0];
         return;
@@ -218,6 +244,7 @@ export default {
           chose: false,
         };
       });
+      console.log(this.rechargeList);
       if (this.rechargeList.length) {
         this.rechargeList[0].chose = true;
 
@@ -233,6 +260,8 @@ export default {
 </script>
 <style scoped lang="less">
 .safe-recharge-view {
+  .el-ntf-select {
+  }
   .gray {
     color: #8a929a;
   }
@@ -252,11 +281,14 @@ export default {
     }
     .num {
       text-align: center;
-      line-height: 31px;
-      height: 31px;
-      border-radius: 6px;
-      border: solid 1px #393939;
-      background-color: #292929;
+      height: 46px;
+      line-height: 46px;
+      border-radius: 5.5px;
+      border: solid 1px #606060;
+      &.asctve-btn {
+        border: none;
+        background-image: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+      }
     }
     .active {
       background-color: var(--main);
@@ -313,15 +345,6 @@ export default {
       color: #fff;
       background-color: var(--main);
       border-color: var(--main);
-    }
-    .amount-form {
-      background-color: transparent;
-      .van-field__body {
-        border-bottom: 1px solid var(--main);
-      }
-      .van-field__control {
-        color: #fff;
-      }
     }
   }
 }

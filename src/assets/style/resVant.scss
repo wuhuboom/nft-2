@@ -117,6 +117,11 @@ input::placeholder {
         color: #fff;
     }
     &.squere-form{
+      .el-ntf-select{
+        border-radius: 5.5px;
+        border: solid 1px #606060;
+        background-color: transparent;
+      }
       .van-cell{
         .van-field__body{
           border-radius: 5.5px;
