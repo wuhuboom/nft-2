@@ -42,7 +42,11 @@
           />
           <div class="m-b-24 money-list">
             <p class="lable-text p-l-16 p-t-12">
-              {{ $t("To.game.account") }}
+              {{
+                $t("ruls.xxx.please", {
+                  name: $t("backapi.self.safe.transfer.money.text"),
+                })
+              }}
             </p>
             <van-field
               v-model.trim="form.amount"

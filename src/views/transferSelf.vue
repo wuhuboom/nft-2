@@ -11,19 +11,10 @@
       <van-Loading color="#1989fa" />
     </div>
     <div v-else>
-      <p class="center-center p-l-16 p-r-16 m-t-16">
-        {{ $t(`backapi.self.safe.huaz.transfer.center.desc.text`) }}
-      </p>
-      <AccountBalance />
-
-      <ul class="m-l-32 m-r-32">
-        <li class="center-center icon-desc">
-          <p class="center-center">
-            <van-icon class="color-fff" name="down" size="20" />
-          </p>
-        </li>
-      </ul>
-      <van-form class="ntf-form p-r-16 p-l-16 m-t-32" @submit="onSubmit">
+      <van-form
+        class="ntf-form squere-form p-r-16 p-l-16 m-t-32"
+        @submit="onSubmit"
+      >
         <van-field
           v-model.trim="form.amount"
           class="m-b-24 field-inlude-code"
@@ -76,7 +67,6 @@
 
 <script>
 import userApi from "@/api/user";
-import AccountBalance from "@/components/home/AccountBalance";
 const initData = () => {
   return { amount: "", password: "" };
 };
@@ -92,26 +82,18 @@ export default {
       playerInfo: {},
     };
   },
-  components: {
-    AccountBalance,
-  },
   computed: {
+    safeData() {
+      return this.$store.state.safeData;
+    },
     mygold() {
       return (
-        this.numToFixed(this.playerInfo.money, this.$globalUnit.val) /
+        this.numToFixed(this.safeData.money, this.$globalUnit.val) /
         this.$globalNum.val
       );
     },
   },
   methods: {
-    async refresh() {
-      this.$toast.loading({
-        duration: 0,
-        forbidClick: true,
-      });
-      await this.detailSafeInfo();
-      this.$toast.clear();
-    },
     sendAll() {
       this.form.amount = this.mygold;
     },
@@ -140,21 +122,8 @@ export default {
         this.$toast(res.msg);
       }
       this.form = { ...initData() };
+      this.$store.dispatch("safeInfo");
     },
-    async detailSafeInfo() {
-      const [err, res] = await userApi.safeInfo();
-      if (err) return;
-      this.playerInfo = res.data;
-    },
-  },
-  created() {
-    this.detailSafeInfo();
-  },
-  mounted() {
-    document.querySelector("body").classList.add("gray-bg-img");
-  },
-  destroyed() {
-    document.querySelector("body").classList.remove("gray-bg-img");
   },
 };
 </script>
