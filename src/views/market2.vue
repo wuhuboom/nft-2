@@ -109,18 +109,25 @@
               </ul>
             </div>
           </div>
-          <p
-            class="buy-btn d-flex"
-            @click="
-              open({
-                parent: item,
-                ...doc,
-                index,
-              })
-            "
-          >
-            <span>{{ $t("deal.buyDetail.387081-12") }}</span>
-          </p>
+          <div class="p-r-16 p-l-16 p-b-20 font14" v-if="item.sold === 0">
+            <p class="sell-finish center-center">
+              {{ $t("info.match.menu3.title") }}
+            </p>
+          </div>
+          <div class="buy-btn-box m-r-16 m-l-16 p-b-20" v-else>
+            <p
+              class="buy-btn d-flex font14 center-center"
+              @click="
+                open({
+                  parent: item,
+                  ...doc,
+                  index,
+                })
+              "
+            >
+              <span>{{ $t("deal.buyDetail.387081-12") }}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -290,13 +297,32 @@ export default {
     .gray {
       color: #808080;
     }
+    .buy-btn-box {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 34px;
+        left: 0;
+        right: 0;
+        height: 17px;
+        border-radius: 6px;
+        background-image: linear-gradient(to right, #f5673e, #f03700);
+        -webkit-filter: blur(7.5px);
+        filter: blur(7.5px);
+      }
+    }
+    .buy-btn,
+    .sell-finish {
+      height: 42px;
+      border-radius: 6px;
+    }
     .buy-btn {
-      background: url("@/assets/img/ntf/market/130994@3x.png") no-repeat center
-        center;
-      background-size: 100% 100%;
-      height: 51px;
-      justify-content: center;
-      padding-top: 6px;
+      position: relative;
+      background-image: linear-gradient(to right, #f5673e, #f03700);
+    }
+    .sell-finish {
+      background: #5b5a5a;
     }
   }
 }
