@@ -1572,6 +1572,11 @@
   "reg.name.user": "用户名不能是纯数字",
   "finish.time":"到期时间",
    "init.money.time":"投资时间",
-  "come.money.time": "赎回时间"
-  
+  "come.money.time": "赎回时间",
+  "new.version.update": "新版本更新",
+"Updating.wait": "正在更新，请稍候。",
+"Create.your.PIN": "创建您的 PIN码",
+"Set.PIN6": "为您的交易设置一个 6 位数字的 PIN 码。",
+"Your.PIN.set!": "您的 PIN 码已设置！",
+"Your.PIN.already": "您的 PIN 码已保存。请确保在下次交易时记住该 PIN 码！"
 }

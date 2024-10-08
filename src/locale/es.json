@@ -1584,5 +1584,11 @@
 "Most.top.Matches": "Lanza los partidos más emocionantes",
 "Share.Link": "Compartir enlace",
 "From": "De",
-"To.game.account": "A la cuenta del juego"
+"To.game.account": "A la cuenta del juego",
+"new.version.update": "Actualización de nueva versión",
+"Updating.wait": "Actualizando, por favor espere.",
+"Create.your.PIN": "Crea tu PIN",
+"Set.PIN6": "Establece un PIN de 6 dígitos para tus transacciones.",
+"Your.PIN.set!": "¡Tu PIN ha sido configurado!",
+"Your.PIN.already": "Tu PIN ya está guardado. Asegúrate de recordarlo siempre para futuras transacciones."
 }

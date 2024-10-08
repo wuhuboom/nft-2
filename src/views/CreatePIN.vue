@@ -3,6 +3,7 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Create.your.PIN')"
+      :back="back"
     ></AppTopBar>
     <p class="center-center m-t-32 pic">
       <img class="d-img" src="@/assets/img/ntf3/form/130104@2x.webp" alt="" />
@@ -49,9 +50,12 @@ export default {
     };
   },
   methods: {
+    back() {
+      this.$router.replace("/");
+    },
     comfire() {
       if (this.finished) {
-        this.$router.replace("/");
+        this.back();
         return;
       }
       if (!this.$refs.VerificationCode.finish) {
