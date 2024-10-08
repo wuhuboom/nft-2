@@ -45,6 +45,7 @@ import {
   Steps,
   tabs,
   tab,
+  PasswordInput,
 } from "vant";
 export default {
   install(Vue) {
@@ -93,5 +94,6 @@ export default {
     Vue.use(Steps);
     Vue.use(tabs);
     Vue.use(tab);
+    Vue.use(PasswordInput);
   },
 };

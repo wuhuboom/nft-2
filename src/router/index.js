@@ -567,6 +567,13 @@ const routes = [
       default: () => import("@/views/LotteryRecord.vue"),
     },
   },
+  {
+    path: "/Create/PIN",
+    name: "CreatePIN",
+    components: {
+      default: () => import("@/views/CreatePIN.vue"),
+    },
+  },
 ];
 
 const router = new VueRouter({
