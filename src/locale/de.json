@@ -1575,5 +1575,15 @@
 "reg.name.user": "Der Benutzername darf nicht rein numerisch sein",
 "finish.time": "Ablaufzeit",
 "init.money.time": "Investitionszeit",
- "come.money.time": "Rücknahmezeit" 
+ "come.money.time": "Rücknahmezeit",
+ "Launch.Top.Matches": "Starte die spannendsten Top-Spiele",
+"Good.Day": "Guten Tag",
+"Data.Center": "Datenzentrum",
+"Demat.Account": "Demat-Konto",
+"Total.asset.value": "Gesamtinvestitionsbetrag",
+"Most.top.Matches": "Starte die spannendsten Top-Spiele",
+"Share.Link": "Link teilen",
+"From": "Von",
+"To.game.account": "Zum Spielkonto"
+ 
 }

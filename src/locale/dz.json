@@ -1575,5 +1575,14 @@
 "reg.name.user": "اسم المستخدم لا يمكن أن يكون رقميًا بحتًا",
 "finish.time": "تاريخ انتهاء الصلاحية",
 "init.money.time": "وقت الاستثمار",
-"come.money.time": "وقت الاسترداد"
+"come.money.time": "وقت الاسترداد",
+"Launch.Top.Matches": "إطلاق أروع المباريات الكبرى",
+"Good.Day": "يوم سعيد",
+"Data.Center": "مركز البيانات",
+"Demat.Account": "حساب ديمات",
+"Total.asset.value": "إجمالي مبلغ الاستثمار",
+"Most.top.Matches": "إطلاق أروع المباريات الكبرى",
+"Share.Link": "مشاركة الرابط",
+"From": "من",
+"To.game.account": "إلى حساب اللعبة"
 }

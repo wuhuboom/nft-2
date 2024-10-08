@@ -1574,5 +1574,14 @@
   "reg.name.user": "उपयोगकर्ता नाम केवल संख्या नहीं हो सकता",
   "finish.time": "समाप्ति समय",
   "init.money.time": "निवेश का समय",
-  "come.money.time": "निकासी का समय"
+  "come.money.time": "निकासी का समय",
+  "Launch.Top.Matches": "सबसे रोमांचक शीर्ष मैचों को लॉन्च करें",
+"Good.Day": "शुभ दिन",
+"Data.Center": "डेटा केंद्र",
+"Demat.Account": "डीमैट खाता",
+"Total.asset.value": "कुल निवेश राशि",
+"Most.top.Matches": "सबसे रोमांचक शीर्ष मैचों को लॉन्च करें",
+"Share.Link": "शेयर लिंक",
+"From": "से",
+"To.game.account": "खेल खाते में"
 }

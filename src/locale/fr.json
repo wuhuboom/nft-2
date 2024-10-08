@@ -1575,5 +1575,14 @@
 "reg.name.user": "Le nom d'utilisateur ne peut pas être uniquement numérique",
 "finish.time": "Date d'expiration",
 "init.money.time": "Temps d'investissement",
- "come.money.time": "Temps de rachat" 
+ "come.money.time": "Temps de rachat",
+"Launch.Top.Matches": "Lancez les matchs les plus palpitants",
+"Good.Day": "Bonne journée",
+"Data.Center": "Centre de données",
+"Demat.Account": "Compte Demat",
+"Total.asset.value": "Montant total de l'investissement",
+"Most.top.Matches": "Lancez les matchs les plus palpitants",
+"Share.Link": "Partager le lien",
+"From": "De",
+"To.game.account": "Vers le compte de jeu" 
 }

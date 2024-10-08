@@ -1574,5 +1574,15 @@
 "reg.name.user": "युजरनेम केवल अंक हुन सक्दैन",
 "finish.time": "म्याद समय",
 "init.money.time": "निवेशको समय",
-"come.money.time": "फिर्ता समय" 
+"come.money.time": "फिर्ता समय",
+"Launch.Top.Matches": "सबैभन्दा रोमाञ्चक शीर्ष खेलहरू सुरु गर्नुहोस्",
+"Good.Day": "सुबहो दिन",
+"Data.Center": "डेटा केन्द्र",
+"Demat.Account": "डिम्याट खाता",
+"Total.asset.value": "कुल लगानी रकम",
+"Most.top.Matches": "सबैभन्दा रोमाञ्चक शीर्ष खेलहरू सुरु गर्नुहोस्",
+"Share.Link": "लिंक सेयर गर्नुहोस्",
+"From": "बाट",
+"To.game.account": "खेल खाता मा"
+
 }
