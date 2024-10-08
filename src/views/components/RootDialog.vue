@@ -121,7 +121,9 @@ export default {
         return;
       }
       if (res.data.paySet === 2) {
-        this.show = true;
+        if (this.$route.name !== "CreatePIN") {
+          this.$router.push({ name: "CreatePIN" });
+        }
       } else {
         this.$store.commit("changepaySet", 1);
       }
