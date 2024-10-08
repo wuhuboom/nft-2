@@ -109,7 +109,7 @@
               </ul>
             </div>
           </div>
-          <div class="p-r-16 p-l-16 p-b-20 font14" v-if="item.sold === 0">
+          <div class="p-r-16 p-l-16 p-b-20 font14" v-if="item.sold === 1">
             <p class="sell-finish center-center">
               {{ $t("info.match.menu3.title") }}
             </p>
