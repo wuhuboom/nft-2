@@ -1575,5 +1575,6 @@
 "reg.name.user": "Le nom d'utilisateur ne peut pas être uniquement numérique",
 "finish.time": "Date d'expiration",
 "init.money.time": "Temps d'investissement",
- "come.money.time": "Temps de rachat" 
+ "come.money.time": "Temps de rachat",
+ "sell.finish": "Épuisé" 
 }

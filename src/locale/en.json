@@ -1573,5 +1573,6 @@
 	"reg.name.user": "Username cannot be purely numeric",
 	"finish.time": "Expiration Time",
 	"init.money.time": "Investment Time",
-	"come.money.time": "Redemption Time"
+	"come.money.time": "Redemption Time",
+	"sell.finish": "Sold Out"
 }

@@ -1574,5 +1574,6 @@
 "reg.name.user": "युजरनेम केवल अंक हुन सक्दैन",
 "finish.time": "म्याद समय",
 "init.money.time": "निवेशको समय",
-"come.money.time": "फिर्ता समय" 
+"come.money.time": "फिर्ता समय",
+"sell.finish": "बेचिएको छ" 
 }
