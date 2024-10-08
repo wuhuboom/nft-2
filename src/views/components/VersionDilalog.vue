@@ -44,7 +44,7 @@ export default {
     return {
       version: "",
       progressBarState: false,
-      fromModal2: false,
+      fromModal2: true,
       progressBar: 0,
       key: "storageVersion",
     };
@@ -77,7 +77,6 @@ export default {
         return;
       }
       const res = +err;
-      console.log(this.version, this.key);
       let storageVersion = auth.getToken(this.key);
       if (storageVersion && storageVersion != res) {
         this.fromModal2 = true;

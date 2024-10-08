@@ -96,8 +96,9 @@
                 />
               </template>
             </van-field>
-            <!-- v-if="authConfig.mailCodeRequired === 1" -->
+            <!-- -->
             <van-field
+              v-if="authConfig.mailCodeRequired === 1"
               class="field-inlude-code m-b-16"
               :placeholder="$t('Submitted.email.code')"
               v-model.trim="form.code"
@@ -281,11 +282,6 @@ export default {
           this.clearTimer(); // 倒计时结束时清除定时器
         }
       }, 1000);
-    },
-    async authSysconfig() {
-      const [err, res] = await userApi.withdrawalReq();
-      if (err) return;
-      this.authConfig = res.data;
     },
     validatePassword(password) {
       return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(password);
