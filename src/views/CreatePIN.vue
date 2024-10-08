@@ -36,7 +36,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
 import userApi from "@/api/user";
 import VerificationCode from "@/components/home/VerificationCode.vue";
 export default {
@@ -52,7 +51,7 @@ export default {
   methods: {
     comfire() {
       if (this.finished) {
-        this.$router.push("/");
+        this.$router.replace("/");
         return;
       }
       if (!this.$refs.VerificationCode.finish) {
@@ -91,6 +90,8 @@ export default {
 }
 .button-box {
   padding-top: 148px;
+  //首字母大写
+  text-transform: capitalize;
 }
 .pin-text {
   font-size: 15px;
