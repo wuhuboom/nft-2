@@ -4,15 +4,16 @@
     :showConfirmButton="false"
     :showCancelButton="false"
     :closeOnClickOverlay="true"
-    class="linear-global-pop"
+    class="linear-global-pop vers-global-pop"
   >
     <div class="common-dialog">
       <div class="cont full100 align-center flex-1">
         <ul class="update full100 flex-column center-center">
-          <li class="update-text center-center full100">
-            {{ $t("version.update") }}
+          <li class="update-text full100 p-l-16">
+            <p>{{ $t("version.update") }}</p>
+            <p>{{ $t("new.version.update") }}</p>
           </li>
-          <li class="full100">
+          <li class="full100 p-t-24">
             <p
               class="btns ntf-vant-btn app-ellipsis"
               @click="simulateProgressBar"
@@ -20,14 +21,17 @@
             >
               {{ $t(`update.now`) }}
             </p>
-            <van-progress
-              v-else
-              track-color="rgba(255, 255, 255, 0.25)"
-              :show-pivot="false"
-              color="#38ff7e"
-              :percentage="progressBar"
-              stroke-width="8"
-            />
+            <div v-else>
+              <p class="m-b-20 center-center">{{ $t("Updating.wait") }}</p>
+              <van-progress
+                track-color="rgba(255, 255, 255, 0.25)"
+                :show-pivot="false"
+                color="#38ff7e"
+                :percentage="progressBar"
+                stroke-width="8"
+              />
+              <p class="p-text m-t-8">{{ `${parseInt(progressBar)}%` }}</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -44,7 +48,7 @@ export default {
     return {
       version: "",
       progressBarState: false,
-      fromModal2: true,
+      fromModal2: false,
       progressBar: 0,
       key: "storageVersion",
     };
@@ -95,6 +99,10 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.vers-global-pop {
+  overflow: visible;
+  width: 334px;
+}
 .common-dialog {
   padding: 0 25px;
   position: relative;
@@ -132,6 +140,24 @@ export default {
     width: 56px;
     display: block;
     height: 111px;
+  }
+  .update-text {
+    padding-top: 48px;
+    margin-top: -118px;
+    width: 313px;
+    height: 116px;
+    background: url("@/assets/img/ntf3/form/130194@2x.webp") no-repeat center
+      center;
+    background-size: 100% 100%;
+    & > p:first-child {
+      font-size: 25px;
+    }
+    & > p:last-child {
+      font-size: 14px;
+    }
+  }
+  .p-text {
+    text-align: right;
   }
 }
 </style>
