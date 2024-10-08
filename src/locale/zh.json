@@ -1572,6 +1572,6 @@
   "reg.name.user": "用户名不能是纯数字",
   "finish.time":"到期时间",
    "init.money.time":"投资时间",
-  "come.money.time": "赎回时间"
-  
+  "come.money.time": "赎回时间",
+  "sell.finish":"已售罄"
 }

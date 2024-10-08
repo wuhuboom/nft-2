@@ -111,7 +111,7 @@
           </div>
           <div class="p-r-16 p-l-16 p-b-20 font14" v-if="doc.sold === 1">
             <p class="sell-finish center-center">
-              {{ $t("info.match.menu3.title") }}
+              {{ $t("sell.finish") }}
             </p>
           </div>
           <div class="buy-btn-box m-r-16 m-l-16 p-b-20" v-else>
@@ -323,6 +323,7 @@ export default {
     }
     .sell-finish {
       background: #5b5a5a;
+      text-transform: capitalize;
     }
   }
 }
