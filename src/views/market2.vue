@@ -109,12 +109,12 @@
               </ul>
             </div>
           </div>
-          <div class="p-r-16 p-l-16 p-b-20 font14" v-if="doc.sold === 1">
+          <!-- <div class="p-r-16 p-l-16 p-b-20 font14" v-if="doc.sold === 1">
             <p class="sell-finish center-center">
               {{ $t("sell.finish") }}
             </p>
-          </div>
-          <div class="buy-btn-box m-r-16 m-l-16 p-b-20" v-else>
+          </div> v-else-->
+          <div class="buy-btn-box m-r-16 m-l-16 p-b-20">
             <p
               class="buy-btn d-flex font14 center-center"
               @click="
@@ -163,8 +163,13 @@ export default {
     },
     open(doc) {
       this.item = doc;
+      if (doc.sold === 1) {
+        console.log(doc.sold, "---");
+        this.$toast(this.$t("sell.finish"));
+        return;
+      }
       if (doc.parent.curr == 100) {
-        this.$toast("backapi.planExpired");
+        this.$toast(this.$t("backapi.planExpired"));
         return;
       }
       if (this.balance < doc.min) {
