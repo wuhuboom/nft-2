@@ -6,10 +6,10 @@
     </div>
     <div v-else class="m-t-12 gray">
       <p class="font13 m-b-12">{{ $t(`rechange.way`) }}</p>
-      <ul class="type-list m-b-8">
+      <ul class="type-list">
         <li
           v-for="(item, index) in rechargeList"
-          class="m-r-16"
+          class="m-r-16 m-b-8"
           @click="chose(item)"
           :class="{ 'color-active': item.id === chooseRecType.id }"
           :key="index"
