@@ -32,7 +32,7 @@
             ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
-                {{ $t("enter.inint.code") }}<span class="active">*</span>:
+                {{ $t("enter.inint.code") }}<span class="active">*</span>
               </p>
             </template>
           </van-field>
@@ -54,12 +54,11 @@
             ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
-                {{ $t("Payment.password") }}<span class="active">*</span>:
+                {{ $t("Payment.password") }}<span class="active">*</span>
               </p>
             </template>
           </van-field>
         </div>
-        <!-- <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length"></ul> -->
         <div class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length">
           <ul class="font14 desc-art-list">
             <li
@@ -83,33 +82,43 @@
               :class="{ red: !result[d.key] }"
               :key="i"
             >
-              <!-- <p class="c-pic m-r-4">
-                <img
-                  class="d-img rit"
-                  :src="result[d.key] ? ritIcon : errIcon"
-                />
-              </p> -->
               <p>{{ i + 1 }}、{{ d.txt }}</p>
             </li>
           </ul>
-          <!-- <ul class="font12 criteria br p-t-8 p-b-8" v-if="popTxt.length">
-            <li class="font14 align-center font14 m-b-4">
-              <img
-                class="rit"
-                src="@/assets/img/ntf/market/130995@2x.webp"
-                alt=""
-              />
-              {{ $t("Participation.criteria") }}
-            </li>
-            <li class="color80 m-b-4" v-for="(d, i) in popTxt" :key="i">
-              {{ i + 1 }}、{{ d.txt }}
-            </li>
-          </ul> -->
         </div>
-        <ul class="justify-between height62 buy-much align-center">
-          <li>{{ $t("buy.invest.money4") }}</li>
-          <li class="font14 blod active">{{ item.min }}</li>
-        </ul>
+        <div class="height62 align-center">
+          <van-field
+            v-model.trim="formData.money"
+            name="money"
+            type="digit"
+            :disabled="!hasMax"
+            @input="input"
+            @blur="blurMoney"
+          >
+            <!-- :rules="[
+              {
+                required: true,
+                message: this.$t('ruls.xxx.empty', {
+                  name: this.$t('Payment.password'),
+                }),
+              },
+            ]" -->
+            <template #label>
+              <div class="flex-column no-wrap-text">
+                <p class="align-center">
+                  {{ $t("buy.invest.money4") }}<span class="active">*</span>
+                </p>
+                <span v-if="hasMax" class="d-flex limit-rang"
+                  >{{ $t("Limit.Range") }} {{ minMax }}</span
+                >
+              </div>
+            </template>
+          </van-field>
+        </div>
+        <p class="m-t-12 m-b-24">
+          {{ $t("invest.record.table.col4.text") }}:
+          <span class="make-m blod">{{ way1earnings }}</span>
+        </p>
         <van-button
           class="confirm-btn m-t-16"
           block
@@ -120,38 +129,6 @@
         </van-button>
       </van-form>
     </van-popup>
-    <!-- <van-popup
-      style="width: 88%"
-      class="right-art-pop linear-global-pop"
-      v-model="showRight"
-      position="center"
-    >
-      <ul class="font14 desc-art-list color-fff">
-        <li class="center-center flex-column" :class="{ red: !right }">
-          <p class="h-pic m-r-4">
-            <img class="d-img" :src="right ? ritIcon : errIcon" />
-          </p>
-          <p>
-            {{
-              right
-                ? $t(`Participation.every.day2`)
-                : $t(`Participation.every.day3`)
-            }}
-          </p>
-        </li>
-        <li
-          v-for="(d, i) in popTxt"
-          class="align-center tips-radio gray m-t-8"
-          :class="{ red: !result[d.key] }"
-          :key="i"
-        >
-          <p class="c-pic m-r-4">
-            <img class="d-img" :src="result[d.key] ? ritIcon : errIcon" />
-          </p>
-          <p>{{ i + 1 }}、{{ d.txt }}</p>
-        </li>
-      </ul>
-    </van-popup> -->
   </div>
 </template>
 
@@ -193,6 +170,30 @@ export default {
     },
   },
   computed: {
+    //普通盈利 每天的收益
+    way1earnings() {
+      const base = +(this.item.fixed || 0);
+      const val = this.formData.money || 0;
+      if (val > 0) {
+        const curRate = this.item.rate / 100;
+        let num = val * curRate * 1 + base;
+        return (num * this.item.days).toFixed(2);
+      } else {
+        return 0;
+      }
+    },
+    hasMax() {
+      return this.minMax.includes("-");
+    },
+    minMax() {
+      let str = "";
+      if (this.item.min && this.item.max && this.item.max > this.item.min) {
+        str = `${this.item.min}-${this.item.max}`;
+      } else {
+        str = `${this.item.min}`;
+      }
+      return str;
+    },
     showInvite() {
       return parseInt(this.item.parent && this.item.parent.inviteRequire) === 1;
     },
@@ -226,13 +227,31 @@ export default {
     },
   },
   methods: {
+    input() {
+      this.formData.money = this.formData.money.replace(/^0+/, "");
+    },
+    blurMoney() {
+      if (!this.hasMax) return;
+      if (
+        !(
+          this.formData.money >= this.item.min &&
+          this.formData.money <= this.item.max
+        )
+      ) {
+        this.$toast(`${this.$t("Limit.Range")} ${this.minMax}`);
+        this.formData.money = this.item.max || this.item.min;
+      }
+    },
     open() {
-      this.formData = initFome();
       this.show = true;
-      this.result = {
-        groups: true,
-        inDays: true,
-      };
+      this.$nextTick(() => {
+        this.formData = initFome();
+        this.formData.money = this.item.max || this.item.min;
+        this.result = {
+          groups: true,
+          inDays: true,
+        };
+      });
     },
     opened() {
       this.$nextTick(() => {
@@ -274,7 +293,6 @@ export default {
         id: this.item.id,
         planId: this.item.parent.id,
         autoInvest: this.item.showAuto,
-        money: this.item.min,
       });
       const [err] = await userApi.invest(para);
 
@@ -312,6 +330,9 @@ export default {
   overflow: visible;
   color: #808080;
   ::v-deep {
+    .van-field--disabled .van-field__label {
+      color: #646566;
+    }
     .van-field__value {
       position: static;
     }
@@ -329,9 +350,14 @@ export default {
         width: auto;
       }
       .van-field__body {
+        &,
+        input {
+          height: 100%;
+        }
         input {
           color: #fff;
           text-align: right;
+          -webkit-text-fill-color: #fff;
         }
       }
     }
@@ -391,5 +417,11 @@ export default {
 .no-wrap-text {
   //文字不换行
   white-space: nowrap;
+}
+.limit-rang {
+  font-size: 10px;
+}
+.make-m {
+  color: #f5673e;
 }
 </style>
