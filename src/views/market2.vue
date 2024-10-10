@@ -162,19 +162,19 @@ export default {
     },
     open(doc) {
       this.item = doc;
-      // if (doc.sold === 1) {
-      //   this.$toast(this.$t("sell.finish"));
-      //   return;
-      // }
-      // if (doc.parent.curr == 100) {
-      //   this.$toast(this.$t("backapi.planExpired"));
-      //   return;
-      // }
-      // if (this.balance < doc.min) {
-      //   console.log(this.$refs);
-      //   this.$refs.noMony.open();
-      //   return;
-      // }
+      if (doc.sold === 1) {
+        this.$toast(this.$t("sell.finish"));
+        return;
+      }
+      if (doc.parent.curr == 100) {
+        this.$toast(this.$t("backapi.planExpired"));
+        return;
+      }
+      if (this.balance < doc.min) {
+        console.log(this.$refs);
+        this.$refs.noMony.open();
+        return;
+      }
       this.$refs.buyPop.open();
     },
     moneyMinMax(doc) {
