@@ -68,7 +68,7 @@
                 </li>
                 <li class="m-l-8">
                   <p class="gray">{{ $t("buy.invest.money4") }}</p>
-                  <p class="font14 blod">{{ doc.min }}</p>
+                  <p class="font14 blod">{{ minMax(doc) }}</p>
                 </li>
               </ul>
               <ul class="align-center m-b-20">
@@ -77,7 +77,11 @@
                 </li>
                 <li class="m-l-8">
                   <p class="gray">{{ $t("buy.invest.money5") }}</p>
-                  <p class="font14 blod">{{ way1earnings(doc) }}</p>
+                  <p class="font14 blod" :class="{ green: doc.rate }">
+                    {{
+                      doc.rate ? `${doc.rate}%` : way1earnings(doc).toFixed(2)
+                    }}
+                  </p>
                 </li>
               </ul>
               <ul class="align-center m-b-20">
@@ -103,17 +107,12 @@
                 <li class="m-l-8">
                   <p class="gray">{{ $t("my.all.income") }}</p>
                   <p class="font14 blod">
-                    {{ (doc.days * way1earnings(doc)).toFixed(2) }}
+                    {{ moneyMinMax(doc) }}
                   </p>
                 </li>
               </ul>
             </div>
           </div>
-          <!-- <div class="p-r-16 p-l-16 p-b-20 font14" v-if="doc.sold === 1">
-            <p class="sell-finish center-center">
-              {{ $t("sell.finish") }}
-            </p>
-          </div> v-else-->
           <div class="buy-btn-box m-r-16 m-l-16 p-b-20">
             <p
               class="buy-btn d-flex font14 center-center"
@@ -164,7 +163,6 @@ export default {
     open(doc) {
       this.item = doc;
       if (doc.sold === 1) {
-        console.log(doc.sold, "---");
         this.$toast(this.$t("sell.finish"));
         return;
       }
@@ -179,31 +177,34 @@ export default {
       }
       this.$refs.buyPop.open();
     },
-    //普通盈利
-    way1earnings(doc) {
-      // if (doc.showAuto) {
-      //   //复利
-      //   this.way2earnings(doc);
-      //   return;
-      // }
-      const base = +(doc.fixed || 0);
-      const val = doc.min || 0;
-      if (val > 0) {
-        const curRate = doc.rate / 100;
-        let num = val * curRate * 1 + base; //天
-        return num.toFixed(2);
+    moneyMinMax(doc) {
+      let str = "";
+      if (doc.min && doc.max && doc.max > doc.min) {
+        const min = doc.days * this.way1earnings(doc, "min");
+        const max = doc.days * this.way1earnings(doc, "max");
+        str = `${min.toFixed(2)}-${max.toFixed(2)}`;
       } else {
-        return 0;
+        str = `${doc.days * this.way1earnings(doc, "min")}`;
       }
+      return str;
     },
-    //复利盈利
-    way2earnings(doc) {
-      const val = doc.min || 0;
+    minMax(doc) {
+      let str = "";
+      if (doc.min && doc.max && doc.max > doc.min) {
+        str = `${doc.min}-${doc.max}`;
+      } else {
+        str = `${doc.min}`;
+      }
+      return str;
+    },
+    //普通盈利 每天的收益
+    way1earnings(doc, key = "min") {
+      const base = +(doc.fixed || 0);
+      const val = doc[`${key}`] || 0;
       if (val > 0) {
-        //= X * (1 + Y/100)*Z
         const curRate = doc.rate / 100;
-        let num = val * Math.pow(1 + curRate, doc.days) - val;
-        return num.toFixed(2);
+        let num = val * curRate * 1 + base;
+        return num;
       } else {
         return 0;
       }
@@ -341,5 +342,8 @@ export default {
     width: 50%;
     flex-shrink: 0;
   }
+}
+.green {
+  color: #56ff17;
 }
 </style>
