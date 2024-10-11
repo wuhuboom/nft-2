@@ -105,11 +105,12 @@
             <template #label>
               <div class="flex-column no-wrap-text">
                 <p class="align-center">
-                  {{ $t("buy.invest.money4") }}<span class="active">*</span>
+                  {{ $t("info.trade.col4.text") }} {{ hasMax ? minMax : ""
+                  }}<span class="active">*</span>
                 </p>
-                <span v-if="hasMax" class="d-flex limit-rang"
+                <!-- <span v-if="hasMax" class="d-flex limit-rang"
                   >{{ $t("Limit.Range") }} {{ minMax }}</span
-                >
+                > -->
               </div>
             </template>
           </van-field>
