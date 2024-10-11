@@ -86,7 +86,10 @@ u
           <van-grid-item class="color-fff">
             {{ numToFixed(item.money, $globalUnit.val) / $globalNum.val }}
           </van-grid-item>
-          <van-grid-item class="color-active">
+          <van-grid-item
+            class="color-active"
+            :class="{ green: +item.status === 3 }"
+          >
             {{ getState(+item.status) }}
           </van-grid-item>
         </van-grid>
@@ -432,5 +435,8 @@ export default {
       text-align: center;
     }
   }
+}
+.green {
+  color: #56ff17 !important;
 }
 </style>

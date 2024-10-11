@@ -9,7 +9,7 @@
         <li class="bold">{{ item.title }}</li>
         <li class="cont font12 gray">{{ item.content }}</li>
         <li class="time font12 gray">
-          {{ formatDate(item.createdAt, "yyyy-MM-dd hh:mm:ss") }}
+          {{ formatDate(item.createdAt, "MM/dd/yyyy hh:mm:ss") }}
         </li>
       </ul>
     </div>
