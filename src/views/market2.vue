@@ -79,7 +79,9 @@
                   <p class="gray">{{ $t("buy.invest.money5") }}</p>
                   <p class="font14 blod" :class="{ green: doc.rate }">
                     {{
-                      doc.rate ? `${doc.rate}%` : way1earnings(doc).toFixed(2)
+                      doc.rate
+                        ? `${doc.rate}%`
+                        : $delZero(way1earnings(doc).toFixed(2))
                     }}
                   </p>
                 </li>
@@ -182,7 +184,9 @@ export default {
       if (doc.min && doc.max && doc.max > doc.min) {
         const min = doc.days * this.way1earnings(doc, "min");
         const max = doc.days * this.way1earnings(doc, "max");
-        str = `${min.toFixed(2)}-${max.toFixed(2)}`;
+        str = `${this.$delZero(min.toFixed(2))}-${this.$delZero(
+          max.toFixed(2)
+        )}`;
       } else {
         str = `${doc.days * this.way1earnings(doc, "min")}`;
       }

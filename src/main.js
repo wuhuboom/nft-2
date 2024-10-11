@@ -87,6 +87,13 @@ const num =
 Vue.prototype.$globalNum = {
   val: num,
 };
+//去掉12.00 去掉 00
+Vue.prototype.$delZero = (v) => {
+  if (`${v}`.endsWith(".00")) {
+    return parseInt(v);
+  }
+  return v;
+};
 //保留几位小数
 Vue.prototype.$globalUnit = {
   val: countTrailingZeros(num),

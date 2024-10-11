@@ -1499,7 +1499,7 @@
 	"vaid.phone": "Please enter a {num}-digit phone number",
 	"rechargeNum.Enough": "Number of investors today",
 	"today.reg.num": "Number of registrations today",
-	"my.all.income": "Total Income",
+	"my.all.income": "Maximum income",
 	"typeValue1": "Recharge",
 	"typeValue2": "Withdrawal",
 	"typeValue3": "Investment",

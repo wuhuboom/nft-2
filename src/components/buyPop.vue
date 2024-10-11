@@ -117,7 +117,7 @@
         </div>
         <p class="m-t-12 m-b-24 font14">
           {{ $t("invest.record.table.col4.text") }}:
-          <span class="make-m blod">{{ way1earnings }}</span>
+          <span class="make-m blod">{{ $delZero(way1earnings) }}</span>
         </p>
         <van-button
           class="confirm-btn m-t-16"
