@@ -287,7 +287,7 @@ export default {
         );
         return;
       }
-      if (!this.hasMax) {
+      if (this.hasMax) {
         if (
           !(
             this.formData.money >= this.item.min &&
