@@ -246,7 +246,10 @@ export default {
       this.show = true;
       this.$nextTick(() => {
         this.formData = initFome();
-        this.formData.money = "";
+        if (!this.hasMax) {
+          this.formData.money = this.item.min;
+        }
+
         this.result = {
           groups: true,
           inDays: true,
