@@ -246,7 +246,7 @@ export default {
       this.show = true;
       this.$nextTick(() => {
         this.formData = initFome();
-        this.formData.money = this.item.max || this.item.min;
+        this.formData.money = "";
         this.result = {
           groups: true,
           inDays: true,
@@ -283,6 +283,17 @@ export default {
           })
         );
         return;
+      }
+      if (!this.hasMax) {
+        if (
+          !(
+            this.formData.money >= this.item.min &&
+            this.formData.money <= this.item.max
+          )
+        ) {
+          this.$toast(`${this.$t("Limit.Range")} ${this.minMax}`);
+          return;
+        }
       }
       this.$toast.loading({
         duration: 0,
