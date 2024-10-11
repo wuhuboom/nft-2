@@ -1576,5 +1576,6 @@
 "finish.time": "Data de expiração",
 "init.money.time": "Tempo de Investimento",
 "come.money.time": "Tempo de Resgate",
-"sell.finish": "Esgotado" 
+"sell.finish": "Esgotado",
+"maximum.income":"Renda máxima" 
 }

@@ -1576,5 +1576,6 @@
 "finish.time": "Date d'expiration",
 "init.money.time": "Temps d'investissement",
  "come.money.time": "Temps de rachat",
- "sell.finish": "Épuisé" 
+ "sell.finish": "Épuisé",
+ "maximum.income":"Revenu maximum" 
 }

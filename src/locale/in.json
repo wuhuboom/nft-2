@@ -1499,7 +1499,7 @@
   "vaid.phone": "कृपया {num} अंकों का फ़ोन नंबर दर्ज करें",
   "rechargeNum.Enough": "आज के निवेशकों की संख्या",
   "today.reg.num": "आज की पंजीकरणों की संख्या",
-  "my.all.income": "अधिकतम आय",
+  "my.all.income": "कुल आय",
   "typeValue1": "रिचार्ज",
   "typeValue2": "निकासी",
   "typeValue3": "निवेश",
@@ -1575,5 +1575,6 @@
   "finish.time": "समाप्ति समय",
   "init.money.time": "निवेश का समय",
   "come.money.time": "निकासी का समय",
-  "sell.finish": "बिक गया"
+  "sell.finish": "बिक गया",
+  "maximum.income":"अधिकतम आय"
 }

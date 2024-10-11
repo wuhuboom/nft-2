@@ -1576,5 +1576,6 @@
 "finish.time": "Ablaufzeit",
 "init.money.time": "Investitionszeit",
  "come.money.time": "Rücknahmezeit",
- "sell.finish": "Ausverkauft" 
+ "sell.finish": "Ausverkauft",
+ "maximum.income":"Maximale Einnahme" 
 }

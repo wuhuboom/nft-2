@@ -1576,5 +1576,6 @@
 "finish.time": "تاريخ انتهاء الصلاحية",
 "init.money.time": "وقت الاستثمار",
 "come.money.time": "وقت الاسترداد",
-"sell.finish": "نفذت الكمية"
+"sell.finish": "نفذت الكمية",
+"maximum.income":"أقصى دخل"
 }

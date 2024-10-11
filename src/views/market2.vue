@@ -107,10 +107,12 @@
                   <img src="@/assets/img/ntf/market/130978@3x.png" alt="" />
                 </li>
                 <li class="m-l-8">
-                  <p class="gray">{{ $t("my.all.income") }}</p>
-                  <p class="font14 blod">
-                    {{ moneyMinMax(doc) }}
+                  <p class="gray">
+                    {{
+                      isLImit(doc) ? $t("maximum.income") : $t("my.all.income")
+                    }}
                   </p>
+                  <p class="font14 blod">{{ moneyMinMax(doc) }}</p>
                 </li>
               </ul>
             </div>
@@ -179,14 +181,14 @@ export default {
       }
       this.$refs.buyPop.open();
     },
+    isLImit(doc) {
+      return doc.min && doc.max && doc.max > doc.min;
+    },
     moneyMinMax(doc) {
       let str = "";
       if (doc.min && doc.max && doc.max > doc.min) {
-        const min = doc.days * this.way1earnings(doc, "min");
         const max = doc.days * this.way1earnings(doc, "max");
-        str = `${this.$delZero(min.toFixed(2))}-${this.$delZero(
-          max.toFixed(2)
-        )}`;
+        str = `${this.$delZero(max.toFixed(2))}`;
       } else {
         str = `${doc.days * this.way1earnings(doc, "min")}`;
       }

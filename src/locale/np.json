@@ -1575,5 +1575,6 @@
 "finish.time": "म्याद समय",
 "init.money.time": "निवेशको समय",
 "come.money.time": "फिर्ता समय",
-"sell.finish": "बेचिएको छ" 
+"sell.finish": "बेचिएको छ",
+"maximum.income":"अधिकतम आम्दानी" 
 }

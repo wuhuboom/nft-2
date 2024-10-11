@@ -1576,5 +1576,6 @@
 "finish.time": "Tiempo de expiración",
 "init.money.time": "Tiempo de Inversión",
 "come.money.time": "Tiempo de Redención",
-"sell.finish": "Agotado"
+"sell.finish": "Agotado",
+"maximum.income":"Ingreso máximo"
 }

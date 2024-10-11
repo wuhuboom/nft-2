@@ -1499,7 +1499,7 @@
 	"vaid.phone": "Please enter a {num}-digit phone number",
 	"rechargeNum.Enough": "Number of investors today",
 	"today.reg.num": "Number of registrations today",
-	"my.all.income": "Maximum income",
+	"my.all.income": "Total Income",
 	"typeValue1": "Recharge",
 	"typeValue2": "Withdrawal",
 	"typeValue3": "Investment",
@@ -1574,5 +1574,6 @@
 	"finish.time": "Expiration Time",
 	"init.money.time": "Investment Time",
 	"come.money.time": "Redemption Time",
-	"sell.finish": "Sold Out"
+	"sell.finish": "Sold Out",
+	"maximum.income":"Maximum income"
 }
