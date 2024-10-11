@@ -93,7 +93,6 @@
             type="digit"
             :disabled="!hasMax"
             @input="input"
-            @blur="blurMoney"
           >
             <!-- :rules="[
               {
