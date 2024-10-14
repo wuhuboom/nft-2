@@ -8,7 +8,7 @@
         <img class="d-img" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
       </li>
       <li class="align-center lef-icon">
-        <p @click="openLang">
+        <p @click="$router.push('/pages/wallet/onlineRecharge')">
           <img class="d-img" src="@/assets/img/ntf3/129447@2x.webp" alt="" />
         </p>
         <p class="balance p-l-8 p-r-8">{{ divide(user.balance) }}</p>
