@@ -5,6 +5,7 @@
       <van-form class="ntf-form full100" ref="form" @submit="onSubmit">
         <div class="flex-column center-center">
           <div class="full100">
+            <p class="lable-text">{{ $t("form.account.text") }}</p>
             <van-field
               class="username m-b-16"
               v-model.trim="form.username"
@@ -21,12 +22,15 @@
                 },
               ]"
             />
+            <p class="lable-text">{{ $t("form.password.text") }}</p>
             <van-field
               class="res-icon-size password m-b-16"
               v-model.trim="form.password"
               autocomplete="new-password"
               :type="showText ? 'text' : 'password'"
-              :placeholder="$t('form.password.text')"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.password.text') })
+              "
               @click-right-icon="openEye"
               :right-icon="`color-fff icon iconfont  ${
                 showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
@@ -39,13 +43,16 @@
                 },
               ]"
             />
+            <p class="lable-text">{{ $t("form.twoPassword.text") }}</p>
             <van-field
               v-model.trim="form.twoPassword"
               autocomplete="new-password"
               class="res-icon-size password m-b-16"
               @click-right-icon="openEye"
               :type="showText ? 'text' : 'password'"
-              :placeholder="$t('form.twoPassword.text')"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.twoPassword.text') })
+              "
               :right-icon="`color-fff icon iconfont  ${
                 showText ? 'icon-yanjing_xianshi_o' : 'icon-yanjing_yincang_o'
               }`"
@@ -61,12 +68,15 @@
                 },
               ]"
             />
+            <p class="lable-text">{{ $t("form.invitecode.text") }}</p>
             <van-field
               v-model.trim="form.invitationCode"
               type="number"
               class="res-icon-size login-ceode m-b-16"
               autocomplete="new-password"
-              :placeholder="$t('form.invitecode.text')"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.invitecode.text') })
+              "
               :rules="[
                 {
                   required: true,
@@ -74,9 +84,12 @@
                 },
               ]"
             />
+            <p class="lable-text">{{ $t("form.email.text") }}</p>
             <van-field
               v-model.trim="form.email"
-              :placeholder="$t('form.email.text')"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.email.text') })
+              "
               class="email res-icon-size m-b-16 icon-input"
               autocomplete="new-password"
               name="email"
@@ -96,12 +109,14 @@
                 />
               </template>
             </van-field>
-            <!-- -->
+            <p class="lable-text" v-if="authConfig.mailCodeRequired === 1">
+              {{ $t("Submitted.email.code") }}
+            </p>
             <van-field
               v-if="authConfig.mailCodeRequired === 1"
               class="field-inlude-code m-b-16"
-              :placeholder="$t('Submitted.email.code')"
               v-model.trim="form.code"
+              :placeholder="$t('Submitted.email.code')"
               :rules="[
                 {
                   required: true,
@@ -123,9 +138,14 @@
                 >
               </template>
             </van-field>
+            <p class="lable-text">
+              {{ $t("form.phoneNum.text") }}
+            </p>
             <van-field
               v-model.trim="form.phone"
-              :placeholder="$t('form.phoneNum.text')"
+              :placeholder="
+                $t('ruls.xxx.please', { name: $t('form.phoneNum.text') })
+              "
               type="digit"
               autocomplete="new-password"
               class="left-icon-box res-icon-size login-phone align-center phone-input"
