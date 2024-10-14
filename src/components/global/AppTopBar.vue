@@ -3,14 +3,16 @@
     class="appp-top-bar align-center justify-between max-width750"
     :style="styles"
   >
-    <div class="appp-top-cont align-center justify-between">
-      <van-button
-        @click="goback"
-        class="icon-button"
-        v-if="showLeft"
-        :icon="leftIcon"
-        type="primary"
-      />
+    <div class="appp-top-cont align-center justify-between p-l-16 p-r-16">
+      <slot name="left">
+        <img
+          @click="goback"
+          v-if="showLeft"
+          class="d-img iocn-left"
+          src="@/assets/img/ntf3/group-42@2x.webp"
+          alt=""
+        />
+      </slot>
       <div
         class="appp-top-bar-title js-appp-top-bar-title"
         :class="titleClass"
@@ -19,8 +21,9 @@
         {{ titleSolt ? "" : topBarTitle }}
         <slot name="title"></slot>
       </div>
+
       <div class="right center-center">
-        <slot name="right"></slot>
+        <slot name="right"> </slot>
       </div>
     </div>
     <RootDialog />
@@ -91,6 +94,9 @@ export default {
 </script>
 <style scoped lang="less">
 .right {
-  min-width: 43px;
+}
+.iocn-left {
+  height: 33px;
+  width: 33px;
 }
 </style>

@@ -17,7 +17,7 @@
           <ul class="type-list m-b-16">
             <li
               v-for="(item, index) in rechargeList"
-              class="m-r-20"
+              class="m-r-20 m-b-8"
               @click="chose(item)"
               :class="{ 'color-active': item.id === chooseRecType.id }"
               :key="index"
