@@ -174,7 +174,7 @@ export default {
           id: 0,
         },
         {
-          text: i18n.t("withdraw.loaidng"),
+          text: i18n.t("withdraw.loading"),
           id: 1,
         },
         {
