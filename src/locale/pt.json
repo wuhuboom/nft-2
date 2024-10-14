@@ -1577,5 +1577,6 @@
 "init.money.time": "Tempo de Investimento",
 "come.money.time": "Tempo de Resgate",
 "sell.finish": "Esgotado",
-"maximum.income":"Renda máxima" 
+"maximum.income":"Renda máxima",
+"withdraw.loading": "Retirando" 
 }

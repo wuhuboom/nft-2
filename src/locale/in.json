@@ -1576,5 +1576,6 @@
   "init.money.time": "निवेश का समय",
   "come.money.time": "निकासी का समय",
   "sell.finish": "बिक गया",
-  "maximum.income":"अधिकतम आय"
+  "maximum.income":"अधिकतम आय",
+  "withdraw.loading": "निकासी हो रही है"
 }

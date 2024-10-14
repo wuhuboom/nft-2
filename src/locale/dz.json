@@ -1577,5 +1577,6 @@
 "init.money.time": "وقت الاستثمار",
 "come.money.time": "وقت الاسترداد",
 "sell.finish": "نفذت الكمية",
-"maximum.income":"أقصى دخل"
+"maximum.income":"أقصى دخل",
+"withdraw.loading": "جارٍ السحب"
 }
