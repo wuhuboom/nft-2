@@ -12,7 +12,7 @@
     <ul class="align-center justify-between icon-tol m-b-20">
       <li class="align-center justify-between p-x-4">
         <p class="m-r-16 m-l-16 no-grow">
-          <img class="d-img" src="@/assets/img/ntf/tool1.png" alt="" />
+          <img class="d-img" src="@/assets/img/ntf3/129422@2x.webp" alt="" />
         </p>
         <div class="flex-1 els">
           <p class="m-b-4 els">{{ $t(`user.Wear.thing`) }}</p>
@@ -21,7 +21,11 @@
       </li>
       <li class="align-center justify-between p-x-4">
         <p class="m-r-16 m-l-16 no-grow">
-          <img class="d-img font14" src="@/assets/img/ntf/tool2.png" alt="" />
+          <img
+            class="d-img font14"
+            src="@/assets/img/ntf3/129495@2x.webp"
+            alt=""
+          />
         </p>
         <div class="flex-1 els">
           <p class="m-b-4 els">{{ $t(`user.Wear`) }}</p>
@@ -137,8 +141,8 @@ export default {
       background-color: #040a06;
     }
     img {
-      height: 36px;
-      width: 36px;
+      height: 50px;
+      width: 50px;
     }
     .i-text {
       color: #9db1cd;
