@@ -129,6 +129,13 @@ export default {
           name: "TransferSelf",
           active: false,
         },
+        {
+          icon: "notes-o",
+          text: i18n.t("wallet.index.transfer.text"),
+          text1: i18n.t("wallet.index.for.self.text"),
+          name: "TransferSelf",
+          active: false,
+        },
       ];
       return arr;
     },
@@ -163,6 +170,9 @@ export default {
         changeType: this.tabCurrent,
         ...obj,
       };
+      if (query.changeType === 0) {
+        delete query.changeType;
+      }
       const isFirst = query.pageNo === 1;
       const [err, res] = await userApi.safeChangeLog(query);
       this.loading = false;
