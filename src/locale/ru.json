@@ -1576,5 +1576,6 @@
 "finish.time": "Время истечения",
 "sell.finish": "Распродано",
 "maximum.income":"Максимальный доход",
-"withdraw.loading": "Вывод средств"  
+"withdraw.loading": "Вывод средств",
+"last.money.time": "Время последнего инвестирования"  
 }

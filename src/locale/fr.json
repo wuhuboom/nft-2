@@ -1578,5 +1578,6 @@
  "come.money.time": "Temps de rachat",
  "sell.finish": "Épuisé",
  "maximum.income":"Revenu maximum",
- "withdraw.loading": "Retrait en cours" 
+ "withdraw.loading": "Retrait en cours",
+ "last.money.time": "Dernière date d'investissement" 
 }

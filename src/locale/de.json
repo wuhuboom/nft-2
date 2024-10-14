@@ -1578,5 +1578,6 @@
  "come.money.time": "Rücknahmezeit",
  "sell.finish": "Ausverkauft",
  "maximum.income":"Maximale Einnahme",
- "withdraw.loading": "Abhebung wird bearbeitet" 
+ "withdraw.loading": "Abhebung wird bearbeitet",
+ "last.money.time": "Letzte Investitionszeit" 
 }

@@ -1574,5 +1574,6 @@
    "init.money.time":"投资时间",
   "come.money.time": "赎回时间",
   "sell.finish":"已售罄",
-  "withdraw.loaidng":"提现中"
+  "withdraw.loaidng":"提现中",
+  "last.money.time":"最后投资时间"
 }

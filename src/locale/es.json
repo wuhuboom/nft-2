@@ -1578,5 +1578,6 @@
 "come.money.time": "Tiempo de Redención",
 "sell.finish": "Agotado",
 "maximum.income":"Ingreso máximo",
-"withdraw.loading": "Retirando"
+"withdraw.loading": "Retirando",
+"last.money.time": "Último tiempo de inversión"
 }

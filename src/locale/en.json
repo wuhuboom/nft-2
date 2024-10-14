@@ -1576,5 +1576,6 @@
 	"come.money.time": "Redemption Time",
 	"sell.finish": "Sold Out",
 	"maximum.income":"Maximum income",
-	"withdraw.loading": "Withdrawing"
+	"withdraw.loading": "Withdrawing",
+	"last.money.time": "Last Investment Time"
 }
