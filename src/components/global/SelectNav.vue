@@ -1,8 +1,10 @@
 <template>
   <div>
     <p @click="show = true" class="align-center title">
-      <span class="font14 m-r-4">{{ text }}</span>
-      <van-icon name="arrow-down" :size="12" />
+      <slot>
+        <span class="font14 m-r-4">{{ text }}</span>
+        <van-icon name="arrow-down" :size="12" />
+      </slot>
     </p>
     <van-popup class="chose-nav-pop" v-model="show" position="bottom">
       <ul>

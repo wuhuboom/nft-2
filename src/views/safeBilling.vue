@@ -7,31 +7,31 @@
       <van-Loading color="#1989fa" />
     </div>
     <div v-else class="">
-      <ul class="drop-list m-r-13 m-r-l justify-between align-center m-b-12">
-        <li class="m-l-16">
-          <el-select v-model="tabCurrent" @change="changTab">
-            <el-option
-              v-for="item in tabsList"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
+      <ul
+        class="drop-list m-r-13 m-r-l justify-between align-center m-b-12 m-l-16 m-r-16"
+      >
+        <li class="time-filter">
+          <SelectNav @chosen="chosenTime" :navs="timeList" :cur="time" />
+        </li>
+        <li>
+          <SelectNav :navs="tabsList" @chosen="chosenType" :cur="tabCurrent">
+            <img
+              class="d-img filter-img"
+              src="@/assets/img/ntf3/130134@2x.webp"
+              alt=""
+            />
+          </SelectNav>
         </li>
       </ul>
       <van-list
         v-model="loading"
-        :finished="
-          curItem.data.totalPage !== null &&
-          curItem.data.pageNo > curItem.data.totalPage
-        "
+        :finished="finished"
         loading-text="loading"
-        @load="onLoad"
+        @load="getBill"
       >
       </van-list>
       <div class="p-l-16 p-r-16">
-        <BillsList :list="curItem.data.results" />
+        <BillsList :list="results" />
       </div>
 
       <NoData v-if="nothing" />
@@ -68,6 +68,24 @@ export default {
       loading: false,
       icon1: require("@/assets/img/billing1.webp"),
       icon2: require("@/assets/img/billing2.webp"),
+      results: [],
+      finished: false,
+      time: 1,
+      pageNo: 1,
+      timeList: [
+        {
+          value: 1,
+          label: i18n.t("property.record.search.time1.text"),
+        },
+        {
+          value: 2,
+          label: i18n.t("property.record.search.time2.text"),
+        },
+        {
+          value: 3,
+          label: i18n.t("property.record.search.time3.text"),
+        },
+      ],
       tabsList: [
         {
           value: 0,
@@ -114,14 +132,20 @@ export default {
     BillsList,
   },
   computed: {
-    curItem() {
-      return this.tabsList.find((v) => v.value === this.tabCurrent);
-    },
     nothing() {
-      return !this.loading && this.curItem.data.totalCount === 0;
+      return !this.loading && this.results.length === 0;
     },
   },
   methods: {
+    chosenTime(item) {
+      this.time = item.value;
+      this.tabCurrent = 0;
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
+      });
+      this.getBill({ pageNo: 1 });
+    },
     add(item) {
       return !`${item.changeMoney}`.includes("-");
     },
@@ -130,82 +154,56 @@ export default {
       if (!doc) return "--";
       return doc.label;
     },
-    changTab(item) {
-      console.log(item);
-      // //this.tabCurrent = item.value;
-      // if (this.curItem.data.totalPage !== null) return;
-      this.onLoad(1);
+    chosenType(item) {
+      this.tabCurrent = item.value;
       this.$toast.loading({
         forbidClick: true,
         duration: 0,
       });
+      this.getBill({ pageNo: 1 });
     },
-    async onLoad(num) {
-      const changeType = this.curItem.value;
-      const pageNo = !isNaN(num) ? num : this.curItem.data.pageNo;
-      const obj = {
-        changeType: changeType,
-        pageNo: pageNo,
-        pageSize: this.curItem.data.pageSize,
+    async getBill(obj = {}) {
+      const query = {
+        pageNo: this.pageNo,
+        pageSize: 16,
+        time: this.time,
+        changeType: this.tabCurrent,
+        ...obj,
       };
-      if (changeType == 0) {
-        delete obj.changeType;
+      if (query.changeType === 0) {
+        delete query.changeType;
       }
-      const [err, res] = await userApi.safeChangeLog(obj);
+      const isFirst = query.pageNo === 1;
+      const [err, res] = await userApi.safeChangeLog(query);
       this.loading = false;
-      this.$toast.clear();
       if (err) {
-        if (err.code == 409) {
-          this.$toast(this.$t("backapi.self.alert.fast.access.tip.text"));
-        }
-        this.tabsList.forEach((item) => {
-          if (item.value === changeType) {
-            item.data.hasNext = false;
-          }
-        });
+        this.finished = true;
         return;
       }
-      //模拟数据 res.data
-      // res.data = {
-      //   hasNext: true,
-      //   pageNo: 1,
-      //   pageSize: 10,
-      //   results: [
-      //     {
-      //       changeMoney: 100,
-      //       changeType: 1,
-      //       createTime: "2021-08-01 12:00:00",
-      //       id: 1,
-      //       remark: "充值",
-      //     },
-      //     {
-      //       changeMoney: 100,
-      //       changeType: 1,
-      //       createTime: "2021-08-01 12:00:00",
-      //       id: 2,
-      //       remark: "充值",
-      //     },
-      //   ],
-      // };
-      if (res.data.pageNo == 1) {
-        this.tabsList.forEach((item) => {
-          if (item.value === changeType) {
-            item.data = res.data;
-            item.data.pageNo = res.data.pageNo + 1;
-          }
-        });
-        return;
-      }
-      const list = this.curItem.data.results.concat(res.data.results);
-      this.tabsList.forEach((item) => {
-        if (item.value === changeType) {
-          item.data = {
-            ...res.data,
-            results: list,
-            pageNo: res.data.pageNo + 1,
-          };
-        }
-      });
+      this.$toast.clear();
+      //模拟数据 res.data.results
+      // res.data.results = [
+      //   {
+      //     type: 1,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 2,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      //   {
+      //     type: 3,
+      //     ymd: "2021-09-01",
+      //     money: 100,
+      //   },
+      // ];
+      this.finished = res.data.results.length < query.pageSize;
+      this.results = isFirst
+        ? res.data.results
+        : this.results.concat(res.data.results);
+      this.pageNo = query.pageNo + 1;
     },
   },
 };
@@ -227,6 +225,7 @@ export default {
     // height: 32px;
     // border-bottom: 1px solid #484b4c;
     // border-top: 1px solid #484b4c;
+    height: 60px;
     border-bottom: 1px solid #242b36;
     .search {
       min-width: 74px;
@@ -301,5 +300,20 @@ export default {
       object-fit: cover;
     }
   }
+}
+.time-filter {
+  ::v-deep {
+    .title {
+      height: 28px;
+      border-radius: 14px;
+      border: solid 1px #fff;
+      padding: 0 10px;
+      color: #fff;
+    }
+  }
+}
+.filter-img {
+  height: 25px;
+  width: 25px;
 }
 </style>

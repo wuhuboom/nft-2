@@ -68,39 +68,53 @@ export default {
       data: {},
       playerConfig: {},
       results: [],
+      // tabsList: [
+      //   {
+      //     value: 0,
+      //     label: i18n.t("backapi.self.safe.bill.data.choose.type.all.text"),
+      //   },
+      //   {
+      //     value: 1,
+      //     label: i18n.t("backapi.self.safe.recharge.text"),
+      //   },
+      //   {
+      //     value: 2,
+      //     label: i18n.t("backapi.self.safe.transfer.text"),
+      //   },
+      //   {
+      //     value: 3,
+      //     label: i18n.t(
+      //       "backapi.self.safe.account.change.type.recharge.offer.text"
+      //     ),
+      //   },
+      //   {
+      //     value: 4,
+      //     label: i18n.t("backapi.self.safe.huaz.transfer.text"),
+      //   },
+      //   {
+      //     value: 5,
+      //     label: i18n.t("safe.recharge.compensation"),
+      //   },
+      //   {
+      //     value: 6,
+      //     label: i18n.t("safe.billing.manual"),
+      //   },
+      // ],
       tabsList: [
         {
-          value: 0,
-          label: i18n.t("backapi.self.safe.bill.data.choose.type.all.text"),
-        },
-        {
           value: 1,
-          label: i18n.t("backapi.self.safe.recharge.text"),
+          label: i18n.t("property.record.search.time1.text"),
         },
         {
           value: 2,
-          label: i18n.t("backapi.self.safe.transfer.text"),
+          label: i18n.t("property.record.search.time2.text"),
         },
         {
           value: 3,
-          label: i18n.t(
-            "backapi.self.safe.account.change.type.recharge.offer.text"
-          ),
-        },
-        {
-          value: 4,
-          label: i18n.t("backapi.self.safe.huaz.transfer.text"),
-        },
-        {
-          value: 5,
-          label: i18n.t("safe.recharge.compensation"),
-        },
-        {
-          value: 6,
-          label: i18n.t("safe.billing.manual"),
+          label: i18n.t("property.record.search.time3.text"),
         },
       ],
-      tabCurrent: 0,
+      tabCurrent: 1,
       pageNo: 1,
       finished: false,
       loading: false,
@@ -131,9 +145,9 @@ export default {
         },
         {
           icon: "notes-o",
-          text: i18n.t("wallet.index.transfer.text"),
-          text1: i18n.t("wallet.index.for.self.text"),
-          name: "TransferSelf",
+          text: i18n.t("backapi.self.safe.bill.data.text"),
+          text1: "",
+          name: "SafeBilling",
           active: false,
         },
       ];
@@ -167,12 +181,9 @@ export default {
       const query = {
         pageNo: this.pageNo,
         pageSize: 16,
-        changeType: this.tabCurrent,
+        time: this.tabCurrent,
         ...obj,
       };
-      if (query.changeType === 0) {
-        delete query.changeType;
-      }
       const isFirst = query.pageNo === 1;
       const [err, res] = await userApi.safeChangeLog(query);
       this.loading = false;
