@@ -1335,7 +1335,7 @@
 	"ruls.amount.length": "Please enter the amount",
 	"ruls.amoun.null.length": "Amount cannot be empty",
 	"backapi.codeTimeOut": "Verification code timeout",
-	"backapi.passwordEasy": "The password length is between 8 and 20, including numbers and letters",
+	"backapi.passwordEasy": "The password length is between 8 and 20, including numbers and letters, and must not contain spaces.",
 	"backapi.self.server.dear.user.text": "Dear User",
 	"backapi.self.server.center.user.welcome.text": "Welcome to the customer service center",
 	"backapi.self.login.reg.page.email.input.text": "Please enter email",

@@ -21,8 +21,8 @@
               :rules="[
                 { required: true, message: $t('ruls.accout.empty') },
                 {
-                  pattern: /^(?!\d+$).+/,
-                  message: this.$t('reg.name.user'),
+                  pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/,
+                  message: this.$t('Username.cannot.numbers.or.letters'),
                 },
               ]"
             />
@@ -291,7 +291,7 @@ export default {
       this.authConfig = res.data;
     },
     validatePassword(password) {
-      return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(password);
+      return /^(?=.*[a-zA-Z])(?=.*\d)[^\s]{8,20}$/.test(password);
     },
     validatePhone(v) {
       if (this.form.areaCode != 91) return true;

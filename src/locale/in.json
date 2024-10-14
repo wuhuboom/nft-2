@@ -1335,7 +1335,7 @@
   "ruls.amount.length": "कृपया राशि दर्ज करें",
   "ruls.amoun.null.length": "राशि खाली नहीं हो सकती",
   "backapi.codeTimeOut": "सत्यापन कोड समय समाप्त",
-  "backapi.passwordEasy": "पासवर्ड की लंबाई 8 से 20, संख्याएँ और अक्षर शामिल हैं",
+  "backapi.passwordEasy": "पासवर्ड की लंबाई 8 से 20 के बीच होनी चाहिए, जिसमें नंबर और अक्षर शामिल हैं, और इसमें कोई स्पेस नहीं होना चाहिए।",
   "backapi.self.server.dear.user.text": "प्रिय उपयोगकर्ता",
   "backapi.self.server.center.user.welcome.text": "ग्राहक सेवा केंद्र में आपका स्वागत है",
   "backapi.self.login.reg.page.email.input.text": "कृपया ईमेल दर्ज करें",
