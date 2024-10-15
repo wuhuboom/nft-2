@@ -1575,5 +1575,7 @@
   "come.money.time": "赎回时间",
   "sell.finish":"已售罄",
   "withdraw.loaidng":"提现中",
-  "last.money.time":"最后投资时间"
+  "last.money.time":"最后投资时间",
+  "backapi.user.length": "长度8-20",
+   "backapi.user.letter": "用户名不可以有特殊符号"
 }

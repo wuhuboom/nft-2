@@ -1578,5 +1578,7 @@
 "sell.finish": "बेचिएको छ",
 "maximum.income":"अधिकतम आम्दानी",
 "withdraw.loading": "निकासी गर्दै",
-"last.money.time": "अन्तिम लगानी समय" 
+"last.money.time": "अन्तिम लगानी समय",
+"backapi.user.length": "लम्बाई 8-20",
+"backapi.user.letter": "प्रयोगकर्ताको नाममा विशेष चिन्हहरू हुन सक्दैन" 
 }

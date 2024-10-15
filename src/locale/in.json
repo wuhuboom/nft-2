@@ -1578,5 +1578,7 @@
   "sell.finish": "बिक गया",
   "maximum.income":"अधिकतम आय",
   "withdraw.loading": "निकासी हो रही है",
-  "last.money.time": "अंतिम निवेश का समय"
+  "last.money.time": "अंतिम निवेश का समय",
+  "backapi.user.length": "लंबाई 8-20",
+"backapi.user.letter": "उपयोगकर्ता नाम में विशेष प्रतीक नहीं हो सकते"
 }

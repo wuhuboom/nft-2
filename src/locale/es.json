@@ -1579,5 +1579,7 @@
 "sell.finish": "Agotado",
 "maximum.income":"Ingreso máximo",
 "withdraw.loading": "Retirando",
-"last.money.time": "Último tiempo de inversión"
+"last.money.time": "Último tiempo de inversión",
+"backapi.user.length": "Longitud de 8 a 20",
+"backapi.user.letter": "El nombre de usuario no puede contener caracteres especiales"
 }

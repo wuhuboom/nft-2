@@ -1579,5 +1579,7 @@
  "sell.finish": "Ausverkauft",
  "maximum.income":"Maximale Einnahme",
  "withdraw.loading": "Abhebung wird bearbeitet",
- "last.money.time": "Letzte Investitionszeit" 
+ "last.money.time": "Letzte Investitionszeit",
+ "backapi.user.length": "Länge 8-20",
+"backapi.user.letter": "Benutzername darf keine Sonderzeichen enthalten" 
 }

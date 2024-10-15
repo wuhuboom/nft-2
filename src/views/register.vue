@@ -21,8 +21,12 @@
               :rules="[
                 { required: true, message: $t('ruls.accout.empty') },
                 {
-                  pattern: /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/,
-                  message: this.$t('Username.cannot.numbers.or.letters'),
+                  pattern: /^[A-Za-z0-9]+$/,
+                  message: this.$t('backapi.user.letter'),
+                },
+                {
+                  pattern: /^.{8,20}$/,
+                  message: this.$t('backapi.user.length'),
                 },
               ]"
             />
