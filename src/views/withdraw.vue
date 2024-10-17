@@ -220,6 +220,7 @@
         ref="dangers"
         @sure="confirm"
       />
+      <WithdrawPop v-if="chooseRecType.weekend === 0" :data="chooseRecType" />
     </div>
   </div>
 </template>
@@ -231,12 +232,14 @@ import i18n from "@/locale";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 import WithdrawClearVip from "@/views/components/WithdrawClearVip.vue";
 import WithdrawFree from "@/views/components/WithdrawFree.vue";
+import WithdrawPop from "@/views/withdrawPop.vue";
 import to from "await-to-js";
 export default {
   name: "WithdrawView",
   components: {
     WithdrawClearVip,
     WithdrawFree,
+    WithdrawPop,
   },
   data() {
     return {
@@ -541,6 +544,7 @@ export default {
       this.amount = "";
       this.typeOptions = [];
       this.typeValue = "";
+      console.log(item);
       this.chooseRecType = item;
       this.$toast.loading({
         duration: 0,
