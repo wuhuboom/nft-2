@@ -24,9 +24,14 @@
       >
         <div class="align-center">
           <img class="d-flex m-r-12" :src="item.icon" alt="" />
-          <p class="">{{ item.title }}</p>
+          <p class="">{{ countTitle(item.title) }}</p>
         </div>
-        <van-icon size="16" name="arrow" />
+        <!-- v-if="!['Telegram:', 'WhatsApp:'].includes(item.title)" -->
+        <van-icon
+          size="16"
+          name="arrow"
+          v-if="['/pages/securityCenter/index', 'service'].includes(item.link)"
+        />
       </li>
     </ul>
     <van-popup
@@ -74,6 +79,18 @@ export default {
           icon: require("@/assets/img/ntf/scr2.png"),
           link: "service",
         },
+
+        {
+          title: "Telegram:",
+          icon: require("@/assets/img/ntf/131040@2x.webp"),
+          link: "https://t.me/",
+        },
+        {
+          title: "WhatsApp:",
+          icon: require("@/assets/img/ntf/131039@2x.webp"),
+          link: "https://wa.me/",
+        },
+
         {
           title: i18n.t("login.down.text"),
           icon: require("@/assets/img/ntf/scr3.png"),
@@ -92,6 +109,14 @@ export default {
     },
   },
   methods: {
+    countTitle(v) {
+      if (v === "Telegram:") {
+        return `${v} ${this.user.telegram || "******"}`;
+      } else if (v === "WhatsApp:") {
+        return `${v} ${this.user.wahtsapp || "******"}`;
+      }
+      return v;
+    },
     loginOut() {
       this.show = false;
       this.$store.commit("loginOut");
@@ -109,6 +134,14 @@ export default {
       this.$toast.clear();
     },
     goTo(item) {
+      if (["Telegram:", "WhatsApp:"].includes(item.title)) {
+        if (this.user.telegram) {
+          window.open(item.link + this.user.telegram);
+        } else if (this.user.wahtsapp) {
+          window.open(item.link + this.user.wahtsapp);
+        }
+        return;
+      }
       const link = item.link;
       if (link) {
         if (link === "service") {
