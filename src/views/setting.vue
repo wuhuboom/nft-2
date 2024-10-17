@@ -136,9 +136,11 @@ export default {
     goTo(item) {
       if (["Telegram:", "WhatsApp:"].includes(item.title)) {
         if (this.user.telegram) {
-          window.open(item.link + this.user.telegram);
+          //window.open(item.link + this.user.telegram);
+          location.href = item.link + this.user.telegram;
         } else if (this.user.wahtsapp) {
-          window.open(item.link + this.user.wahtsapp);
+          // window.open(item.link + this.user.wahtsapp);
+          location.href = item.link + this.user.wahtsapp;
         }
         return;
       }
