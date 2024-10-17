@@ -1579,5 +1579,6 @@
 	"withdraw.loading": "Withdrawing",
 	"last.money.time": "Last Investment Time",
 	"backapi.user.length": "Length must be between 8-20 characters",
-"backapi.user.letter": "Username cannot contain special characters"
+"backapi.user.letter": "Username cannot contain special characters",
+"WeekdayWithdrawalNotice": "Please submit withdrawal requests during weekdays."
 }

@@ -1581,5 +1581,6 @@
  "withdraw.loading": "Retrait en cours",
  "last.money.time": "Dernière date d'investissement",
  "backapi.user.length": "Longueur 8-20",
-"backapi.user.letter": "Le nom d'utilisateur ne peut pas contenir de symboles spéciaux" 
+"backapi.user.letter": "Le nom d'utilisateur ne peut pas contenir de symboles spéciaux",
+"WeekdayWithdrawalNotice": "Veuillez soumettre les demandes de retrait pendant les jours de semaine." 
 }

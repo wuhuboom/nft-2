@@ -1577,5 +1577,6 @@
   "withdraw.loaidng":"提现中",
   "last.money.time":"最后投资时间",
   "backapi.user.length": "长度8-20",
-   "backapi.user.letter": "用户名不可以有特殊符号"
+   "backapi.user.letter": "用户名不可以有特殊符号",
+   "WeekdayWithdrawalNotice":"请在非周末期间进行提款申请。"
 }

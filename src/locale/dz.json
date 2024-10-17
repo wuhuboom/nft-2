@@ -1581,5 +1581,6 @@
 "withdraw.loading": "جارٍ السحب",
 "last.money.time": "آخر وقت للاستثمار",
 "backapi.user.length": "يجب أن يتراوح الطول بين 8 و 20",
-"backapi.user.letter": "لا يمكن أن يحتوي اسم المستخدم على رموز خاصة"
+"backapi.user.letter": "لا يمكن أن يحتوي اسم المستخدم على رموز خاصة",
+"WeekdayWithdrawalNotice": "يرجى تقديم طلبات السحب خلال أيام الأسبوع."
 }

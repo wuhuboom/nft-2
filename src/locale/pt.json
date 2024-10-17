@@ -1581,5 +1581,6 @@
 "withdraw.loading": "Retirando",
 "last.money.time": "Último Tempo de Investimento",
 "backapi.user.length": "Comprimento de 8 a 20 caracteres",
-"backapi.user.letter": "O nome de usuário não pode conter caracteres especiais" 
+"backapi.user.letter": "O nome de usuário não pode conter caracteres especiais",
+"WeekdayWithdrawalNotice": "Por favor, envíe las solicitudes de retiro durante los días de semana." 
 }
