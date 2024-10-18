@@ -46,6 +46,9 @@
         </div>
         <p
           v-if="showContact(item)"
+          v-clipboard:copy="onCopy(item)"
+          v-clipboard:success="onSuccess"
+          v-clipboard:error="onError"
           class="copy center-center p-l-4 p-r-4 font12"
         >
           {{ $t("Agent.Contact.copy") }}
@@ -120,6 +123,13 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+      // return {
+      //   username: "test",
+      //   areaCode: "86",
+      //   phone: "1234567890",
+      //   telegram: "telegram",
+      //   wahtsapp: "wahtsapp",
+      // };
     },
 
     phone() {
@@ -127,10 +137,24 @@ export default {
     },
   },
   methods: {
+    onCopy(item) {
+      if (item.title === "Telegram:") {
+        return this.user.telegram;
+      } else if (item.title === "WhatsApp:") {
+        return this.user.wahtsapp;
+      }
+      return "";
+    },
+    onSuccess() {
+      this.$toast(this.$t("copy.success.text"));
+    },
+    onError() {
+      this.$toast.fail();
+    },
     showContact(v) {
-      if (v === "Telegram:" && this.user.telegram) {
+      if (v.title === "Telegram:" && this.user.telegram) {
         return true;
-      } else if (v === "WhatsApp:" && this.user.wahtsapp) {
+      } else if (v.title === "WhatsApp:" && this.user.wahtsapp) {
         return true;
       }
       return false;
