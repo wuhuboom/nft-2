@@ -75,7 +75,7 @@ export default {
           link: "/pages/securityCenter/index",
         },
         {
-          title: i18n.t("user.help.center.contact.us.text"),
+          title: i18n.t("backapi.self.home.tool.online.ser.text"),
           icon: require("@/assets/img/ntf/scr2.png"),
           link: "service",
         },
