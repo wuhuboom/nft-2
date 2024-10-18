@@ -1581,5 +1581,7 @@
 "last.money.time": "अन्तिम लगानी समय",
 "backapi.user.length": "लम्बाई 8-20",
 "backapi.user.letter": "प्रयोगकर्ताको नाममा विशेष चिन्हहरू हुन सक्दैन" ,
-"WeekdayWithdrawalNotice": "कृपया कार्यदिवसमा मात्र रकम झिक्नको लागि अनुरोध गर्नुहोस्।"
+"WeekdayWithdrawalNotice": "कृपया कार्यदिवसमा मात्र रकम झिक्नको लागि अनुरोध गर्नुहोस्।",
+"Agent.Contact": "एजेन्ट सम्पर्क",
+"Agent.Contact.copy": "कपी गर्नुहोस्"
 }

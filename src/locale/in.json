@@ -1581,5 +1581,7 @@
   "last.money.time": "अंतिम निवेश का समय",
   "backapi.user.length": "लंबाई 8-20",
 "backapi.user.letter": "उपयोगकर्ता नाम में विशेष प्रतीक नहीं हो सकते",
-"WeekdayWithdrawalNotice": "कृपया कार्यदिवसों के दौरान निकासी अनुरोध सबमिट करें।"
+"WeekdayWithdrawalNotice": "कृपया कार्यदिवसों के दौरान निकासी अनुरोध सबमिट करें।",
+"Agent.Contact": "एजेंट संपर्क",
+"Agent.Contact.copy": "कॉपी करें"
 }

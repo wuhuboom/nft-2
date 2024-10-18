@@ -1582,5 +1582,7 @@
  "last.money.time": "Letzte Investitionszeit",
  "backapi.user.length": "Länge 8-20",
 "backapi.user.letter": "Benutzername darf keine Sonderzeichen enthalten",
-"WeekdayWithdrawalNotice": "Bitte reichen Sie Auszahlungsanträge nur an Wochentagen ein." 
+"WeekdayWithdrawalNotice": "Bitte reichen Sie Auszahlungsanträge nur an Wochentagen ein.",
+"Agent.Contact": "Kontakt zum Agenten",
+"Agent.Contact.copy": "Kopieren" 
 }

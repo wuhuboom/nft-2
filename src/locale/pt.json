@@ -1582,5 +1582,7 @@
 "last.money.time": "Último Tempo de Investimento",
 "backapi.user.length": "Comprimento de 8 a 20 caracteres",
 "backapi.user.letter": "O nome de usuário não pode conter caracteres especiais",
-"WeekdayWithdrawalNotice": "Por favor, envíe las solicitudes de retiro durante los días de semana." 
+"WeekdayWithdrawalNotice": "Por favor, envíe las solicitudes de retiro durante los días de semana.",
+"Agent.Contact": "Contato do Agente",
+"Agent.Contact.copy": "Copiar" 
 }

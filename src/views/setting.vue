@@ -26,12 +26,30 @@
           <img class="d-flex m-r-12" :src="item.icon" alt="" />
           <p class="">{{ countTitle(item.title) }}</p>
         </div>
-        <!-- v-if="!['Telegram:', 'WhatsApp:'].includes(item.title)" -->
         <van-icon
           size="16"
           name="arrow"
           v-if="['/pages/securityCenter/index', 'service'].includes(item.link)"
         />
+      </li>
+    </ul>
+    <p class="font14 blod p-t-8 p-b-12">{{ $t(`Agent.Contact`) }}</p>
+    <ul class="font14">
+      <li
+        class="justify-between nav-item m-b-12 align-center p-l-16 p-r-16"
+        v-for="(item, idx) in contact"
+        :key="idx"
+      >
+        <div class="align-center">
+          <img class="d-flex m-r-12" :src="item.icon" alt="" />
+          <p class="">{{ countTitle(item.title) }}</p>
+        </div>
+        <p
+          v-if="showContact(item)"
+          class="copy center-center p-l-4 p-r-4 font12"
+        >
+          {{ $t("Agent.Contact.copy") }}
+        </p>
       </li>
     </ul>
     <van-popup
@@ -79,7 +97,13 @@ export default {
           icon: require("@/assets/img/ntf/scr2.png"),
           link: "service",
         },
-
+        {
+          title: i18n.t("login.down.text"),
+          icon: require("@/assets/img/ntf/scr3.png"),
+          link: "down",
+        },
+      ],
+      contact: [
         {
           title: "Telegram:",
           icon: require("@/assets/img/ntf/131040@2x.webp"),
@@ -89,12 +113,6 @@ export default {
           title: "WhatsApp:",
           icon: require("@/assets/img/ntf/131039@2x.webp"),
           link: "https://wa.me/",
-        },
-
-        {
-          title: i18n.t("login.down.text"),
-          icon: require("@/assets/img/ntf/scr3.png"),
-          link: "down",
         },
       ],
     };
@@ -109,6 +127,14 @@ export default {
     },
   },
   methods: {
+    showContact(v) {
+      if (v === "Telegram:" && this.user.telegram) {
+        return true;
+      } else if (v === "WhatsApp:" && this.user.wahtsapp) {
+        return true;
+      }
+      return false;
+    },
     countTitle(v) {
       if (v === "Telegram:") {
         return `${v} ${this.user.telegram || "******"}`;
@@ -178,6 +204,13 @@ export default {
 </script>
 <style scoped lang="less">
 .invoice-page {
+  .copy {
+    width: 53px;
+    height: 24px;
+    border-radius: 9px;
+    border: solid 1px #707070;
+    line-height: 1;
+  }
   .nav-item {
     height: 68px;
     border-radius: 20px;
