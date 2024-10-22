@@ -1584,5 +1584,8 @@
 "backapi.user.letter": "O nome de usuário não pode conter caracteres especiais",
 "WeekdayWithdrawalNotice": "Por favor, envíe las solicitudes de retiro durante los días de semana.",
 "Agent.Contact": "Contato do Agente",
-"Agent.Contact.copy": "Copiar" 
+"Agent.Contact.copy": "Copiar",
+"Tax.Payment": "Pagamento de Impostos",
+"backapi.self.all.alert.desc": "Considerado desistência se o imposto não for pago dentro do prazo estabelecido",
+"Pay.Taxes": "Pagar Impostos" 
 }

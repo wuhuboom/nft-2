@@ -1583,5 +1583,8 @@
 "backapi.user.letter": "उपयोगकर्ता नाम में विशेष प्रतीक नहीं हो सकते",
 "WeekdayWithdrawalNotice": "कृपया कार्यदिवसों के दौरान निकासी अनुरोध सबमिट करें।",
 "Agent.Contact": "एजेंट संपर्क",
-"Agent.Contact.copy": "कॉपी करें"
+"Agent.Contact.copy": "कॉपी करें",
+"Tax.Payment":"कर भुगतान",
+"backapi.self.all.alert.desc": "यदि निर्धारित समय के भीतर कर का भुगतान नहीं किया गया तो इसे छोड़ने के रूप में माना जाए।",
+"Pay.Taxes":"कर चुकाएं"
 }

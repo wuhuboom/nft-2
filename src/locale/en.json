@@ -1582,5 +1582,9 @@
 	"backapi.user.letter": "Username cannot contain special characters",
 	"WeekdayWithdrawalNotice": "Please make withdrawal requests during non-weekend periods.",
 	"Agent.Contact": "Agent Contact",
-	"Agent.Contact.copy": "Copy"
+	"Agent.Contact.copy": "Copy",
+
+	"Tax.Payment":"Tax Payment",
+	"backapi.self.all.alert.desc": "Consider as give up if tax not paid within the time set",
+	"Pay.Taxes":"Pay Taxes"
 }

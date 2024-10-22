@@ -1,13 +1,20 @@
 <template>
   <van-dialog
-    class="tax-payment-dialog p-l-12 p-r-12 p-b-40"
+    class="tax-payment-dialog p-x-24"
     :showConfirmButton="false"
     v-model="showDialog"
     :close-on-click-overlay="false"
   >
     <div class="tax-payment">
-      <p class="title center-center">{{ $t("Tax.Payment") }}</p>
       <ul>
+        <li class="justify-between align-center p-t-16">
+          <p class="color-pink">
+            {{ $t(`backapi.self.already.money.time.text`) }}
+          </p>
+          <p>
+            <van-count-down :time="obj.time" format="DDD:HH:mm:ss" />
+          </p>
+        </li>
         <li class="justify-between align-center p-t-16">
           <p class="color-pink">{{ $t(`wallet.index.balance.text`) }}</p>
           <p>{{ money1 }}</p>
@@ -30,20 +37,16 @@
       <div class="p-t-16 p-b-16 msg text-center">{{ obj.msg }}</div>
       <ul class="align-center desc">
         <li class="m-r-8">
-          <!-- <img src="@/assets/img/red/group-338@2x.webp" alt="" /> -->
+          <img src="@/assets/img/ntf/131056@2x.webp" alt="" />
         </li>
-        <li>{{ $t(`backapi.self.all.alert.desc`) }}</li>
+        <li class="font12 color-pink">
+          {{ $t(`backapi.self.all.alert.desc`) }}
+        </li>
       </ul>
       <ul class="text-center">
-        <li class="color-pink m-t-16 m-b-8">
-          {{ $t(`backapi.self.already.money.time.text`) }}
-        </li>
-        <li class="color-fff">
-          <van-count-down :time="obj.time" format="DD D HH H mm min ss sec" />
-        </li>
         <li class="center-center m-t-20">
           <van-button
-            class="page-res-btn"
+            class="pay-res-btn"
             block
             type="info"
             @click.native="
@@ -60,11 +63,23 @@
 
 <script>
 import userApi from "@/api/user";
+// const test = {
+//   balance: 10501000000,
+//   money: 0,
+//   msg: "打税1CTER platform orqali mahalliy hukumat talablari asosida to'lovni amalga oshirish talab etiladi. CTERning O'zbekistonda faol bo'lishining qonuniylikka e'tibor bermaslik uchun. Shuning uchun, to'lov muvaffaqiyatli amalga oshirilganidan so'ng, hisobni normallashtirib pulni chiqarishni tiklash",
+//   needMoney: 2100200000,
+//   recharge: 0,
+//   serviceAddr:
+//     "https://sc.uunn.org/#/?kefu_id=BHBfootball&ent_id=17&lang=en&visitor_id=fddkogbieohj&visitor_name=yuenan002",
+//   time: 378521807,
+//   type: 1,
+// };
+
 export default {
   name: "TaxPayment",
   data() {
     return {
-      showDialog: true,
+      showDialog: false,
       obj: {},
     };
   },
@@ -109,10 +124,10 @@ export default {
     },
     async fbConf() {
       const [err] = await userApi.fbConf();
-      // if (!err && this.showDialog) {
-      //   location.reload();
-      //   return;
-      // }
+      if (!err && this.showDialog) {
+        location.reload();
+        return;
+      }
       if (err && err.code === 411) {
         this.obj = err.data;
         this.showDialog = true;
@@ -138,6 +153,7 @@ export default {
   font-size: 14px;
   .msg {
     line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
   }
   .color-pink {
     color: #ef7367;
@@ -149,12 +165,18 @@ export default {
   .desc {
     img {
       display: block;
-      width: 52px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
     }
   }
   .van-count-down {
     color: #fff;
+  }
+  .pay-res-btn {
+    border-radius: 12px;
+    box-shadow: 0 3px 6px 0 #5a3e01;
+    background-color: #f5673e;
+    border: none;
   }
 }
 </style>

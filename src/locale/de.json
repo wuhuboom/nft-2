@@ -1584,5 +1584,8 @@
 "backapi.user.letter": "Benutzername darf keine Sonderzeichen enthalten",
 "WeekdayWithdrawalNotice": "Bitte reichen Sie Auszahlungsanträge nur an Wochentagen ein.",
 "Agent.Contact": "Kontakt zum Agenten",
-"Agent.Contact.copy": "Kopieren" 
+"Agent.Contact.copy": "Kopieren",
+"Tax.Payment":"Steuerzahlung",
+"backapi.self.all.alert.desc": "Als aufgeben betrachten, wenn die Steuer nicht innerhalb der festgelegten Zeit bezahlt wird",
+"Pay.Taxes":"Steuern zahlen" 
 }

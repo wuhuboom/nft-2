@@ -1583,5 +1583,8 @@
 "backapi.user.letter": "प्रयोगकर्ताको नाममा विशेष चिन्हहरू हुन सक्दैन" ,
 "WeekdayWithdrawalNotice": "कृपया कार्यदिवसमा मात्र रकम झिक्नको लागि अनुरोध गर्नुहोस्।",
 "Agent.Contact": "एजेन्ट सम्पर्क",
-"Agent.Contact.copy": "कपी गर्नुहोस्"
+"Agent.Contact.copy": "कपी गर्नुहोस्",
+"Tax.Payment": "कर भुक्तानी",
+  "backapi.self.all.alert.desc": "निर्धारित समय भित्र कर नतिरेको खण्डमा परित्याग गरिएको मानिन्छ",
+  "Pay.Taxes": "कर तिर्नुहोस्"
 }

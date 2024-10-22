@@ -1584,5 +1584,8 @@
 "backapi.user.letter": "Le nom d'utilisateur ne peut pas contenir de symboles spéciaux",
 "WeekdayWithdrawalNotice": "Veuillez soumettre les demandes de retrait pendant les jours de semaine.",
 "Agent.Contact": "Contact de l'agent",
-"Agent.Contact.copy": "Copier" 
+"Agent.Contact.copy": "Copier",
+"Tax.Payment": "Paiement des taxes",
+"backapi.self.all.alert.desc": "Considérer comme un abandon si les taxes ne sont pas payées dans le délai imparti",
+"Pay.Taxes": "Payer les taxes" 
 }

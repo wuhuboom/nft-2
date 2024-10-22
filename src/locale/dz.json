@@ -1584,5 +1584,8 @@
 "backapi.user.letter": "لا يمكن أن يحتوي اسم المستخدم على رموز خاصة",
 "WeekdayWithdrawalNotice": "يرجى تقديم طلبات السحب خلال أيام الأسبوع.",
 "Agent.Contact": "اتصال الوكيل",
-"Agent.Contact.copy": "نسخ"
+"Agent.Contact.copy": "نسخ",
+"Tax.Payment":"دفع الضرائب",
+"backapi.self.all.alert.desc": "يعتبر الاستسلام أمرًا مستحيلًا إذا لم يتم دفع الضريبة في الوقت المحدد",
+"Pay.Taxes":"دفع الضرائب"
 }

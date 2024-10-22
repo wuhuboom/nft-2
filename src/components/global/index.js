@@ -41,6 +41,7 @@ import {
   Popup,
   Step,
   Steps,
+  countDown,
 } from "vant";
 export default {
   install(Vue) {
@@ -85,5 +86,6 @@ export default {
     Vue.use(Popup);
     Vue.use(Step);
     Vue.use(Steps);
+    Vue.use(countDown);
   },
 };
