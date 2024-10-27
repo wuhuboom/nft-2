@@ -3,7 +3,14 @@
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('invest.record.page.text')"
-    ></AppTopBar>
+    >
+      <template #right>
+        <i
+          @click="changeOpen"
+          class="icon icon-eys iconfont icon-yanjing_xianshi_o"
+        ></i>
+      </template>
+    </AppTopBar>
     <ul class="btn-head p-l-16 align-center">
       <li
         @click="chosen(item.value)"
@@ -24,7 +31,7 @@
           :key="idx"
           @click="goDetail(item)"
         >
-          <pagesinvestItem :item="item" />
+          <pagesinvestItem :open="open" :item="item" />
         </div>
       </LoadList>
     </div>
@@ -40,6 +47,7 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
+      open: false,
       navs: [
         {
           name: i18n.t(`property.record.search.time1.text`),
@@ -107,6 +115,9 @@ export default {
     pagesinvestItem,
   },
   methods: {
+    changeOpen() {
+      this.open = !this.open;
+    },
     chosen(v) {
       this.query.status = v;
       this.query.pageNo = 1;
@@ -275,5 +286,8 @@ export default {
       }
     }
   }
+}
+.icon-eys {
+  font-size: 20px;
 }
 </style>
