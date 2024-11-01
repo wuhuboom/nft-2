@@ -1,11 +1,35 @@
 u
 <template>
-  <div class="wallet-page font12 color-primary font12 p-l-12 p-r-12">
+  <div class="wallet-page font12 color-primary font12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('Today.History')"
     ></AppTopBar>
-    <van-tabs class="tabs-title" v-model="filterTab" @change="changFilter">
+    <ul class="drop-list justify-between p-l-12 p-r-12 align-center m-b-16">
+      <li>
+        <el-select v-model="filterTab" @change="changFilter">
+          <el-option
+            v-for="item in tabSimpleList"
+            :key="item.id"
+            :label="item.text"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </li>
+      <li>
+        <el-select v-model="status" @change="changeStatus">
+          <el-option
+            v-for="item in inputSearchListItemArray"
+            :key="item.id"
+            :label="item.text"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </li>
+    </ul>
+    <!-- <van-tabs class="tabs-title" v-model="filterTab" @change="changFilter">
       <van-tab
         :key="item.id"
         :title="item.text"
@@ -24,44 +48,44 @@ u
       >
         {{ item.text }}
       </li>
-    </ul>
+    </ul> -->
+    <div class="p-l-12 p-r-12">
+      <van-list
+        v-model="loading"
+        :finished="
+          curItem.totalPage !== null && curItem.pageNo > curItem.totalPage
+        "
+        finished-text=""
+        loading-text="loading"
+        @load="onLoad"
+      >
+        <NoData v-if="notthing" />
+        <div v-else>
+          <ul
+            class="list m-b-16 p-b-12 gray"
+            v-for="(item, idx) in curItem.results"
+            :key="idx"
+          >
+            <li class="justify-between">
+              <p class="color-fff">
+                {{ getType(+item.type) }}
+              </p>
+              <p class="font14 bold color-fff blod">
+                {{ divide(item.money) }}
+              </p>
+            </li>
+            <li class="justify-between m-t-12 m-b-12">
+              <p>{{ item.createdAt | timestampStr }}</p>
+              <p :class="[+item.status == 3 ? 'red' : 'green']">
+                {{ getState(+item.status) }}
+              </p>
+            </li>
 
-    <van-list
-      v-model="loading"
-      :finished="
-        curItem.totalPage !== null && curItem.pageNo > curItem.totalPage
-      "
-      finished-text=""
-      loading-text="loading"
-      @load="onLoad"
-    >
-      <NoData v-if="notthing" />
-      <div v-else>
-        <ul
-          class="list m-b-16 p-b-12 gray"
-          v-for="(item, idx) in curItem.results"
-          :key="idx"
-        >
-          <li class="justify-between">
-            <p class="color-fff">
-              {{ getType(+item.type) }}
-            </p>
-            <p class="font14 bold color-fff blod">
-              {{ divide(item.money) }}
-            </p>
-          </li>
-          <li class="justify-between m-t-12 m-b-12">
-            <p>{{ item.createdAt | timestampStr }}</p>
-            <p :class="[+item.status == 3 ? 'red' : 'green']">
-              {{ getState(+item.status) }}
-            </p>
-          </li>
-
-          <li v-if="item.remark" class="remark m-t-8 p-x-8">
-            {{ item.remark }}
-          </li>
-        </ul>
-        <!-- <van-grid class="color-primary" :border="false" :column-num="4">
+            <li v-if="item.remark" class="remark m-t-8 p-x-8">
+              {{ item.remark }}
+            </li>
+          </ul>
+          <!-- <van-grid class="color-primary" :border="false" :column-num="4">
           <van-grid-item v-for="value in head" :key="value">
             {{ value }}
           </van-grid-item>
@@ -92,8 +116,9 @@ u
             {{ $t("withdraw.record.status.fail.text") }}：{{ item.remark }}
           </div>
         </van-grid> -->
-      </div>
-    </van-list>
+        </div>
+      </van-list>
+    </div>
   </div>
 </template>
 

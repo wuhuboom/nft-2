@@ -4,7 +4,14 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('invest.record.page.text')"
       :styleObj="{ backgroundColor: 'tra' }"
-    ></AppTopBar>
+    >
+      <template #right>
+        <i
+          @click="changeOpen"
+          class="icon icon-eys iconfont icon-yanjing_xianshi_o"
+        ></i>
+      </template>
+    </AppTopBar>
     <NoData v-if="finished && !video.length" />
     <LoadList class="m-t-16" :onload="informationVideo" :finished="finished">
       <div
@@ -33,11 +40,11 @@
           <div class="record-item-content">
             <div class="row">
               <div class="left">{{ $t(`invest.days.text`) }}</div>
-              <div class="right">{{ item.days }}</div>
+              <div class="right">{{ dayFn(item.days) }}</div>
             </div>
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col1.text") }}</div>
-              <div class="right">{{ divide(item.money) }}</div>
+              <div class="right">{{ moneyFn(divide(item.money)) }}</div>
             </div>
             <!-- <div class="row">
               <div class="left">{{ $t("make.money.date") }}</div>
@@ -81,6 +88,7 @@ export default {
   name: "balanceRecordView",
   data() {
     return {
+      open: false,
       finished: false,
       video: [],
       query: {
@@ -116,6 +124,25 @@ export default {
     };
   },
   methods: {
+    moneyFn(v) {
+      if (this.open === false) {
+        return "*******";
+      } else if (this.open === true) {
+        return v;
+      }
+      return v;
+    },
+    dayFn(v) {
+      if (this.open === false) {
+        return "**";
+      } else if (this.open === true) {
+        return v;
+      }
+      return v;
+    },
+    changeOpen() {
+      this.open = !this.open;
+    },
     goDetail(item) {
       this.$router.push({
         path: "/pages/invest/recordDetail?id=" + item.id,
