@@ -191,16 +191,20 @@ export default {
       ],
       inputSearchListItemArray: [
         {
-          text: this.$t("recharge.All.Status"),
+          text: i18n.t("dropdown.billing.all.title.text"),
           id: 0,
         },
         {
-          text: i18n.t("recharge.record.status.pendding.text"),
+          text: i18n.t("withdraw.loading"),
           id: 1,
         },
         {
-          text: i18n.t("recharge.Examination.Passed"),
+          text: i18n.t("withdraw.record.status.withdraw.success.text"),
           id: 2,
+        },
+        {
+          text: i18n.t("withdraw.failed"),
+          id: 3,
         },
       ],
       statusArr: [
