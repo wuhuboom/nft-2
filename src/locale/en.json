@@ -1591,5 +1591,6 @@
  "Set.PIN6":"Set a 6-digits PIN for your transactions.",
  "Your.PIN.set!":"Your PIN has been set!",
  "Your.PIN.already":"Your PIN is already saved. Make sure,you remember the PIN always for next transactions!",
- "withdraw.loading": "Withdrawing"
+ "withdraw.loading": "Withdrawing",
+ "last.money.time": "Last Investment Time"
 }

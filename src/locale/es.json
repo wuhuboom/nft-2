@@ -1591,5 +1591,6 @@
 "Set.PIN6": "Establece un PIN de 6 dígitos para tus transacciones.",
 "Your.PIN.set!": "¡Tu PIN ha sido configurado!",
 "Your.PIN.already": "Tu PIN ya está guardado. Asegúrate de recordarlo siempre para futuras transacciones.",
-"withdraw.loading": "Retirando"
+"withdraw.loading": "Retirando",
+"last.money.time": "Último tiempo de inversión"
 }

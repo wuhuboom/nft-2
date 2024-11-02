@@ -18,7 +18,7 @@
     <div class="p-l-12 p-r-12">
       <ul class="justify-between align-center art">
         <li>{{ $t("detail.live.4") }}</li>
-        <li>{{ $t("detail.live.5") }}</li>
+        <li>{{ $t("last.money.time") }}</li>
       </ul>
       <LoadList :onload="investMyFriendsList" :finished="finished">
         <ul

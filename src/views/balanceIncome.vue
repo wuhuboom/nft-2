@@ -29,15 +29,28 @@
         class="grade m-b-12 p-l-8 p-r-8 p-t-16 p-b-16"
       >
         <li class="justify-between my-first align-center p-b-16">
-          <p class="align-center">
+          <div class="align-center">
             <span
               ><img class="d-img person m-r-8" :src="icons[idx]" alt=""
             /></span>
-            <span>Grade: lv.{{ idx + 1 }}</span>
-          </p>
-          <p class="align-center">
-            <van-icon size="20" name="manager-o" />
-            <span class="color-fff m-l-4">{{ item.friendsCount }}</span>
+            <div>
+              <span>Grade: lv.{{ idx + 1 }}</span>
+              <p class="align-center m-t-8">
+                <van-icon size="16" name="manager-o" />
+                <span class="color-fff m-l-4">{{ item.friendsCount }}</span>
+              </p>
+            </div>
+          </div>
+          <p
+            class="center-center p-x-4 bill-detail"
+            @click="
+              $router.push({
+                name: 'FriendsList',
+                query: { level: idx + 1 },
+              })
+            "
+          >
+            {{ $t("backapi.self.safe.bill.detail.text") }}
           </p>
         </li>
         <!-- <li class="m-t-16">
@@ -279,6 +292,12 @@ export default {
     .my-total {
       font-size: 40px;
     }
+  }
+  .bill-detail {
+    min-width: 63px;
+    height: 29px;
+    border-radius: 14.5px;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 </style>

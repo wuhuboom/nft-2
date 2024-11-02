@@ -28,7 +28,7 @@
         <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
       </li>
     </ul>
-    <ul class="sold-game p-l-16 d-flex">
+    <ul class="sold-game p-l-16 d-flex p-b-12">
       <li
         class="m-r-16"
         @click="

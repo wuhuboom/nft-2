@@ -1591,5 +1591,6 @@
 "Set.PIN6": "Définissez un code PIN à 6 chiffres pour vos transactions.",
 "Your.PIN.set!": "Votre code PIN a été défini !",
 "Your.PIN.already": "Votre code PIN est déjà enregistré. Assurez-vous de toujours vous souvenir de",
-"withdraw.loading": "Retrait en cours" 
+"withdraw.loading": "Retrait en cours",
+"last.money.time": "Dernière date d'investissement" 
 }
