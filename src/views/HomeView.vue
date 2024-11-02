@@ -58,7 +58,7 @@
           <van-icon class="m-l-4 rit-desc" size="12" name="arrow" />
         </li>
       </ul>
-      <div class="list-box">
+      <div class="list-box p-b-12">
         <div
           class="list"
           @click="viewVideo(item)"
