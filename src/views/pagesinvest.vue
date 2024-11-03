@@ -2,7 +2,7 @@
   <div class="pagesinvest-page font12 p-l-12 p-r-12">
     <AppTopBar
       :titleClass="['app-top-black-title']"
-      :topBarTitle="$t('invest.record.page.text')"
+      :topBarTitle="$t('invest.history.text')"
       :styleObj="{ backgroundColor: 'tra' }"
     >
       <template #right>
@@ -12,8 +12,19 @@
         ></i>
       </template>
     </AppTopBar>
+    <ul class="btn-head p-l-16 align-center">
+      <li
+        @click="chosen(item.value)"
+        class="m-r-16"
+        :class="{ 'active-bg': query.status === item.value }"
+        v-for="(item, idx) in dataArray"
+        :key="idx"
+      >
+        {{ item.label }}
+      </li>
+    </ul>
     <NoData v-if="finished && !video.length" />
-    <LoadList class="m-t-16" :onload="informationVideo" :finished="finished">
+    <LoadList class="" :onload="informationVideo" :finished="finished">
       <div
         class="plans"
         v-for="(item, idx) in video"
@@ -92,10 +103,11 @@ export default {
       finished: false,
       video: [],
       query: {
-        time: 1,
         pageNo: 1,
         pageSize: 10,
         type: 1,
+
+        status: 0,
       },
       typeOptions: [
         {
@@ -119,6 +131,16 @@ export default {
         {
           label: i18n.t("invest.record.status2.text"),
           value: 2,
+        },
+      ],
+      dataArray: [
+        {
+          label: i18n.t("invest.record.status0.text"),
+          value: 0,
+        },
+        {
+          label: i18n.t("Today.History"),
+          value: 1,
         },
       ],
     };
@@ -174,6 +196,12 @@ export default {
       let res = this.typeOptions2.find((item) => item.value == value);
       return res.label;
     },
+    chosen(v) {
+      this.query.status = v;
+      this.query.pageNo = 1;
+      this.video = [];
+      this.informationVideo();
+    },
     async informationVideo(obj = {}) {
       const params = {
         ...this.query,
@@ -214,6 +242,24 @@ export default {
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
+  .btn-head {
+    height: 56px;
+    & > li {
+      min-width: 95px;
+      padding: 0 2px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      background-size: 100% 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      &.active-bg {
+        background-color: transparent;
+
+        background-image: linear-gradient(to right, #11998e 0%, #38ef7d 100%);
+      }
+    }
+  }
   .plans-item {
     border-radius: 12px;
     background-color: #161a25;

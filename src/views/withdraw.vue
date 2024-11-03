@@ -12,10 +12,11 @@
             src="@/assets/img/ntf3/user/130003@2x.webp"
             alt=""
           />
-          <span class="m-l-16 font16">{{ $t("home.index.safe.text") }}</span>
+          <span class="m-l-16 font16">{{
+            $t("wallet.index.balance.text")
+          }}</span>
         </li>
         <li class="">
-          <p class="font12 gray m-b-8">{{ $t("wallet.index.balance.text") }}</p>
           <p class="blod">{{ balanceMoneyNum }}</p>
         </li>
       </ul>

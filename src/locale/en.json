@@ -243,7 +243,7 @@
 	"invest.money.placehoder": "Please enter an amount not less than ${min}",
 	"invest.days.text": "Investment days",
 	"invest.rate.text": "cyclical yield",
-	"invest.history.text": "investment history",
+	"invest.history.text": "Investment history",
 	"invest.more.text": "More",
 	"invest.record.page.text": "My investment record",
 	"invest.record.col1.text": "total investment amount",

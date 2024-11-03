@@ -11,20 +11,20 @@
     <div class="circle center-center" id="circle">
       <ul class="purchased">
         <li>{{ $t(`user.money.purchased`) }}</li>
-        <li class="color-fff m-t-8 m-b-8">{{ divide(user.frozenBet) }}</li>
+        <li class="color-fff m-t-4 m-b-4">{{ divide(user.frozenBet) }}</li>
         <li class="active">+{{ divide(invest.today) }}</li>
         <li
-          class="p-l-8 p-r-8 m-t-16 center-center"
+          class="p-l-8 p-r-8 m-t-8 history ellipsis"
           @click="$router.push({ name: 'Investrecord' })"
         >
-          {{ $t("invest.record.page.text") }}
+          {{ $t("invest.history.text") }}
         </li>
       </ul>
     </div>
-    <p class="font16 bold m-t-20 m-b-20">{{ $t(`planText1`) }}</p>
+    <p class="font16 bold m-t-8 m-b-8">{{ $t(`planText1`) }}</p>
     <div class="plans" v-if="planeYeb.id">
       <div
-        class="plans-item m-b-16"
+        class="plans-item m-b-8"
         @click="$router.push({ name: 'InvestDetail' })"
       >
         <div class="align-center">
@@ -56,7 +56,7 @@
     </div>
     <div class="plans" v-for="(item, idx) in records" :key="idx">
       <div
-        class="plans-item m-b-16"
+        class="plans-item m-b-8"
         v-for="(doc, index) in item.rateConfig"
         :key="index"
         @click="
@@ -541,6 +541,10 @@ export default {
 <style scoped lang="less">
 .purchased {
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & > li:nth-child(1) {
     color: #cacbce;
   }
@@ -552,8 +556,10 @@ export default {
     font-weight: bold;
   }
   & > li:nth-child(4) {
-    min-width: 105px;
+    //min-width: 96%;
     height: 38px;
+    line-height: 36px;
+    text-align: center;
     border-radius: 19px;
     border: solid 2px #6ae0c3;
     background-color: #274d4b;
@@ -561,12 +567,14 @@ export default {
 }
 .invest-plans-page {
   .circle {
-    width: 260px;
-    height: 260px;
-    margin: 16px auto 16px;
+    overflow: hidden;
+    width: 190px;
+    height: 190px;
+    margin: 0px auto 0;
     background: url("@/assets/img/ntf3/126932@2x.webp") no-repeat center center;
     background-size: 100% 100%;
     position: relative;
+    margin-top: -40px;
   }
 
   .green {
@@ -579,11 +587,11 @@ export default {
     border-radius: 14px;
     //border: solid 1px #292929;
     background-color: #161a25;
-    padding: 24px 12px;
+    padding: 12px;
     min-width: 42px;
   }
   .rate-row {
-    height: 58px;
+    height: 36px;
     border-radius: 9px;
     font-weight: bold;
     background-image: linear-gradient(89deg, #242a3b 1%, #273b40 100%);
