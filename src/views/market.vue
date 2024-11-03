@@ -567,7 +567,6 @@ export default {
 }
 .invest-plans-page {
   .circle {
-    overflow: hidden;
     width: 190px;
     height: 190px;
     margin: 0px auto 0;
