@@ -1592,5 +1592,7 @@
 "Your.PIN.set!": "Ihre PIN wurde festgelegt!",
 "Your.PIN.already": "Ihre PIN ist bereits gespeichert. Stellen Sie sicher, dass Sie sich die PIN für zukünftige Transaktionen immer merken!",
 "withdraw.loading": "Abhebung wird bearbeitet",
-"last.money.time": "Letzte Investitionszeit"
+"last.money.time": "Letzte Investitionszeit",
+"Agent.Contact": "Kontakt zum Agenten",
+"Agent.Contact.copy": "Kopieren"
 }
