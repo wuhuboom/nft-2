@@ -121,6 +121,30 @@
         </li>
         <li>{{ divide(friendsBalance) }}</li>
       </ul>
+
+      <p class="font14 bold m-t-24 m-b-16">{{ $t(`Agent.Contact`) }}</p>
+      <ul class="font14">
+        <li
+          class="justify-between center-list p-x-8 align-center m-b-12"
+          v-for="(item, idx) in contact"
+          :key="idx"
+        >
+          <div class="align-center">
+            <img class="d-flex m-r-12" :src="item.icon" alt="" />
+            <p class="">{{ countTitle(item.title) }}</p>
+          </div>
+          <p
+            v-if="showContact(item)"
+            v-clipboard:copy="onCopy(item)"
+            v-clipboard:success="onSuccess"
+            v-clipboard:error="onError"
+            class="copy center-center p-l-4 p-r-4 font12"
+          >
+            {{ $t("Agent.Contact.copy") }}
+          </p>
+        </li>
+      </ul>
+
       <p class="login-out p-l-4 center-center" @click="show = true">
         <img
           class="d-img m-r-4"
@@ -174,6 +198,18 @@ export default {
   name: "pageUser",
   data() {
     return {
+      contact: [
+        {
+          title: "Telegram:",
+          icon: require("@/assets/img/ntf3/form/131059@2x.webp"),
+          link: "https://t.me/",
+        },
+        {
+          title: "WhatsApp:",
+          icon: require("@/assets/img/ntf3/form/131060@2x.webp"),
+          link: "https://wa.me/",
+        },
+      ],
       changs: [],
       todayNum: 0,
       friendsBalance: 0,
@@ -225,6 +261,36 @@ export default {
     },
   },
   methods: {
+    onCopy(item) {
+      if (item.title === "Telegram:") {
+        return this.user.telegram;
+      } else if (item.title === "WhatsApp:") {
+        return this.user.wahtsapp;
+      }
+      return "";
+    },
+    onSuccess() {
+      this.$toast(this.$t("copy.success.text"));
+    },
+    onError() {
+      this.$toast.fail();
+    },
+    showContact(v) {
+      if (v.title === "Telegram:" && this.user.telegram) {
+        return true;
+      } else if (v.title === "WhatsApp:" && this.user.wahtsapp) {
+        return true;
+      }
+      return false;
+    },
+    countTitle(v) {
+      if (v === "Telegram:") {
+        return `${v} ${this.user.telegram || "******"}`;
+      } else if (v === "WhatsApp:") {
+        return `${v} ${this.user.wahtsapp || "******"}`;
+      }
+      return v;
+    },
     async investMyStatisFriends() {
       const [err, res] = await userApi.investMyStatisFriends2();
       if (err) {
@@ -397,5 +463,12 @@ export default {
     height: 18px;
     width: 18px;
   }
+}
+.copy {
+  min-width: 53px;
+  height: 24px;
+  padding: 3px 12px 6px;
+  border-radius: 9px;
+  border: solid 1px #a29f9f;
 }
 </style>
