@@ -26,10 +26,16 @@ export default new Vuex.Store({
       area_code: [],
     },
     user: {},
-    lang: lang || localStorage.getItem("lang") || "en",
+    lang: lang || localStorage.getItem("lang") || "idn",
     // 令牌  初始化从本地获取 English  Germany Algeria India France
     token: auth.getToken(),
     langOpt: [
+      {
+        label: "ID",
+        text: "Indonesia",
+        value: "idn",
+        icon: require("@/assets/img/lang/id.png"),
+      },
       {
         label: "EN",
         text: "English",
