@@ -534,6 +534,8 @@ export default {
       this.$nextTick(() => {
         if (!this.hasMax) {
           this.formData.money = this.item.min;
+        } else {
+          this.formData.money = "";
         }
       });
     },
