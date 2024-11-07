@@ -1569,7 +1569,7 @@
   "lottery.my.frend": "Ajak teman dan isi ulang 2000 rupee untuk mendapatkan kesempatan memenangkan undian.",
   "activation.day": "Hari Aktivasi",
   "login.fail": "Login gagal",
-  "reg.name.user": "Nama pengguna tidak boleh hanya berupa angka",
+  "reg.name.user": "Nama pengguna harus mengandung huruf dan angka.",
   "finish.time": "Waktu Kedaluwarsa",
 
   "Launch.Top.Matches": "Luncurkan Pertandingan Teratas yang Paling Mendebarkan",

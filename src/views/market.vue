@@ -179,6 +179,7 @@
             name="money"
             class="field-inlude-code"
             :placeholder="limitTxt"
+            :disabled="!hasMax"
             :rules="[
               {
                 required: true,
@@ -192,7 +193,7 @@
               },
             ]"
           >
-            <template #button>
+            <template v-if="hasMax" #button>
               <van-button
                 size="small"
                 native-type="button"
@@ -419,6 +420,19 @@ export default {
     addRate() {
       return !(parseInt(this.item.showAuto) === 0);
     },
+    hasMax() {
+      console.log(this.minMax);
+      return this.minMax.includes("-");
+    },
+    minMax() {
+      let str = "";
+      if (this.item.min && this.item.max && this.item.max > this.item.min) {
+        str = `${this.item.min}-${this.item.max}`;
+      } else {
+        str = `${this.item.min}`;
+      }
+      return str;
+    },
     limitTxt() {
       return `${this.$t(`deal.buyDetail.387081-5`)}:${this.item.min}-${
         this.item.max
@@ -517,6 +531,11 @@ export default {
       } else {
         this.formData.autoInvest = false;
       }
+      this.$nextTick(() => {
+        if (!this.hasMax) {
+          this.formData.money = this.item.min;
+        }
+      });
     },
     close() {
       this.show = false;
