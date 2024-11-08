@@ -17,7 +17,7 @@
               :rules="[
                 { required: true, message: $t('ruls.accout.empty') },
                 {
-                  pattern: /^(?!\d+$).+/,
+                  pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]+$/,
                   message: this.$t('reg.name.user'),
                 },
               ]"
