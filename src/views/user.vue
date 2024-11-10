@@ -90,7 +90,7 @@
         <li class="m-r-12">
           <img
             class="d-img"
-            :src="require('@/assets/img/ntf3/user/129983@2x.png')"
+            :src="require('@/assets/img/ntf3/user/131068@2x.webp')"
             alt=""
           />
         </li>
@@ -109,7 +109,7 @@
         <li class="m-r-12">
           <img
             class="d-img"
-            :src="require('@/assets/img/ntf3/user/129982@2x.png')"
+            :src="require('@/assets/img/ntf3/user/131062@2x.webp')"
             alt=""
           />
         </li>
