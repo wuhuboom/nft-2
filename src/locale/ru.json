@@ -1585,5 +1585,7 @@
 "Agent.Contact.copy": "Копировать",
 "Tax.Payment": "Оплата налога",
   "backapi.self.all.alert.desc": "Считается отказом, если налог не уплачен в установленное время",
-  "Pay.Taxes": "Оплатить налоги"  
+  "Pay.Taxes": "Оплатить налоги",
+  "Agent.user.success": "Поздравляем",
+"Agent.user.success.money": "Вы получили доход от инвестиций"  
 }

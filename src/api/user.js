@@ -854,4 +854,10 @@ export default {
       url: "/invest/my/t2",
     });
   },
+  ///player/invest/ranking
+  playerInvestRanking() {
+    return request({
+      url: "/invest/ranking",
+    });
+  },
 };

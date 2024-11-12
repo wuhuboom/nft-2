@@ -22,17 +22,27 @@
         </li>
       </ul>
     </div>
-    <div
-      class="m-l-16 m-r-16 m-b-12 search"
-      @click="$router.push({ name: 'Message' })"
-      v-if="notice.content"
-    >
+    <!-- @click="$router.push({ name: 'Message' })" -->
+    <div class="m-l-16 m-r-16 m-b-12 search" v-if="ranking.length">
       <div class="field-input-box align-center">
         <p class="m-r-8">
           <img class="d-block" src="@/assets/img/red/voice.webp" alt="" />
         </p>
         <div class="flex-1 content">
-          <div class="u-notice-content">{{ notice.content }}</div>
+          <div class="u-notice-content align-center">
+            <p
+              class="align-center m-r-8"
+              v-for="(item, idx) in ranking"
+              :key="idx"
+            >
+              <span class="m-r-4 color-fff"
+                >{{ $t("Agent.user.success") }} {{ item.username }},{{
+                  $t("Agent.user.success.money")
+                }}</span
+              >
+              <span class="active">+{{ item.income }}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -181,6 +191,7 @@ export default {
   name: "HomeView",
   data() {
     return {
+      ranking: [],
       base: { switch: null },
       notice: {
         content: "",
@@ -227,6 +238,11 @@ export default {
     },
   },
   methods: {
+    async getRanking() {
+      const [err, res] = await userApi.playerInvestRanking();
+      if (err) return;
+      this.ranking = res.data;
+    },
     goLot() {
       this.$router.push({ name: "Wheel" });
     },
@@ -279,6 +295,7 @@ export default {
     },
   },
   created() {
+    this.getRanking();
     this.getBase();
     this.getNotice();
     this.$store.commit("setPdTop", false);

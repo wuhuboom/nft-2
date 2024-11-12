@@ -1586,5 +1586,7 @@
 "Agent.Contact.copy": "कॉपी करें",
 "Tax.Payment":"कर भुगतान",
 "backapi.self.all.alert.desc": "यदि निर्धारित समय के भीतर कर का भुगतान नहीं किया गया तो इसे छोड़ने के रूप में माना जाए।",
-"Pay.Taxes":"कर चुकाएं"
+"Pay.Taxes":"कर चुकाएं",
+"Agent.user.success": "बधाई हो",
+"Agent.user.success.money": "आपने निवेश पर लाभ कमाया है"
 }

@@ -1587,5 +1587,7 @@
 "Agent.Contact.copy": "نسخ",
 "Tax.Payment":"دفع الضرائب",
 "backapi.self.all.alert.desc": "يعتبر الاستسلام أمرًا مستحيلًا إذا لم يتم دفع الضريبة في الوقت المحدد",
-"Pay.Taxes":"دفع الضرائب"
+"Pay.Taxes":"دفع الضرائب",
+"Agent.user.success": "مبروك",
+"Agent.user.success.money": "لقد حصلت على عائد استثماري"
 }

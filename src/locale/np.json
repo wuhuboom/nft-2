@@ -1586,5 +1586,7 @@
 "Agent.Contact.copy": "कपी गर्नुहोस्",
 "Tax.Payment": "कर भुक्तानी",
   "backapi.self.all.alert.desc": "निर्धारित समय भित्र कर नतिरेको खण्डमा परित्याग गरिएको मानिन्छ",
-  "Pay.Taxes": "कर तिर्नुहोस्"
+  "Pay.Taxes": "कर तिर्नुहोस्",
+  "Agent.user.success": "बधाई छ",
+"Agent.user.success.money": "तपाईंले लगानीको प्रतिफल प्राप्त गर्नुभयो"
 }

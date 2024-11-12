@@ -1587,5 +1587,7 @@
 "Agent.Contact.copy": "Copiar",
 "Tax.Payment": "Pago de Impuestos",
   "backapi.self.all.alert.desc": "Se considera abandono si no se paga el impuesto dentro del tiempo establecido",
-  "Pay.Taxes": "Pagar Impuestos"
+  "Pay.Taxes": "Pagar Impuestos",
+  "Agent.user.success": "Felicidades",
+"Agent.user.success.money": "Has obtenido un retorno de inversión"
 }

@@ -1587,5 +1587,7 @@
 "Agent.Contact.copy": "Kopieren",
 "Tax.Payment":"Steuerzahlung",
 "backapi.self.all.alert.desc": "Als aufgeben betrachten, wenn die Steuer nicht innerhalb der festgelegten Zeit bezahlt wird",
-"Pay.Taxes":"Steuern zahlen" 
+"Pay.Taxes":"Steuern zahlen",
+"Agent.user.success": "Herzlichen Glückwunsch",
+"Agent.user.success.money": "Sie haben eine Investitionsrendite erzielt" 
 }

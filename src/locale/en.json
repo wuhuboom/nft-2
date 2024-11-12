@@ -1586,5 +1586,7 @@
 
 	"Tax.Payment":"Tax Payment",
 	"backapi.self.all.alert.desc": "Consider as give up if tax not paid within the time set",
-	"Pay.Taxes":"Pay Taxes"
+	"Pay.Taxes":"Pay Taxes",
+	"Agent.user.success": "Congratulations",
+	"Agent.user.success.money": "You have earned an investment return"
 }
