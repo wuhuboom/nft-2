@@ -40,7 +40,7 @@
                   $t("Agent.user.success.money")
                 }}</span
               >
-              <span class="active">+{{ item.income }}</span>
+              <span class="active">+{{ parseInt(item.income) }}</span>
             </p>
           </div>
         </div>
