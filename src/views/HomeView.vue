@@ -35,11 +35,7 @@
               v-for="(item, idx) in ranking"
               :key="idx"
             >
-              <span class="m-r-4 color-fff"
-                >{{ $t("Agent.user.success") }} {{ item.username }},{{
-                  $t("Agent.user.success.money")
-                }}</span
-              >
+              <span class="m-r-4 color-fff">{{ item.username }} Income </span>
               <span class="active">+{{ parseInt(item.income) }}</span>
             </p>
           </div>
