@@ -263,7 +263,7 @@
       <img
         class="my-serve"
         @click="$store.dispatch('getServeData', 1)"
-        src="@/assets/img/ntf3/129511@2x.webp"
+        src="@/assets/img/ntf3/129511@2x.png"
         alt=""
       />
     </van-popup>
