@@ -14,10 +14,7 @@ export default {
     return {};
   },
   watch: {
-    $route() {
-      this.$refs.RootDialog.ajaxVaid();
-      //this.$store.commit("setMainShow", { show: false });
-    },
+    $route() {},
   },
   computed: {
     user() {

@@ -24,7 +24,6 @@
         <slot name="right"></slot>
       </div>
     </div>
-    <RootDialog />
   </div>
 </template>
 
