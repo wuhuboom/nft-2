@@ -53,7 +53,7 @@ export default {
     styleObj: {
       type: Object,
       default: () => ({
-        backgroundColor: "#000",
+        backgroundColor: "#BF2935",
       }),
     },
     showMsg: {
