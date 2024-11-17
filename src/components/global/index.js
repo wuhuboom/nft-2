@@ -1,17 +1,8 @@
 // 全局组件
 import AppTopBar from "@/components/global/AppTopBar";
 import AppBtmBar from "@/components/global/AppBtmBar";
-import BtmActionSheet from "@/components/global/BtmActionSheet.vue";
-import ImgCom from "@/components/global/ImgCom.vue";
-import RowList from "@/components/global/RowList.vue";
 import Countdown from "@choujiaojiao/vue2-countdown";
-import AppBackTop from "@/components/global/AppBackTop.vue";
-import NoData from "@/components/global/NoData.vue";
-import RowMatch from "@/components/global/RowMatch.vue";
-import ComfireDialog from "@/components/global/ComfireDialog.vue";
-import BtmActionLang from "@/components/global/BtmActionLang.vue";
-import LoadList from "@/components/global/LoadList.vue";
-import ChoseNav from "@/components/global/ChoseNav.vue";
+
 import {
   Form,
   Field,
@@ -46,18 +37,8 @@ import {
 export default {
   install(Vue) {
     Vue.component("Count-down", Countdown);
-    Vue.component(RowList.name, RowList);
     Vue.component(AppBtmBar.name, AppBtmBar);
-    Vue.component(ImgCom.name, ImgCom);
-    Vue.component(BtmActionSheet.name, BtmActionSheet);
     Vue.component(AppTopBar.name, AppTopBar);
-    Vue.component(AppBackTop.name, AppBackTop);
-    Vue.component(NoData.name, NoData);
-    Vue.component(RowMatch.name, RowMatch);
-    Vue.component(ComfireDialog.name, ComfireDialog);
-    Vue.component(BtmActionLang.name, BtmActionLang);
-    Vue.component(LoadList.name, LoadList);
-    Vue.component(ChoseNav.name, ChoseNav);
     Vue.use(Form);
     Vue.use(Field);
     Vue.use(Button);

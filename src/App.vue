@@ -3,24 +3,13 @@
     <router-view name="AppTopBar"></router-view>
     <router-view :key="$router.currentRoute.fullPath" />
     <router-view name="AppBtmBar"></router-view>
-    <MaintainDialog />
-    <RootDialog ref="RootDialog" />
-    <TaxPayment v-if="user.id && $route.name !== 'Recharge'" />
   </div>
 </template>
 <script>
-import MaintainDialog from "@/views/components/MaintainDialog.vue";
-import RootDialog from "@/views/components/RootDialog.vue";
-import TaxPayment from "@/views/components/TaxPayment.vue";
 import i18n from "@/locale";
 
 export default {
   name: "App",
-  components: {
-    MaintainDialog,
-    RootDialog,
-    TaxPayment,
-  },
   data() {
     return {};
   },

@@ -29,14 +29,10 @@
 </template>
 
 <script>
-import RootDialog from "@/views/components/RootDialog.vue";
 export default {
   name: "AppTopBar",
   data() {
     return { fiexd: false };
-  },
-  components: {
-    RootDialog,
   },
   props: {
     titleClass: {

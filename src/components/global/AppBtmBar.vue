@@ -24,40 +24,34 @@
         </li>
       </ul>
     </div>
-
-    <RootDialog />
   </div>
 </template>
 
 <script>
 import i18n from "@/locale";
-import RootDialog from "@/views/components/RootDialog.vue";
 export default {
   name: "AppBtmBar",
-  components: {
-    RootDialog,
-  },
   props: {},
   data() {
     return {
       list: [
         {
-          icon: require("@/assets/img/ntf/home/icon1.png"),
-          icon1: require("@/assets/img/ntf/home/icon1a.png"),
+          // icon: require("@/assets/img/ntf/home/icon1.png"),
+          // icon1: require("@/assets/img/ntf/home/icon1a.png"),
           text: i18n.t("tabar.home"),
           name: "investMarket",
           active: false,
         },
         {
-          icon: require("@/assets/img/ntf/home/icon2.png"),
-          icon1: require("@/assets/img/ntf/home/icon2a.png"),
+          // icon: require("@/assets/img/ntf/home/icon2.png"),
+          // icon1: require("@/assets/img/ntf/home/icon2a.png"),
           text: i18n.t("tabar.match"),
           name: "home",
           active: false,
         },
         {
-          icon: require("@/assets/img/ntf/home/icon3.png"),
-          icon1: require("@/assets/img/ntf/home/icon3a.png"),
+          // icon: require("@/assets/img/ntf/home/icon3.png"),
+          // icon1: require("@/assets/img/ntf/home/icon3a.png"),
           text: i18n.t("tabar.me"),
           active: false,
           name: "User",
@@ -120,7 +114,7 @@ export default {
     align-items: center;
     position: relative;
     z-index: 999;
-    background: url("@/assets/img/ntf/130955@3x.webp") no-repeat center center;
+    //  background: url("@/assets/img/ntf/130955@3x.webp") no-repeat center center;
     background-size: 100% 100%;
     font-size: 12px;
     color: var(--primary);

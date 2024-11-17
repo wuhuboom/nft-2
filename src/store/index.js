@@ -4,10 +4,7 @@ import Vuex from "vuex";
 import userApi from "@/api/user";
 import auth from "@/plugins/auth";
 import util from "@/plugins/util";
-import delang from "@/assets/img/de-lang.webp";
-import dzlang from "@/assets/img/dz-lang.webp";
 import app from "@/main";
-import { set } from "nprogress";
 Vue.use(Vuex);
 const lang = location.href.includes("zmkm") ? "zh" : "";
 export default new Vuex.Store({
@@ -26,66 +23,9 @@ export default new Vuex.Store({
       area_code: [],
     },
     user: {},
-    lang: lang || localStorage.getItem("lang") || "en",
+    lang: lang || localStorage.getItem("lang") || "zh",
     // 令牌  初始化从本地获取 English  Germany Algeria India France
     token: auth.getToken(),
-    langOpt: [
-      {
-        label: "EN",
-        text: "English",
-        value: "en",
-        icon: require("@/assets/img/lang/en.png"),
-      },
-      {
-        label: "IN",
-        icon: require("@/assets/img/lang/in.png"),
-        text: "India",
-        value: "in",
-      },
-      {
-        label: "RU",
-        text: "Germany",
-        icon: require("@/assets/img/lang/ru.png"),
-        value: "ru",
-      },
-      {
-        label: "NE",
-        icon: require("@/assets/img/lang/ne.png"),
-        text: "France",
-        value: "np",
-      },
-      {
-        label: "FR",
-        text: "Germany",
-        icon: require("@/assets/img/lang/fr.png"),
-        value: "fr",
-      },
-
-      {
-        label: "DZ",
-        icon: dzlang,
-        text: "Algeria",
-        value: "dz",
-      },
-      {
-        label: "DE",
-        text: "Germany",
-        icon: delang,
-        value: "de",
-      },
-      {
-        label: "PT",
-        text: "Germany",
-        icon: require("@/assets/img/pt.png"),
-        value: "pt",
-      },
-      {
-        label: "ES",
-        text: "Germany",
-        icon: require("@/assets/img/es.png"),
-        value: "es",
-      },
-    ],
     serveData: {},
     fbMsg: {
       hasMsg: 0,
