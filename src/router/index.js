@@ -13,6 +13,14 @@ const routes = [
     path: "/",
     name: "home",
     components: {
+      default: () => import("@/views/index.vue"),
+      //AppBtmBar,
+    },
+  },
+  {
+    path: "/invoice",
+    name: "invoice",
+    components: {
       default: () => import("@/views/invoice.vue"),
       //AppBtmBar,
     },
