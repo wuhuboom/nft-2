@@ -1,21 +1,5 @@
 <template>
-  <div class="invoice-page font12 p-l-12 p-r-12">
-    <AppTopBar
-      :titleClass="['app-top-black-title']"
-      :topBarTitle="$t(`user.trade.title4.text`)"
-    ></AppTopBar>
-    <ul class="m-t-16">
-      <li
-        class="justify-between nav-item align-center m-b-8 p-l-16 p-r-16"
-        v-for="(item, idx) in navs"
-        :key="idx"
-        @click="$router.push(item.path)"
-      >
-        <p class="">{{ item.title }}</p>
-        <van-icon size="16" name="arrow" />
-      </li>
-    </ul>
-  </div>
+  <div class="index-page font12 p-l-12 p-r-12">首页</div>
 </template>
 
 <script>
@@ -43,6 +27,9 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    this.$store.commit("setPdTop", true);
   },
 };
 </script>

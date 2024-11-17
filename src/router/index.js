@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 import store from "@/store";
 import Nprogress from "nprogress";
 //import AppTopBar from "@/components/global/AppTopBar";
-//import AppBtmBar from "@/components/global/AppBtmBar";
+import AppBtmBar from "@/components/global/AppBtmBar";
 import app from "@/main";
 const routes = [
   {
@@ -14,7 +14,7 @@ const routes = [
     name: "home",
     components: {
       default: () => import("@/views/index.vue"),
-      //AppBtmBar,
+      AppBtmBar,
     },
   },
   {
