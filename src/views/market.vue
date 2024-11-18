@@ -164,7 +164,7 @@
                   />
                 </p>
               </li>
-              <li>{{ $t(`rate.of.return`) }}</li>
+              <li>{{ $t(`buy.invest.money5`) }}</li>
             </ul>
           </div>
         </div>
