@@ -546,7 +546,7 @@ export default {
   created() {
     this.investMyStatis();
     this.investPlans();
-    this.investPlanYeb();
+    //this.investPlanYeb();
     this.$store.commit("setPdTop", false);
     //更新用户信息
     this.$store.dispatch("getInfo");
