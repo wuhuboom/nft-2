@@ -54,7 +54,7 @@
           <p class="center-center ntf-vant-btn" @click="goWeb">
             <img
               class="d-img m-r-4"
-              src="@/assets/img/ntf3/user/157461@2x.png"
+              src="@/assets/img/ntf3/user/website.png"
               alt=""
             />
             {{ $t(`setting.menu2.text`) }}
