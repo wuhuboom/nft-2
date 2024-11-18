@@ -28,28 +28,36 @@
         <li class="center-center">
           {{ divide(user.balance) }}
         </li>
-        <li class="wi-re center-center m-t-20 m-b-24">
+        <li class="wi-re justify-between m-t-20 m-b-24 align-center">
           <p
-            class="m-r-8 center-center ntf-vant-btn"
+            class="center-center ntf-vant-btn"
             @click="$router.push({ path: '/pages/wallet/onlineRecharge' })"
           >
             <img
-              class="d-img m-r-12"
+              class="d-img m-r-4"
               src="@/assets/img/ntf3/user/130043@2x.png"
               alt=""
             />
-            {{ $t("deal.recharge.354498-0") }}
+            {{ $t("property.subpage.title1") }}
           </p>
           <p
             class="center-center ntf-vant-btn"
             @click="$router.push({ path: '/pages/wallet/withdraw' })"
           >
             <img
-              class="d-img m-r-12"
+              class="d-img m-r-4"
               src="@/assets/img/ntf3/user/157461@2x.png"
               alt=""
             />
             {{ $t(`dropdown.billing.income.withdraw.text`) }}
+          </p>
+          <p class="center-center ntf-vant-btn" @click="goWeb">
+            <img
+              class="d-img m-r-4"
+              src="@/assets/img/ntf3/user/157461@2x.png"
+              alt=""
+            />
+            {{ $t(`setting.menu2.text`) }}
           </p>
         </li>
       </ul>
@@ -261,6 +269,11 @@ export default {
     },
   },
   methods: {
+    goWeb() {
+      if (window.Website) {
+        location.href = window.Website;
+      }
+    },
     onCopy(item) {
       if (item.title === "Telegram:") {
         return this.user.telegram;
@@ -432,9 +445,9 @@ export default {
 }
 .wi-re {
   & > p {
-    min-width: 139px;
+    width: 108px;
     height: 39px;
-    padding: 0 4px;
+    padding-left: 4px;
   }
   img {
     height: 20px;
