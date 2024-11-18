@@ -290,12 +290,6 @@
           >
         </van-form>
       </div>
-      <img
-        class="my-serve"
-        @click="$store.dispatch('getServeData', 1)"
-        src="@/assets/img/ntf3/129511@2x.png"
-        alt=""
-      />
     </van-popup>
     <van-popup class="desc-art-pop" v-model="showDesc" position="center">
       <ul class="font14 desc-art-list color-fff">
