@@ -68,23 +68,54 @@
       >
         <div class="align-center">
           <ul class="align-center flex-1 space-between m-b-16">
-            <li>
-              <p class="font16 m-b-8">{{ doc.name }}</p>
-              <p class="days p-l-4 p-r-4">{{ $t("user.in.progress") }}</p>
+            <li class="align-center">
+              <div class="invest-pic no-shrink m-r-8">
+                <img class="d-img" :src="doc.header" alt="" />
+              </div>
+              <div>
+                <p class="font16 m-b-8">{{ doc.name }}</p>
+                <p class="days p-l-4 p-r-4">{{ $t("user.in.progress") }}</p>
+              </div>
             </li>
-            <li class="invest-pic no-shrink">
-              <img class="d-img" :src="doc.header" alt="" />
+            <li class="text-right">
+              <p class="font14 blod m-b-8">{{ pageLimt(doc) }}</p>
+              <p class="gray">{{ $t("buy.invest.money4") }}</p>
             </li>
           </ul>
         </div>
-        <div class="rate-row p-l-12 p-r-12 justify-between align-center">
+        <ul class="justify-between align-center p-x-12 btm-desc-invest">
+          <li class="text-left">
+            <p class="gray m-b-8">{{ $t("buy.invest.money6") }}</p>
+            <p class="font14 blod">
+              {{ doc.days }}
+              {{ doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`) }}
+            </p>
+          </li>
+          <li class="text-center">
+            <p class="gray m-b-8">{{ $t("buy.invest.money5") }}</p>
+            <p class="font14 blod green">
+              {{
+                doc.rate
+                  ? `${doc.rate}%`
+                  : $delZero(way1earnings(doc).toFixed(2))
+              }}
+            </p>
+          </li>
+          <li class="text-right">
+            <p class="gray m-b-8">
+              {{ isLImit(doc) ? $t("maximum.income") : $t("my.all.income") }}
+            </p>
+            <p class="font14 blod">{{ moneyMinMax(doc) }}</p>
+          </li>
+        </ul>
+        <!-- <div class="rate-row p-l-12 p-r-12 justify-between align-center">
           <p>
             {{ doc.days }}
             {{ doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`) }}
           </p>
           <p class="gray">{{ $t(`rate.of.return`) }}</p>
           <p class="font16 rate color-fff">{{ doc.rate }}%</p>
-        </div>
+        </div> -->
         <div v-show="false">
           <van-progress
             track-color="#808080"
@@ -420,6 +451,7 @@ export default {
     addRate() {
       return !(parseInt(this.item.showAuto) === 0);
     },
+
     hasMax() {
       console.log(this.minMax);
       return this.minMax.includes("-");
@@ -440,6 +472,40 @@ export default {
     },
   },
   methods: {
+    //普通盈利 每天的收益
+    way1earnings(doc, key = "min") {
+      const base = +(doc.fixed || 0);
+      const val = doc[`${key}`] || 0;
+      if (val > 0) {
+        const curRate = doc.rate / 100;
+        let num = val * curRate * 1 + base;
+        return num;
+      } else {
+        return 0;
+      }
+    },
+    isLImit(doc) {
+      return doc.min && doc.max && doc.max > doc.min;
+    },
+    moneyMinMax(doc) {
+      let str = "";
+      if (doc.min && doc.max && doc.max > doc.min) {
+        const max = doc.days * this.way1earnings(doc, "max");
+        str = `${this.$delZero(max.toFixed(2))}`;
+      } else {
+        str = `${doc.days * this.way1earnings(doc, "min")}`;
+      }
+      return str;
+    },
+    pageLimt(doc) {
+      let str = "";
+      if (doc.min && doc.max && doc.max > doc.min) {
+        str = `${doc.min}-${doc.max}`;
+      } else {
+        str = `${doc.min}`;
+      }
+      return str;
+    },
     async investSummary() {
       const [err, res] = await userApi.investSummary();
       if (err) return;
@@ -598,10 +664,11 @@ export default {
   }
 
   .green {
-    color: #defb84;
+    color: #37fb7c;
+    text-shadow: 0px 3px 6px rgba(55, 251, 124, 0.49);
   }
   .gray {
-    color: #cacbce;
+    color: #a1adc9;
   }
   .plans-item {
     border-radius: 14px;
@@ -760,5 +827,15 @@ export default {
 .logo {
   width: 75px;
   height: 35px;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.btm-desc-invest {
+  background: linear-gradient(86deg, #202e35 0%, #274036 100%);
+  border-radius: 9px 9px 9px 9px;
 }
 </style>

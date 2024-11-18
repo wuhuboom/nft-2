@@ -227,7 +227,13 @@ Vue.directive("draggable", {
     el.addEventListener("touchend", (e) => stop(e));
   },
 });
-
+//去掉12.00 去掉 00
+Vue.prototype.$delZero = (v) => {
+  if (`${v}`.endsWith(".00")) {
+    return parseInt(v);
+  }
+  return v;
+};
 const app = new Vue({
   router,
   store,

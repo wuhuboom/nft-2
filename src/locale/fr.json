@@ -1594,5 +1594,6 @@
 "withdraw.loading": "Retrait en cours",
 "last.money.time": "Dernière date d'investissement",
 "Agent.Contact": "Contact de l'agent",
-"Agent.Contact.copy": "Copier" 
+"Agent.Contact.copy": "Copier",
+"maximum.income":"Revenu maximum" 
 }

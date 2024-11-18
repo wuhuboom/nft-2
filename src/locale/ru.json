@@ -1591,5 +1591,6 @@
 "withdraw.loading": "Вывод средств",
 "last.money.time": "Время последнего инвестирования",
 "Agent.Contact": "Контакт агента",
-"Agent.Contact.copy": "Копировать"  
+"Agent.Contact.copy": "Копировать",
+"maximum.income":"Максимальный доход"  
 }
