@@ -3,7 +3,7 @@
     <ul class="font14 desc-money-list center-center flex-column color-fff">
       <li class="m-b-8">{{ $t(`backapi.balanceNotEnough`) }}</li>
       <li
-        class="recharge center-center m-t-16 m-b-16"
+        class="recharge center-center ntf-vant-btn m-t-16 m-b-16"
         @click="
           $router.push({
             name: 'Recharge',
@@ -12,7 +12,7 @@
       >
         {{ $t(`recharge.button.now.text`) }}
       </li>
-      <li class="active" @click="moneyShow = false">
+      <li class="" @click="moneyShow = false">
         {{ $t(`cancel.btn.text`) }}
       </li>
     </ul>
@@ -54,8 +54,8 @@ export default {
       width: 181px;
       height: 33px;
       border-radius: 12px;
-      box-shadow: 0 3px 6px 0 #5a3e01;
-      background-color: #f5673e;
+      // box-shadow: 0 3px 6px 0 #5a3e01;
+      // background-color: #f5673e;
     }
   }
 }

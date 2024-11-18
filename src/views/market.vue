@@ -108,14 +108,6 @@
             <p class="font14 blod green">{{ moneyMinMax(doc) }}</p>
           </li>
         </ul>
-        <!-- <div class="rate-row p-l-12 p-r-12 justify-between align-center">
-          <p>
-            {{ doc.days }}
-            {{ doc.days == 1 ? $t(`safe.one.days`) : $t(`safe.invite.days`) }}
-          </p>
-          <p class="gray">{{ $t(`rate.of.return`) }}</p>
-          <p class="font16 rate color-fff">{{ doc.rate }}%</p>
-        </div> -->
         <div v-show="false">
           <van-progress
             track-color="#808080"
@@ -159,7 +151,11 @@
             </ul>
             <ul>
               <li class="font28 align-center">
-                {{ item.rate }}%
+                {{
+                  item.rate
+                    ? `${item.rate}%`
+                    : $delZero(way1earnings(item).toFixed(2))
+                }}
                 <p>
                   <img
                     class="d-img ligth"
@@ -236,8 +232,11 @@
           </van-field>
           <div class="m-t-8 m-b-20 align-center justify-between">
             <p>
-              <span class="gray">{{ $t(`total.return`) }}:</span
-              ><span class="color-fff">{{ earnings }}</span>
+              <span class="gray">
+                {{
+                  isLImit(item) ? $t("maximum.income") : $t("my.all.income")
+                }}:</span
+              ><span class="color-fff">{{ $delZero(dialogMinMax) }}</span>
             </p>
             <p>
               <span class="gray"> {{ $t(`wallet.index.balance.text`) }}:</span>
@@ -352,6 +351,7 @@
       </ul>
     </van-popup>
     <activationCode />
+    <NoMony ref="noMony" />
   </div>
 </template>
 
@@ -361,6 +361,7 @@ import activationCode from "@/components/activationCode";
 import yuIcon from "@/assets/img/ntf/yue.png";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
+import NoMony from "@/components/NoMony";
 const initFome = () => {
   return {
     planId: "",
@@ -374,7 +375,7 @@ const initFome = () => {
 import userApi from "@/api/user";
 export default {
   name: "investPlans",
-  components: { activationCode },
+  components: { activationCode, NoMony },
   data() {
     return {
       invest: {},
@@ -470,6 +471,17 @@ export default {
         this.item.max
       }`;
     },
+    dialogMinMax() {
+      const base = +(this.item.fixed || 0);
+      const val = this.formData.money || 0;
+      if (val > 0) {
+        const curRate = this.item.rate / 100;
+        let num = val * curRate * 1 + base;
+        return (num * this.item.days).toFixed(2);
+      } else {
+        return 0;
+      }
+    },
   },
   methods: {
     //普通盈利 每天的收益
@@ -487,6 +499,7 @@ export default {
     isLImit(doc) {
       return doc.min && doc.max && doc.max > doc.min;
     },
+
     moneyMinMax(doc) {
       let str = "";
       if (doc.min && doc.max && doc.max > doc.min) {
@@ -582,15 +595,23 @@ export default {
       };
       this.show = true;
     },
-    chose(v) {
+    async chose(v) {
       if (v.parent.curr == 100) {
         this.$toast("backapi.planExpired");
         return;
       }
+      this.$toast.loading({
+        duration: 0,
+        forbidClick: true,
+      });
       //更新用户
-      this.$store.dispatch("getInfo");
-      console.log(v);
+      await this.$store.dispatch("getInfo");
+      this.$toast.clear();
       this.item = v;
+      if (this.balance < this.item.min) {
+        this.$refs.noMony.open();
+        return;
+      }
       this.show = true;
       if (this.addRate) {
         this.formData.autoInvest = true;
@@ -656,6 +677,7 @@ export default {
   .circle {
     width: 190px;
     height: 190px;
+    border-radius: 95px;
     margin: 0px auto 0;
     background: url("@/assets/img/ntf3/126932@2x.webp") no-repeat center center;
     background-size: 100% 100%;
