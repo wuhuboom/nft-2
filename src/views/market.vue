@@ -93,7 +93,7 @@
           </li>
           <li class="text-center">
             <p class="gray m-b-8">{{ $t("buy.invest.money5") }}</p>
-            <p class="font14 blod green">
+            <p class="font14 blod">
               {{
                 doc.rate
                   ? `${doc.rate}%`
@@ -105,7 +105,7 @@
             <p class="gray m-b-8">
               {{ isLImit(doc) ? $t("maximum.income") : $t("my.all.income") }}
             </p>
-            <p class="font14 blod">{{ moneyMinMax(doc) }}</p>
+            <p class="font14 blod green">{{ moneyMinMax(doc) }}</p>
           </li>
         </ul>
         <!-- <div class="rate-row p-l-12 p-r-12 justify-between align-center">
