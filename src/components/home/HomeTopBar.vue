@@ -7,19 +7,27 @@
       >
         <img class="d-img" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
       </li>
-      <li class="align-center lef-icon">
-        <p @click="$router.push('/pages/wallet/onlineRecharge')">
-          <img class="d-img" src="@/assets/img/ntf3/129447@2x.webp" alt="" />
-        </p>
-        <p class="balance p-l-8 p-r-8">{{ divide(user.balance) }}</p>
-        <p class="">
-          <img
-            class="d-img"
-            @click="$router.push({ name: 'Message' })"
-            src="@/assets/img/ntf3/129496@2x.webp"
-            alt=""
-          />
-        </p>
+      <li class="align-center">
+        <img
+          class="my-serve m-r-16"
+          @click="$store.dispatch('getServeData', 1)"
+          src="@/assets/img/ntf3/129511@2x.png"
+          alt=""
+        />
+        <div class="lef-icon align-center">
+          <p @click="$router.push('/pages/wallet/onlineRecharge')">
+            <img class="d-img" src="@/assets/img/ntf3/129447@2x.webp" alt="" />
+          </p>
+          <p class="balance p-l-8 p-r-8">{{ divide(user.balance) }}</p>
+          <p class="">
+            <img
+              class="d-img"
+              @click="$router.push({ name: 'Message' })"
+              src="@/assets/img/ntf3/129496@2x.webp"
+              alt=""
+            />
+          </p>
+        </div>
       </li>
     </ul>
 
@@ -51,6 +59,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+.my-serve {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
 .nav {
   height: 46px;
   background-image: linear-gradient(to right, #1f383e 0%, #131b26 100%);
