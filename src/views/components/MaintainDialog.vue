@@ -25,7 +25,7 @@ export default {
   name: "MaintainDialog",
   data() {
     return {
-      showDialog: true,
+      showDialog: false,
       loading: false,
       form: {
         payPwd: "",
