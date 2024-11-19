@@ -8,9 +8,9 @@
     >
       <ul class="upload-cont flex-column center-center">
         <li class="tip align-center p-l-12">
-          {{ $t(`UserProfile.Notification`) }}
+          <!-- {{ $t(`UserProfile.Notification`) }} -->
         </li>
-        <li class="cont center-center p-x-20">
+        <li class="cont center-center p-l-20 p-r-20 p-b-20">
           {{ msg }}
         </li>
       </ul>
@@ -25,7 +25,7 @@ export default {
   name: "MaintainDialog",
   data() {
     return {
-      showDialog: false,
+      showDialog: true,
       loading: false,
       form: {
         payPwd: "",
@@ -74,21 +74,23 @@ export default {
     background-color: transparent;
     width: 277px;
     .tip {
-      background: url("@/assets/img/ntf/131019@2x.webp") no-repeat center center;
+      background: url("@/assets/img/ntf/126962@2x.png") no-repeat center center;
       background-size: 100% 100%;
       width: 260px;
       height: 120px;
       font-size: 20px;
       color: #f7dcbe;
       padding-top: 30px;
+      position: relative;
     }
     .cont {
-      text-align: center;
-      width: 100%;
-      margin-top: -20px;
-      min-height: 148px;
-      border-radius: 20px;
-      background-image: linear-gradient(to bottom, #1f2430, #151515);
+      //text-align: center;
+      margin-top: -64px;
+      padding-top: 72px;
+      width: 260px;
+      background: linear-gradient(180deg, #1f2430 0%, #151515 100%);
+      border-radius: 14px 14px 14px 14px;
+      border: 1px solid rgba(0, 0, 0, 0);
     }
   }
 }
