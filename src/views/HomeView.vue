@@ -199,7 +199,7 @@ export default {
       imgs: [],
       down: [
         {
-          name: "CS2",
+          name: "Genshin",
           path: require("@/assets/img/HomeView/10028.png"),
           url: "https://genshin.hoyoverse.com/en",
         },
