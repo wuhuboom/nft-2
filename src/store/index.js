@@ -26,7 +26,7 @@ export default new Vuex.Store({
       area_code: [],
     },
     user: {},
-    lang: lang || localStorage.getItem("lang") || "idn",
+    lang: lang || localStorage.getItem("lang") || "en",
     // 令牌  初始化从本地获取 English  Germany Algeria India France
     token: auth.getToken(),
     langOpt: [
