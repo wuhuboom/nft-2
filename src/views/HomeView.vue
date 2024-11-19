@@ -114,6 +114,7 @@
     </div>
 
     <VersionDilalog />
+    <MyServe />
   </div>
 </template>
 

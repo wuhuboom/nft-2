@@ -190,12 +190,7 @@
           </li>
         </ul>
       </van-popup>
-      <img
-        class="my-serve"
-        @click="$store.dispatch('getServeData', 1)"
-        src="@/assets/img/ntf3/129511@2x.png"
-        alt=""
-      />
+      <MyServe />
     </div>
   </div>
 </template>
@@ -352,14 +347,6 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.my-serve {
-  display: block;
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  bottom: 120px;
-  right: 12px;
-}
 .gray {
   color: #79869b;
 }

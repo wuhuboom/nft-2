@@ -14,6 +14,7 @@ import LoadList from "@/components/global/LoadList.vue";
 import SelectLang from "@/components/global/SelectLang.vue";
 import ChoseNav from "@/components/global/ChoseNav.vue";
 import SelectNav from "@/components/global/SelectNav.vue";
+import MyServe from "@/components/global/MyServe.vue";
 import {
   Form,
   Field,
@@ -49,6 +50,7 @@ import {
 } from "vant";
 export default {
   install(Vue) {
+    Vue.component("MyServe", MyServe);
     Vue.component("Count-down", Countdown);
     Vue.component(RowList.name, RowList);
     Vue.component(AppBtmBar.name, AppBtmBar);

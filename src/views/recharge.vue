@@ -5,9 +5,9 @@
       <van-Loading class="color-primary" />
     </div>
     <div v-else class="gray">
-      <div class="top-desc center-center m-b-20 p-t-24">
+      <!-- <div class="top-desc center-center m-b-20 p-t-24">
         <img class="d-img" src="@/assets/img/ntf3/user/129517@2x.webp" alt="" />
-      </div>
+      </div> -->
 
       <div class="ntf-form rech-form m-b-12">
         <van-form ref="form" @submit="onSubmit">
