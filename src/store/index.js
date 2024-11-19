@@ -43,6 +43,12 @@ export default new Vuex.Store({
         icon: require("@/assets/img/lang/en.png"),
       },
       {
+        label: "PH",
+        text: "Philippines",
+        value: "ph",
+        icon: require("@/assets/img/lang/ph.png"),
+      },
+      {
         label: "IN",
         icon: require("@/assets/img/lang/in.png"),
         text: "India",

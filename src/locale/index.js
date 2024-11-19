@@ -13,6 +13,7 @@ import es from "./es.json";
 import ind from "./in.json";
 import np from "./np.json";
 import idn from "./idn.json";
+import ph from "./ph.json";
 import store from "@/store";
 // 注册i18n
 Vue.use(VueI18n);
@@ -29,6 +30,7 @@ export const messages = {
   in: { ...ind },
   np: { ...np },
   idn: { ...idn },
+  ph: { ...ph },
 };
 // 通过选项创建 VueI18n 实例并导出
 export default new VueI18n({
