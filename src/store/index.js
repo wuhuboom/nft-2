@@ -31,12 +31,6 @@ export default new Vuex.Store({
     token: auth.getToken(),
     langOpt: [
       {
-        label: "ID",
-        text: "Indonesia",
-        value: "idn",
-        icon: require("@/assets/img/lang/id.png"),
-      },
-      {
         label: "EN",
         text: "English",
         value: "en",
@@ -47,6 +41,12 @@ export default new Vuex.Store({
         text: "Philippines",
         value: "ph",
         icon: require("@/assets/img/lang/ph.png"),
+      },
+      {
+        label: "ID",
+        text: "Indonesia",
+        value: "idn",
+        icon: require("@/assets/img/lang/id.png"),
       },
       {
         label: "IN",
