@@ -141,6 +141,7 @@
             <p class="lable-text">
               {{ $t("form.phoneNum.text") }}
             </p>
+            <!--  -->
             <van-field
               v-model.trim="form.phone"
               :placeholder="
@@ -153,9 +154,7 @@
                 { required: true, message: $t('ruls.phone.empty') },
                 {
                   validator: validatePhone,
-                  message: this.$t('vaid.phone', {
-                    num: form.phone.startsWith('0') ? 11 : 10,
-                  }),
+                  message: errphone,
                 },
               ]"
             >
@@ -258,6 +257,14 @@ export default {
     area_code() {
       return this.$store.state.config.area_code;
     },
+    errphone() {
+      if (this.form.areaCode == 63) {
+        return this.$t("Must.11.digits");
+      }
+      return this.$t("vaid.phone", {
+        num: this.form.phone.startsWith("0") ? 11 : 10,
+      });
+    },
   },
   methods: {
     clearTimer() {
@@ -307,7 +314,11 @@ export default {
       return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/.test(password);
     },
     validatePhone(v) {
+      if (this.form.areaCode == 63) {
+        return v.length === 11;
+      }
       if (this.form.areaCode != 91) return true;
+
       if (v.startsWith("0")) {
         return v.length === 11;
       } else {

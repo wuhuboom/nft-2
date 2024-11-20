@@ -337,7 +337,7 @@
   "backapi.pwdErrorMax": "Naabot na ang pinakamataas na bilang ng maling password entries.",
   "backapi.pwdErrorCount": "Maling username o password",
   "backapi.usernameIsEmpty": "Hindi pwedeng walang laman ang username",
-  "backapi.usernameSizeError": "Ang haba ng username ay 5-16",
+  "backapi.usernameSizeError": "Ang haba ng username ay 5-18",
   "backapi.usernameFormatError": "Ang username ay kailangang alphanumeric",
   "backapi.passwordIsEmpty": "Hindi pwedeng walang laman ang password",
   "backapi.passwordSizeError": "Ang haba ng password ay 6-16",
@@ -1595,5 +1595,6 @@
   "last.money.time": "Huling Oras ng Pamumuhunan",
   "Agent.Contact": "Kontak ng Ahente",
   "Agent.Contact.copy": "Kopyahin",
-  "maximum.income": "Pinakamataas na kita"
+  "maximum.income": "Pinakamataas na kita",
+  "Must.11.digits":"Dapat ay 11 na digit."
 }

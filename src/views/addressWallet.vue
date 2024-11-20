@@ -54,6 +54,7 @@
           class="mb-16"
           :placeholder="text"
           :rules="ewalletRule"
+          maxlength="11"
         />
         <div class="el-ntf-select m-b-16">
           <el-select
