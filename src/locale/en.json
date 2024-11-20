@@ -337,7 +337,7 @@
 	"backapi.pwdErrorMax": "The number of incorrect password entries has reached the upper limit.",
 	"backapi.pwdErrorCount": "Incorrect username or password",
 	"backapi.usernameIsEmpty": "Username can not be empty",
-	"backapi.usernameSizeError": "Username length is 5-18",
+	"backapi.usernameSizeError": "Username length is 8-16",
 	"backapi.usernameFormatError": "Username must be alphanumeric",
 	"backapi.passwordIsEmpty": "password can not be blank",
 	"backapi.passwordSizeError": "Password length is 6-16",
