@@ -54,7 +54,6 @@
           class="mb-16"
           :placeholder="text"
           :rules="ewalletRule"
-          maxlength="11"
         />
         <div class="el-ntf-select m-b-16">
           <el-select
@@ -192,12 +191,16 @@ export default {
           }),
         },
       ];
-      if (this.user.areaCode == "254") {
-        rule.push({
-          pattern: /^0\d{9}$/,
-          message: this.$t("wallet.numm.ten"),
-        });
-      }
+      rule.push({
+        pattern: /^[a-zA-Z0-9]{11}$/,
+        message: this.$t("Must.11.digits"),
+      });
+      // if (this.user.areaCode == "254") {
+      //   rule.push({
+      //     pattern: /^0\d{9}$/,
+      //     message: this.$t("wallet.numm.ten"),
+      //   });
+      // }
 
       return rule;
     },
