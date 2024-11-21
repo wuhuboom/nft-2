@@ -531,7 +531,7 @@ export default {
 
 .notice-ranking {
   white-space: nowrap; /* Prevent line breaks */
-  animation: u-loop-animation 28s linear infinite;
+  animation: u-loop-animation 38s linear infinite;
 }
 @keyframes u-loop-animation {
   0% {
