@@ -5,6 +5,12 @@
     :close-on-click-overlay="false"
     class="linear-global-pop font14 activation-code ntf-form"
   >
+    <img
+      class="close d-img"
+      @click="show = false"
+      src="@/assets/img/ntf/close.png"
+      alt=""
+    />
     <p class="center-center">
       <img class="d-img pic" src="@/assets/img/ntf/628@2x.webp" alt="" />
     </p>
@@ -89,6 +95,13 @@ export default {
   .pic {
     width: 81px;
     height: 81px;
+  }
+  .close {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 }
 </style>
