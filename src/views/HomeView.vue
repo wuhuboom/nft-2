@@ -30,16 +30,18 @@
         </p>
         <div class="flex-1 content">
           <div class="u-notice-content align-center">
-            <p
-              class="align-center m-r-8"
-              v-for="(item, idx) in ranking"
-              :key="idx"
-            >
-              <span class="m-r-4 color-fff"
-                >{{ item.username }} Today income
-              </span>
-              <span class="active">+{{ parseInt(item.income) }}</span>
-            </p>
+            <div class="align-center notice-ranking">
+              <p
+                class="align-center m-r-8"
+                v-for="(item, idx) in ranking"
+                :key="idx"
+              >
+                <span class="m-r-4 color-fff"
+                  >{{ item.username }} Today income
+                </span>
+                <span class="active">+{{ parseInt(item.income) }}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -527,14 +529,9 @@ export default {
   }
 }
 
-.u-notice-content {
-  animation: u-loop-animation 14s linear infinite both;
-  text-align: right;
-  // 这一句很重要，为了能让滚动左右连接起来
-  flex-wrap: nowrap;
-  color: #afafaf;
-  //不换行
-  white-space: nowrap;
+.notice-ranking {
+  white-space: nowrap; /* Prevent line breaks */
+  animation: u-loop-animation 28s linear infinite;
 }
 @keyframes u-loop-animation {
   0% {
