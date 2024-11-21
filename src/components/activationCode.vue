@@ -8,7 +8,7 @@
     <img
       class="close d-img"
       @click="show = false"
-      src="@/assets/img/ntf3/user\close.png"
+      src="@/assets/img/ntf3/user/close.png"
       alt=""
     />
     <p class="center-center">
