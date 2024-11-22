@@ -57,19 +57,9 @@
               <div class="left">{{ $t("invest.record.table.col1.text") }}</div>
               <div class="right">{{ moneyFn(divide(item.money)) }}</div>
             </div>
-            <!-- <div class="row">
-              <div class="left">{{ $t("make.money.date") }}</div>
-              <div class="right gray">
-                {{
-                  +item.autoInvest ? $t(`make.show.money`) : $t(`make.show.hie`)
-                }}
-              </div>
-            </div> -->
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col4.text") }}</div>
-              <div class="right active">
-                {{ count(item) }}
-              </div>
+              <div class="right active">{{ count(item) }} ---</div>
             </div>
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col6.text") }}</div>
