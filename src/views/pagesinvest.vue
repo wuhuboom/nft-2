@@ -31,57 +31,7 @@
         :key="idx"
         @click="goDetail(item)"
       >
-        <div class="plans-item m-b-16">
-          <div class="align-center plans-head p-b-8 m-b-8">
-            <p class="invest-pic no-shrink m-r-8" v-if="item.planIcon">
-              <img class="d-img" :src="item.planIcon" alt="" />
-            </p>
-            <ul class="align-center flex-1 space-between">
-              <li>
-                <p class="font14 m-b-4">{{ item.plan && item.plan.name }}</p>
-                <p class="gray">{{ getType(item.type) }}</p>
-              </li>
-              <li class="rate-row">
-                <p class="days" :class="{ 'in-progress': item.status === 0 }">
-                  {{ getType2(item.status) }}
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div class="record-item-content">
-            <div class="row">
-              <div class="left">{{ $t(`invest.days.text`) }}</div>
-              <div class="right">{{ dayFn(item.days) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col1.text") }}</div>
-              <div class="right">{{ moneyFn(divide(item.money)) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col4.text") }}</div>
-              <div class="right active">{{ count(item) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("buy.invest.money5") }}</div>
-              <div class="right">
-                {{
-                  item.rate
-                    ? `${item.rate}%`
-                    : $delZero(way1earnings(item).toFixed(2))
-                }}
-              </div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col7.text") }}</div>
-              <div class="right">{{ item.orderNo }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t("invest.record.table.col2.text") }}</div>
-              <!-- formatDate() -->
-              <div class="right">{{ date(item.finishTime) }}</div>
-            </div>
-          </div>
-        </div>
+        <pagesinvestItem :open="open" :item="item" />
       </div>
     </LoadList>
   </div>
@@ -91,6 +41,7 @@
 import i18n from "@/locale";
 import userApi from "@/api/user";
 import dayjs from "dayjs";
+import pagesinvestItem from "@/views/pagesinvestItem";
 export default {
   name: "balanceRecordView",
   data() {
@@ -140,6 +91,9 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    pagesinvestItem,
   },
   methods: {
     //普通盈利 每天的收益

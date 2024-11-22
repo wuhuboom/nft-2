@@ -1595,5 +1595,6 @@
 "last.money.time": "آخر وقت للاستثمار",
 "Agent.Contact": "اتصال الوكيل",
 "Agent.Contact.copy": "نسخ",
-"maximum.income":"أقصى دخل"
+"maximum.income":"أقصى دخل",
+"sell.finish": "نفذت الكمية"
 }

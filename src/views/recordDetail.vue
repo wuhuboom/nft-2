@@ -4,32 +4,17 @@
       :titleClass="['app-top-black-title']"
       :topBarTitle="$t('backapi.self.safe.bill.detail.text')"
     ></AppTopBar>
-    <LoadList class="m-t-16" :onload="informationVideo" :finished="finished">
-      <div class="plans" v-for="(item, idx) in video" :key="idx">
-        <div class="plans-item m-b-16">
-          <div class="record-item-content">
-            <div class="row">
-              <div class="left">{{ $t(`invest.money.text`) }}</div>
-              <div class="right">{{ divide(item.orderMoney) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`one.day.rate`) }}</div>
-              <div class="right">{{ divide(item.money) }}</div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`fundsRecords.orderNo.text`) }}</div>
-              <div class="right">
-                {{ item.orderNo }}
-              </div>
-            </div>
-            <div class="row">
-              <div class="left">{{ $t(`make.money.date`) }}</div>
-              <div class="right">{{ date(item.createdAt) }}</div>
-            </div>
-          </div>
+    <pagesinvestDetail :item="detail" class="m-t-16" />
+    <p class="font14 p-t-16 m-b-24">{{ $t("buy.invest.money5") }}</p>
+    <LoadList :onload="informationVideo" :finished="finished">
+      <div class="row p-b-8 p-t-8" v-for="(item, idx) in video" :key="idx">
+        <div class="left font13 m-b-4">{{ date(item.createdAt) }}</div>
+        <div class="right justify-between align-center">
+          <p class="font10 gray">{{ item.orderNo }}</p>
+          <p class="green font14">+{{ divide(item.money) }}</p>
         </div>
       </div>
-      <NoData v-if="query.pageNo > 1 && !video.length" />
+      <NoData class="m-t-40" v-if="query.pageNo > 1 && !video.length" />
     </LoadList>
   </div>
 </template>
@@ -38,18 +23,20 @@
 import i18n from "@/locale";
 import userApi from "@/api/user";
 import dayjs from "dayjs";
+import pagesinvestDetail from "@/views/pagesinvestDetail.vue";
 export default {
   name: "balanceRecordView",
+  components: {
+    pagesinvestDetail,
+  },
   data() {
     return {
       finished: false,
       video: [],
-      //       pageNo: 1
-      // pageSize: 10
-      // id: 6742
+      detail: {},
       query: {
         pageNo: 1,
-        pageSize: 10,
+        pageSize: 20,
         id: this.$route.query.id,
       },
       typeOptions: [
@@ -87,15 +74,12 @@ export default {
     date(t) {
       return dayjs.unix(this.$ToSeconds(t)).format("YYYY-MM-DD HH:mm");
     },
-    count(item) {
-      const val = this.divide(item.money) || 0;
+    count(doc) {
+      const val = this.divide(doc.money) || 0;
+      const base = +(doc.fixed || 0);
       if (val > 0) {
-        //= X * (1 + Y/100)*Z
-        const curRate = item.rate / 100;
-        let num = val * curRate * item.days;
-        if (+item.autoInvest === 1) {
-          num = val * Math.pow(1 + curRate, item.days) - val;
-        }
+        const curRate = doc.rate / 100;
+        let num = val * curRate * 1 + base; //天
         return num.toFixed(2);
       } else {
         return 0;
@@ -108,7 +92,17 @@ export default {
     },
     getType2(value) {
       let res = this.typeOptions2.find((item) => item.value == value);
+      if (!res) return "";
       return res.label;
+    },
+    async investMyDetail() {
+      const [err, res] = await userApi.investMyDetail({
+        id: this.query.id,
+      });
+      if (err) {
+        return false;
+      }
+      this.detail = res.data;
     },
     async informationVideo(obj = {}) {
       const params = {
@@ -121,12 +115,24 @@ export default {
         return false;
       }
       this.finished = res.data.results.length < this.query.pageSize;
-      //模拟数据 res.data.results
+      //res.data.results 模拟数据
       // res.data.results = [
       //   {
       //     orderMoney: 1000,
-      //     money: 0.1,
+      //     money: 100,
       //     orderNo: "202107010001",
+      //     createdAt: 1625097600,
+      //   },
+      //   {
+      //     orderMoney: 2000,
+      //     money: 200,
+      //     orderNo: "202107010002",
+      //     createdAt: 1625097600,
+      //   },
+      //   {
+      //     orderMoney: 3000,
+      //     money: 300,
+      //     orderNo: "202107010003",
       //     createdAt: 1625097600,
       //   },
       // ];
@@ -137,29 +143,30 @@ export default {
       this.query.pageNo++;
     },
   },
+  created() {
+    // let detail = window.localStorage.getItem("recroedItem");
+    // detail = detail ? JSON.parse(detail) : {};
+    // this.detail = detail;
+    this.investMyDetail();
+  },
+  mounted() {
+    document.querySelector("body").classList.add("gray-bg-img");
+  },
+  destroyed() {
+    document.querySelector("body").classList.remove("gray-bg-img");
+  },
 };
 </script>
 <style scoped lang="less">
 .pagesinvest-page {
-  min-height: 100vh;
-  .plans-item {
-    border-radius: 14px;
-    background-color: #161a25;
-    padding: 24px 16px;
-    min-width: 42px;
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      .left {
-        color: #929292;
-      }
-      .right {
-      }
-    }
+  .gray {
+    color: #808080;
   }
   .rate-row {
     text-align: right;
+  }
+  .row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .days {
     height: 18px;
@@ -170,9 +177,7 @@ export default {
     color: #fff;
     display: inline-block;
   }
-  .gray {
-    color: #cacbce;
-  }
+
   .plans-head {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -185,6 +190,15 @@ export default {
   .buy-detail {
     min-height: 100%;
     padding-top: @navHeight+24px;
+  }
+  .green {
+    color: #1fb759;
+  }
+  .font10 {
+    font-size: 10px;
+  }
+  .font13 {
+    font-size: 13px;
   }
 }
 </style>

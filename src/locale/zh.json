@@ -1578,5 +1578,6 @@
 "Create.your.PIN": "创建您的 PIN码",
 "Set.PIN6": "为您的交易设置一个 6 位数字的 PIN 码。",
 "Your.PIN.set!": "您的 PIN 码已设置！",
-"Your.PIN.already": "您的 PIN 码已保存。请确保在下次交易时记住该 PIN 码！"
+"Your.PIN.already": "您的 PIN 码已保存。请确保在下次交易时记住该 PIN 码！",
+"sell.finish":"已售罄"
 }

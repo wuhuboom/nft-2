@@ -1595,5 +1595,6 @@
 "last.money.time": "Letzte Investitionszeit",
 "Agent.Contact": "Kontakt zum Agenten",
 "Agent.Contact.copy": "Kopieren",
-"maximum.income":"Maximale Einnahme"
+"maximum.income":"Maximale Einnahme",
+ "sell.finish": "Ausverkauft"
 }

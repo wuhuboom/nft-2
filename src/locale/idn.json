@@ -1595,5 +1595,8 @@
   "last.money.time": "Waktu Investasi Terakhir",
   "Agent.Contact": "Kontak Agen",
   "Agent.Contact.copy": "Salin",
-  "maximum.income":"Pendapatan Maksimum"
+  "maximum.income":"Pendapatan Maksimum",
+"init.money.time": "Waktu Investasi",
+	"come.money.time": "Waktu Penebusan",
+	"sell.finish": "Habis Terjual"
 }

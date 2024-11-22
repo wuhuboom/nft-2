@@ -1596,5 +1596,8 @@
   "Agent.Contact": "Kontak ng Ahente",
   "Agent.Contact.copy": "Kopyahin",
   "maximum.income": "Pinakamataas na kita",
-  "Must.11.digits":"Dapat ay 11 na digit."
+  "Must.11.digits":"Dapat ay 11 na digit.",
+  "init.money.time": "Oras ng Pamumuhunan",
+  "come.money.time": "Oras ng Pagtubos",
+  "sell.finish": "Ubos na"
 }

@@ -1596,5 +1596,8 @@
  "Agent.Contact": "Agent Contact",
 	"Agent.Contact.copy": "Copy",
 	"maximum.income":"Max income",
-	"Must.11.digits":"Must be 11 digits."
+	"Must.11.digits":"Must be 11 digits.",
+	"init.money.time": "Investment Time",
+	"come.money.time": "Redemption Time",
+	"sell.finish": "Sold Out"
 }

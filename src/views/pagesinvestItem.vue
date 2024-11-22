@@ -17,13 +17,13 @@
     <div class="record-item-content">
       <div class="row">
         <div class="left">{{ $t(`invest.days.text`) }}</div>
-        <div class="right">{{ item.days }}</div>
+        <div class="right">{{ dayFn(item.days) }}</div>
       </div>
       <div class="row">
         <div class="left">
           {{ $t("invest.record.table.col1.text") }}
         </div>
-        <div class="right">{{ divide(item.money) }}</div>
+        <div class="right">{{ moneyFn(divide(item.money)) }}</div>
       </div>
       <div class="row">
         <div class="left">{{ $t("init.money.time") }}</div>
@@ -75,8 +75,28 @@ export default {
       type: Object,
       default: () => {},
     },
+    open: {
+      type: Boolean,
+      default: null,
+    },
   },
   methods: {
+    moneyFn(v) {
+      if (this.open === false) {
+        return "*******";
+      } else if (this.open === true) {
+        return v;
+      }
+      return v;
+    },
+    dayFn(v) {
+      if (this.open === false) {
+        return "**";
+      } else if (this.open === true) {
+        return v;
+      }
+      return v;
+    },
     getType2(value) {
       let res = this.typeOptions2.find((item) => item.value == value);
       return res.label;

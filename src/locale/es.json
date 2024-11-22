@@ -1595,5 +1595,6 @@
 "last.money.time": "Último tiempo de inversión",
 "Agent.Contact": "Contacto del Agente",
 "Agent.Contact.copy": "Copiar",
-"maximum.income":"Ingreso máximo"
+"maximum.income":"Ingreso máximo",
+"sell.finish": "Agotado"
 }
