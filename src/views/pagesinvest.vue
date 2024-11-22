@@ -59,11 +59,17 @@
             </div>
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col4.text") }}</div>
-              <div class="right active">{{ count(item) }} ---</div>
+              <div class="right active">{{ count(item) }}</div>
             </div>
             <div class="row">
-              <div class="left">{{ $t("invest.record.table.col6.text") }}</div>
-              <div class="right">{{ item.rate }}%</div>
+              <div class="left">{{ $t("buy.invest.money5") }}</div>
+              <div class="right">
+                {{
+                  item.rate
+                    ? `${item.rate}%`
+                    : $delZero(way1earnings(item).toFixed(2))
+                }}
+              </div>
             </div>
             <div class="row">
               <div class="left">{{ $t("invest.record.table.col7.text") }}</div>
@@ -136,6 +142,18 @@ export default {
     };
   },
   methods: {
+    //普通盈利 每天的收益
+    way1earnings(doc, key = "min") {
+      const base = +(doc.fixed || 0);
+      const val = doc[`${key}`] || 0;
+      if (val > 0) {
+        const curRate = doc.rate / 100;
+        let num = val * curRate * 1 + base;
+        return num;
+      } else {
+        return 0;
+      }
+    },
     moneyFn(v) {
       if (this.open === false) {
         return "*******";
