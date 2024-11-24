@@ -184,7 +184,9 @@ export default {
       if (err) {
         return;
       }
-      const { times, values } = res.data;
+      let { times, values } = res.data;
+      //倒序
+      times = times.reverse();
       this.myStatis = times.map((v, idx) => {
         return {
           total: values[idx],
