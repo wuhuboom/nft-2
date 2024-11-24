@@ -62,24 +62,23 @@
         </li>
       </ul>
     </div>
-    <div v-else>
-      <div class="m-t-16 record-head font12 p-x-16 m-b-16">
-        <div class="friends">
-          <ul class="justify-between align-center m-b-16">
-            <li>{{ $t("invest.record.col2.text") }}</li>
-            <li class="font14 blod color-fff bold">
-              {{ divide(myIncome.total) }}
-            </li>
-          </ul>
-          <ul class="justify-between align-center m-t-16">
-            <li>{{ $t("income.team.level.cur") }}</li>
-            <li class="font14 blod color-fff bold">
-              {{ divide(myIncome.today) }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- <div>
+    <div v-else class="m-t-40">
+      <ul class="my-incom center-center flex-column">
+        <li class="m-b-16 gray">{{ $t("invest.record.col2.text") }}</li>
+        <li class="center-center m-b-32">
+          <p><img class="d-img" src="@/assets/img/ntf/rmb.webp" alt="" /></p>
+          <p class="my-total bold">{{ divide(myIncome.total) }}</p>
+        </li>
+      </ul>
+      <ul class="m-b-4 d-flex frends-list frends-content">
+        <li style="width: 50%" class="p-l-16">
+          {{ $t("income.team.level.cur") }}
+        </li>
+        <li class="p-r-16" style="width: 50%; text-align: right">
+          {{ divide(myIncome.today) }}
+        </li>
+      </ul>
+      <div>
         <ul class="m-b-16 d-flex gray frends-list m-t-24 m-b-16">
           <li>{{ $t(`myfriends.list.col4.text`) }}</li>
           <li>
@@ -94,7 +93,7 @@
           <li class="p-l-16">{{ date(item.time) }}</li>
           <li>{{ divide(item.total) }}</li>
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -113,9 +112,9 @@ export default {
     return {
       income: {},
       icons: [
-        require("@/assets/img/ntf3/user/126927@2x.png"),
-        require("@/assets/img/ntf3/user/126927-2@2x.png"),
-        require("@/assets/img/ntf3/user/126927-3@2x.png"),
+        require("@/assets/img/HomeView/126927-3@2x.png"),
+        require("@/assets/img/HomeView/126927-2@2x.png"),
+        require("@/assets/img/HomeView/126927@2x.png"),
       ],
       navs: [
         {
@@ -232,24 +231,7 @@ export default {
   .gray {
     color: rgba(235, 235, 245, 0.6);
   }
-  .frends-list {
-    text-align: center;
-    & > li:nth-child(1) {
-      text-align: left;
-    }
-    & > li:nth-child(3) {
-      text-align: right;
-    }
-    & > li {
-      width: 33.3333%;
-    }
-  }
-  .frends-content {
-    border-radius: 4px;
-    height: 38px;
-    line-height: 38px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
+
   .nvas {
     border-radius: 8.9px;
     background-color: #333335;
@@ -279,9 +261,41 @@ export default {
       right: 16px;
     }
   }
+
+  .bill-detail {
+    min-width: 63px;
+    height: 29px;
+    border-radius: 14.5px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.frends-list {
+  text-align: center;
+  & > li:nth-child(1) {
+    text-align: left;
+  }
+  & > li:nth-child(3) {
+    text-align: right;
+  }
+  & > li {
+    width: 33.3333%;
+  }
+}
+.frends-content {
+  border-radius: 4px;
+  height: 38px;
+  line-height: 38px;
+  background-color: rgba(255, 255, 255, 0.1);
+
   .friends {
-    & > ul {
-      color: #9db1cd;
+    & > ul:nth-child(1) {
+      color: #f79841;
+    }
+    & > ul:nth-child(2) {
+      color: #6f72e2;
+    }
+    & > ul:nth-child(3) {
+      color: #84cb69;
     }
   }
   .my-incom {
@@ -297,7 +311,11 @@ export default {
     min-width: 63px;
     height: 29px;
     border-radius: 14.5px;
-    background-color: rgba(255, 255, 255, 0.1);
+    border: solid 1px rgba(157, 157, 157, 0.09);
+    background-color: #4b4b4b;
+  }
+  .bgray {
+    color: #ebebf5;
   }
 }
 </style>

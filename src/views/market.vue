@@ -12,7 +12,7 @@
       <ul class="purchased">
         <li>{{ $t(`user.money.purchased`) }}</li>
         <li class="color-fff m-t-4 m-b-4">{{ divide(user.frozenBet) }}</li>
-        <li class="active">+{{ divide(invest.today) }}</li>
+        <li class="active">{{ headData.currInvest }}</li>
         <li
           class="p-l-8 p-r-8 m-t-8 history ellipsis"
           @click="$router.push({ name: 'Investrecord' })"
@@ -388,6 +388,10 @@ export default {
         groups: 0,
       },
       planeYeb: {},
+      headData: {
+        frozen: 0,
+        totalInvest: 0,
+      },
     };
   },
   computed: {
@@ -478,6 +482,13 @@ export default {
     },
   },
   methods: {
+    async playerInvestMyTotal() {
+      const [err, res] = await userApi.playerInvestMyTotal();
+      if (err) {
+        return;
+      }
+      this.headData = res.data;
+    },
     //普通盈利 每天的收益
     way1earnings(doc, key = "min") {
       const base = +(doc.fixed || 0);
@@ -625,6 +636,7 @@ export default {
     },
   },
   created() {
+    this.playerInvestMyTotal();
     this.investMyStatis();
     this.investPlans();
     //this.investPlanYeb();
