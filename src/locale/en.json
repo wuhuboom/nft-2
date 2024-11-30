@@ -516,7 +516,7 @@
 	"backapi.self.safe.bill.detail.confirm.date.text": "Confirmation date",
 	"backapi.self.safe.bill.data.text": "Billing Details",
 	"backapi.self.safe.bill.data.date.text": "date",
-	"backapi.self.safe.bill.data.type.text": "type",
+	"backapi.self.safe.bill.data.type.text": "Please select",
 	"backapi.self.safe.bill.data.money.text": "Amount",
 	"backapi.self.safe.bill.data.opera.text": "operate",
 	"backapi.self.safe.bill.data.choose.type.all.text": "all",

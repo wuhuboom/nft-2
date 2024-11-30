@@ -27,32 +27,34 @@
             },
           ]"
         />
-        <div class="el-ntf-select m-b-16">
-          <!-- <el-select
-            class="full100"
-            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
-            v-model="typeValue"
-          >
-          </el-select> -->
-          <el-select
-            v-model="form.typeValue"
-            class="full100"
-            :placeholder="$t('backapi.self.safe.bill.data.type.text')"
-          >
-            <el-option
-              v-for="item in usdtTypeOptions"
-              :key="item.value"
-              :label="item.text"
-              :value="item.value"
+        <div class="m-b-16">
+          <div class="el-ntf-select">
+            <el-select
+              v-model="form.typeValue"
+              class="full100"
+              :placeholder="$t('backapi.self.safe.bill.data.type.text')"
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in usdtTypeOptions"
+                :key="item.value"
+                :label="item.text"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div
+            v-if="clickSummit && !form.typeValue"
+            class="van-field__error-message"
+          >
+            {{ $t("backapi.self.safe.bill.data.type.text") }}
+          </div>
         </div>
 
         <van-field
           v-model.trim="form.usdtAddress"
           class="mb-16"
-          :placeholder="text"
+          :placeholder="`${form.typeValue} ID`"
           :rules="ewalletRule"
         />
         <div class="el-ntf-select m-b-16">
@@ -141,6 +143,7 @@ export default {
   data() {
     return {
       id: this.$route.query.id,
+      clickSummit: false,
       form: {
         name: "",
         typeValue: "",
@@ -236,9 +239,6 @@ export default {
           value: item,
         };
       });
-
-      console.log(this.usdtTypeOptions, this.usdtTypeOptions[0].value);
-      this.form.typeValue = this.usdtTypeOptions[0].value;
     },
     sendCode() {
       this.$toast(this.$t("form.verift.going.text"));
@@ -266,6 +266,10 @@ export default {
       this.countdown = 0;
     },
     onSubmit() {
+      if (!this.form.typeValue) {
+        this.clickSummit = true;
+        return;
+      }
       if (this.id) {
         this.editUsdt();
         return;
