@@ -187,6 +187,7 @@ export default {
       let { times, values } = res.data;
       //倒序
       times = times.reverse();
+      values = values.reverse();
       this.myStatis = times.map((v, idx) => {
         return {
           total: values[idx],
