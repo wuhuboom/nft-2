@@ -347,7 +347,7 @@
 	"backapi.nameExists": "Account already exists",
 	"backapi.passwordDiff": "Wrong password twice",
 	"backapi.invitationCodeIsEmpty": "Invitation code must be entered",
-	"backapi.invitationCodeError": "The invitation code is incorrect",
+	"backapi.invitationCodeError": "The activation code is incorrect",
 	"backapi.originIsEmpty": "The original password cannot be empty",
 	"backapi.originError": "The original password is incorrect",
 	"backapi.newpwdIsEmpty": "New password cannot be empty",

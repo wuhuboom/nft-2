@@ -347,7 +347,7 @@
   "backapi.nameExists": "Umiiral na ang account",
   "backapi.passwordDiff": "Maling password ng dalawang beses",
   "backapi.invitationCodeIsEmpty": "Kailangang ilagay ang invitation code",
-  "backapi.invitationCodeError": "Mali ang invitation code",
+  "backapi.invitationCodeError": "Mali ang activation code",
   "backapi.originIsEmpty": "Hindi pwedeng walang laman ang orihinal na password",
   "backapi.originError": "Mali ang orihinal na password",
   "backapi.newpwdIsEmpty": "Hindi pwedeng walang laman ang bagong password",
