@@ -252,13 +252,13 @@
             autocomplete="new-password"
             name="invitationCode"
             :placeholder="`${$t('ruls.xxx.please', {
-              name: $t('form.invitecode.text'),
+              name: $t('market.invitecode.text'),
             })}`"
             :rules="[
               {
                 required: true,
                 message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('form.invitecode.text'),
+                  name: this.$t('market.invitecode.text'),
                 }),
               },
             ]"

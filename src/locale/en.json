@@ -1599,5 +1599,6 @@
 	"Must.11.digits":"Must be 11 digits.",
 	"init.money.time": "Investment Time",
 	"come.money.time": "Redemption Time",
-	"sell.finish": "Sold Out"
+	"sell.finish": "Sold Out",
+	"market.invitecode.text": "Activation code"
 }
