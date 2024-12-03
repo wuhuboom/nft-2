@@ -150,7 +150,7 @@ export default {
           url: "https://store.steampowered.com/agecheck/app/271590/",
         },
         {
-          name: "LEAGUE OF LEGENDS",
+          name: "Dota 2",
           path: require("@/assets/img/HomeView/10031.png"),
           url: "https://www.dota2.com/home?l=english",
         },
