@@ -1592,5 +1592,6 @@
 "last.money.time": "Время последнего инвестирования",
 "Agent.Contact": "Контакт агента",
 "Agent.Contact.copy": "Копировать",
-"maximum.income":"Максимальный доход"  
+"maximum.income":"Максимальный доход",
+"NotAllowedOnWeekends": "Вывод средств в выходные не разрешен"  
 }

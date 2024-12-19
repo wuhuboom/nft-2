@@ -1596,5 +1596,6 @@
 "Agent.Contact": "Kontakt zum Agenten",
 "Agent.Contact.copy": "Kopieren",
 "maximum.income":"Maximale Einnahme",
- "sell.finish": "Ausverkauft"
+ "sell.finish": "Ausverkauft",
+ "NotAllowedOnWeekends": "Abhebungen sind am Wochenende nicht erlaubt"
 }

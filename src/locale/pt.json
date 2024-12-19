@@ -1596,5 +1596,6 @@
 "Agent.Contact": "Contato do Agente",
 "Agent.Contact.copy": "Copiar",
 "maximum.income":"Renda máxima",
-"sell.finish": "Esgotado"
+"sell.finish": "Esgotado",
+"NotAllowedOnWeekends": "Retiradas não são permitidas aos finais de semana"
 }

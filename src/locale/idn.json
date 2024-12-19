@@ -1598,5 +1598,6 @@
   "maximum.income":"Pendapatan Maksimum",
 "init.money.time": "Waktu Investasi",
 	"come.money.time": "Waktu Penebusan",
-	"sell.finish": "Habis Terjual"
+	"sell.finish": "Habis Terjual",
+  "NotAllowedOnWeekends": "Penarikan tidak diizinkan pada akhir pekan"
 }

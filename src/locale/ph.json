@@ -1600,5 +1600,6 @@
   "init.money.time": "Oras ng Pamumuhunan",
   "come.money.time": "Oras ng Pagtubos",
   "sell.finish": "Ubos na",
-  "market.invitecode.text": "Kodigo ng aktibasyon"
+  "market.invitecode.text": "Kodigo ng aktibasyon",
+  "NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo"
 }

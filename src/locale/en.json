@@ -1600,5 +1600,6 @@
 	"init.money.time": "Investment Time",
 	"come.money.time": "Redemption Time",
 	"sell.finish": "Sold Out",
-	"market.invitecode.text": "Activation code"
+	"market.invitecode.text": "Activation code",
+	"NotAllowedOnWeekends": "Withdrawals are not allowed on weekends"
 }

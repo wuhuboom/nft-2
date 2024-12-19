@@ -1596,5 +1596,6 @@
 "Agent.Contact": "اتصال الوكيل",
 "Agent.Contact.copy": "نسخ",
 "maximum.income":"أقصى دخل",
-"sell.finish": "نفذت الكمية"
+"sell.finish": "نفذت الكمية",
+"NotAllowedOnWeekends": "السحب غير مسموح به في عطلات نهاية الأسبوع"
 }

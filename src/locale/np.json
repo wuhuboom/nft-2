@@ -1595,5 +1595,6 @@
 "Agent.Contact": "एजेन्ट सम्पर्क",
 "Agent.Contact.copy": "कपी गर्नुहोस्",
 "maximum.income":"अधिकतम आम्दानी",
-"sell.finish": "बेचिएको छ"
+"sell.finish": "बेचिएको छ",
+"NotAllowedOnWeekends": "Penarikan tidak diizinkan pada akhir pekan"
 }

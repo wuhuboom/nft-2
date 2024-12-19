@@ -1595,5 +1595,6 @@
 "Agent.Contact": "एजेंट संपर्क",
 "Agent.Contact.copy": "कॉपी करें",
 "maximum.income":"अधिकतम आय",
-"sell.finish": "बिक गया"
+"sell.finish": "बिक गया",
+"NotAllowedOnWeekends": "वीकेंड्स पर निकासी की अनुमति नहीं है"
 }
