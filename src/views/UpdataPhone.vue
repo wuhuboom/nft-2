@@ -51,7 +51,13 @@
           autocomplete="new-password"
           type="digit"
           class="left-icon-box m-b-24 align-center phone-input"
-          :rules="[{ required: true, message: $t('ruls.phone.empty') }]"
+          :rules="[
+            { required: true, message: $t('ruls.phone.empty') },
+            {
+              validator: validatePhone,
+              message: errphone,
+            },
+          ]"
         >
           <template #left-icon>
             <p @click="leftFn" class="align-center area-code color-primary">
@@ -118,8 +124,28 @@ export default {
     area_code() {
       return this.$store.state.config.area_code;
     },
+    errphone() {
+      if (this.form.areaCode == 63) {
+        return this.$t("Must.11.digits");
+      }
+      return this.$t("vaid.phone", {
+        num: this.form.phone.startsWith("0") ? 11 : 10,
+      });
+    },
   },
   methods: {
+    validatePhone(v) {
+      if (this.form.areaCode == 63) {
+        return v.length === 11;
+      }
+      if (this.form.areaCode != 91) return true;
+
+      if (v.startsWith("0")) {
+        return v.length === 11;
+      } else {
+        return v.length === 10;
+      }
+    },
     onSelect(item) {
       this.form.areaCode = item.name;
     },

@@ -337,9 +337,6 @@ export default {
         return;
       }
       const data = Object.assign({}, this.form);
-      if (this.form.areaCode == 91 && data.phone.length == 11) {
-        data.phone = data.phone.replace(/^0+/, "");
-      }
       data.phone = data.areaCode + data.phone;
       data.email = data.email + this.emailFix;
       if (this.authConfig.mailCodeRequired !== 1) {
