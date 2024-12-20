@@ -468,7 +468,11 @@ export default {
         form.branchStr = bankCardData.subBranch;
         form.accountNameStr = bankCardData.cardName;
         form.cardNumStr = bankCardData.cardNumber;
+        form.cardConfirmNumStr = bankCardData.cardNumber;
         form.cardNumSelect = bankCardData.bankName;
+        if (bankCardData.backEncoding) {
+          form.backCode = bankCardData.backEncoding;
+        }
         const item = this.usdtTypeOptions.find(
           (item) => item.text === bankCardData.bankName
         );
