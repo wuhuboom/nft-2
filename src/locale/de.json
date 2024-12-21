@@ -1597,5 +1597,5 @@
 "Agent.Contact.copy": "Kopieren",
 "maximum.income":"Maximale Einnahme",
  "sell.finish": "Ausverkauft",
- "NotAllowedOnWeekends": "Abhebungen sind am Wochenende nicht erlaubt"
+ "backapi.NotAllowedOnWeekends": "Abhebungen sind am Wochenende nicht erlaubt"
 }

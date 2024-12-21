@@ -1597,5 +1597,5 @@
 "Agent.Contact.copy": "Copier",
 "maximum.income":"Revenu maximum",
  "sell.finish": "Épuisé",
- "NotAllowedOnWeekends": "Les retraits ne sont pas autorisés le week-end"
+ "backapi.NotAllowedOnWeekends": "Les retraits ne sont pas autorisés le week-end"
 }
