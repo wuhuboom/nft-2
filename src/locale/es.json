@@ -1597,5 +1597,6 @@
 "Agent.Contact.copy": "Copiar",
 "maximum.income":"Ingreso máximo",
 "sell.finish": "Agotado",
-"backapi.NotAllowedOnWeekends": "No se permiten retiros durante los fines de semana"
+"backapi.NotAllowedOnWeekends": "No se permiten retiros durante los fines de semana",
+"jihuo.users": "Usuarios Activados"
 }

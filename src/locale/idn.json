@@ -1599,5 +1599,6 @@
 "init.money.time": "Waktu Investasi",
 	"come.money.time": "Waktu Penebusan",
 	"sell.finish": "Habis Terjual",
-  "backapi.NotAllowedOnWeekends": "Penarikan tidak diizinkan pada akhir pekan"
+  "backapi.NotAllowedOnWeekends": "Penarikan tidak diizinkan pada akhir pekan",
+  "jihuo.users": "Jumlah pengguna yang diaktifkan"
 }

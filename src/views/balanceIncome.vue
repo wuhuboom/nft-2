@@ -58,7 +58,7 @@
         </li> -->
         <li class="justify-between align-center m-t-16">
           <p>{{ $t("today.reg.num") }}：{{ item.todayReg || 0 }}</p>
-          <p>{{ $t("rechargeNum.Enough") }}：{{ item.todayInvest }}</p>
+          <p>{{ $t("jihuo.users") }}：{{ item.actived }}</p>
         </li>
       </ul>
     </div>

@@ -1596,5 +1596,6 @@
 "Agent.Contact.copy": "कॉपी करें",
 "maximum.income":"अधिकतम आय",
 "sell.finish": "बिक गया",
-"backapi.NotAllowedOnWeekends": "वीकेंड्स पर निकासी की अनुमति नहीं है"
+"backapi.NotAllowedOnWeekends": "वीकेंड्स पर निकासी की अनुमति नहीं है",
+"jihuo.users": "सक्रिय उपयोगकर्ता"
 }

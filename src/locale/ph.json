@@ -1601,5 +1601,6 @@
   "come.money.time": "Oras ng Pagtubos",
   "sell.finish": "Ubos na",
   "market.invitecode.text": "Kodigo ng aktibasyon",
-  "backapi.NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo"
+  "backapi.NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo",
+  "jihuo.users": "Bilang ng mga aktibong gumagamit"
 }
