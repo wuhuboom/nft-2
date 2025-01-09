@@ -21,7 +21,7 @@
         </li>
       </ul>
       <p class="lable-text m-b-12">
-        {{ $t(`rechange.way`) }}
+        {{ $t(`withdraw.way.bank`) }}
       </p>
       <ul class="type-list m-b-8">
         <li
