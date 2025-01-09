@@ -381,7 +381,7 @@
   "backapi.setPaySuccess": "भुगतान पासवर्ड सफलतापूर्वक सेट किया गया",
   "backapi.cumulativeNotEnough": "पर्याप्त कोडिंग खाप नहीं है",
   "backapi.rechargeUnfinished": "पुनरार्जन अब तक पूरा नहीं हुआ है",
-  "backapi.rechargeUrlError": "पुनरार्जन पता प्राप्त करने में विफल",
+  "backapi.rechargeUrlError": "असफल। कृपया कुछ समय बाद पुनः प्रयास करें।",
   "backapi.payTypeNotUse": "भुगतान प्रकार उपलब्ध नहीं है",
   "backapi.noServiceAddr": "ग्राहक सेवा पता नहीं मिला",
   "backapi.phoneIsEmpty": "मोबाइल फोन नंबर रिक्त नहीं हो सकता",

@@ -381,7 +381,7 @@
 	"backapi.setPaySuccess": "Set payment password successfully",
 	"backapi.cumulativeNotEnough": "Insufficient coding volume",
 	"backapi.rechargeUnfinished": "The recharge has not been completed yet",
-	"backapi.rechargeUrlError": "Failed to obtain recharge address",
+	"backapi.rechargeUrlError": "Failed. Please try again later",
 	"backapi.payTypeNotUse": "Payment type is not available",
 	"backapi.noServiceAddr": "Customer service address not found",
 	"backapi.phoneIsEmpty": "Mobile phone number cannot be empty",
