@@ -1602,5 +1602,6 @@
   "sell.finish": "Ubos na",
   "market.invitecode.text": "Kodigo ng aktibasyon",
   "backapi.NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo",
-  "jihuo.users": "Bilang ng mga aktibong gumagamit"
+  "jihuo.users": "Bilang ng mga aktibong gumagamit",
+  "digits.pass.length6": "Ang password ay dapat may 6 na numero!"
 }
