@@ -1592,7 +1592,7 @@
  "Your.PIN.set!":"Your PIN has been set!",
  "Your.PIN.already":"Your PIN is already saved. Make sure,you remember the PIN always for next transactions!",
  "withdraw.loading": "Withdrawing",
- "last.money.time": "Last Investment Time",
+ "last.money.time": "Last activation time",
  "Agent.Contact": "Agent Contact",
 	"Agent.Contact.copy": "Copy",
 	"maximum.income":"Max income",
