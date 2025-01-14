@@ -37,7 +37,7 @@
             ></i>
             {{ item.username }}
           </li>
-          <li>{{ date(item.lastInvestCreate) }}</li>
+          <li>{{ date(item.lastActived) }}</li>
         </ul>
       </LoadList>
     </div>
