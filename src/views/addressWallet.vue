@@ -195,7 +195,7 @@ export default {
         },
       ];
       rule.push({
-        pattern: /^[a-zA-Z0-9]{11}$/,
+        pattern: /^\d{11}$/,
         message: this.$t("Must.11.digits"),
       });
       // if (this.user.areaCode == "254") {
