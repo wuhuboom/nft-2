@@ -24,7 +24,7 @@
         <p>{{ date(item.createdAt) }}</p>
         <p>
           {{ $t("backapi.self.safe.balance.text") }}:
-          {{ divide(item.initMoney) }}
+          {{ divide(item.dnedMoney) }}
         </p>
       </li>
       <li v-if="item.remark" class="remark m-t-8 active">{{ item.remark }}</li>
