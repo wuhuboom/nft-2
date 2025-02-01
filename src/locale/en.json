@@ -453,7 +453,7 @@
 	"backapi.self.edit.usdt": "Edit virtual currency",
 	"backapi.self.edit.change.safe.pwd.usdt": "Fund password modification",
 	"backapi.self.edit.find.safe.pwd.usdt": "Retrieve security password",
-	"backapi.self.pay.failed.text": "Paying on behalf of",
+	"backapi.self.pay.failed.text": "Payment processing",
 	"backapi.self.bank.code.isEmpty.text": "Bank code cannot be empty",
 	"backapi.self.bank.search.text": "search",
 	"backapi.self.add.bank.cardID.text": "ID number",
