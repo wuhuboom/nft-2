@@ -1569,7 +1569,7 @@
   "lottery.my.frend": "Mag-imbita ng kaibigan at mag-recharge ng 2000 rupees upang makakuha ng pagkakataon na manalo sa loterya.",
   "activation.day": "Araw ng Pag-activate",
   "login.fail": "Nabigong Mag-login",
-  "reg.name.user": "Ang username ay kailangang maglaman ng parehong mga letra at numero.",
+  "reg.name.user": "Ang username ay dapat lamang maglaman ng mga numero at mga titik, nang walang mga espesyal na karakter tulad ng !@/#.$^*%&",
   "finish.time": "Oras ng Pagkakabisa",
 
   "Launch.Top.Matches": "Ilunsad ang Pinakamakapana-paning Nangungunang Mga Laban",
