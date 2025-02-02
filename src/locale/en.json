@@ -1569,7 +1569,7 @@
 "lottery.my.frend": "Invite a friend and recharge 2000 rupees to get a chance to win a lottery.",
 "activation.day":"Activation Days",
 "login.fail":"Login failed",
-"reg.name.user": "The username must contain both letters and numbers.",
+"reg.name.user": "The username must only contain numbers and letters, without special characters such as !@/#.$^*%&",
 "finish.time": "Expiration Time",
 
 "Launch.Top.Matches": "Launch the Most Thrilling Top Matches",
