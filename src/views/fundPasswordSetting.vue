@@ -86,7 +86,7 @@
           :rules="[
             {
               validator: validatePassword,
-              message: $t('ruls.pass.length6'),
+              message: $t('digits.pass.length6'),
             },
           ]"
         />
@@ -110,7 +110,7 @@
           :rules="[
             {
               validator: validatePassword,
-              message: $t('ruls.pass.length6'),
+              message: $t('digits.pass.length6'),
             },
             {
               validator: validateTwo,
@@ -202,7 +202,7 @@ export default {
       return value === this.form.password;
     },
     validatePassword(password) {
-      return /^\d{6,16}$/.test(password);
+      return /^\d{6}$/.test(password);
     },
     openEye() {
       this.showText = !this.showText;

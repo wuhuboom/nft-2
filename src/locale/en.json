@@ -1589,5 +1589,6 @@
 	"Pay.Taxes":"Pay Taxes",
 	"Agent.user.success": "Congratulations",
 	"Agent.user.success.money": "You have earned an investment return",
-	"backapi.bankIdIsEmpty": "You must select a bank, please check and try again."
+	"backapi.bankIdIsEmpty": "You must select a bank, please check and try again.",
+	"digits.pass.length6":"The password must be 6 digits!"
 }
