@@ -261,7 +261,7 @@
 	"invest.record.table.col7.text": "Order Number",
 	"withdraw.record.center.show.detail.type.bank.text": "Bank Card",
 	"withdraw.record.center.show.detail.usdt.bank.text": "USDT",
-	"withdraw.record.status.need.audit.text": "Pending review",
+	"withdraw.record.status.need.audit.text": "Processing",
 	"withdraw.record.status.already.audit.text": "Audited",
 	"withdraw.record.status.withdraw.success.text": "Withdrawal success",
 	"withdraw.record.status.paid.in.text": "Payment in process",
