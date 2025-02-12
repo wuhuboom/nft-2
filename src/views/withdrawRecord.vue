@@ -133,6 +133,11 @@ export default {
         },
       ],
       tabSimpleList: [
+        //all
+        {
+          text: i18n.t("dropdown.billing.all.title.text"),
+          id: 0,
+        },
         {
           text: i18n.t("match.records.today.text"),
           id: 1,
@@ -393,6 +398,9 @@ export default {
         pageNo: pageNo,
         pageSize: this.curItem.pageSize,
       };
+      if (obj.time === 0) {
+        delete obj.time;
+      }
       if (this.status) {
         obj.status = this.status;
       }
