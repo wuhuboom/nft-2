@@ -7,6 +7,9 @@
       >
         <img class="d-img" src="@/assets/img/ntf3/130105@2x.webp" alt="" />
       </li>
+      <li class="font16">
+        {{ user.username }}
+      </li>
       <li class="align-center">
         <img
           class="my-serve m-r-16"
