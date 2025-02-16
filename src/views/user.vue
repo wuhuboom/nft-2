@@ -138,18 +138,29 @@
           :key="idx"
         >
           <div class="align-center">
-            <img class="d-flex m-r-12" :src="item.icon" alt="" />
-            <p class="">{{ countTitle(item.title) }}</p>
+            <img class="d-flex m-r-4" :src="item.icon" alt="" />
+            <p class="">{{ countTitle(item) }}</p>
           </div>
-          <p
-            v-if="showContact(item)"
-            v-clipboard:copy="onCopy(item)"
-            v-clipboard:success="onSuccess"
-            v-clipboard:error="onError"
-            class="copy center-center p-l-4 p-r-4 font12"
-          >
-            {{ $t("Agent.Contact.copy") }}
-          </p>
+          <div class="align-center">
+            <i
+              class="color-fff m-r-4 icon iconfont eyes"
+              :class="
+                item.showText
+                  ? 'icon-yanjing_xianshi_o'
+                  : 'icon-yanjing_yincang_o'
+              "
+              @click="item.showText = !item.showText"
+            ></i>
+            <p
+              v-if="showContact(item)"
+              v-clipboard:copy="onCopy(item)"
+              v-clipboard:success="onSuccess"
+              v-clipboard:error="onError"
+              class="copy center-center p-l-4 p-r-4 font12"
+            >
+              {{ $t("Agent.Contact.copy") }}
+            </p>
+          </div>
         </li>
       </ul>
 
@@ -206,11 +217,13 @@ export default {
           title: "Telegram:",
           icon: require("@/assets/img/ntf3/form/131059@2x.webp"),
           link: "https://t.me/",
+          showText: false,
         },
         {
           title: "WhatsApp:",
           icon: require("@/assets/img/ntf3/form/131060@2x.webp"),
           link: "https://wa.me/",
+          showText: false,
         },
       ],
       changs: [],
@@ -292,10 +305,23 @@ export default {
       return false;
     },
     countTitle(v) {
-      if (v === "Telegram:") {
-        return `${v} ${this.user.telegram || "******"}`;
-      } else if (v === "WhatsApp:") {
-        return `${v} ${this.user.wahtsapp || "******"}`;
+      const title = v.title;
+      if (title === "Telegram:") {
+        let txt;
+        if (v.showText) {
+          txt = this.user.telegram || "******";
+        } else {
+          txt = "******";
+        }
+        return `${title} ${txt}`;
+      } else if (title === "WhatsApp:") {
+        let txt;
+        if (v.showText) {
+          txt = this.user.telegram || "******";
+        } else {
+          txt = "******";
+        }
+        return `${title} ${txt}`;
       }
       return v;
     },
@@ -470,5 +496,8 @@ export default {
   padding: 3px 12px 6px;
   border-radius: 9px;
   border: solid 1px #a29f9f;
+}
+.eyes {
+  font-size: 24px;
 }
 </style>
