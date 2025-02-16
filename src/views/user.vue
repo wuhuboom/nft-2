@@ -141,7 +141,7 @@
             <img class="d-flex m-r-4" :src="item.icon" alt="" />
             <p class="">{{ countTitle(item) }}</p>
           </div>
-          <div class="align-center">
+          <div class="align-center" v-if="showContact(item)">
             <i
               class="color-fff m-r-4 icon iconfont eyes"
               :class="
@@ -152,7 +152,6 @@
               @click="item.showText = !item.showText"
             ></i>
             <p
-              v-if="showContact(item)"
               v-clipboard:copy="onCopy(item)"
               v-clipboard:success="onSuccess"
               v-clipboard:error="onError"
