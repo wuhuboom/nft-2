@@ -1582,5 +1582,6 @@
    "Agent.Contact": "代理联系方式",
    "Agent.Contact.copy": "复制",
     "Agent.user.success": "恭喜",
-    "Agent.user.success.money": "获取投资收益"
+    "Agent.user.success.money": "获取投资收益",
+    "backapi.maxInvestCount":"购买已达到上线"
 }

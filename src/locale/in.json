@@ -1589,5 +1589,6 @@
 "Pay.Taxes":"कर चुकाएं",
 "Agent.user.success": "बधाई हो",
 "Agent.user.success.money": "आपने निवेश पर लाभ कमाया है",
-"backapi.bankIdIsEmpty": "आपको एक बैंक चुनना होगा, कृपया फिर से प्रयास करें।"
+"backapi.bankIdIsEmpty": "आपको एक बैंक चुनना होगा, कृपया फिर से प्रयास करें।",
+ "backapi.maxInvestCount":"खरीद की सीमा पूरी हो गई है"
 }
