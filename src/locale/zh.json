@@ -1581,5 +1581,6 @@
 "Your.PIN.already": "您的 PIN 码已保存。请确保在下次交易时记住该 PIN 码！",
 "sell.finish":"已售罄",
 "backapi.NotAllowedOnWeekends":"周末不允许提现",
-"jihuo.users":"激活人数"
+"jihuo.users":"激活人数",
+"backapi.maxInvestCount":"购买已达上限"
 }
