@@ -1603,5 +1603,6 @@
 	"market.invitecode.text": "Activation code",
 	"backapi.NotAllowedOnWeekends": "Withdrawals are not allowed on weekends",
 	"jihuo.users": "Activated Users",
-	"digits.pass.length6":"The password must be 6 digits!"
+	"digits.pass.length6":"The password must be 6 digits!",
+	 "backapi.maxInvestCount":"Naabot na ang limitasyon sa pagbili"
 }
