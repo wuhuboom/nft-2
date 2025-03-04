@@ -7,7 +7,9 @@
     <div v-else class="p-x-12">
       <ul class="msg-list" v-for="(item, index) in noticeList" :key="index">
         <li class="bold">{{ item.title }}</li>
-        <li class="cont font12 gray">{{ item.content }}</li>
+        <li class="cont font12 gray" style="white-space: pre-line">
+          {{ item.content }}
+        </li>
         <li class="time font12 gray">
           {{ formatDate(item.createdAt, "MM/dd/yyyy hh:mm:ss") }}
         </li>
