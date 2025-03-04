@@ -12,7 +12,9 @@
             {{ formatDate(item.createdAt, "yyyy-MM-dd hh:mm:ss") }}
           </p>
         </li>
-        <li class="cont font12 gray">{{ item.content }}</li>
+        <li class="cont font12 gray" style="white-space: pre-line">
+          {{ item.content }}
+        </li>
       </ul>
     </div>
   </div>
