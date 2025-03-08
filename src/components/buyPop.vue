@@ -109,9 +109,9 @@
           <template v-if="buyMuch.current > 0">
             <li
               class="m-b-4"
-              v-html="$t('my.buy.total', { num: buyMuch.current })"
+              v-html="$t('my.buy.total', { num: buyMuch.total })"
             ></li>
-            <li v-html="$t('my.buy.current', { num: buyMuch.total })"></li>
+            <li v-html="$t('my.buy.current', { num: buyMuch.current })"></li>
           </template>
           <li
             v-else
