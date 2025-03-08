@@ -22,14 +22,6 @@
             name="invitationCode"
             ref="invitationCode"
           >
-            <!-- :rules="[
-              {
-                required: true,
-                message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('form.invitecode.text'),
-                }),
-              },
-            ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
                 {{ $t("enter.inint.code") }}<span class="active">*</span>
@@ -44,14 +36,6 @@
             type="password"
             autocomplete="new-password"
           >
-            <!-- :rules="[
-              {
-                required: true,
-                message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('Payment.password'),
-                }),
-              },
-            ]" -->
             <template #label>
               <p class="align-center no-wrap-text">
                 {{ $t("Payment.password") }}<span class="active">*</span>
@@ -86,7 +70,7 @@
             </li>
           </ul>
         </div>
-        <div class="height62 align-center">
+        <div class="height62 align-center sdsdsdsd">
           <van-field
             v-model.trim="formData.money"
             name="money"
@@ -94,34 +78,49 @@
             :disabled="!hasMax"
             @input="input"
           >
-            <!-- :rules="[
-              {
-                required: true,
-                message: this.$t('ruls.xxx.empty', {
-                  name: this.$t('Payment.password'),
-                }),
-              },
-            ]" -->
             <template #label>
               <div class="flex-column no-wrap-text">
                 <p class="align-center">
                   {{ $t("info.trade.col4.text") }} {{ hasMax ? minMax : ""
                   }}<span class="active">*</span>
                 </p>
-                <!-- <span v-if="hasMax" class="d-flex limit-rang"
-                  >{{ $t("Limit.Range") }} {{ minMax }}</span
-                > -->
               </div>
             </template>
           </van-field>
         </div>
-        <p class="m-t-12 m-b-24 font14">
+        <p class="m-t-12 m-b-12 font14">
           {{ $t("invest.record.table.col4.text") }}:
           <span class="make-m blod">{{ $delZero(way1earnings) }}</span>
         </p>
+        <div class="height62 align-center justify-between stepper-list font14">
+          <div class="flex-column no-wrap-text">
+            <p class="align-center">购买分数:</p>
+          </div>
+          <div>
+            <van-stepper
+              v-model="formData.quantity"
+              :min="1"
+              :max="buyMuch.current"
+            />
+          </div>
+        </div>
+        <!-- total current -->
+        <ul class="m-t-12 m-b-24 font12" v-if="buyMuch.close !== 1">
+          <template v-if="buyMuch.current > 0">
+            <li
+              class="m-b-4"
+              v-html="$t('my.buy.total', { num: buyMuch.current })"
+            ></li>
+            <li v-html="$t('my.buy.current', { num: buyMuch.total })"></li>
+          </template>
+          <li v-else style="color: red">
+            {{ $t("my.buy.curfinish", { num: buyMuch.current }) }}
+          </li>
+        </ul>
         <van-button
           class="confirm-btn m-t-16"
           block
+          :disabled="buyMuch.current === 0"
           type="info"
           native-type="submit"
         >
@@ -133,9 +132,9 @@
 </template>
 
 <script>
+import userApi from "@/api/user";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/market/130995@2x.webp";
-import userApi from "@/api/user";
 const initFome = () => {
   return {
     planId: "",
@@ -144,6 +143,7 @@ const initFome = () => {
     payPwd: "",
     autoInvest: "",
     invitationCode: "",
+    quantity: 1,
   };
 };
 export default {
@@ -167,6 +167,16 @@ export default {
     item: {
       type: Object,
       default: () => {},
+    },
+    buyMuch: {
+      type: Object,
+      default: () => {
+        return {
+          total: 5,
+          current: Infinity,
+          close: 1,
+        };
+      },
     },
   },
   computed: {
@@ -437,5 +447,24 @@ export default {
 }
 .make-m {
   color: #f5673e;
+}
+.stepper-list {
+  ::v-deep {
+    .van-stepper {
+      border: 1px solid #707070;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .van-stepper__minus,
+    .van-stepper__plus {
+      background: #5b5a5a;
+      border-radius: 0;
+      color: #fff;
+    }
+    .van-stepper__input {
+      background-color: transparent;
+      color: #f5673e;
+    }
+  }
 }
 </style>

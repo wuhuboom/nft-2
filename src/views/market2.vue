@@ -134,16 +134,16 @@
         </div>
       </div>
     </div>
-    <buyPop @success="success" ref="buyPop" :item="item" />
+    <buyPop @success="success" ref="buyPop" :item="item" :buyMuch="buyMuch" />
     <NoMony ref="noMony" />
   </div>
 </template>
 <script>
-import HomeTopBar from "@/components/home/HomeTopBar.vue";
+import userApi from "@/api/user";
 import activationCode from "@/components/activationCode";
 import buyPop from "@/components/buyPop";
+import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import NoMony from "@/components/NoMony";
-import userApi from "@/api/user";
 export default {
   name: "investPlans",
   components: { activationCode, HomeTopBar, buyPop, NoMony },
@@ -155,6 +155,7 @@ export default {
         totalInvest: 0,
       },
       records: [],
+      buyMuch: {},
     };
   },
   methods: {
@@ -164,7 +165,7 @@ export default {
       });
       this.$store.dispatch("getInfo");
     },
-    open(doc) {
+    async open(doc) {
       this.item = doc;
       if (doc.sold === 1) {
         this.$toast(this.$t("sell.finish"));
@@ -175,11 +176,35 @@ export default {
         return;
       }
       if (this.balance < doc.min) {
-        console.log(this.$refs);
         this.$refs.noMony.open();
         return;
       }
+      if (doc.maxInvest) {
+        await this.getMUch({
+          id: doc.id,
+          planId: doc.parent.id,
+        });
+      }
       this.$refs.buyPop.open();
+    },
+    async getMUch(query) {
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
+      });
+      const [err, res] = await userApi.investItem(query);
+      this.$toast.clear();
+      if (err) {
+        return;
+      }
+      if (!res.data) {
+        this.buyMuch = {
+          total: null,
+          current: 1,
+        };
+        return;
+      }
+      this.buyMuch = res.data;
     },
     isLImit(doc) {
       return doc.min && doc.max && doc.max > doc.min;

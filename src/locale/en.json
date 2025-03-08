@@ -1575,7 +1575,7 @@
 	"init.money.time": "Investment Time",
 	"come.money.time": "Redemption Time",
 	"sell.finish": "Sold Out",
-	"maximum.income":"Maximum income",
+	"maximum.income": "Maximum income",
 	"withdraw.loading": "Withdrawing",
 	"last.money.time": "Last Investment Time",
 	"backapi.user.length": "Length must be between 8-20 characters",
@@ -1583,13 +1583,15 @@
 	"WeekdayWithdrawalNotice": "Please make withdrawal requests during non-weekend periods.",
 	"Agent.Contact": "Agent Contact",
 	"Agent.Contact.copy": "Copy",
-
-	"Tax.Payment":"Tax Payment",
+	"Tax.Payment": "Tax Payment",
 	"backapi.self.all.alert.desc": "Consider as give up if tax not paid within the time set",
-	"Pay.Taxes":"Pay Taxes",
+	"Pay.Taxes": "Pay Taxes",
 	"Agent.user.success": "Congratulations",
 	"Agent.user.success.money": "You have earned an investment return",
 	"backapi.bankIdIsEmpty": "You must select a bank, please check and try again.",
-	"digits.pass.length6":"The password must be 6 digits!",
-	 "backapi.maxInvestCount":"Naabot na ang limitasyon sa pagbili"
+	"digits.pass.length6": "The password must be 6 digits!",
+	"backapi.maxInvestCount": "Naabot na ang limitasyon sa pagbili",
+	"my.buy.total": "Limit of <span class='orange'>{num}</span> per person.",
+	"my.buy.current": "You have <span class='orange'>{num}</span> remaining to purchase.",
+	"my.buy.curfinish": "Limit of <span class='orange'>{num}</span> per person, exceeded the limit."
 }

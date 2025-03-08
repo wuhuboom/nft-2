@@ -1,5 +1,12 @@
 import request from "@/plugins/request";
 export default {
+  ///invest/item
+  investItem(params) {
+    return request({
+      url: "/invest/item",
+      params,
+    });
+  },
   authSysconfig() {
     return request({
       url: "/auth/sys_config",
