@@ -113,9 +113,11 @@
             ></li>
             <li v-html="$t('my.buy.current', { num: buyMuch.total })"></li>
           </template>
-          <li v-else style="color: red">
-            {{ $t("my.buy.curfinish", { num: buyMuch.current }) }}
-          </li>
+          <li
+            v-else
+            style="color: red"
+            v-html="$t('my.buy.curfinish', { num: buyMuch.total })"
+          ></li>
         </ul>
         <van-button
           class="confirm-btn m-t-16"
