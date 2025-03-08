@@ -139,6 +139,13 @@
   </div>
 </template>
 <script>
+const DbuyMuch = () => {
+  return {
+    total: 5,
+    current: Infinity,
+    close: 1,
+  };
+};
 import userApi from "@/api/user";
 import activationCode from "@/components/activationCode";
 import buyPop from "@/components/buyPop";
@@ -185,11 +192,7 @@ export default {
           planId: doc.parent.id,
         });
       } else {
-        this.buyMuch = {
-          total: 5,
-          current: Infinity,
-          close: 1,
-        };
+        this.buyMuch = DbuyMuch();
       }
       console.log(this.buyMuch);
       this.$refs.buyPop.open();
@@ -205,10 +208,7 @@ export default {
         return;
       }
       if (!res.data) {
-        this.buyMuch = {
-          total: null,
-          current: 1,
-        };
+        this.buyMuch = DbuyMuch();
         return;
       }
       this.buyMuch = res.data;
