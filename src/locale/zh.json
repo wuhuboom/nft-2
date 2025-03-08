@@ -1583,5 +1583,6 @@
   "backapi.maxInvestCount": "购买已达到上线",
   "my.buy.total": "每人限购<span class='orange'>{num}</span>份",
   "my.buy.current": "您剩余<span class='orange''>{num}</span>份可购买",
-  "my.buy.curfinish": "每人限购{num}份,已超出限制"
+  "my.buy.curfinish": "每人限购{num}份,已超出限制",
+  "my.buy.how": "购买分数"
 }

@@ -184,7 +184,14 @@ export default {
           id: doc.id,
           planId: doc.parent.id,
         });
+      } else {
+        this.buyMuch = {
+          total: 5,
+          current: Infinity,
+          close: 1,
+        };
       }
+      console.log(this.buyMuch);
       this.$refs.buyPop.open();
     },
     async getMUch(query) {

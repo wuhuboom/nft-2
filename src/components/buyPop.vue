@@ -94,7 +94,7 @@
         </p>
         <div class="height62 align-center justify-between stepper-list font14">
           <div class="flex-column no-wrap-text">
-            <p class="align-center">购买分数:</p>
+            <p class="align-center">{{ $t("my.buy.how") }}:</p>
           </div>
           <div>
             <van-stepper

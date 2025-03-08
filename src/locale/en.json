@@ -1593,5 +1593,6 @@
 	"backapi.maxInvestCount": "Naabot na ang limitasyon sa pagbili",
 	"my.buy.total": "Limit of <span class='orange'>{num}</span> per person.",
 	"my.buy.current": "You have <span class='orange'>{num}</span> remaining to purchase.",
-	"my.buy.curfinish": "Limit of <span class='orange'>{num}</span> per person, exceeded the limit."
+	"my.buy.curfinish": "Limit of <span class='orange'>{num}</span> per person, exceeded the limit.",
+	"my.buy.how": "Purchase Score"
 }

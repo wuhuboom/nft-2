@@ -1593,5 +1593,6 @@
   "backapi.maxInvestCount": "खरीद की सीमा पूरी हो गई है",
   "my.buy.total": "प्रति व्यक्ति <span class='orange'>{num}</span> की सीमा।",
   "my.buy.current": "आपके पास <span class='orange'>{num}</span> शेष खरीदने के लिए हैं।",
-  "my.buy.curfinish": "प्रति व्यक्ति <span class='orange'>{num}</span> की सीमा, सीमा पार हो गई है।"
+  "my.buy.curfinish": "प्रति व्यक्ति <span class='orange'>{num}</span> की सीमा, सीमा पार हो गई है।",
+  "my.buy.how": "खरीद स्कोर"
 }
