@@ -108,7 +108,7 @@ export default {
       const quantity = doc.quantity || 1;
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = doc.days * (val * curRate + base) * quantity; //天
+        let num = doc.days * (val * curRate + base * quantity); //天
         return num.toFixed(2);
       } else {
         return 0;
