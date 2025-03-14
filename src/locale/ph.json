@@ -453,7 +453,7 @@
   "backapi.self.edit.usdt": "I-edit ang virtual na pera",
   "backapi.self.edit.change.safe.pwd.usdt": "Pagbabago ng password ng pondo",
   "backapi.self.edit.find.safe.pwd.usdt": "I-retrieve ang password ng seguridad",
-  "backapi.self.pay.failed.text": "Nagbabayad sa ngalan ng",
+  "backapi.self.pay.failed.text": "Ang bayad ay pinoproseso.",
   "backapi.self.bank.code.isEmpty.text": "Hindi pwedeng walang bank code",
   "backapi.self.bank.search.text": "maghanap",
   "backapi.self.add.bank.cardID.text": "Numero ng ID",
@@ -472,7 +472,6 @@
   "backapi.self.withdraw.edit.form.sim.name.text": "Pangalan",
   "backapi.self.sim.list.title.text": "Listahan ng SIM",
   "backapi.self.rebate.top.content.total.text": "Kabuuang rebate",
-
   "backapi.self.statistics.top.title.text": "Listahan ng Pagkabigo",
   "backapi.self.statistics.top.content.monthAim.text": "Pagkakasunduan ngayong buwan",
   "backapi.self.statistics.top.content.monthUnAim.text": "Hindi umabot sa pamantayan ngayong buwan",
@@ -1559,7 +1558,6 @@
   "buy.min.money": "Minimung pamumuhunan",
   "buy.invest.money1": "Kumulatibong Pamumuhunan",
   "buy.invest.money2": "Naka-freeze na Pamumuhunan",
-
   "buy.invest.money4": "Halaga ng Pamumuhunan",
   "buy.invest.money5": "Arawang Kita",
   "buy.invest.money6": "Pinakamataas na Termino",
@@ -1571,7 +1569,6 @@
   "login.fail": "Nabigong Mag-login",
   "reg.name.user": "Ang username ay dapat lamang maglaman ng mga numero at mga titik, nang walang mga espesyal na karakter tulad ng !@/#.$^*%&",
   "finish.time": "Oras ng Pagkakabisa",
-
   "Launch.Top.Matches": "Ilunsad ang Pinakamakapana-paning Nangungunang Mga Laban",
   "Good.Day": "Magandang Araw",
   "Data.Center": "Sentro ng Datos",
@@ -1584,7 +1581,6 @@
   "Share.Link": "Ibahagi ang Link",
   "From": "Mula",
   "To.game.account": "Patungo sa account ng laro",
-
   "new.version.update": "Bagong bersyon na update",
   "Updating.wait": "Ina-update, pakiusap maghintay.",
   "Create.your.PIN": "Gumawa ng iyong PIN",
@@ -1596,7 +1592,7 @@
   "Agent.Contact": "Kontak ng Ahente",
   "Agent.Contact.copy": "Kopyahin",
   "maximum.income": "Pinakamataas na kita",
-  "Must.11.digits":"Dapat ay 11 na digit.",
+  "Must.11.digits": "Dapat ay 11 na digit.",
   "init.money.time": "Oras ng Pamumuhunan",
   "come.money.time": "Oras ng Pagtubos",
   "sell.finish": "Ubos na",
@@ -1604,5 +1600,5 @@
   "backapi.NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo",
   "jihuo.users": "Bilang ng mga aktibong gumagamit",
   "digits.pass.length6": "Ang password ay dapat may 6 na numero!",
-   "backapi.maxInvestCount":"Naabot na ang limitasyon sa pagbili"
+  "backapi.maxInvestCount": "Naabot na ang limitasyon sa pagbili"
 }
