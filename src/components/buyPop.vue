@@ -1,5 +1,15 @@
 <template>
   <div>
+    <van-popup v-model="showErr" class="show-err-dilog">
+      <div class="p-x-12 flex-column justify-around">
+        <p class="center-center p-t-8 p-b-8 red">
+          {{ $t(`Participation.every.day3`) }}
+        </p>
+        <ul class="m-b-4">
+          <li v-for="(d, i) in popTxt" :key="i">{{ i + 1 }}、{{ d.txt }}</li>
+        </ul>
+      </div>
+    </van-popup>
     <van-popup
       @opened="opened"
       v-model="show"
@@ -152,6 +162,7 @@ export default {
   name: "buyPop",
   data() {
     return {
+      showErr: false,
       errIcon,
       ritIcon,
       formData: {
@@ -178,6 +189,16 @@ export default {
           current: Infinity,
           close: 1,
         };
+      },
+    },
+  },
+  watch: {
+    popTxt: {
+      handler(val) {
+        if (val.length) {
+          this.showErr = true;
+          this.show = false;
+        }
       },
     },
   },
@@ -468,5 +489,11 @@ export default {
       color: #f5673e;
     }
   }
+}
+.show-err-dilog {
+  width: 270px;
+  min-height: 111px;
+  background: linear-gradient(180deg, #1f2430 0%, #151515 100%);
+  border-radius: 14px 14px 14px 14px;
 }
 </style>
