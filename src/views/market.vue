@@ -351,10 +351,11 @@
 
 <script>
 //import i18n from "@/locale";
-import activationCode from "@/components/activationCode";
-import yuIcon from "@/assets/img/ntf/yue.png";
+import userApi from "@/api/user";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
+import yuIcon from "@/assets/img/ntf/yue.png";
+import activationCode from "@/components/activationCode";
 import NoMony from "@/components/NoMony";
 const initFome = () => {
   return {
@@ -366,7 +367,6 @@ const initFome = () => {
     invitationCode: "",
   };
 };
-import userApi from "@/api/user";
 export default {
   name: "investPlans",
   components: { activationCode, NoMony },
@@ -511,9 +511,10 @@ export default {
         const max = doc.days * this.way1earnings(doc, "max");
         str = `${this.$delZero(max.toFixed(2))}`;
       } else {
+        // eslint-disable-next-line no-unused-vars
         str = `${doc.days * this.way1earnings(doc, "min")}`;
       }
-      return str;
+      return parseInt(str);
     },
     pageLimt(doc) {
       let str = "";
