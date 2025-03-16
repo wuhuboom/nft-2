@@ -1,15 +1,5 @@
 <template>
   <div>
-    <van-popup v-model="showErr" class="show-err-dilog">
-      <div class="p-x-12 flex-column justify-around">
-        <p class="center-center p-t-8 p-b-8 red">
-          {{ $t(`Participation.every.day3`) }}
-        </p>
-        <ul class="m-b-4">
-          <li v-for="(d, i) in popTxt" :key="i">{{ i + 1 }}、{{ d.txt }}</li>
-        </ul>
-      </div>
-    </van-popup>
     <van-popup
       @opened="opened"
       v-model="show"
@@ -177,6 +167,10 @@ export default {
     };
   },
   props: {
+    daysResult: {
+      type: Object,
+      default: () => {},
+    },
     item: {
       type: Object,
       default: () => {},
@@ -189,16 +183,6 @@ export default {
           current: Infinity,
           close: 1,
         };
-      },
-    },
-  },
-  watch: {
-    popTxt: {
-      handler(val) {
-        if (val.length) {
-          this.showErr = true;
-          this.show = false;
-        }
       },
     },
   },

@@ -134,6 +134,12 @@
         </div>
       </div>
     </div>
+    <PrePopDialog
+      ref="prePopDialog"
+      :item="item"
+      :popTxt="popTxt"
+      :result="result"
+    />
     <buyPop @success="success" ref="buyPop" :item="item" :buyMuch="buyMuch" />
     <NoMony ref="noMony" />
   </div>
@@ -151,9 +157,10 @@ import activationCode from "@/components/activationCode";
 import buyPop from "@/components/buyPop";
 import HomeTopBar from "@/components/home/HomeTopBar.vue";
 import NoMony from "@/components/NoMony";
+import PrePopDialog from "@/components/PrePopDialog.vue";
 export default {
   name: "investPlans",
-  components: { activationCode, HomeTopBar, buyPop, NoMony },
+  components: { PrePopDialog, activationCode, HomeTopBar, buyPop, NoMony },
   data() {
     return {
       item: { min: 1 },
@@ -163,6 +170,10 @@ export default {
       },
       records: [],
       buyMuch: {},
+      result: {
+        groups: true,
+        inDays: true,
+      },
     };
   },
   methods: {
@@ -171,6 +182,18 @@ export default {
         forbidClick: true,
       });
       this.$store.dispatch("getInfo");
+    },
+    async investPre(data) {
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
+      });
+      const [err, res] = await userApi.investPre(data);
+      this.$toast.clear();
+      if (err) {
+        return false;
+      }
+      this.result = res.data;
     },
     async open(doc) {
       this.item = doc;
@@ -186,6 +209,17 @@ export default {
         this.$refs.noMony.open();
         return;
       }
+      if (this.popTxt.length) {
+        await this.investPre({
+          id: doc.id,
+          planId: doc.parent.id,
+        });
+        if (!this.right) {
+          this.$refs.prePopDialog.open();
+          return;
+        }
+      }
+
       if (doc.maxInvest) {
         await this.getMUch({
           id: doc.id,
@@ -194,7 +228,6 @@ export default {
       } else {
         this.buyMuch = DbuyMuch();
       }
-      console.log(this.buyMuch);
       this.$refs.buyPop.open();
     },
     async getMUch(query) {
@@ -279,6 +312,35 @@ export default {
     },
   },
   computed: {
+    right() {
+      return this.result.inDays && this.result.groups;
+    },
+    popTxt() {
+      const arr = [];
+      const data = this.item || {};
+      // Object.assign(data, {
+      //   inDays: 1,
+      //   subPlayer: 1,
+      // });
+      console.log(data);
+      if (data.subPlayer) {
+        arr.push({
+          key: "groups",
+          txt: this.$t("Participation.greater.than", {
+            num: `>=${data.subPlayer}`,
+          }),
+        });
+      }
+      if (data.inDays) {
+        arr.push({
+          key: "inDays",
+          txt: this.$t("Participation.investment.than", {
+            num: `>=${data.inDays}`,
+          }),
+        });
+      }
+      return arr;
+    },
     user() {
       return this.$store.state.user;
     },

@@ -1,6 +1,12 @@
 import request from "@/plugins/request";
 export default {
-  ///invest/item
+  //player/invest/pre
+  investPre(params) {
+    return request({
+      url: "/invest/pre",
+      params,
+    });
+  },
   investItem(params) {
     return request({
       url: "/invest/item",
