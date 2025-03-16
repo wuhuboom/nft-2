@@ -1,52 +1,53 @@
 // 全局组件
-import AppTopBar from "@/components/global/AppTopBar";
-import AppBtmBar from "@/components/global/AppBtmBar";
-import BtmActionSheet from "@/components/global/BtmActionSheet.vue";
-import ImgCom from "@/components/global/ImgCom.vue";
-import RowList from "@/components/global/RowList.vue";
-import Countdown from "@choujiaojiao/vue2-countdown";
 import AppBackTop from "@/components/global/AppBackTop.vue";
-import NoData from "@/components/global/NoData.vue";
-import RowMatch from "@/components/global/RowMatch.vue";
-import ComfireDialog from "@/components/global/ComfireDialog.vue";
+import AppBtmBar from "@/components/global/AppBtmBar";
+import AppTopBar from "@/components/global/AppTopBar";
 import BtmActionLang from "@/components/global/BtmActionLang.vue";
-import LoadList from "@/components/global/LoadList.vue";
-import SelectLang from "@/components/global/SelectLang.vue";
+import BtmActionSheet from "@/components/global/BtmActionSheet.vue";
 import ChoseNav from "@/components/global/ChoseNav.vue";
-import SelectNav from "@/components/global/SelectNav.vue";
+import ComfireDialog from "@/components/global/ComfireDialog.vue";
+import ImgCom from "@/components/global/ImgCom.vue";
+import LoadList from "@/components/global/LoadList.vue";
 import MyServe from "@/components/global/MyServe.vue";
+import NoData from "@/components/global/NoData.vue";
+import RowList from "@/components/global/RowList.vue";
+import RowMatch from "@/components/global/RowMatch.vue";
+import SelectLang from "@/components/global/SelectLang.vue";
+import SelectNav from "@/components/global/SelectNav.vue";
+import Countdown from "@choujiaojiao/vue2-countdown";
 import {
-  Form,
-  Field,
-  Button,
-  radio,
-  RadioGroup,
-  picker,
   ActionSheet,
-  Icon,
-  Toast,
-  Swipe,
-  SwipeItem,
-  Lazyload,
-  Image,
-  List,
-  Dialog,
-  Loading,
   Badge,
-  Progress,
+  Button,
+  Checkbox,
+  Dialog,
+  DropdownItem,
+  DropdownMenu,
+  Field,
+  Form,
   Grid,
   GridItem,
-  DropdownMenu,
-  DropdownItem,
-  uploader,
-  Checkbox,
-  Sticky,
-  Popup,
-  Step,
-  Steps,
-  tabs,
-  tab,
+  Icon,
+  Image,
+  Lazyload,
+  List,
+  Loading,
   PasswordInput,
+  picker,
+  Popup,
+  Progress,
+  radio,
+  RadioGroup,
+  Step,
+  stepper,
+  Steps,
+  Sticky,
+  Swipe,
+  SwipeItem,
+  tab,
+  tabs,
+  Toast,
+  uploader,
 } from "vant";
 export default {
   install(Vue) {
@@ -97,5 +98,6 @@ export default {
     Vue.use(tabs);
     Vue.use(tab);
     Vue.use(PasswordInput);
+    Vue.use(stepper);
   },
 };

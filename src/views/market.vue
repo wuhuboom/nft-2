@@ -264,7 +264,7 @@
             ]"
           />
           <van-field
-            class="m-b-32"
+            class="m-b-16"
             v-model="formData.payPwd"
             name="payPwd"
             type="password"
@@ -281,6 +281,33 @@
               },
             ]"
           />
+          <div class="van-cell m-b-24">
+            <ul class="van-field__body flex-1 justify-between align-center">
+              <li class="colorfff">{{ $t("my.buy.how") }}</li>
+              <li class="stepper">
+                <van-stepper
+                  v-model="formData.quantity"
+                  :min="1"
+                  :max="buyMuch.current"
+                  theme="round"
+                />
+              </li>
+            </ul>
+          </div>
+          <ul class="m-b-24 font12 gray my-green" v-if="buyMuch.close !== 1">
+            <template v-if="buyMuch.current > 0">
+              <li
+                class="m-b-4"
+                v-html="$t('my.buy.total', { num: buyMuch.total })"
+              ></li>
+              <li v-html="$t('my.buy.current', { num: buyMuch.current })"></li>
+            </template>
+            <li
+              v-else
+              style="color: red"
+              v-html="$t('my.buy.curfinish', { num: buyMuch.total })"
+            ></li>
+          </ul>
           <van-button
             class="ntf-vant-btn"
             block
@@ -344,19 +371,25 @@
         </li> -->
       </ul>
     </van-popup>
+    <PrePopDialog
+      ref="prePopDialog"
+      :item="item"
+      :popTxt="popTxt"
+      :result="result"
+    />
     <activationCode />
     <NoMony ref="noMony" />
   </div>
 </template>
 
 <script>
-//import i18n from "@/locale";
 import userApi from "@/api/user";
 import errIcon from "@/assets/img/ntf/err.png";
 import ritIcon from "@/assets/img/ntf/right.png";
 import yuIcon from "@/assets/img/ntf/yue.png";
 import activationCode from "@/components/activationCode";
 import NoMony from "@/components/NoMony";
+import PrePopDialog from "@/components/PrePopDialog.vue";
 const initFome = () => {
   return {
     planId: "",
@@ -365,13 +398,22 @@ const initFome = () => {
     payPwd: "",
     autoInvest: 1,
     invitationCode: "",
+    quantity: 1,
+  };
+};
+const DbuyMuch = () => {
+  return {
+    total: 5,
+    current: Infinity,
+    close: 1,
   };
 };
 export default {
   name: "investPlans",
-  components: { activationCode, NoMony },
+  components: { activationCode, NoMony, PrePopDialog },
   data() {
     return {
+      buyMuch: {},
       invest: {},
       errIcon,
       ritIcon,
@@ -561,6 +603,7 @@ export default {
         days: this.item.days,
         planId: this.item.parent.id,
         autoInvest: this.formData.autoInvest ? 1 : 0,
+        quantity: this.formData.quantity,
       });
       const [err] = await userApi.invest(para);
       if (err) {
@@ -601,10 +644,41 @@ export default {
       };
       this.show = true;
     },
+    async investPre(data) {
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
+      });
+      const [err, res] = await userApi.investPre(data);
+      this.$toast.clear();
+      if (err) {
+        return false;
+      }
+      this.result = res.data;
+    },
     async chose(v) {
+      this.item = v;
       if (v.parent.curr == 100) {
         this.$toast("backapi.planExpired");
         return;
+      }
+      if (this.popTxt.length) {
+        await this.investPre({
+          id: v.id,
+          planId: v.parent.id,
+        });
+        if (!this.right) {
+          this.$refs.prePopDialog.open();
+          return;
+        }
+      }
+      if (v.maxInvest) {
+        await this.getMUch({
+          id: v.id,
+          planId: v.parent.id,
+        });
+      } else {
+        this.buyMuch = DbuyMuch();
       }
       this.$toast.loading({
         duration: 0,
@@ -613,7 +687,7 @@ export default {
       //更新用户
       await this.$store.dispatch("getInfo");
       this.$toast.clear();
-      this.item = v;
+
       if (this.balance < this.item.min) {
         this.$refs.noMony.open();
         return;
@@ -631,6 +705,22 @@ export default {
           this.formData.money = "";
         }
       });
+    },
+    async getMUch(query) {
+      this.$toast.loading({
+        forbidClick: true,
+        duration: 0,
+      });
+      const [err, res] = await userApi.investItem(query);
+      this.$toast.clear();
+      if (err) {
+        return;
+      }
+      if (!res.data) {
+        this.buyMuch = DbuyMuch();
+        return;
+      }
+      this.buyMuch = res.data;
     },
     close() {
       this.show = false;
@@ -866,5 +956,18 @@ export default {
 .btm-desc-invest {
   background: linear-gradient(86deg, #202e35 0%, #274036 100%);
   border-radius: 9px 9px 9px 9px;
+}
+.stepper {
+  ::v-deep {
+    .van-stepper__input {
+      color: #37ff7e;
+    }
+    .van-stepper--round .van-stepper__minus,
+    .van-stepper--round .van-stepper__plus {
+      border: none;
+      background-color: #9db1cd;
+      color: #fff;
+    }
+  }
 }
 </style>
