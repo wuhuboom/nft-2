@@ -1600,5 +1600,9 @@
   "backapi.NotAllowedOnWeekends": "Hindi pinapayagan ang pag-withdraw tuwing katapusan ng linggo",
   "jihuo.users": "Bilang ng mga aktibong gumagamit",
   "digits.pass.length6": "Ang password ay dapat may 6 na numero!",
-  "backapi.maxInvestCount": "Naabot na ang limitasyon sa pagbili"
+  "backapi.maxInvestCount": "Naabot na ang limitasyon sa pagbili",
+  "my.buy.total": "Limit ng <span class='orange'>{num}</span> bawat tao.",
+  "my.buy.current": "Mayroon kang <span class='orange'>{num}</span> na natitira upang bilhin.",
+  "my.buy.curfinish": "Limit ng <span class='orange'>{num}</span> bawat tao, lumampas sa limitasyon.",
+  "my.buy.how": "Bumili ng Score"
 }
