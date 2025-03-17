@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import dayjs from "dayjs";
 import i18n from "@/locale";
+import dayjs from "dayjs";
 export default {
   name: "pagesinvestItem",
   data() {
@@ -105,9 +105,10 @@ export default {
     count(doc) {
       const val = this.divide(doc.money) || 0;
       const base = +(doc.fixed || 0);
+      const quantity = doc.quantity || 1;
       if (val > 0) {
         const curRate = doc.rate / 100;
-        let num = doc.days * (val * curRate + base); //天
+        let num = doc.days * (val * curRate + base * quantity); //天
         return num.toFixed(2);
       } else {
         return 0;
