@@ -47,6 +47,7 @@
                 ),
               }),
             },
+            { pattern: /^T.*/, message: $t('usdt.wallet.err') },
           ]"
         />
         <div class="el-ntf-select m-b-16">
