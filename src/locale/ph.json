@@ -1605,5 +1605,5 @@
   "my.buy.current": "Mayroon kang <span class='orange'>{num}</span> na natitira upang bilhin.",
   "my.buy.curfinish": "Limit ng <span class='orange'>{num}</span> bawat tao, lumampas sa limitasyon.",
   "my.buy.how": "Bumili ng Score",
-  "usdt.wallet.err": "Ang address ay dapat magsimula lamang sa 'T'"
+  "usdt.wallet.err": "Ang address ay dapat magsimula lamang sa T"
 }
